@@ -1,0 +1,43 @@
+[
+  {
+    "group": "New AI Models and Tools",
+    "summary": "Several new AI models and tools have been introduced, including the Qwen3.5 series and the Sarvam models. The Qwen3.5-35B model has received positive feedback for its coding capabilities, while the Sarvam models are notable for being trained from scratch by an Indian company. Additionally, the Open Terminal feature in Open WebUI allows for enhanced interaction with models, providing a sandboxed environment for AI to perform tasks more effectively.",
+    "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1rmplvs/open_webuis_new_open_terminal_native_tool_calling/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rmn25h/new_opensource_models_availablesarvam_30b_and/"
+    ]
+  },
+  {
+    "group": "Model Performance and Benchmarking",
+    "summary": "Discussions around the performance of various models highlight the Qwen3.5-35B's efficiency in coding tasks, outperforming others like OSS20B in specific scenarios. Users are also sharing benchmarks comparing different quantization methods and their impact on model speed and accuracy. The Qwen3-Coder-Next model has been noted for its speed but also for its limitations in reasoning capabilities.",
+    "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1rn476o/qwen3codernext_is_the_top_model_in_swerebench/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rmvf84/qwen3535ba3b_vs_oss20b_roughly_20x_slower_and_25x/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rmzwsk/the_definitive_qwen_35_quants/"
+    ]
+  },
+  {
+    "group": "Developer Tools and Frameworks",
+    "summary": "The integration of new developer tools and frameworks is a hot topic, with the introduction of the CodeGraphContext MCP server that converts codebases into graph databases for better AI interaction. Additionally, the Llama.cpp updates and the autoparser feature have improved the usability of models for developers, making it easier to handle various templates and parsing tasks.",
+    "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1rnarei/codegraphcontext_an_mcp_server_that_converts_your/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rmp3ep/llamacpp_now_with_automatic_parser_generator/"
+    ]
+  },
+  {
+    "group": "Real-World Applications and Workflows",
+    "summary": "Users are increasingly adopting AI agents in their daily workflows, with discussions on how these tools are being integrated into various industries. One user shared their experience of using an AI agent for managing personal and work tasks, emphasizing the need for local processing to maintain privacy. Others are exploring the use of AI for coding, project management, and even personal finance.",
+    "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1rmwov8/how_many_of_you_have_seriously_started_using_ai/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rmqxa7/i_wear_a_mic_all_day_and_feed_transcripts_to_an/"
+    ]
+  },
+  {
+    "group": "Community Developments and Concerns",
+    "summary": "The community is actively discussing concerns regarding group buys for hardware, particularly with transparency issues and pricing. Additionally, there are ongoing conversations about the ethical implications of AI research, particularly regarding low-effort papers and the integrity of academic contributions.",
+    "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1rmogqc/beware_rlocalaiservers_400_mi50_32gb_group_buy/",
+      "https://reddit.com/r/MachineLearning/comments/1rmk49w/r_loweffort_papers/"
+    ]
+  }
+]
