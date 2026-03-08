@@ -23,7 +23,7 @@ const extractDigest = (summary) => {
 
 const saveDigest = (digest) => {
   console.log('...saving digest', digest);
-  fs.writeFileSync('src/public/digest.json', JSON.stringify(digest, null, 2));
+  fs.writeFileSync('public/digest.json', JSON.stringify(digest, null, 2));
 }
 
 
