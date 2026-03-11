@@ -16,8 +16,7 @@ const feeds = [
   { path: "top", limit: 50, meta: "t=day" }
 ];
 
-const USER_AGENT =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36";
+const USER_AGENT = "ai-dev-digest/1.0 (by /u/vijai)";
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
