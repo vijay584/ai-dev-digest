@@ -34,7 +34,7 @@ export async function fetchRedditPosts() {
     for (const feed of feeds) {
       console.log('....USER_AGENT', USER_AGENT);
       let url =
-        `https://api.reddit.com/r/${sub}/${feed.path}?limit=${feed.limit}`;
+        `https://throbbing-art-8b6b.vijayjacob584.workers.dev`;
 
       if (feed.meta) {
         url += `&${feed.meta}`;
