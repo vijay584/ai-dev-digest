@@ -33,9 +33,9 @@ export async function fetchRedditPosts() {
     console.log(`Fetching r/${sub}`);
 
     for (const feed of feeds) {
-
+      console.log('....USER_AGENT', USER_AGENT);
       let url =
-        `https://www.reddit.com/r/${sub}/${feed.path}.json?limit=${feed.limit}`;
+        `https://api.reddit.com/r/${sub}/${feed.path}?limit=${feed.limit}`;
 
       if (feed.meta) {
         url += `&${feed.meta}`;
@@ -47,6 +47,7 @@ export async function fetchRedditPosts() {
           "Accept": "application/json"
         }
       });
+      
 
       const data = await res.json();
 
