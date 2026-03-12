@@ -22,7 +22,11 @@ export function buildRedditPrompt(posts) {
     - remarks from AI leaders
 
     #TONE
-    Write like a friendly tech newsletter, not a research paper. Keep summaries short (2-4 sentences max), conversational, and highlight the "why should I care" angle for each group. Avoid jargon where possible. When you must use technical terms, include them in the glossary.
+    Write for a developer who is new to the AI space. Summaries must be understandable WITHOUT reading the glossary. Use plain language and analogies instead of jargon. For example, say "error messages" not "stderr", say "isolated environment" not "sandbox", say "wasting the model's memory" not "context pollution".
+
+    Keep summaries short (2-4 sentences max) and conversational — like you're explaining it to a friend over coffee. Focus on what's happening and why it matters, not how it works internally.
+
+    The glossary is a bonus for readers who want to go deeper — the summary should stand on its own without it.
 
     #OUTPUT
     Return a JSON array:
