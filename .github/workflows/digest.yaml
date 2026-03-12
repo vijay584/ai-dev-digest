@@ -33,6 +33,6 @@ jobs:
         run: |
           git config --global user.name "digest-bot"
           git config --global user.email "bot@github.com"
-          git add digest.json
+          git add digest.json cache.json
           git commit -m "update digest" || echo "no changes"
           git push

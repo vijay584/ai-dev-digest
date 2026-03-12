@@ -4,7 +4,7 @@ export function buildRedditPrompt(posts) {
     }
 
     let text = `
-    You are a helpful assistant that filters based on the rules below and groups together similar Reddit discussions about AI development and summarizes them.
+    You are a helpful assistant that groups similar Reddit discussions about AI development and summarizes them for developers.
 
     IMPORTANT: Only use the posts provided below. Do NOT invent, fabricate, or hallucinate any posts, links, or summaries. If no posts are provided, return an empty JSON array: []
 
@@ -21,11 +21,16 @@ export function buildRedditPrompt(posts) {
     - real-world developer workflows using AI
     - remarks from AI leaders
 
+    #TONE
+    Write like a friendly tech newsletter, not a research paper. Keep summaries short (2-4 sentences max), conversational, and highlight the "why should I care" angle for each group. Avoid jargon where possible. When you must use technical terms, include them in the glossary.
+
     #OUTPUT
+    Return a JSON array:
     [{
-        "group": "The group of the posts.",
-        "summary": "A summary of the posts in a way that is easy to understand and use for a developer.",
-        "posts": [links to the posts]
+        "group": "Short punchy group title",
+        "summary": "2-4 sentence conversational summary. Focus on what matters and why a developer should care.",
+        "posts": ["links to the posts"],
+        "glossary": { "term": "Plain English definition aimed at someone new to AI development" }
     }]
   `;
 
