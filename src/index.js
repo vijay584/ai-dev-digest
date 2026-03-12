@@ -67,6 +67,13 @@ async function run() {
   }
 
   const prompt = buildRedditPrompt(newPosts);
+
+  if (!prompt) {
+    console.log("No new posts to summarize. Skipping.");
+    saveCache(cache);
+    return;
+  }
+
   console.log('...prompt', prompt);
 
   const summary = await summarize(prompt);

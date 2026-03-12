@@ -9,7 +9,7 @@ const client = new OpenAI({
 
 export async function summarize(prompt) {
   const res = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5-mini",
     messages: [
       {
         role: "user",
