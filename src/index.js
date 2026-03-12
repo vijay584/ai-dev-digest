@@ -17,8 +17,15 @@ const extractDigest = (summary) => {
     return;
   }
 
-  const digest = summary.split("```json")[1].split("```")[0];
-  return JSON.parse(digest);
+  let json = summary;
+
+  if (summary.includes("```json")) {
+    json = summary.split("```json")[1].split("```")[0];
+  } else if (summary.includes("```")) {
+    json = summary.split("```")[1].split("```")[0];
+  }
+
+  return JSON.parse(json.trim());
 }
 
 const saveDigest = (digest) => {
