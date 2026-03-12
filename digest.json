@@ -1,120 +1,112 @@
 [
   {
-    "group": "Give LLMs a shell, not a menu",
-    "summary": "An ex-backend lead argues that giving agents a single run(command=\"...\") tool that speaks Unix-style CLI (pipes, help, exit codes) is often better than a catalog of typed function calls. The approach relies on progressive help, helpful error messages, and a presentation layer that prevents dumping binary/huge output into the model — practical tricks that cut retries and context waste. If you build agents, consider treating the model like a terminal operator: let it compose commands it already knows instead of forcing rigid APIs.",
+    "group": "Give agents a Unix-style toolbox",
+    "summary": "Someone who built production agents argues that giving LLMs a single run(command=\"...\") CLI tool — plus progressive help, clear error messages, and consistent output metadata — beats large typed tool catalogs. Practical takeaway: treating the agent like a terminal operator reduces tool-selection mistakes and makes composition (pipes, retries, fallbacks) cheap and reliable.",
     "posts": [
       "https://reddit.com/r/LocalLLaMA/comments/1rrisqn/i_was_backend_lead_at_manus_after_building_agents/"
     ],
     "glossary": {
-      "CLI (command line)": "A simple text interface where tools read and write plain text; developers type commands and pipe data between tools.",
-      "exit code": "A small number a program returns to say whether it succeeded (0) or failed (non-zero); helpful for automated recovery.",
-      "error message": "Plain text explaining what went wrong and what to try next — vital for an agent that can’t web-search.",
-      "isolated environment": "A restricted runtime (like a container) where commands can run without risking the host machine."
+      "CLI": "Command-line interface — let the model issue text commands (like a human on a shell) instead of mapping to many separate APIs.",
+      "stderr": "Error output from a program — useful to show the agent so it can fix failures instead of blindly retrying.",
+      "truncation/overflow": "When an output is too large to return in full; show a useful preview and a pointer to the full file so the agent can explore without wasting context."
     }
   },
   {
-    "group": "Agent workflows & long-running ops",
-    "summary": "People running agents locally hit the same pain points: agents burn context on orientation (searching and reading many files), long sessions drift into junk outputs, and ops questions (24/7 nodes, isolation, billing) matter. Practical fixes others share: add compact indexes so agents find info in 1–3 calls, run a small 'hygiene' model to validate outputs, and use a dedicated low-power node for always-on agents. If you plan production agents, focus on context hygiene, monitoring, and clear security explanations for management.",
+    "group": "Why MCP / tool-calling struggles (and code-as-a-tool alternatives)",
+    "summary": "Several posts explain why asking the model to call many tiny tools trips it up — lack of training data for tool use, tool overload, and wasted round-trips make MCP fragile for complex workflows. Alternatives people point to: have the LLM write small sandboxed scripts (Cloudflare's Code Mode / Monty / Zapcode) so intermediate values live in code instead of flowing back through the model.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1rr5fo5/why_ai_coding_agents_waste_half_their_context/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrh2n4/two_local_models_beat_one_bigger_local_model_for/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrkk2n/agents_are_getting_good_enough_to_sell_their_work/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrtxuf/finally_got_my_local_ai_agent_node_running_247/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrvfar/running_local_llms_or_ai_agents_247_what_hardware/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrix51/localllm_proxy/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrwc2o/how_to_convince_management/"
+      "https://reddit.com/r/mcp/comments/1rrviz4/perplexity_drops_mcp_cloudflare_explains_why_mcp/",
+      "https://reddit.com/r/mcp/comments/1rr31ee/mcp_is_up_to_32_more_expensive_than_cli/",
+      "https://reddit.com/r/mcp/comments/1rro426/mcp_is_not_dead_let_me_explain/",
+      "https://reddit.com/r/mcp/comments/1rqdtbu/is_webmcp_an_opportunity_that_you_shouldnt_sleep/"
     ],
     "glossary": {
-      "context window": "The model's short-term memory — give it too much raw data and it forgets earlier, important stuff.",
-      "orientation": "The early steps an agent takes to find relevant files or APIs; expensive if done repeatedly.",
-      "hygiene model": "A small, cheap model whose job is to check formatting and catch malformed agent outputs before they poison context.",
-      "dedicated node": "A low-power machine that runs agents 24/7 to reduce latency and keep workloads local."
+      "MCP": "A protocol to let agents discover and call external tools. Good for discovery, but can be inefficient if the agent makes many small calls.",
+      "Code Mode": "Let the model generate code that calls tools in one go, so intermediate state stays in the code instead of ping-ponging through the LLM.",
+      "isolate/sandbox": "A restricted environment to run model-generated code safely without letting it access the whole system or secrets."
     }
   },
   {
-    "group": "Benchmarks and hardware reality",
-    "summary": "Community benchmarks show real-world performance depends on many moving parts: prefill vs generation time, GPU quirks (like NVFP4 bugs on Blackwell), kernel/back-end choices, and context length. The takeaway: raw token/s numbers can be misleading — watch time-to-first-token and end-to-end latency for your workload, and test with your actual context sizes. If you're buying hardware or tuning an inference stack, profiles and long-context tests matter more than headline tok/s.",
+    "group": "Agent runtimes, skills and marketplaces",
+    "summary": "People are building ecosystems for reusable agent skills and MCP servers — from searchable skill registries to repo-indexing MCP servers that present code as a graph. If you build agents, think about discoverability, versioning, and how other agents or teams will integrate your skill as a product.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1rrfqlu/i_spent_8_hours_benchmarking_every_moe_backend/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrw3g4/nemotron3super120ba12b_nvfp4_inference_benchmark/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr6i7p/just_some_qwen35_benchmarks_for_an_mi60_32gb_vram/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrdckr/m5_pro_llm_benchmark/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr197e/llamacpp_on_500_macbook_neo_prompt_78_ts/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rs059a/mlx_is_not_faster_i_benchmarked_mlx_vs_llamacpp/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrqsic/qwen3527biq3_m_5070ti_16gb_32k_context_50ts/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrw8df/qwen359b_is_actually_quite_good_for_agentic_coding/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrt6kc/for_blackwell_owners_having_nvfp4_issues/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr9d5b/mac_vs_nvidia/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrxmvc/can_i_do_anything_with_a_laptop_that_has_a_4060/"
+      "https://reddit.com/r/ClaudeAI/comments/1rr8ts4/i_indexed_45k_ai_agent_skills_into_an_open_source/",
+      "https://reddit.com/r/mcp/comments/1rqyn5t/city_simulator_for_codegraphcontext_an_mcp_server/",
+      "https://reddit.com/r/mcp/comments/1rr44o0/whats_a_viable_business_model_for_an_mcp_server/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrkk2n/agents_are_getting_good_enough_to_sell_their_work/"
     ],
     "glossary": {
-      "token/s (tok/s)": "How many output tokens a model emits per second — useful, but doesn't measure prefill time or total latency.",
-      "prefill": "The work the model does to process your prompt before emitting the first token; can dominate latency on long contexts.",
-      "NVFP4": "An NVIDIA low-precision format for faster inference; some consumer cards have driver/kernel bugs that reduce real performance.",
-      "time-to-first-token": "How long it takes from sending a request until the model starts answering — very visible to users."
+      "Skill/Skill registry": "A packaged capability (like ‘extract receipts’) that agents can discover and reuse, similar to a library or microservice.",
+      "CodeGraphContext": "An approach that indexes a repo as a symbol graph so agents get precise, minimal context instead of huge text blobs.",
+      "Marketplace": "A place where authors publish skills and teams can pay per-call or subscribe — still an open problem for trust, billing, and quality."
     }
   },
   {
-    "group": "Quant, compression and model tradeoffs",
-    "summary": "Picking a quant or compressed model is a balance: smaller files save memory but can drift from the original model distribution or collapse into repetition. Community sweeps (KLD, perplexity) help pick quants that stay faithful; novel compression like EVR‑1 focuses on long-run coherence rather than just size. For developers, benchmark the specific tasks you care about — coherence and task accuracy matter more than the smallest file size.",
+    "group": "AI coding tools & IDE workflows (Claude Code, Cursor, etc.)",
+    "summary": "Developers report huge productivity wins from Claude Code, Cursor and similar tools, but also real pains: memory leaks, degraded behavior on large projects, billing surprises, and the need for feedback sensors (like Sentrux) to keep the codebase coherent. If you adopt an AI-native IDE, plan for observability (what the agent changed), limits/restarts, and explicit read-only discussion modes when you just want the model to think, not edit.",
+    "posts": [
+      "https://reddit.com/r/ClaudeAI/comments/1rr65dz/psa_claude_code_v2172v2173_has_confirmed_memory/",
+      "https://reddit.com/r/ClaudeAI/comments/1rrssqn/my_claude_code_kept_getting_worse_on_large/",
+      "https://reddit.com/r/ClaudeAI/comments/1rr89oq/i_got_tired_of_typing_dont_make_any_changes_so_i/",
+      "https://reddit.com/r/ClaudeAI/comments/1rrzlw2/claude_code_now_builds_entire_games_from_a_single/",
+      "https://reddit.com/r/ClaudeAI/comments/1rruuge/im_a_nontechnical_ceo_i_cant_read_python_i_just/",
+      "https://reddit.com/r/cursor/comments/1rqplzf/cursor_enterprise_500_requestbased_vs_claude_code/",
+      "https://reddit.com/r/cursor/comments/1rrklb3/unexpected_2395_ondemand_charge_on_cursor_pro/",
+      "https://reddit.com/r/cursor/comments/1rrrwba/can_we_please_add_remote_control/"
+    ],
+    "glossary": {
+      "Agentic workflow": "Letting the model plan and make multi-file edits autonomously — great for speed, risky without visibility and guardrails.",
+      "Feedback sensor": "A monitoring tool that summarizes repo quality and recent changes so you can see when the model is degrading structure.",
+      "Read-only / discuss mode": "A mode that lets the model inspect and discuss the codebase without making changes — useful for design or debugging conversations."
+    }
+  },
+  {
+    "group": "Benchmarks, quantization and hardware (what people actually see)",
+    "summary": "Community benching is exploding: Qwen, Nemotron, MoE setups, Apple Silicon metrics, and new compression formats all show trade-offs between speed, context, and quality. For developers picking a stack, the rules of thumb are emerging: choose quant and model size for your memory budget, watch prefill vs generation for long contexts, and expect vendor/driver bugs (e.g., NVFP4 on Blackwell) to affect throughput.",
     "posts": [
       "https://reddit.com/r/LocalLLaMA/comments/1rr72lr/qwen359b_quantization_comparison/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrfqlu/i_spent_8_hours_benchmarking_every_moe_backend/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrw3g4/nemotron3super120ba12b_nvfp4_inference_benchmark/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrwtrg/evr1_maano_393_gib_compression_of_llama_31_8b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrppv1/96gb_vram_agentic_coding_users_gptoss120b_vs/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrq2k3/qwen_397b_is_absolutely_crushing_everyone_but_wait/"
+      "https://reddit.com/r/LocalLLaMA/comments/1rr197e/llamacpp_on_500_macbook_neo_prompt_78_ts/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rs059a/mlx_is_not_faster_i_benchmarked_mlx_vs_llamacpp/"
     ],
     "glossary": {
-      "quantization": "Shrinking model weights to use fewer bits so models fit in less memory — saves VRAM but can change output quality.",
-      "KLD (KL divergence)": "A number that shows how the quantized model's predictions drift from the original; lower means closer behavior.",
-      "perplexity (PPL)": "A measure of how surprised the model is by real text; lower is usually better but not the whole story.",
-      "coherence (rep4)": "How often the model repeats itself; high repetition is common in aggressive quants and hurts usability."
+      "Quantization": "Shrinking model weights to lower precision so big models fit in less memory — saves VRAM but can change quality/stability.",
+      "Prefill vs generation": "Prefill is processing the input context before producing any tokens; for long contexts it often dominates latency.",
+      "NVFP4 / Blackwell": "A vendor-specific low-precision format and GPU family — fast in theory but sometimes blocked by driver/kernel bugs in practice."
     }
   },
   {
-    "group": "Vision models & VLM hacks",
-    "summary": "Local vision-language projects are taking off: people are using VLMs to play Doom, rename photos, and add GUI-aware tools. These demos show multimodal tools are practical locally but prompt simplicity and tool design (clear grid overlays, short instructions) make a big difference. If you want to add vision to agents, expect to iterate prompts and tool responses to keep the model from choking on too many details.",
+    "group": "Reliability, safety and trust (why you need safety nets)",
+    "summary": "There are multiple real incidents developers must plan for: agents executing destructive actions without consent, produced shell commands that wiped drives, corrupted persistent chats, and regular hallucinations. The takeaway for teams: add strict permission gating, attach stderr and clear failure messages, keep backups, and audit any model-driven file or infra changes before commit.",
     "posts": [
+      "https://reddit.com/r/ClaudeAI/comments/1rrd5p4/this_is_badreally_badheres_the_bug_report_i_just/",
+      "https://reddit.com/r/ChatGPT/comments/1rrxk5e/my_dad_nuked_his_entire_d_drive_trusting_chatgpt/",
+      "https://reddit.com/r/ChatGPT/comments/1rrzm78/beware_your_conversations_can_just_randomly_get/",
+      "https://reddit.com/r/GeminiAI/comments/1rrjyez/you_wont_believe_how_much_ai_hallucinates/",
+      "https://reddit.com/r/ChatGPT/comments/1rr3u2s/chatgpt_is_now_ending_every_message_with_internet/"
+    ],
+    "glossary": {
+      "Fail-open vs fail-safe": "Fail-open keeps running on errors (dangerous); fail-safe stops and asks for human approval (safer for destructive actions).",
+      "Audit trail": "A retrievable record of what the agent did (commands, file changes, timestamps) so humans can review and revert.",
+      "Stderr attachment": "Always surface error output to the agent and logs so failures are actionable instead of leading to blind retries."
+    }
+  },
+  {
+    "group": "Multimodal & vision: where VLMs are useful",
+    "summary": "Vision-capable models and tools (from Claude interactive visuals to Phi-4, DoomVLM experiments and music models) are maturing quickly and enabling new workflows like in-conversation charts, game-playing VLMs, and audio/video generation. If your app needs image understanding or media generation, these community projects are practical starting points — but expect prompt/consistency quirks and integration work.",
+    "posts": [
+      "https://reddit.com/r/ClaudeAI/comments/1rruo4u/claude_now_creates_interactive_charts_diagrams/",
+      "https://reddit.com/r/ClaudeAI/comments/1rqqtes/claude_make_a_video_about_what_its_like_to_be_an/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrlit7/doomvlm_is_now_open_source_vlm_models_playing_doom/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrl08z/sorting_hat_a_cute_lightweight_cli_to_give_images/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrk4gt/support_for_microsoftphi4reasoningvision15b_has/"
+      "https://reddit.com/r/LocalLLaMA/comments/1rrk4gt/support_for_microsoftphi4reasoningvision15b_has/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrax5a/new_model_levo_2_songgeneration_2_an_opensource/"
     ],
     "glossary": {
-      "VLM (vision-language model)": "A model that understands images and text together, letting you write prompts like 'what's in this picture?' or control apps by screenshot.",
-      "vision encoder": "The part of a VLM that turns pixels into tokens the language model can reason about.",
-      "grid overlay": "A simple technique that numbers image regions so the model can refer to coordinates (useful for games or GUI tasks).",
-      "tool interface": "A small set of actions (like shoot(column) or move(direction)) you expose so the model can act in an environment."
-    }
-  },
-  {
-    "group": "New models and chip news",
-    "summary": "There's a steady stream of new models and hardware: MiroThinker releases research-focused agents, Tencent released LeVo 2 for music, and Meta announced MTIA inference chips aimed at fast, low-precision serving. For developers this means more choices: specialized agent models for verification, open-source music models, and dedicated inference silicon that could change cost/perf tradeoffs in the next couple years.",
-    "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1rrelpa/introducing_mirothinker17_mirothinkerh1/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrax5a/new_model_levo_2_songgeneration_2_an_opensource/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrxx2f/meta_announces_four_new_mtia_chips_focussed_on/"
-    ],
-    "glossary": {
-      "foundation model": "A large pretrained model you can adapt to many tasks (chat, code, music, etc.).",
-      "inference-first chip": "Hardware designed specifically to run models cheaply and quickly at inference time, not to train them.",
-      "verification-centric": "Model design and tooling focused on checking and proving outputs are correct or provably consistent.",
-      "MoE (mixture-of-experts)": "A model architecture that activates only some 'experts' per token to scale capacity without linear compute cost increases."
-    }
-  },
-  {
-    "group": "Developer infra & getting your environment right",
-    "summary": "People still wrestle with packaging, CUDA versions, and honest hardware limits — common advice is to use containers for system-level dependencies and fast Python tools for packages. If you're juggling multiple ML projects, prefer Docker for consistent CUDA and OS environments and use light Python tools inside the container. Also: pick models that match your hardware (don’t hoard everything), and design your offline apps to fail gracefully when resources run out.",
-    "posts": [
-      "https://reddit.com/r/MachineLearning/comments/1rrsk07/d_whats_the_modern_workflow_for_managing_cuda/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrxmvc/can_i_do_anything_with_a_laptop_that_has_a_4060/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrl8ka/are_nvidia_models_worth_it/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr4yp1/what_features_should_i_add_to_100_offline_free/"
-    ],
-    "glossary": {
-      "Docker / container": "A lightweight isolated environment that packages your OS, CUDA, and libraries so projects run the same everywhere.",
-      "conda / package manager": "Tools that install Python packages and sometimes system libs; useful but can complicate CUDA management.",
-      "CUDA": "NVIDIA's GPU toolkit — many ML projects need a specific CUDA/runtime combo to work well.",
-      "offline app": "A local app that runs without sending data to the cloud — good for privacy but you must handle limited memory and models."
+      "VLM": "Vision-language model — a model that takes images and text together so agents can reason about visuals.",
+      "Interactive visuals": "In-conversation charts/diagrams that users can explore without leaving the chat — useful for data-heavy tasks.",
+      "Multimodal pipeline": "How images/audio are encoded, sent to the model, and how results are presented without overwhelming the text context."
     }
   }
 ]
