@@ -1,3 +1,5 @@
+const WORKER_URL = "https://throbbing-art-8b6b.vijayjacob584.workers.dev";
+
 const subreddits = [
   "LocalLLaMA",
   "MachineLearning",
@@ -32,45 +34,61 @@ export async function fetchRedditPosts() {
     console.log(`Fetching r/${sub}`);
 
     for (const feed of feeds) {
-      console.log('....USER_AGENT', USER_AGENT);
+
       let url =
-        `https://throbbing-art-8b6b.vijayjacob584.workers.dev`;
+        `${WORKER_URL}?sub=${encodeURIComponent(sub)}` +
+        `&feed=${encodeURIComponent(feed.path)}` +
+        `&limit=${encodeURIComponent(feed.limit)}`;
 
       if (feed.meta) {
-        url += `&${feed.meta}`;
+        url += `&meta=${encodeURIComponent(feed.meta)}`;
       }
 
-      const res = await fetch(url, {
-        headers: {
-          "User-Agent": USER_AGENT,
-          "Accept": "application/json"
-        }
-      });
-      
+      console.log("Requesting:", url);
 
-      const data = await res.json();
+      try {
 
-      for (const child of data.data.children) {
-
-        const p = child.data;
-
-        if (seen.has(p.id)) continue;
-
-        seen.add(p.id);
-
-        posts.push({
-          source: "reddit",
-          subreddit: sub,
-          title: p.title,
-          score: p.score,
-          comments: p.num_comments,
-          url: `https://reddit.com${p.permalink}`,
-          createdAt: p.created_utc * 1000,
-          description: p.selftext,
+        const res = await fetch(url, {
+          headers: {
+            "User-Agent": USER_AGENT,
+            "Accept": "application/json"
+          }
         });
 
+        if (!res.ok) {
+          console.warn("Worker error", res.status);
+          continue;
+        }
+
+        const data = await res.json();
+
+        if (!data?.data?.children) continue;
+
+        for (const child of data.data.children) {
+
+          const p = child.data;
+
+          if (seen.has(p.id)) continue;
+          seen.add(p.id);
+
+          posts.push({
+            source: "reddit",
+            subreddit: sub,
+            title: p.title,
+            score: p.score,
+            comments: p.num_comments,
+            url: `https://reddit.com${p.permalink}`,
+            createdAt: p.created_utc * 1000,
+            description: p.selftext || "",
+          });
+
+        }
+
+      } catch (err) {
+        console.error("Fetch failed:", err);
       }
 
+      // avoid hammering worker/reddit
       await sleep(1200);
 
     }
@@ -78,5 +96,4 @@ export async function fetchRedditPosts() {
   }
 
   return posts;
-
 }
