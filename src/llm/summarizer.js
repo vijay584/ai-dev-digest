@@ -15,8 +15,7 @@ export async function summarize(prompt) {
         role: "user",
         content: prompt
       }
-    ],
-    temperature: 0.3
+    ]
   });
 
   return res.choices[0].message.content;
