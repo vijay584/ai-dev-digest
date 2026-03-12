@@ -1,83 +1,74 @@
 [
   {
-    "group": "Agent design, runtimes and production practices",
-    "summary": "Hands-on reports and design patterns for building reliable agentic systems: a strong recommendation to expose a single unified CLI-style tool to LLMs (the Manus / Pinix approach) because LLMs already know shell syntax; progressive --help, informative errors, and consistent metadata (exit codes, durations) greatly reduce retries and iteration cost. Operational lessons include guarding binary outputs and stderr, truncation/overflow modes to avoid blowing the model context, sandboxing, and a two-layer execution/presentation architecture. Related threads cover practical agent hygiene (indexing and summarization to avoid burning context), running local agent nodes 24/7 (hardware/efficiency wins vs cloud), using small helper models for runtime validation, and early thoughts on agent monetization/registries. Developer takeaways: prefer composable text/CLI interfaces for tool use, always surface stderr and exit codes, truncate large outputs but keep full outputs accessible, use summarization/indexes to reduce orientation calls, and isolate/sandbox runtime for security and reliability.",
+    "group": "Agent runtimes & production tips",
+    "summary": "Practical patterns for building reliable, long-running agents: prefer a single CLI-style tool the model already knows to reduce tool-selection overhead, expose progressive --help and actionable errors, preserve stderr and consistent metadata, and separate raw execution from LLM-facing presentation to avoid context pollution. Also: operational hygiene (summarizers, a small “checker” model, sandboxing, and running a local node) drastically improves uptime and trust when you move agents from experiments into production.",
     "posts": [
       "https://reddit.com/r/LocalLLaMA/comments/1rrisqn/i_was_backend_lead_at_manus_after_building_agents/",
       "https://reddit.com/r/LocalLLaMA/comments/1rr5fo5/why_ai_coding_agents_waste_half_their_context/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrh2n4/two_local_models_beat_one_bigger_local_model_for/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrkk2n/agents_are_getting_good_enough_to_sell_their_work/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrix51/localllm_proxy/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrwc2o/how_to_convince_management/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrtxuf/finally_got_my_local_ai_agent_node_running_247/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrvfar/running_local_llms_or_ai_agents_247_what_hardware/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrwc2o/how_to_convince_management/"
-    ]
+      "https://reddit.com/r/LocalLLaMA/comments/1rrix51/localllm_proxy/"
+    ],
+    "glossary": {
+      "CLI": "Command-line interface — a text-based way to run small composable commands (cat, grep, curl) that LLMs already know how to write and chain.",
+      "stderr": "Standard error stream — error text from commands; include it so agents can diagnose failures instead of blindly retrying.",
+      "context window / prefill": "The model's finite input buffer; 'prefill' is the work the model does to encode all prior conversation and tool outputs before generating tokens, so keep it small and well-structured.",
+      "sandbox": "Isolated runtime/container where agent commands execute safely, limiting what system-level actions an agent can do."
+    }
   },
   {
-    "group": "Benchmarks, hardware and inference engineering",
-    "summary": "Community benchmark and hardware threads for local inference. Key signals: MoE inference on RTX Pro 6000 (Blackwell) is bottlenecked by CUTLASS/driver/kernel issues (many report Marlin backend wins and CUTLASS TMA failures on SM120); Nemotron 3 Super and other large models show strong throughput and very long-context claims but depend on correct kernel support; Apple Silicon has wide community data (oMLX ~10k runs) showing real-world throughput patterns across M chips; ROCm/MI60 and various quant/backends produce widely different tok/s depending on config and context size. Practical notes for devs: benchmark time-to-first-token and steady-state tok/s for your workload (not just raw tok/s), watch backend/kernel compatibility (CUTLASS/SM version), disable features like MTP where they regress performance on some backends, use prompt caching and prefill tuning to reduce TTFT, and validate multi-user concurrency targets.",
+    "group": "Benchmarks & hardware realities",
+    "summary": "Benchmarks show big gaps between headline tok/s and real-world latency: prefill time, context length and backend bugs (e.g., NVFP4 on Blackwell) often dominate. Expect to tune kernels, parallelization, and MTP settings per GPU/arch, and use community benchmark datasets (Apple Silicon, ROCm, Blackwell reports) to pick practical configs rather than theoretical peaks.",
     "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1rr4by8/nvidia_will_spend_26_billion_to_build_openweight/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrfqlu/i_spent_8_hours_benchmarking_every_moe_backend/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrw3g4/nemotron3super120ba12b_nvfp4_inference_benchmark/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrq2k3/qwen_397b_is_absolutely_crushing_everyone_but_wait/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr6i7p/just_some_qwen35_benchmarks_for_an_mi60_32gb_vram/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrt6kc/for_blackwell_owners_having_nvfp4_issues/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrdckr/m5_pro_llm_benchmark/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr197e/llamacpp_on_500_macbook_neo_prompt_78_ts/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr9d5b/mac_vs_nvidia/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrpdhx/what_would_m5_actually_need_to_improve_for_local/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rroqla/is_tokens_per_second_toks_a_really_relevant_metric/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrxmvc/can_i_do_anything_with_a_laptop_that_has_a_4060/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrq0oo/update_on_qwen_35_35b_a3b_on_raspberry_pi_5/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrqsic/qwen3527biq3_m_5070ti_16gb_32k_context_50ts/"
-    ]
+      "https://reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rr6i7p/just_some_qwen35_benchmarks_for_an_mi60_32gb_vram/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrq2k3/qwen_397b_is_absolutely_crushing_everyone_but_wait/"
+    ],
+    "glossary": {
+      "tok/s": "Tokens per second — raw generation throughput; useful but often misleading because it doesn't include prefill time or multi-step overhead.",
+      "prefill": "The model processing all input/context before the first output token — can dominate latency at large context sizes.",
+      "NVFP4": "NVIDIA's 4-bit floating format for inference; can give big speedups but has fragile kernel support on some consumer/pro GPUs.",
+      "MTP": "Multi-Token Prediction — speculative decoding that can speed generation but may regress depending on backend accuracy."
+    }
   },
   {
-    "group": "Quantization, compression and model-selection tradeoffs",
-    "summary": "Quant sweeps and compression experiments to inform which weight files and quants to pick. The Qwen3.5-9B quantization sweep ranks many community quant variants by KLD and perplexity—pick the lowest-KLD quant for faithfulness when fidelity matters, and consider the 'efficiency score' tradeoff between size and KLD for VRAM-constrained setups. EVR-1 Maano reports a novel 3.93 GiB compression that claims substantially lower repetition at long generations vs common 3–4 bit quants (tradeoff: slight accuracy differences). Practical guidance: run your own task-level eval (coherence, accuracy) rather than trusting a single metric; smaller quant choices (e.g., Q3/IQ options) can be great for constrained hardware but may change generation behavior.",
+    "group": "Quantization & model-selection playbook",
+    "summary": "Picking a quant or small model is about trade-offs: lower KLD/quants closer to BF16 preserve faithfulness, but some novel compressions (like EVR) improve long-run coherence. For agentic coding on limited VRAM, Qwen3.5 9B/27B quants are proving pragmatic winners; for high-fidelity tasks prioritize quants with low KLD and test for repetition/degeneration.",
     "posts": [
       "https://reddit.com/r/LocalLLaMA/comments/1rr72lr/qwen359b_quantization_comparison/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrwtrg/evr1_maano_393_gib_compression_of_llama_31_8b/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrw8df/qwen359b_is_actually_quite_good_for_agentic_coding/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rreehc/qwen35_122b_vs_nemotron_3_super_120b_bestinclass/"
-    ]
+      "https://reddit.com/r/LocalLLaMA/comments/1rrppv1/96gb_vram_agentic_coding_users_gptoss120b_vs/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrwtrg/evr1_maano_393_gib_compression_of_llama_31_8b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rrqsic/qwen3527biq3_m_5070ti_16gb_32k_context_50ts/"
+    ],
+    "glossary": {
+      "quantization": "Reducing model weight precision (e.g., 4-bit) to fit models into less VRAM at some cost to fidelity.",
+      "KLD": "KL divergence — a metric of how much a quantized model's output distribution diverges from a baseline; lower is typically better.",
+      "PPL": "Perplexity — overall uncertainty of the model on next-token prediction; lower generally implies better modeling but doesn't capture repetition issues."
+    }
   },
   {
-    "group": "Local tooling, llama.cpp features and VLM experiments",
-    "summary": "Practical local tooling and model-engine updates: llama.cpp added a real reasoning-budget mechanism (with a 'budget message' trick to improve degraded performance), mac-specific performance updates are available, and support for Phi-4 reasoning+vision landed. Community projects leverage these capabilities: Sorting Hat (image renaming CLI using local VLMs) and DoomVLM (open-source VLM agents playing Doom) show creative VLM integrations for workflows and testing. Developer tips: keep llama.cpp up to date, experiment with reasoning budgets + end-of-reasoning messages if you need partial-thought tradeoffs, and use local VLMs + small utilities to automate mundane tasks.",
+    "group": "Local tooling, multimodal & developer UX",
+    "summary": "Tooling is maturing fast: llama.cpp added a real reasoning budget, community builds (llama.cpp on M-series, Phi‑4 vision support) and fun apps (DoomVLM, Sorting Hat) show how VLMs and lightweight CLIs unlock practical workflows. For devs: experiment with reasoning budgets, keep multimodal inputs guarded, and use reproducible local runtimes (GGUF/llama.cpp/llama-server) when iterating.",
     "posts": [
       "https://reddit.com/r/LocalLLaMA/comments/1rr6wqb/llamacpp_now_with_a_true_reasoning_budget/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr420g/mac_users_should_update_llamacpp_to_get_a_big/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rr197e/llamacpp_on_500_macbook_neo_prompt_78_ts/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrk4gt/support_for_microsoftphi4reasoningvision15b_has/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrl08z/sorting_hat_a_cute_lightweight_cli_to_give_images/",
       "https://reddit.com/r/LocalLLaMA/comments/1rrlit7/doomvlm_is_now_open_source_vlm_models_playing_doom/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrycc6/llamacpp_brave_search_mcp_not_gonna_lie_it_is/"
-    ]
-  },
-  {
-    "group": "New models, releases and model behavior notes",
-    "summary": "Announcements and early impressions of new models: MiroThinker (verification-centric agent family) aims at heavy-duty, verifiable agents; LeVo 2 is an open-source music foundation model; htmLLM experiments with tiny specialized coding models (50M–124M) show limits of tiny specialists; Nemotron 3 Super is noted for speed and massive context but also for stricter refusal behavior and lack of vision, prompting debate about usability vs safety. Developer takeaway: match model choice to task (vision vs long context vs safety constraints), and test refusal/overfiltering behavior early if your use-case requires flexible or creative outputs.",
-    "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1rrelpa/introducing_mirothinker17_mirothinkerh1/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrax5a/new_model_levo_2_songgeneration_2_an_opensource/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrrvqs/project_htmllm50m_base_can_a_tiny_specialist/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rri4qb/nemotron_3_super_and_the_no_free_lunch_problem/"
-    ]
-  },
-  {
-    "group": "Operations, workflows, security and community practices",
-    "summary": "Practical ops and workflow threads: use containers to isolate CUDA/system-level dependencies (Docker) while using modern Python package managers inside containers; expect surprise costs from managed vector DBs and plan cost models; management often worries about data exfiltration—be ready to explain sandboxing, network isolation, and data flow; the community debates attribution and credit in research and flags AI-generated submissions for peer review concerns. Developer guidance: standardize reproducible stacks (containerize CUDA + pinned drivers), model your vector DB costs before scale, prepare documentation and security proofs for management (no-phoning-home, network policies, logs), and adopt testing/hygiene to detect model and prompt failure modes early.",
-    "posts": [
-      "https://reddit.com/r/MachineLearning/comments/1rrsk07/d_whats_the_modern_workflow_for_managing_cuda/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrlxfx/got_a_surprise_cloud_vector_database_bill_and_it/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr4yp1/what_features_should_i_add_to_100_offline_free/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rre0oc/whats_something_local_models_are_still/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr6iuo/dealing_with_llm_sycophancy_alignment_tax_how_do/",
-      "https://reddit.com/r/MachineLearning/comments/1rqs7gd/d_icml_paper_to_review_is_fully_ai_generated/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rrl8ka/are_nvidia_models_worth_it/",
-      "https://reddit.com/r/MachineLearning/comments/1rr7vup/d_can_we_stop_glazing_big_labs_and_universities/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rr4by8/nvidia_will_spend_26_billion_to_build_openweight/"
-    ]
+      "https://reddit.com/r/LocalLLaMA/comments/1rrl08z/sorting_hat_a_cute_lightweight_cli_to_give_images/"
+    ],
+    "glossary": {
+      "reasoning budget": "A hard token budget controlling how many internal 'thinking' tokens the model can spend before it must return a final answer.",
+      "VLM": "Vision-language model — a model that accepts images+text and reasons across both modalities.",
+      "GGUF": "A widely-used compact model file format for local inference (llama.cpp and friends)."
+    }
   }
 ]
