@@ -3,13 +3,13 @@ const WORKER_URL = "https://throbbing-art-8b6b.vijayjacob584.workers.dev";
 const subreddits = [
   "LocalLLaMA",
   "MachineLearning",
-  // "ChatGPT",
-  // "OpenAI",
-  // "GeminiAI",
-  // "ClaudeAI",
-  // "cursor",
-  // "AI_India",
-  // "mcp",
+  "ChatGPT",
+  "OpenAI",
+  "GeminiAI",
+  "ClaudeAI",
+  "cursor",
+  "AI_India",
+  "mcp",
 ];
 
 const feeds = [
