@@ -1,132 +1,130 @@
 [
   {
-    "group": "New models, distills & benchmarks",
-    "summary": "A wave of new releases (MiniMax/Minimax M2.7, Mamba 3, Nemotron/Qwen distills and many Qwen 3.5/40B fine-tunes) is pushing different trade-offs: agentic self-improvement and big context windows vs practical speed/quantization choices for local runs. If you build or evaluate systems, expect to pick models based on whether you need agentic behavior, long context, or cheap fast inference — the community benchmarks and merges show those often don't come in a single package.",
+    "group": "Composer & the new coding frontiers",
+    "summary": "Cursor just shipped Composer 2 — people report much better precision for real coding tasks compared to prior releases, and the community is already comparing it to Claude Opus. If you build or review code with AI, this matters because model choice can change how much manual cleanup you’ll need.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1rxc9rw/minimax_m27_on_openrouter/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rwwtui/minimaxm27/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxo8ld/minimax_m27_is_finally_here_any_one_tested_it_yet/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rwxzj3/mamba_3_state_space_model_optimized_for_inference/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxfe0o/gwen3527b_8_bit_vs_16_bit_10_runs/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rx94ry/qwen35122ba10b_gptq_int4_on_4_radeon_ai_pro_r9700/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxmmu5/running_qwen35_397b_on_m3_macbook_pro_with_48gb/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rwy5sl/omnicoderclaude46opusuncensoredgguf/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxovb9/qwen3540bclaude45opushighreasoningthinking_reg/"
+      "https://reddit.com/r/cursor/comments/1ry5rgw/composer_2_is_now_available_in_cursor/",
+      "https://reddit.com/r/cursor/comments/1ry5ls2/cursor_announce_composer_20/",
+      "https://reddit.com/r/cursor/comments/1ryb2jt/has_anyone_actually_tested_composer_2_vs_claude/",
+      "https://reddit.com/r/cursor/comments/1rygyqv/composer_2_finally_gave_me_the_precision_i_have/",
+      "https://reddit.com/r/cursor/comments/1ryd60l/composer_2_first_impressions/",
+      "https://reddit.com/r/cursor/comments/1rwz5es/take_a_bow_claudeopus46high/"
     ],
     "glossary": {
-      "agentic": "An AI that can plan, run steps or experiments, and improve itself or the workflow — useful for automation but trickier to control.",
-      "context window": "How much recent conversation or document the model can 'see' at once; bigger windows let it handle longer tasks but cost more memory.",
-      "quantization": "Shrinking model numbers (e.g., 8-bit) to save memory and speed inference, usually with some accuracy trade-off."
+      "Composer 2": "Cursor’s latest coding model aimed at precise code edits and refactors — developers care because it can reduce manual rework.",
+      "Opus 4.6": "Anthropic’s high-end coding model (Claude Opus) that’s often used as a baseline for coding quality and instruction-following."
     }
   },
   {
-    "group": "AI IDEs & coding workflows (Cursor, Codex, Claude Code)",
-    "summary": "Developers repeatedly report big speedups scaffolding projects with tools like Cursor + Codex or Claude Code, but common pitfalls are token waste, hallucinated API calls, overenthusiastic rewrites, and broken streaming logic. Rule of thumb: use the AI to scaffold and generate patterns, but verify all external API calls, async/streaming code, and tight logic yourself.",
+    "group": "Qwen family & open‑model performance",
+    "summary": "Qwen 3.5 (and the Qwen series) keeps popping up as a high knowledge‑density, working‑dog model that shines with context — but users report quirks at huge context sizes and need careful parameter tuning. If you run local frontier models, expect great retrieval behavior but also sharp thresholds where quality drops off and extra engineering (quant choices, inference engine) matters.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1rwwqbm/my_company_just_handed_me_a_2x_h200_282gb_vram/",
-      "https://reddit.com/r/cursor/comments/1rwgf11/built_and_shipped_a_full_production_app_entirely/",
-      "https://reddit.com/r/cursor/comments/1rw2d5x/codex_ide_in_cursor/",
-      "https://reddit.com/r/ClaudeAI/comments/1rwx7zd/almost_done_with_a_codex_like_app_but_for_claude/",
-      "https://reddit.com/r/cursor/comments/1rww6ub/moderation_of_this_subreddit/",
-      "https://reddit.com/r/cursor/comments/1rw9q72/for_20_cursor_vs_codex_vs_claude_code/",
-      "https://reddit.com/r/cursor/comments/1rw60bl/cursor_voice_dictation_is_the_fastest_way_ive/",
-      "https://reddit.com/r/cursor/comments/1rxg2b7/parallel_agents_git_worktrees_realworld_experience/",
-      "https://reddit.com/r/cursor/comments/1rx4s0u/tips_to_reduce_token_amount_being_used/",
-      "https://reddit.com/r/cursor/comments/1rw0db1/are_llms_designed_to_burn_more_tokens_than/"
+      "https://reddit.com/r/LocalLLaMA/comments/1rxue4x/qwen35_knowledge_density_and_performance/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ryljps/qwen35_is_a_working_dog/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ryb028/qwen35_best_parameters_collection/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ryc3w0/my_experience_with_qwen_35_35b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rybd1y/qwen_35_122b_completely_falls_apart_at_100k/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ryelpe/qwen3tts_ported_to_llamacpp/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ry41yz/tokens_qwen35397ba17b_on_vram_ram_pooled/"
     ],
     "glossary": {
-      "token": "A chunk of text the model processes; usage (and cost) is measured in tokens, so concise prompts save money.",
-      "streaming / SSE": "Sending model output as a live stream (useful for real-time UIs) — but it can introduce race conditions and tricky concurrency bugs.",
-      "scaffolding": "AI-generated boilerplate and patterns you use as a starting point rather than as final production code."
+      "quantization": "Shrinking model weights to use less memory (and speed up inference) — cheap but can change behavior, so test carefully.",
+      "context window": "How much text the model can 'see' at once — larger windows let the model use more history but can expose new failure modes."
     }
   },
   {
-    "group": "Agents, MCP & persistent memory",
-    "summary": "People building multi-agent pipelines and MCP servers (e.g., Soul) are focused on durable memory, safer tool-calling, and reducing repeated discovery steps (like database schema lookups). If you're building agents, think deterministic handoffs, persistent entity memory, and small precompiled artifacts (schema snapshots) to avoid wasting model turns.",
+    "group": "Agent frameworks, MCP servers & integrations",
+    "summary": "Tooling around MCP (the agent protocol) is maturing — people are grading servers, building inboxes for agents, adding Android/device connectors, and shipping safety hooks. For devs building agent stacks, that means more integration choices but also a big need to standardize tool descriptions and error handling so models call the right things.",
     "posts": [
-      "https://reddit.com/r/mcp/comments/1rwxyd8/soul_v50_mcp_server_for_persistent_agent_memory/",
-      "https://reddit.com/r/ClaudeAI/comments/1rx7cox/multiagent_pipelines/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxc6us/what_openclaw_alternative_are_you_using/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rx05cw/project_i_bypassed_nemoclaws_sandbox_isolation_to/",
-      "https://reddit.com/r/mcp/comments/1rw2r34/why_not_precompile_the_db_schema_so_the_llm_agent/",
-      "https://reddit.com/r/ClaudeAI/comments/1rx00p8/dispatch_cowork_from_your_phone/"
+      "https://reddit.com/r/mcp/comments/1ry3xv7/we_graded_over_200000_mcp_servers_both_stdio/",
+      "https://reddit.com/r/mcp/comments/1rximun/how_are_you_handling_agent_to_agent_communication/",
+      "https://reddit.com/r/mcp/comments/1rxmmuh/soul_v60_your_ai_agent_can_rm_rf_ark_stops_it/",
+      "https://reddit.com/r/ClaudeAI/comments/1rxz32s/i_pairprogrammed_22k_lines_of_c_with_claude_opus/",
+      "https://reddit.com/r/ClaudeAI/comments/1rxu41b/claude_code_hooks_all_23_explained_and_implemented/",
+      "https://reddit.com/r/ClaudeAI/comments/1ryh3da/new_in_claude_code_telegram_and_discord_remote/",
+      "https://reddit.com/r/mcp/comments/1rxgg2y/allowing_claude_code_to_interact_with_android/"
     ],
     "glossary": {
-      "MCP": "Memory/Control Plane — a small server that stores agent memory and manages handoffs between agents.",
-      "agent": "A specialized AI process (planner, coder, retriever) that performs part of a workflow and can pass results to other agents.",
-      "RAG": "Retrieval-Augmented Generation — combining a search/database layer with an LLM to ground answers in real data."
+      "MCP server": "A small service that exposes tools to an LLM agent (file ops, device control, etc.) so the agent can call them like APIs.",
+      "tool description for models": "A short, model‑friendly explanation of what a tool does — important because models often fail when they misunderstand tool inputs or outputs."
     }
   },
   {
-    "group": "Local hardware, runtimes & ‘what can I actually run’",
-    "summary": "Choosing GPUs, CPUs or Apple Silicon and runtimes (vLLM, ROCm, Ollama) is the gating factor for which models you can run locally and at what speed. Use community recipes and tools (fitmyllm) to match model size, quant, and memory to your GPU — otherwise you’ll waste time and cash on incompatible setups.",
+    "group": "Costs, quotas & practical dev workflows",
+    "summary": "Teams are implementing cheap fast models as 'gates' to cut expensive calls, and many developers are hitting surprising rate limits and opaque billing behavior. If you run large or long jobs, design a cheap prefilter (like Haiku) and watch quota rules closely — otherwise the bills or usage caps will block your work.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1rx9zlg/rtx_3090_for_local_inference_would_you_pay_1300/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rx94ry/qwen35122ba10b_gptq_int4_on_4_radeon_ai_pro_r9700/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxmmu5/running_qwen35_397b_on_m3_macbook_pro_with_48gb/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rx7fmi/best_agentic_coding_model_for_64gb_of_unified/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rx3kwf/local_llm_machine_spark_strix/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxdacb/tool_that_tells_exactly_which_models_fit_your/"
+      "https://reddit.com/r/ClaudeAI/comments/1ry7ad1/how_i_use_haiku_as_a_gatekeeper_before_sonnet_to/",
+      "https://reddit.com/r/ClaudeAI/comments/1ry4x9z/claude_code_is_burning_my_budget_just_exploring/",
+      "https://reddit.com/r/ClaudeAI/comments/1ry29mu/wtf_happened_to_usage_consumption/",
+      "https://reddit.com/r/ClaudeAI/comments/1ry17pc/anthropic_is_offering_2x_usage_but_wont_tell_you/",
+      "https://reddit.com/r/ClaudeAI/comments/1ry42pn/new_to_claude_pro_hitting_limits_fast/",
+      "https://reddit.com/r/ClaudeAI/comments/1ryknoo/do_i_really_need_max/",
+      "https://reddit.com/r/GeminiAI/comments/1rxr370/new_usage_limit_for_gemini_app_pro/"
     ],
     "glossary": {
-      "ROCm": "AMD’s runtime for GPU acceleration (the AMD equivalent of CUDA) used to run models on Radeon hardware.",
-      "GGUF": "A compact model file format used in local inference tools for fast loading and interoperability.",
-      "quant": "Short for quantization — reducing numeric precision (e.g., from 16-bit to 8-bit) to make a model fit smaller GPUs."
+      "gatekeeper model": "A cheap, fast model used to filter or classify input so you only send high‑value items to an expensive model.",
+      "budget / quota": "The usage limits or money you allocate to model calls — can be per‑minute, hourly, or monthly and sometimes opaque."
     }
   },
   {
-    "group": "Model behavior, hallucination & context surprises",
-    "summary": "Developers and power-users are seeing tone changes (more guarded or passive-aggressive), more hallucinations on simple tasks, and unexpected context-window or time-awareness behaviors across versions. Expect to add verification steps, concise prompts, and session engineering (summaries/bookmarks) into your workflow to prevent drift and brittle results.",
+    "group": "Context & memory headaches in long sessions",
+    "summary": "Developers and power users keep hitting the wall where long chats degrade, memories don't carry over reliably, and new limits (per‑chat message caps, edit restrictions) get in the way. For project workflows, plan a reproducible state transfer: snapshot a concise structured summary and inject it when you start a fresh session rather than relying on UI memory to be perfect.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1rwwyq2/is_it_just_me_or_is_chatgpt_starting_to_get_very/",
-      "https://reddit.com/r/ChatGPT/comments/1rwyx0h/is_it_just_me_or_is_chatgpt_kind_of_passive/",
-      "https://reddit.com/r/OpenAI/comments/1rx4gp5/i_know_i_cant_be_the_only_one_but_the_new_models/",
-      "https://reddit.com/r/ChatGPT/comments/1rwwb24/chatgpt_hallucinating_for_basic_tasks_is_crazy/",
-      "https://reddit.com/r/ChatGPT/comments/1rwx43a/gpt45_fooled_73_percent_of_people_into_thinking/",
-      "https://reddit.com/r/OpenAI/comments/1rxb7xx/does_your_chatgpt_bait_with_every_response/",
-      "https://reddit.com/r/ChatGPT/comments/1rx0pgo/chatgpts_awareness_of_time/",
-      "https://reddit.com/r/ClaudeAI/comments/1rxqsic/context_window_exceeded/",
-      "https://reddit.com/r/ChatGPT/comments/1rxlmhz/the_useless_extra_information_chatgpt_puts_in_its/"
+      "https://reddit.com/r/ChatGPT/comments/1ry3uxs/long_chatgpt_chats_go_bad_but_starting_a_new_one/",
+      "https://reddit.com/r/ChatGPT/comments/1ryfrsm/has_cross_chat_memory_been_nerfed/",
+      "https://reddit.com/r/ChatGPT/comments/1ryib6d/new_chat_limit_just_dropped/",
+      "https://reddit.com/r/ChatGPT/comments/1ryca8k/anyone_else_unable_to_edit_old_messages/",
+      "https://reddit.com/r/ChatGPT/comments/1ryk46t/cannot_edit_old_messages_or_reroll_responses_once/",
+      "https://reddit.com/r/ClaudeAI/comments/1rxukqc/has_anyone_tested_out_the_new_1m_context_limit/",
+      "https://reddit.com/r/ClaudeAI/comments/1ry4e4j/im_doing_something_wrong_with_claudes_memory/"
     ],
     "glossary": {
-      "hallucination": "When an LLM confidently fabricates facts or answers that are false or unsupported.",
-      "context window": "The slice of conversation/document the model can consider at once — exceed it and older context gets dropped or summarized.",
-      "system prompt": "The hidden instruction at the start of a session that defines the model’s role and behavior for that chat."
+      "context window": "The chunk of recent conversation a model can see — once you exceed it the model can 'forget' earlier info.",
+      "chat memory": "Persisted facts or preferences saved across sessions — useful but currently inconsistent between providers."
     }
   },
   {
-    "group": "Pricing, limits & legal/market risks",
-    "summary": "Subscription tiers, throttles and business strategy shape who sticks with which platform — Anthropic’s tiering and Google/Gemini throttles affect power users, and publisher lawsuits (e.g., dictionaries suing OpenAI) could change what models are trained on. As a developer, build for token efficiency, expect occasional throttling, and watch legal changes that might affect training data availability.",
+    "group": "Hallucinations, verification & production reliability",
+    "summary": "Teams are experiencing dangerous fabrications and flaky agent outputs; some solved problems by pulling control flow and validation out of the LLM and adding explicit contracts and verification steps. If you let a model pick and call tools freely, expect brittle behavior — add typed inputs, pre‑call checks, and post‑call verification to make agents production‑safe.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1rxb8k3/73_of_ai_spend_now_on_anthropic_openai_now_down/",
-      "https://reddit.com/r/ClaudeAI/comments/1rx6tfo/the_20_dollar_tier_kind_of_sucks_by_design/",
-      "https://reddit.com/r/ClaudeAI/comments/1rxle6k/dear_anthropic_the_chatgpt_refugees_are_here/",
-      "https://reddit.com/r/AI_India/comments/1rx2fl0/patiently_waiting_for_ai_bill_to_hit/",
-      "https://reddit.com/r/GeminiAI/comments/1rwu5x4/google_ai_pro_is_a_total_scam_theyre_charging_for/",
-      "https://reddit.com/r/GeminiAI/comments/1rwvb7m/anyone_else_notice_gemini_pro_paid_rate_limits/",
-      "https://reddit.com/r/ChatGPT/comments/1rx6oq3/the_dictionaries_are_suing_openai_for_massive/"
+      "https://reddit.com/r/ClaudeAI/comments/1ryjcoy/the_hallucinations_are_getting_dangerous/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ry5kp8/after_6_months_of_agent_failures_in_production_i/",
+      "https://reddit.com/r/OpenAI/comments/1rxzv4j/the_fundamental_limitation_of_transformer_models/",
+      "https://reddit.com/r/ClaudeAI/comments/1rxz32s/i_pairprogrammed_22k_lines_of_c_with_claude_opus/"
     ],
     "glossary": {
-      "tokens": "The billing unit for models — prompts + responses consume tokens and drive cost.",
-      "rate limits": "Provider-imposed caps on how many requests or tokens you can use in a time window — can affect workflow continuity.",
-      "training data / copyright": "The sources models were trained on; legal challenges can restrict training or use of certain datasets."
+      "hallucination": "When a model confidently invents facts or data that aren’t true — a key safety and reliability problem for automation.",
+      "verification / contract": "Explicit rules and checks you run before and after a model calls a tool to ensure inputs are valid and outputs are trustworthy."
     }
   },
   {
-    "group": "Debugging, RAG & performance tooling",
-    "summary": "Engineers building LLM apps are drowning in noisy failure modes (token overflows, DOM rendering lags, truncated JSON, and schema thrash). Practical wins shown in the posts: precompile DB schema to stop repeated discovery, trim long chat DOM rendering to fix browser lag, visualize retrieval, and add explicit checks for token limits and truncated outputs.",
+    "group": "Local hosting, hardware & scaling decisions",
+    "summary": "People are asking when self‑hosting makes sense — from single‑machine Qwen setups to multi‑GPU fleets — and tradeoffs like VRAM vs system RAM and offloading matter a lot. If you plan to self‑host at scale, measure real token/s and network/ram bandwidth for your hardware, and expect to invest in tooling for batching, offloading, and monitoring.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1rxlxwp/i_made_a_chrome_extension_that_fixes_chatgpt_lag/",
-      "https://reddit.com/r/OpenAI/comments/1rxjehz/debugging_llm_apps_is_painful_how_are_you_finding/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rx7htl/3d_visualizing_rag_retrieval/",
-      "https://reddit.com/r/ClaudeAI/comments/1rxirzv/feature_request_let_us_bookmark_messages_in/",
-      "https://reddit.com/r/mcp/comments/1rw2r34/why_not_precompile_the_db_schema_so_the_llm_agent/",
-      "https://reddit.com/r/LocalLLaMA/comments/1rxdacb/tool_that_tells_exactly_which_models_fit_your/"
+      "https://reddit.com/r/LocalLLaMA/comments/1ry3ny4/selfhost_50k_queriesday/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ry6o95/i_just_set_up_a_local_model_for_the_first_time/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ryhmbf/just_won_a_rtx_5090_at_nvidia_gtc_now_what/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ry5ix3/help_finding_best_coding_llm_for_my_setup/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ry41yz/tokens_qwen35397ba17b_on_vram_ram_pooled/"
     ],
     "glossary": {
-      "RAG": "Combining search or DB retrieval with an LLM so answers are grounded in your data instead of model memory.",
-      "prefill": "Loading large parts of context into the model before decoding to reduce latency on big prompts.",
-      "token overflow": "When you send more tokens than the model supports and responses get truncated or fail."
+      "offloading": "Keeping most of a large model in system RAM and moving pieces to GPU memory as needed — saves GPU memory but can be CPU/RAM bandwidth bound.",
+      "token/s": "Throughput metric: how many model tokens you can generate per second on your hardware — a key perf number for latency and cost."
+    }
+  },
+  {
+    "group": "Open‑source dev tools & memory layers",
+    "summary": "There’s a wave of small open tools for prompting, memory, and local agents — from prompt‑master and widemem to PearlOS and a Qwen fine‑tune for task automation. These projects are useful for prototyping private workflows (local embeddings, confidence‑scored memories, plug‑and‑play skills) so you can iterate without major cloud spend or vendor lock‑in.",
+    "posts": [
+      "https://reddit.com/r/ClaudeAI/comments/1rxyarx/i_built_a_claude_skill_that_writes_accurate/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ry1ts2/added_confidence_scoring_to_my_opensource_memory/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ry2v92/pearlos_we_gave_swarm_intelligence_a_local/",
+      "https://reddit.com/r/LocalLLaMA/comments/1rxxfre/i_finetuned_qwen_05b_for_task_automation_and/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ryd3by/local_qwen306b_int8_as_embedding_backbone_for_an/"
+    ],
+    "glossary": {
+      "memory layer": "A small system that stores and retrieves user facts for a chatbot (often via vector search) so the assistant can be personalized.",
+      "confidence scoring": "Tagging retrieved memories with how sure the system is about them so the model can say 'I don't know' instead of guessing."
     }
   }
 ]
