@@ -7,6 +7,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ 
+      startOnLoad: false,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#5eb3b3',
+        primaryTextColor: '#f5f5f5',
+        primaryBorderColor: '#5eb3b3',
+        lineColor: '#888',
+        secondaryColor: '#2a2a2a',
+        tertiaryColor: '#1a1a1a',
+        background: '#1a1a1a',
+        mainBkg: '#2a2a2a',
+        secondBkg: '#1a1a1a'
+      }
+    });
+    window.mermaid = mermaid;
+  </script>
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -52,7 +72,7 @@
     }
 
     .site-header-inner {
-      max-width: 768px;
+      max-width: 1024px;
       margin: 0 auto;
       padding: 12px 16px;
       display: flex;
@@ -108,7 +128,7 @@
 
     /* Main content */
     .main {
-      max-width: 768px;
+      max-width: 1024px;
       margin: 0 auto;
       padding: 48px 16px 64px;
     }
@@ -267,6 +287,236 @@
       line-height: 1.625;
     }
 
+    /* Case Studies Section */
+    .case-studies-section {
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 2px solid var(--border);
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-description {
+      font-size: 16px;
+      color: var(--muted-foreground);
+      margin-bottom: 32px;
+    }
+
+    .case-study-card {
+      background: var(--secondary);
+      padding: 32px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+    }
+
+    .case-study-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .company-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--background);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .case-study-content {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--foreground);
+      margin: 24px 0;
+    }
+
+    .case-study-content h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      color: var(--foreground);
+    }
+
+    .case-study-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: var(--foreground);
+    }
+
+    .case-study-content p {
+      margin-bottom: 16px;
+    }
+
+    .case-study-content ul,
+    .case-study-content ol {
+      margin: 16px 0;
+      padding-left: 24px;
+      color: var(--muted-foreground);
+    }
+
+    .case-study-content li {
+      margin-bottom: 8px;
+    }
+
+    .case-study-content strong {
+      color: var(--foreground);
+      font-weight: 600;
+    }
+
+    .case-study-content em {
+      color: var(--primary);
+      font-style: italic;
+    }
+
+    .case-study-content code {
+      background: var(--background);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      color: var(--primary);
+    }
+
+    .case-study-content pre {
+      background: var(--background);
+      padding: 16px;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      margin: 24px 0;
+      border: 1px solid var(--border);
+    }
+
+    .case-study-content pre code {
+      background: none;
+      padding: 0;
+      color: var(--foreground);
+    }
+
+    .case-study-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+
+    .case-study-content th {
+      background: var(--background);
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      color: var(--foreground);
+    }
+
+    .case-study-content td {
+      padding: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted-foreground);
+    }
+
+    .case-study-content tr:hover {
+      background: var(--background);
+    }
+
+    .case-study-content blockquote {
+      border-left: 3px solid var(--primary);
+      padding-left: 16px;
+      margin: 24px 0;
+      color: var(--muted-foreground);
+      font-style: italic;
+    }
+
+    .case-study-content .mermaid {
+      background: var(--background);
+      padding: 24px;
+      border-radius: var(--radius);
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+
+    .key-takeaways,
+    .further-reading {
+      margin-top: 24px;
+    }
+
+    .key-takeaways h3,
+    .further-reading h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--foreground);
+    }
+
+    .key-takeaways ul,
+    .further-reading ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .key-takeaways li {
+      padding-left: 24px;
+      position: relative;
+      margin-bottom: 8px;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+    }
+
+    .key-takeaways li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .further-reading ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .further-reading a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: opacity 0.15s;
+    }
+
+    .further-reading a:hover {
+      opacity: 0.7;
+    }
+
+    .related-topics {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .related-topic-tag {
+      background: var(--background);
+      color: var(--muted-foreground);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+    }
+
     /* Footer */
     .site-footer {
       border-top: 1px solid var(--border);
@@ -274,7 +524,7 @@
     }
 
     .site-footer-inner {
-      max-width: 768px;
+      max-width: 1024px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -331,6 +581,12 @@
     <h1 class="page-title">Latest Digest</h1>
     <p class="page-subtitle">AI-summarized discussions from tech communities</p>
     <div id="digest"></div>
+
+    <div class="case-studies-section">
+      <h2 class="section-heading">Today's Learning</h2>
+      <p class="section-description">Deep dives into real-world engineering and system design</p>
+      <div id="case-studies"></div>
+    </div>
   </main>
 
   <footer class="site-footer">

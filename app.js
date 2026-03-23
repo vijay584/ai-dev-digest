@@ -76,4 +76,79 @@ async function loadDigest() {
   }
 }
 
+function renderCaseStudy(study, label) {
+  if (!study) return '';
+  
+  // Parse markdown to HTML
+  const explanationHtml = marked.parse(study.explanation);
+  
+  const keyTakeawaysHtml = study.keyTakeaways
+    .map(takeaway => `<li>${takeaway}</li>`)
+    .join('');
+    
+  const furtherReadingHtml = study.furtherReading && study.furtherReading.length > 0
+    ? `<div class="further-reading">
+        <h3>Further Reading</h3>
+        <ul>${study.furtherReading.map(url => `<li><a href="${url}" target="_blank" rel="noopener">${url}</a></li>`).join('')}</ul>
+      </div>`
+    : '';
+    
+  const codeExampleHtml = study.codeExample 
+    ? `<pre><code>${escapeHtml(study.codeExample)}</code></pre>` 
+    : '';
+
+  const relatedTopicsHtml = study.relatedTopics && study.relatedTopics.length > 0
+    ? `<div class="related-topics">
+        ${study.relatedTopics.map(topic => `<span class="related-topic-tag">${topic}</span>`).join('')}
+      </div>`
+    : '';
+  
+  return `
+    <article class="digest-entry case-study-card">
+      <div class="case-study-label">${label}</div>
+      ${study.company ? `<div class="company-badge">${study.company}</div>` : ''}
+      <h2 class="entry-title">${study.title}</h2>
+      <p class="entry-summary">${study.summary}</p>
+      <div class="case-study-content">${explanationHtml}</div>
+      ${codeExampleHtml}
+      <div class="key-takeaways">
+        <h3>Key Takeaways</h3>
+        <ul>${keyTakeawaysHtml}</ul>
+      </div>
+      ${furtherReadingHtml}
+      ${relatedTopicsHtml}
+    </article>
+  `;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+async function loadCaseStudies() {
+  try {
+    const res = await fetch("case-study.json");
+    const data = await res.json();
+    const container = document.getElementById("case-studies");
+    
+    if (data.companyCaseStudy) {
+      container.innerHTML += renderCaseStudy(data.companyCaseStudy, 'Company Case Study');
+    }
+    
+    if (data.concept) {
+      container.innerHTML += renderCaseStudy(data.concept, 'System Design Concept');
+    }
+    
+    // Initialize mermaid diagrams after content is loaded
+    if (window.mermaid) {
+      await window.mermaid.run();
+    }
+  } catch (err) {
+    console.error('Failed to load case studies:', err);
+  }
+}
+
 loadDigest();
+loadCaseStudies();
