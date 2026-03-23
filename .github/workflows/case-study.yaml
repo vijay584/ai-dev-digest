@@ -1,0 +1,38 @@
+name: Generate Case Studies
+
+on:
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-case-studies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate case studies
+        run: npm run case-study
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Commit case studies
+        run: |
+          git config --global user.name "digest-bot"
+          git config --global user.email "bot@github.com"
+          git add case-study.json case-study-history.json
+          git commit -m "update case studies" || echo "no changes"
+          git push
