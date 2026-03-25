@@ -22,5 +22,17 @@
     "date": "2026-03-24T05:11:58.964Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real-Time Chat & Voice for 140M MAU — Cutting Delivery Latency from 120ms to 25ms",
+    "date": "2026-03-25T05:11:18.993Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "How Consistent Hashing Keeps Your Distributed Cache Calm During Change",
+    "date": "2026-03-25T05:12:05.723Z",
+    "type": "concept",
+    "company": null
   }
 ]
