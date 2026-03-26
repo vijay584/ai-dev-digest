@@ -1,152 +1,124 @@
 [
   {
-    "group": "Sora shutdown & product shifts",
-    "summary": "OpenAI abruptly wound down Sora (its AI video app), and people are nervous about what it means for other consumer features. If you build on or rely on flashy demo apps, plan for sudden product pivots and exported workflows — and keep copies of your data and export pipelines.",
+    "group": "Claude reliability & token surprises",
+    "summary": "Multiple users report Claude outages, mysterious usage spikes, and faster token burn in Claude Code vs the web UI — sometimes from tiny actions like reopening old sessions. If you build tooling or bill by tokens, this matters: flaky retries and hidden context can cost you real money and break automated workflows.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1s2oxnu/sora_is_officially_shutting_down/",
-      "https://reddit.com/r/OpenAI/comments/1s2onhy/openai_to_discontinue_sora/",
-      "https://reddit.com/r/OpenAI/comments/1s2oyl3/sora_is_officially_shutting_down/",
-      "https://reddit.com/r/OpenAI/comments/1s2rqbg/sora_is_shutting_down/",
-      "https://reddit.com/r/OpenAI/comments/1s2pk8u/im_seeing_mixed_reactions_some_say_they_predicted/",
-      "https://reddit.com/r/ChatGPT/comments/1s2rnrd/wellthat_was_faster_than_expected/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s30vm6/how_do_you_feel_about_sora_being_shutdown/",
-      "https://reddit.com/r/OpenAI/comments/1s2s2q2/is_sora_being_discontinued_or_just_deprioritized/",
-      "https://reddit.com/r/OpenAI/comments/1s2z8nh/pls_opensource_sora_2/",
-      "https://reddit.com/r/OpenAI/comments/1s2txlq/today_its_sora_but_tomorrow_openai_could_remove/"
+      "https://reddit.com/r/ClaudeAI/comments/1s3bcit/your_claude_code_limits_didnt_shrink_i_think_the/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3b9fi/claude_status_update_elevated_errors_on_claudeai/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3bd5y/claude_status_update_elevated_errors_on_claudeai/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3hh29/saying_hey_cost_me_22_of_my_usage_limits/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3hf7i/partial_outage_issue/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3mxnw/how_to_check_if_your_account_is_affected_by_the/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3p0jm/claude_built_me_this_tiny_open_source_mac_app_to/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3ifey/use_claudeai_before_claude_code_to_save_tokens/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3m6vs/your_agent_is_wasting_tokens_youre_paying_for_it/"
     ],
     "glossary": {
-      "Sora": "OpenAI's video-generation product that many creators used; its shutdown shows consumer-facing AI features can be pulled quickly.",
-      "Product pivot": "When a company abruptly changes focus and stops supporting an existing feature or product — plan backups.",
-      "Export your work": "Keep local copies/exports of anything you build on a hosted service so you can move if the service ends."
+      "token": "A unit of model input/output (roughly a few characters). Models charge and count usage in tokens.",
+      "context window": "How much recent conversation or files the model can 'remember' at once; larger windows let it handle longer chats but can burn more tokens.",
+      "retrying": "When the service re-sends a request automatically after an error; useful for reliability but can waste tokens if it retries large jobs."
     }
   },
   {
-    "group": "Security, supply‑chain and MCP safety",
-    "summary": "Several supply‑chain and tool risks popped up: PyPI packages got poisoned, repo/docs can hide prompt‑injection, and MCP tools often lack safety docs. Treat external tools and downloaded packages as untrusted input, run them in isolated environments, and add automated checks before giving agents production access.",
+    "group": "Agent tooling, MCPs, and production gotchas",
+    "summary": "People are building real agent stacks — MCP proxies, playwright tools, and workspace generators — but the common failure modes are the same: approvals that sit waiting, broken JSON from models, and agents fetching full web pages (wasting context). Treat agents like distributed systems: add validation, credential proxies, and clear approval flows before pushing to production.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s2clw6/lm_studio_may_possibly_be_infected_with/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2c1w4/litellm_1827_and_1828_on_pypi_are_compromised_do/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2fch0/developing_situation_litellm_compromised/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2q4et/opencode_source_code_audit_7_external_domains/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2q2zc/poisoned_context_hub_docs_trick_claude_code_into/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2qdh0/claude_code_with_dangerouslyskippermissions_is_a/",
-      "https://reddit.com/r/mcp/comments/1s2x8ak/hosted_sandboxed_mcps_with_0day_cve_protection/",
-      "https://reddit.com/r/mcp/comments/1s1r2b7/we_analyzed_78849_mcp_tool_descriptions_98_dont/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2kcd8/what_sort_of_sandboxing_do_you_do/",
-      "https://reddit.com/r/mcp/comments/1s2buum/mcpsafari_native_safari_mcp_server/"
+      "https://reddit.com/r/ClaudeAI/comments/1s3n40n/built_an_mcp_server_that_stops_claude_code_from/",
+      "https://reddit.com/r/mcp/comments/1s3gf5v/i_built_a_20x_faster_playwright_mcp_so_your/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3hnhp/i_built_a_free_tool_that_generates_complete/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3kkjq/handling_invalid_json_broken_outputs_in_agent/",
+      "https://reddit.com/r/cursor/comments/1s3lwqh/how_do_you_guys_deal_with_agent_approvals_when/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3bo9f/what_actually_breaks_first_when_you_put_ai_agents/"
     ],
     "glossary": {
-      "Supply‑chain attack": "A compromise that sneaks malicious code into a library or package you install (e.g., PyPI), so treat new dependencies cautiously.",
-      "Prompt‑injection / poisoned docs": "When downloadable docs or READMEs include instructions that an agent might follow; never give agents unchecked privileges on untrusted content.",
-      "Isolated environment (sandbox)": "A separate machine or VM where you run risky software so a bad package can't touch your main system."
+      "MCP (model control proxy)": "A small server that acts as an intermediary between your agent and external services—used to strip secrets, normalize data, or throttle calls.",
+      "validation layer": "A step between model output and your system that checks shapes (like JSON schema) and decides to accept, retry, or fail.",
+      "workspace files": "Human-readable configs (e.g., AGENTS.md, TOOLS.md) that define an agent's goals, rules, and capabilities so it behaves predictably."
     }
   },
   {
-    "group": "Agent tooling, token cost, and session management",
-    "summary": "People are seeing big token and quota surprises from agentic coding tools: agents waste tokens re‑reading files, cache writes are expensive, and long sessions can be fragile. Give agents structural navigation tools, preload architecture, monitor burn rate in real time, and prefer isolated environments for auto‑mode actions.",
+    "group": "New model wins & efficiency: TurboQuant, Qwen3.5, MiniMax",
+    "summary": "Big efficiency and capability moves are popping up: Google’s TurboQuant promises massive KV-cache compression (huge for long context and on-device work), Qwen3.5 and MoE variants are showing practical local agent power, and lower-cost models like MiniMax are starting to match higher-end performance for many dev tasks. Developers should watch these for cheaper long-context and local deployments.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s2ok85/claude_code_now_has_auto_mode/",
-      "https://reddit.com/r/ClaudeAI/comments/1s286nb/agent_flow_a_beautiful_way_to_visualize_what/",
-      "https://reddit.com/r/ClaudeAI/comments/1s27dex/i_tracked_exactly_where_claude_code_spends_its/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2cge4/i_got_ratelimited_midrefactor_one_too_many_times/",
-      "https://reddit.com/r/cursor/comments/1s2aqn9/i_removed_gsd_and_superpowers_from_my_workflow_my/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2jw1c/session_context_usage_shrinking/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2qdh0/claude_code_with_dangerouslyskippermissions_is_a/"
+      "https://reddit.com/r/OpenAI/comments/1s3hhtz/google_just_dropped_turboquant_6x_less_memory_8x/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3ffzo/has_anyone_implemented_googles_turboquant_paper/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s350sj/implementing_turboquant_to_mlx_studio/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s355o2/turboquant_redefining_ai_efficiency_with_extreme/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s32orn/qwen35397ba17b_reaches_20_ts_tg_and_700ts_pp_with/",
+      "https://reddit.com/r/ClaudeAI/comments/1s35bje/tested_minimax_m27_against_claude_opus_46_here/"
     ],
     "glossary": {
-      "Token burn / quota": "Models count input and output as tokens; long sessions and cache writes can eat your quota quickly, so monitor pace not just percent used.",
-      "Structural navigation": "Giving an agent IDE‑style commands (like 'summarize this class') so it stops wasting tokens reading whole files.",
-      "Auto‑mode / permissions": "Letting an agent act without manual approval; convenient but increases attack surface — use inside isolated test environments first."
+      "KV cache": "A memory area the model uses to speed up attention across long contexts; compressing it saves a lot of RAM.",
+      "quantization": "Shrinking model numbers to lighter formats so they run faster and use less memory, often with a small accuracy trade-off.",
+      "MoE (Mixture of Experts)": "A model design where only a small subset of parameters activate per token, letting big models behave efficiently on small hardware."
     }
   },
   {
-    "group": "Real-world builder stories (what people actually shipped)",
-    "summary": "Non‑developers and seasoned engineers alike are shipping real products with AI—from a doctor and a 73‑year‑old shipping live sites and apps to hobby trading simulators and multi‑book novel engines. The pattern is: AI speeds scaffolding and iteration, but human oversight, product sense, and final polish still matter.",
+    "group": "Local hardware and performance choices",
+    "summary": "Hardware news is moving fast: Intel's Arc Pro B70 promises 32GB VRAM at consumer price points, users share benchmarks for RTX 5090 and Apple M chips running big models, and people debate multi‑GPU vs single high‑end cards. If you run models locally, weigh VRAM, memory bandwidth, and how well your stack supports features like TurboQuant or large prefill contexts.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s27ay8/claude_made_me_a_working_website_i_am_bursting/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2hf5f/73_years_old_no_coding_experience_cardiac_patient/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2lyu2/built_a_122kline_trading_simulator_almost/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2svj4/10_novels_written_in_12_days_7_agents_claude_opus/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2lsld/theres_something_happening_that_is_probably/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2o7ul/most_developers_have_a_graveyard_of_unfinished/",
-      "https://reddit.com/r/ClaudeAI/comments/1s25zqh/trying_to_build_a_full_software_project_using/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2qjb3/has_anyone_actually_built_a_mobile_app_or_web_app/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3041o/who_is_using_claude_to_build_things_with_small/",
-      "https://reddit.com/r/ClaudeAI/comments/1s2zpnk/my_company_bought_me_claude_max_took_me_3_weeks/"
+      "https://reddit.com/r/LocalLLaMA/comments/1s3e8bd/intel_will_sell_a_cheap_gpu_with_32gb_vram_next/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3bb3y/intel_launches_arc_pro_b70_and_b65_with_32gb_gddr6/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3ksos/level1techs_initial_review_of_arc_b70_for_qwen/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s32orn/qwen35397ba17b_reaches_20_ts_tg_and_700ts_pp_with/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3n9tf/2_rx_9070xt_vs_1_rtx_5080/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s36zli/can_5070ti_32gb_ram_run_local_image_generation/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3jw9v/whats_going_on_with_mac_studio_m3_ultra_512gb4tb/"
     ],
     "glossary": {
-      "Vibe‑coding / no‑code build": "Using AI to generate and assemble apps fast — great for prototypes, but expect manual cleanup for production.",
-      "Human in the loop": "You review, scope, and verify what the AI generates — critical for safety and quality.",
-      "Productization": "Turning a working prototype into a maintainable product still needs tests, security reviews, and infrastructure."
+      "VRAM": "Video RAM on a GPU — important for fitting large models or long contexts locally.",
+      "memory bandwidth": "How fast a GPU can move data in/out of VRAM; often more important than clock speed for model throughput.",
+      "prefill": "The cost/time to load a long prompt or context into the model before generation starts — affects long-document workflows."
     }
   },
   {
-    "group": "Local models, hardware tradeoffs, and new open weights",
-    "summary": "Lots of new open weights and tricks for running models locally are showing up (GigaChat, Omnicoder, MolmoWeb, Nemotron tweaks). The practical tradeoffs are VRAM, RAM, quantization, and driver/runtime (Vulkan vs ROCm) — pick the stack that matches your GPU and aim for GGUF/quant formats your toolchain supports.",
+    "group": "Supply-chain & account security alerts",
+    "summary": "Serious security incidents surfaced: the widely used litellm PyPI package was briefly compromised to steal credentials, and multiple scam tools and sellers are tricking developers. If you build or deploy AI stacks, audit dependencies, rotate keys after suspicious installs, and avoid sending secrets to frontends that can log context.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s2pkfw/new_open_weights_models_gigachat31ultra702b_and/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2u2p2/omnicoder_v2_dropped/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2vvzh/nemotron3_nano_4b_uncensored_aggressive_first/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2rtux/qwen35397b_at_1719_toks_on_a_strix_halo_igpu_all/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2fn6l/cacheready_dropin_qwen_35_122ba10b_with_working/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2gvy5/molmoweb_4b8b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s270px/two_new_qwen35_neo_finetunes_focused_on_fast/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2yj5/local_qwen_35_on_16gb_gpu_vs_kimi_k25_on_the_cloud/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2f0yx/best_recommendations_for_coding_now_with_8gb_vram/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2c50f/running_llms_with_8_gb_vram_32_gb_ram/"
+      "https://reddit.com/r/LocalLLaMA/comments/1s34173/after_the_supply_chain_attack_here_are_some/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3h1my/psa_litellm_pypi_package_was_compromised_if_you/",
+      "https://reddit.com/r/ChatGPT/comments/1s37zkj/psa_litellm_pypi_package_was_compromised_if_you/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s39aec/scam_warning_for_private_uncensored_ai_tool/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s3v8ni/beware_of_scams_scammed_by_reddit_user/"
     ],
     "glossary": {
-      "Model weights": "The big files that describe a trained model; open weights let you run models locally instead of calling a cloud API.",
-      "Quantization": "Shrinking model numbers to use less memory (smaller files, faster runs) at the cost of some quality.",
-      "VRAM": "GPU memory — the main limit for how big a model you can run locally; more VRAM means larger models or bigger context windows."
+      "supply-chain attack": "When code or packages you import (like a popular Python library) are tampered with to include malware.",
+      "rotate keys": "Replace API keys and credentials with new ones immediately after a potential compromise.",
+      "exfiltrate": "Maliciously copy data (like SSH keys or env vars) off a machine — what the compromised litellm tried to do."
     }
   },
   {
-    "group": "MCP, agent‑first product patterns, and operational costs",
-    "summary": "MCP (the tool protocol for agents) is reshaping how people build products: many teams are exposing data as tools for agents instead of building dashboards. That opens new UX and cost questions — write clear tool docs for agents, watch API costs, and consider serverless or sandboxed MCP hosting for safe scaling.",
+    "group": "AI editors, IDE integrations, and workflow tools",
+    "summary": "Developers compare Cursor, Composer, Claude Code, and a raft of extensions; complaints focus on token use, model obedience, and broken features after updates. If your workflow depends on an AI editor, try small tests for token consumption, be ready for model regressions between versions, and consider hybrid flows (plan in web UI, run code in agent) to save cost.",
     "posts": [
-      "https://reddit.com/r/mcp/comments/1s27f8x/mcp_is_quietly_replacing_traditional_saas/",
-      "https://reddit.com/r/mcp/comments/1s20y2f/agentic_first_designing_products_where_agents_are/",
-      "https://reddit.com/r/mcp/comments/1s26bis/deploying_mcp_servers_on_serverless_cloud_run/",
-      "https://reddit.com/r/mcp/comments/1s25lc8/whats_your_monthly_api_cost_running_mcpbased/"
+      "https://reddit.com/r/cursor/comments/1s37m5m/cursor_training_guidance_to_cursor_team/",
+      "https://reddit.com/r/cursor/comments/1s3d1jb/is_it_me_or_composer2_is_worse_than_composer15/",
+      "https://reddit.com/r/cursor/comments/1s35i45/composer_2_sucks/",
+      "https://reddit.com/r/cursor/comments/1s2yfmw/any_new_ai_editors_worth_trying/",
+      "https://reddit.com/r/ClaudeAI/comments/1s33th2/claude_code_6_github_repositories_to_10x_your/",
+      "https://reddit.com/r/ClaudeAI/comments/1s3en0d/claude_for_excell_is_pretty_darn_good",
+      "https://reddit.com/r/GeminiAI/comments/1s3k21d/i_built_a_free_chrome_extension_to_export_gemini/"
     ],
     "glossary": {
-      "MCP (Model Context Protocol)": "A tool interface standard that lets agents call services (search, databases, browser automations) as if they were functions.",
-      "Agent‑first": "Designing your product so automated agents are the primary users, with humans supervising.",
-      "Serverless MCP": "Running MCP servers on managed platforms (Cloud Run, Functions) to save cost but watch cold starts and scaling behavior."
+      "AI editor": "An IDE or editor with built-in AI features for code generation, refactor, and agentic workflows.",
+      "hybrid flow": "Use a cheaper UI/model for planning/specs and a more expensive agent for execution to balance cost and quality.",
+      "model regression": "When a newer version of a model produces worse results for a workflow that used to work well."
     }
   },
   {
-    "group": "Model behavior, hallucinations, and UX regressions",
-    "summary": "People report models getting cranky, disagreeable, or less reliable — from Gemini failing on file ops to ChatGPT becoming argumentative or repetitive. For dev work, assume drift: validate model outputs, build test cases, and prefer reproducible prompts and checks rather than blind trust.",
+    "group": "Sora shutdown and model availability",
+    "summary": "Sora’s shutdown triggered debates about why the app failed (product fit, safety, or politics) and where to go next; people are testing replacements and cataloging alternatives. For developers, this is a reminder: build for portability — back up data and avoid vendor lock‑in so you can switch models or host locally if a service disappears.",
     "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1s2huhs/i_am_being_ragebaited_by_gemini/",
-      "https://reddit.com/r/GeminiAI/comments/1s2v5up/is_gemini_getting_stupider/",
-      "https://reddit.com/r/GeminiAI/comments/1s28bqa/goodbye_to_gemini/",
-      "https://reddit.com/r/ChatGPT/comments/1s2rafk/anyone_else_experiencing_chatgpt_being/",
-      "https://reddit.com/r/ChatGPT/comments/1s2s2ql/why_is_chatgpt_so_bad_at_being_a_chat/",
-      "https://reddit.com/r/ChatGPT/comments/1s2jyvr/at_some_point_llms_stop_executing_and_start/",
-      "https://reddit.com/r/ChatGPT/comments/1s2uerr/genuinely_cant_use_it_for_tutoring_anymore_as_well/",
-      "https://reddit.com/r/ChatGPT/comments/1s2yc5t/gpt_is_a_gaslighting_besserwisser/"
+      "https://reddit.com/r/ChatGPT/comments/1s359mu/shutting_down_sora/",
+      "https://reddit.com/r/OpenAI/comments/1s3dehf/openai_enters_its_focus_era_by_killing_sora/",
+      "https://reddit.com/r/OpenAI/comments/1s2rorg/wellthat_was_faster_than_expected/",
+      "https://reddit.com/r/OpenAI/comments/1s3i9nd/rip_sora_here_are_the_best_alternative_models_in/",
+      "https://reddit.com/r/OpenAI/comments/1s370w5/did_sora_fail_because_of_the_tech_or_because_it/",
+      "https://reddit.com/r/OpenAI/comments/1s35sea/i_will_miss_sora/"
     ],
     "glossary": {
-      "Hallucination": "When a model makes up facts or actions that aren't true — always verify important outputs.",
-      "Model drift": "Behavior changes in a model over time or across releases — keep regression tests to spot it.",
-      "Guardrails": "Checks and prompts designed to keep a model from doing harmful or nonsensical things; not foolproof."
-    }
-  },
-  {
-    "group": "Benchmarks, evaluations, and cost comparisons",
-    "summary": "Community members ran head‑to‑head model tests and detailed benchmarks (from large multi‑model cost/emissions tasks to KV cache quantization results). Benchmarks help pick the right model for your use case, but check whether the tests match your real workload and watch for evaluation biases.",
-    "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s2r7w2/i_was_bored_so_i_tested_the_h_out_of_a_bunch_of/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s28z12/swebench_results_for_different_kv_cache/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s2pkfw/new_open_weights_models_gigachat31ultra702b_and/"
-    ],
-    "glossary": {
-      "Benchmark": "A repeatable test that measures model performance for specific tasks (reasoning, math, code), useful for comparisons but not definitive.",
-      "TCO (Total Cost of Ownership)": "Full 10‑year or multi‑year cost comparison including compute, maintenance, and replacements — important for infrastructure decisions.",
-      "KV cache quantization": "Compressing the model's key/value memory so larger contexts fit in RAM/VRAM, which changes speed and accuracy tradeoffs."
+      "vendor lock‑in": "When your product depends heavily on a single third‑party tool or API, making it hard to switch providers.",
+      "model portability": "Ability to move from one model/service to another without reworking your whole app — e.g., using standard inputs and storing outputs."
     }
   }
 ]
