@@ -34,5 +34,17 @@
     "date": "2026-03-25T05:12:05.723Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Delivered Tens of Tbps from ISP Caches — Open Connect at >200M Subscribers",
+    "date": "2026-03-26T05:20:14.537Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Sagas: Making Distributed Transactions Work Without Two-Phase Commit",
+    "date": "2026-03-26T05:20:43.573Z",
+    "type": "concept",
+    "company": null
   }
 ]
