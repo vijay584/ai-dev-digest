@@ -46,5 +46,17 @@
     "date": "2026-03-26T05:20:43.573Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Stopped Duplicate Charges at Scale: Idempotency, Events, and 24-hour Keys",
+    "date": "2026-03-27T05:21:09.249Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Keep Failures Contained: The Bulkhead Pattern Explained",
+    "date": "2026-03-27T05:21:41.689Z",
+    "type": "concept",
+    "company": null
   }
 ]
