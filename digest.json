@@ -1,124 +1,190 @@
 [
   {
-    "group": "Claude reliability & token surprises",
-    "summary": "Multiple users report Claude outages, mysterious usage spikes, and faster token burn in Claude Code vs the web UI — sometimes from tiny actions like reopening old sessions. If you build tooling or bill by tokens, this matters: flaky retries and hidden context can cost you real money and break automated workflows.",
+    "group": "Claude reliability & session limits",
+    "summary": "Anthropic's Claude users are seeing new session-based throttles, inconsistent usage accounting, and repeated service incidents — paid tiers sometimes hit limits faster during weekday peak windows. Developers should plan agent workloads around off-peak hours, instrument token usage, and treat session meters as a moving target until Anthropic publishes clearer quotas and fixes platform bugs (especially on Windows/VS Code).",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s3bcit/your_claude_code_limits_didnt_shrink_i_think_the/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3b9fi/claude_status_update_elevated_errors_on_claudeai/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3bd5y/claude_status_update_elevated_errors_on_claudeai/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3hh29/saying_hey_cost_me_22_of_my_usage_limits/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3hf7i/partial_outage_issue/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3mxnw/how_to_check_if_your_account_is_affected_by_the/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3p0jm/claude_built_me_this_tiny_open_source_mac_app_to/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3ifey/use_claudeai_before_claude_code_to_save_tokens/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3m6vs/your_agent_is_wasting_tokens_youre_paying_for_it/"
+      "https://reddit.com/r/ClaudeAI/comments/1s4idaq/update_on_session_limits/",
+      "https://reddit.com/r/ClaudeAI/comments/1s54mpo/claude_uno/",
+      "https://reddit.com/r/ClaudeAI/comments/1s54pfu/subscribed_yesterday_to_pro_and_im_already_hit_by/",
+      "https://reddit.com/r/ClaudeAI/comments/1s55mvg/this_isnt_right/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5j52m/claud_is_robbing_people_with_their_usage_limit/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5nxwe/an_open_letter_to_anthropic_want_to_free_up/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5f5fq/2_prompts_100_session_usage_for_pro_account_40/",
+      "https://reddit.com/r/ClaudeAI/comments/1s51ctz/claude_status_update_elevated_error_rates_on_opus/",
+      "https://reddit.com/r/ClaudeAI/comments/1s4wxyd/claude_status_update_elevated_error_rates_on_opus/",
+      "https://reddit.com/r/ClaudeAI/comments/1s52c84/claude_status_update_elevated_error_rates_on_opus/",
+      "https://reddit.com/r/ClaudeAI/comments/1s50yyv/claude_status_update_elevated_error_rates_on_opus/",
+      "https://reddit.com/r/ClaudeAI/comments/1s51vrn/see_your_limits_all_the_time_without_usage_or/",
+      "https://reddit.com/r/ClaudeAI/comments/1s4zj6q/session_limits_is_a_big_problem/",
+      "https://reddit.com/r/ClaudeAI/comments/1s4x0kd/is_the_free_tier_basically_a_trial_tier_now_usage/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5ei6s/how_do_i_use_claude_without_hitting_limits_all/",
+      "https://reddit.com/r/ClaudeAI/comments/1s58nxl/usage_bug/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5cbrn/claude_code_on_windows_6_critical_bugs_closed_as/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5a782/claude_code_replaces_german_umlauts_with_ascii/",
+      "https://reddit.com/r/ClaudeAI/comments/1s4zbwx/claude_code_shows_a_beautiful_mockup_and_then/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5r0hj/on_the_200_max_plan_and_never_been_rate_limited/",
+      "https://reddit.com/r/ClaudeAI/comments/1s55rth/i_built_a_tool_with_claude_to_track_peakoffpeak/",
+      "https://reddit.com/r/ClaudeAI/comments/1s53ag8/every_time_i_ask_it_to_do_anything_i_get_taking/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5ok5r/claude_watching_me_write_code_manually_after_i/"
     ],
     "glossary": {
-      "token": "A unit of model input/output (roughly a few characters). Models charge and count usage in tokens.",
-      "context window": "How much recent conversation or files the model can 'remember' at once; larger windows let it handle longer chats but can burn more tokens.",
-      "retrying": "When the service re-sends a request automatically after an error; useful for reliability but can waste tokens if it retries large jobs."
+      "session limits": "A short daily block of usable model time (e.g., a 5‑hour window) that counts down as you interact; Anthropic is shifting how that budget is consumed during peak hours.",
+      "peak hours": "Weekday windows when usage counts burn faster (Anthropic: weekdays 5am–11am PT); scheduling heavy jobs outside these windows saves your session budget.",
+      "MCP": "A tool-call interface that lets models invoke external services (files, CLI, search). It can increase token use because tool outputs are included in context.",
+      "token budget": "The measure of how much text (input + output) you can consume; APIs and apps often meter usage by tokens, not just time."
     }
   },
   {
-    "group": "Agent tooling, MCPs, and production gotchas",
-    "summary": "People are building real agent stacks — MCP proxies, playwright tools, and workspace generators — but the common failure modes are the same: approvals that sit waiting, broken JSON from models, and agents fetching full web pages (wasting context). Treat agents like distributed systems: add validation, credential proxies, and clear approval flows before pushing to production.",
+    "group": "OpenAI product churn & adult‑mode controversy",
+    "summary": "OpenAI has paused or killed several headline projects (Sora video, Adult Mode, Stargate), sparking debates about product focus, monetization, and censorship. For devs, that means relying less on single-vendor feature bets and planning fallbacks for UX or APIs that can disappear suddenly.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s3n40n/built_an_mcp_server_that_stops_claude_code_from/",
-      "https://reddit.com/r/mcp/comments/1s3gf5v/i_built_a_20x_faster_playwright_mcp_so_your/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3hnhp/i_built_a_free_tool_that_generates_complete/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3kkjq/handling_invalid_json_broken_outputs_in_agent/",
-      "https://reddit.com/r/cursor/comments/1s3lwqh/how_do_you_guys_deal_with_agent_approvals_when/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3bo9f/what_actually_breaks_first_when_you_put_ai_agents/"
+      "https://reddit.com/r/OpenAI/comments/1s4sbdn/openai_is_in_big_trouble/",
+      "https://reddit.com/r/ChatGPT/comments/1s4sm6m/bye_adult_mode/",
+      "https://reddit.com/r/OpenAI/comments/1s4sns2/bye_adult_mode/",
+      "https://reddit.com/r/OpenAI/comments/1s4a1r6/openai_halts_adult_mode_as_advisors_investors_and/",
+      "https://reddit.com/r/OpenAI/comments/1s47klg/openai_drops_plans_to_release_an_adult_chatbot/",
+      "https://reddit.com/r/OpenAI/comments/1s4us0p/adult_mode_was_never_about_erotica/",
+      "https://reddit.com/r/OpenAI/comments/1s4ec8m/there_is_why_sora_is_taking_down/",
+      "https://reddit.com/r/OpenAI/comments/1s57xd9/what_if_sora_wasnt_a_failure/",
+      "https://reddit.com/r/OpenAI/comments/1s4mito/openai_killed_off_sora_without_a_real_plan/",
+      "https://reddit.com/r/OpenAI/comments/1s412fu/waitwhat_openai_shuts_down_sora/",
+      "https://reddit.com/r/OpenAI/comments/1s40fvm/how_openai_justify_charging_over_200_per_month/",
+      "https://reddit.com/r/OpenAI/comments/1s4tvl9/received_first_chatgpt_ad_notification_on_phone/",
+      "https://reddit.com/r/ChatGPT/comments/1s5kidk/how_does_openai_plan_to_make_money_whats_the/",
+      "https://reddit.com/r/OpenAI/comments/1s4pgvp/openai_didnt_delete_4o_they_just_removed_it_from/",
+      "https://reddit.com/r/ChatGPT/comments/1s4t693/is_the_announcement_of_adultmode_being_cancelled/"
     ],
     "glossary": {
-      "MCP (model control proxy)": "A small server that acts as an intermediary between your agent and external services—used to strip secrets, normalize data, or throttle calls.",
-      "validation layer": "A step between model output and your system that checks shapes (like JSON schema) and decides to accept, retry, or fail.",
-      "workspace files": "Human-readable configs (e.g., AGENTS.md, TOOLS.md) that define an agent's goals, rules, and capabilities so it behaves predictably."
+      "product churn": "When a company rapidly launches, pivots, or shuts down features — risky for projects that depend on a single provider.",
+      "Sora": "OpenAI's short-lived AI video generation product that was recently shut down; its removal highlights heavy compute and policy costs for multimodal services.",
+      "Adult Mode": "A proposed OpenAI feature to relax some content guardrails for consenting adults; its cancellation reflects regulatory and reputational tradeoffs.",
+      "deprecation risk": "The chance that a platform removes an API or feature you depend on — plan backups or vendor-agnostic implementations."
     }
   },
   {
-    "group": "New model wins & efficiency: TurboQuant, Qwen3.5, MiniMax",
-    "summary": "Big efficiency and capability moves are popping up: Google’s TurboQuant promises massive KV-cache compression (huge for long context and on-device work), Qwen3.5 and MoE variants are showing practical local agent power, and lower-cost models like MiniMax are starting to match higher-end performance for many dev tasks. Developers should watch these for cheaper long-context and local deployments.",
+    "group": "Local LLM performance & compression (TurboQuant, KV cache)",
+    "summary": "New compression methods (TurboQuant / PolarQuant / TurboQuant-for-weights) and engineering ports are making long contexts and bigger models viable on consumer hardware, enabling 32K–72K contexts or running large models on Macs. For developers building local tooling or inference stacks, these advances mean cheaper memory footprints but you should validate quality (PPL/WER) and performance on your hardware.",
     "posts": [
-      "https://reddit.com/r/OpenAI/comments/1s3hhtz/google_just_dropped_turboquant_6x_less_memory_8x/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3ffzo/has_anyone_implemented_googles_turboquant_paper/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s350sj/implementing_turboquant_to_mlx_studio/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s355o2/turboquant_redefining_ai_efficiency_with_extreme/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s32orn/qwen35397ba17b_reaches_20_ts_tg_and_700ts_pp_with/",
-      "https://reddit.com/r/ClaudeAI/comments/1s35bje/tested_minimax_m27_against_claude_opus_46_here/"
+      "https://reddit.com/r/GeminiAI/comments/1s5bbib/rip_memory_crisis/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5kdu0/google_turboquant_running_qwen_locally_on_macair/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s51b5h/turboquant_for_weights_nearoptimal_4bit_llm/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5g8m1/turboquant_for_ggml_457x_kv_cache_compression_in/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s57ky1/googles_turboquant_aicompression_algorithm_can/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5n6xt/confused_about_turboquant/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s51id3/glm_51_is_out/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5l23i/glm51_model_weight_will_be_released_on_april_6_or/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s54zdo/tinyserve_run_large_moe_models_on_consumer/",
+      "https://reddit.com/r/mcp/comments/1s4q8or/prism_mcp_v51_10x_memory_compression_and_ai_agent/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5jap8/430x_faster_ingestion_than_mem0_no_second_llm/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5np41/m5_max_vs_m3_max_inference_benchmarks_qwen35_omlx/",
+      "https://reddit.com/r/MachineLearning/comments/1s4hxgu/d_1m_tokenssecond_serving_qwen_35_27b_on_b200/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s56q9g/new_unsloth_studio_release/"
     ],
     "glossary": {
-      "KV cache": "A memory area the model uses to speed up attention across long contexts; compressing it saves a lot of RAM.",
-      "quantization": "Shrinking model numbers to lighter formats so they run faster and use less memory, often with a small accuracy trade-off.",
-      "MoE (Mixture of Experts)": "A model design where only a small subset of parameters activate per token, letting big models behave efficiently on small hardware."
+      "TurboQuant": "A compression approach for the KV cache (and now weights) that drastically cuts memory for long contexts, letting big models run with less RAM.",
+      "KV cache": "Memory where key/value vectors from prior tokens are stored to make attention fast — compressing it saves lots of RAM for long chats.",
+      "ggml / llama.cpp": "Community C/C++ runtimes widely used to run quantized models locally on CPUs or GPUs.",
+      "PPL (perplexity)": "A basic measure of model output quality; small increases can be acceptable for big memory or speed gains."
     }
   },
   {
-    "group": "Local hardware and performance choices",
-    "summary": "Hardware news is moving fast: Intel's Arc Pro B70 promises 32GB VRAM at consumer price points, users share benchmarks for RTX 5090 and Apple M chips running big models, and people debate multi‑GPU vs single high‑end cards. If you run models locally, weigh VRAM, memory bandwidth, and how well your stack supports features like TurboQuant or large prefill contexts.",
+    "group": "MCP, agents & developer tooling",
+    "summary": "Model‑call protocols (MCP) and agent frameworks are maturing into real developer infrastructure — people are shipping MCP servers, remote bridges, and shared research caches so models can call tools, persist memory, and deploy agents safely. If you build agentic workflows, expect to invest in standardized tool contracts, auditing (logged tool calls), and token/compute optimizations.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s3e8bd/intel_will_sell_a_cheap_gpu_with_32gb_vram_next/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3bb3y/intel_launches_arc_pro_b70_and_b65_with_32gb_gddr6/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3ksos/level1techs_initial_review_of_arc_b70_for_qwen/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s32orn/qwen35397ba17b_reaches_20_ts_tg_and_700ts_pp_with/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3n9tf/2_rx_9070xt_vs_1_rtx_5080/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s36zli/can_5070ti_32gb_ram_run_local_image_generation/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3jw9v/whats_going_on_with_mac_studio_m3_ultra_512gb4tb/"
+      "https://reddit.com/r/mcp/comments/1s5231y/mcp_is_the_architectural_fix_for_llm/",
+      "https://reddit.com/r/ClaudeAI/comments/1s4x9mb/i_built_an_opensource_app_for_claude_code/",
+      "https://reddit.com/r/mcp/comments/1s58372/building_an_mcp_that_saves_tokens_on_every/",
+      "https://reddit.com/r/mcp/comments/1s4akid/built_an_mcp_server_that_lets_claude_ssh_into/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5ivgs/when_your_llm_gets_too_smart_and_bypasses_your/",
+      "https://reddit.com/r/mcp/comments/1s53mpu/i_think_mcp_makes_more_sense_at_scale_than_in/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5bo5v/help_me_understand_agents_vs_skills/",
+      "https://reddit.com/r/ClaudeAI/comments/1s51vrn/see_your_limits_all_the_time_without_usage_or/",
+      "https://reddit.com/r/ClaudeAI/comments/1s55rth/i_built_a_tool_with_claude_to_track_peakoffpeak/",
+      "https://reddit.com/r/ClaudeAI/comments/1s4x9mb/i_built_an_opensource_app_for_claude_code/"
     ],
     "glossary": {
-      "VRAM": "Video RAM on a GPU — important for fitting large models or long contexts locally.",
-      "memory bandwidth": "How fast a GPU can move data in/out of VRAM; often more important than clock speed for model throughput.",
-      "prefill": "The cost/time to load a long prompt or context into the model before generation starts — affects long-document workflows."
+      "MCP (Model-Callable Protocol)": "A standard pattern where a model calls external tools (search, SSH, DB) with well-defined inputs/outputs so results are auditable and less hallucination-prone.",
+      "agentic workflow": "A chained set of prompts/tools where the model plans, executes, and verifies steps — useful for automation but sensitive to tool design.",
+      "tool contract": "A minimal schema describing inputs/outputs for a tool so the model can call it reliably and the results can be validated.",
+      "wellread / shared research cache": "A community cache that saves prior research so future queries reuse work and save tokens."
     }
   },
   {
-    "group": "Supply-chain & account security alerts",
-    "summary": "Serious security incidents surfaced: the widely used litellm PyPI package was briefly compromised to steal credentials, and multiple scam tools and sellers are tricking developers. If you build or deploy AI stacks, audit dependencies, rotate keys after suspicious installs, and avoid sending secrets to frontends that can log context.",
+    "group": "Benchmarks & evaluation critiques",
+    "summary": "Researchers are flagging broken benchmarks (label errors, weak judges) and creating new tests that expose real-world gaps like implicit memory retrieval and trace evaluation. As a developer, prefer multiple benchmarks (including trace/process checks) and validate against adversarial and human-verified ground truth before trusting scores for deployment decisions.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s34173/after_the_supply_chain_attack_here_are_some/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3h1my/psa_litellm_pypi_package_was_compromised_if_you/",
-      "https://reddit.com/r/ChatGPT/comments/1s37zkj/psa_litellm_pypi_package_was_compromised_if_you/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s39aec/scam_warning_for_private_uncensored_ai_tool/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s3v8ni/beware_of_scams_scammed_by_reddit_user/"
+      "https://reddit.com/r/MachineLearning/comments/1s54cvg/d_we_audited_locomo_64_of_the_answer_key_is_wrong/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s51d48/memaware_benchmark_shows_that_ragbased_agent/",
+      "https://reddit.com/r/OpenAI/comments/1s43duh/arc_agi_3_sucks/",
+      "https://reddit.com/r/MachineLearning/comments/1s4i6h5/d_why_evaluating_only_final_outputs_is_misleading/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s4z18o/i_benchmarked_31_stt_models_on_medical_audio/",
+      "https://reddit.com/r/MachineLearning/comments/1s4hxgu/d_1m_tokenssecond_serving_qwen_35_27b_on_b200/"
     ],
     "glossary": {
-      "supply-chain attack": "When code or packages you import (like a popular Python library) are tampered with to include malware.",
-      "rotate keys": "Replace API keys and credentials with new ones immediately after a potential compromise.",
-      "exfiltrate": "Maliciously copy data (like SSH keys or env vars) off a machine — what the compromised litellm tried to do."
+      "ground truth": "Human‑verified correct answers used to score model outputs; bad ground truth makes benchmarks misleading.",
+      "LLM judge": "A model that scores other models' outputs; if the judge is weak it can accept wrong answers and hide real errors.",
+      "RAG (retrieval-augmented generation)": "A pattern where models search documents and generate answers from retrieved text — works poorly on 'implicit' memory tasks unless retrieval strategies evolve.",
+      "trace evaluation": "Checking the agent's internal steps (tool calls, loops) instead of only its final answer to catch unsafe or inefficient behavior."
     }
   },
   {
-    "group": "AI editors, IDE integrations, and workflow tools",
-    "summary": "Developers compare Cursor, Composer, Claude Code, and a raft of extensions; complaints focus on token use, model obedience, and broken features after updates. If your workflow depends on an AI editor, try small tests for token consumption, be ready for model regressions between versions, and consider hybrid flows (plan in web UI, run code in agent) to save cost.",
+    "group": "Coding IDEs & AI coding assistants",
+    "summary": "Claude Code, Cursor, and other AI IDEs are being compared fiercely — Claude Code often wins on output quality but suffers tooling bugs (Windows, VS Code) and session meter issues, while Cursor is comfortable for some 'vibe coding' users but has its own rate/plan quirks. Developers should test integrations (MCP, VS Code extension, CI) on their platform and keep human review in the loop, especially for generated code you don't fully understand.",
     "posts": [
-      "https://reddit.com/r/cursor/comments/1s37m5m/cursor_training_guidance_to_cursor_team/",
-      "https://reddit.com/r/cursor/comments/1s3d1jb/is_it_me_or_composer2_is_worse_than_composer15/",
-      "https://reddit.com/r/cursor/comments/1s35i45/composer_2_sucks/",
-      "https://reddit.com/r/cursor/comments/1s2yfmw/any_new_ai_editors_worth_trying/",
-      "https://reddit.com/r/ClaudeAI/comments/1s33th2/claude_code_6_github_repositories_to_10x_your/",
-      "https://reddit.com/r/ClaudeAI/comments/1s3en0d/claude_for_excell_is_pretty_darn_good",
-      "https://reddit.com/r/GeminiAI/comments/1s3k21d/i_built_a_free_chrome_extension_to_export_gemini/"
+      "https://reddit.com/r/cursor/comments/1s4smy8/how_is_claude_code_compared_to_cursor/",
+      "https://reddit.com/r/cursor/comments/1s4m91z/cursor_skills_vs_claude_code_skills_any_difference/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5ciuo/any_real_alternative_to_claude_code/",
+      "https://reddit.com/r/cursor/comments/1s598fb/do_not_delete_is_cursor_dead/",
+      "https://reddit.com/r/cursor/comments/1s4zzlx/cursor_forces_usage_of_composer2fast_and_its/",
+      "https://reddit.com/r/cursor/comments/1s50uh6/rate_my_vibe_coding_workflow_cursor_pro_50mo/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5cheb/claude_code_is_very_good_at_generating_code_but/",
+      "https://reddit.com/r/ClaudeAI/comments/1s4zbwx/claude_code_shows_a_beautiful_mockup_and_then/",
+      "https://reddit.com/r/ClaudeAI/comments/1s5cbrn/claude_code_on_windows_6_critical_bugs_closed_as/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s5gaav/best_local_llm_for_coding/"
     ],
     "glossary": {
-      "AI editor": "An IDE or editor with built-in AI features for code generation, refactor, and agentic workflows.",
-      "hybrid flow": "Use a cheaper UI/model for planning/specs and a more expensive agent for execution to balance cost and quality.",
-      "model regression": "When a newer version of a model produces worse results for a workflow that used to work well."
+      "Claude Code / Cursor": "AI-assisted IDE features — both scaffold and write code; they differ in integrations, token usage, and platform stability.",
+      "vibe coding": "A workflow where non‑coders rely on AI to generate and stitch code without manual edits — fast but risky for production.",
+      "human review": "Manual inspection of generated code; mandatory when safety, correctness, or maintainability matter.",
+      "extension stability": "Real-world reliability of IDE plugins (file writes, large diffs) — a common practical blocker for adoption."
     }
   },
   {
-    "group": "Sora shutdown and model availability",
-    "summary": "Sora’s shutdown triggered debates about why the app failed (product fit, safety, or politics) and where to go next; people are testing replacements and cataloging alternatives. For developers, this is a reminder: build for portability — back up data and avoid vendor lock‑in so you can switch models or host locally if a service disappears.",
+    "group": "Model behavior, UX & user trust",
+    "summary": "People report models getting dull, dogmatic, or leaking internal chains-of-thought; some APIs behave inconsistently (audio voice replies, memory issues), and social use cases reveal emotional reliance and privacy worries. For devs building UX, expect uneven persona changes across model versions and design for graceful degradation and user data controls.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1s359mu/shutting_down_sora/",
-      "https://reddit.com/r/OpenAI/comments/1s3dehf/openai_enters_its_focus_era_by_killing_sora/",
-      "https://reddit.com/r/OpenAI/comments/1s2rorg/wellthat_was_faster_than_expected/",
-      "https://reddit.com/r/OpenAI/comments/1s3i9nd/rip_sora_here_are_the_best_alternative_models_in/",
-      "https://reddit.com/r/OpenAI/comments/1s370w5/did_sora_fail_because_of_the_tech_or_because_it/",
-      "https://reddit.com/r/OpenAI/comments/1s35sea/i_will_miss_sora/"
+      "https://reddit.com/r/ChatGPT/comments/1s5joi0/i_watched_a_drunk_guy_have_a_phone_call_with/",
+      "https://reddit.com/r/ChatGPT/comments/1s538v6/i_finally_cancelled_my_chatgpt_plus_subscription/",
+      "https://reddit.com/r/ChatGPT/comments/1s557j0/chatgpt_has_become_more_dogmatic_and_that_makes/",
+      "https://reddit.com/r/ChatGPT/comments/1s5ez5h/is_anyone_else_getting_genuinely_creeped_out_by/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s589ev/gemini_pro_leaks_its_raw_chain_of_thought_gets/",
+      "https://reddit.com/r/GeminiAI/comments/1s4v1tt/why_does_gemini_work_properly_only_after_you/",
+      "https://reddit.com/r/ChatGPT/comments/1s5o7yh/typical_chatgpt_experience_in_a_nutshell/",
+      "https://reddit.com/r/ChatGPT/comments/1s5j8k7/what_did_it_take_for_chatgpt_to_actually_click/",
+      "https://reddit.com/r/ChatGPT/comments/1s5jd9e/why_i_prefer_ai_to_humans/",
+      "https://reddit.com/r/GeminiAI/comments/1s5jsql/role_playing_nerfing/"
     ],
     "glossary": {
-      "vendor lock‑in": "When your product depends heavily on a single third‑party tool or API, making it hard to switch providers.",
-      "model portability": "Ability to move from one model/service to another without reworking your whole app — e.g., using standard inputs and storing outputs."
+      "chain of thought": "When a model reveals its internal reasoning steps; sometimes helpful, sometimes risky if it leaks private prompts or policies.",
+      "persona drift": "Changes in tone, helpfulness, or safety behavior between model versions that affect user experience.",
+      "hallucination": "When a model confidently states incorrect facts; test with verifiable sources for critical workflows.",
+      "graceful degradation": "Design pattern where features reduce functionality (not fail catastrophically) when the model or service degrades."
+    }
+  },
+  {
+    "group": "Policy, safety & existential risk",
+    "summary": "Lawmakers and public figures (e.g., Bernie Sanders) are pushing moratoria and tighter rules on data centers, training, and weaponization risks; this creates regulatory uncertainty developers must plan for. Teams building models or long‑lived services should track policy developments and design data provenance, auditable logs, and opt‑outs into their stacks.",
+    "posts": [
+      "https://reddit.com/r/OpenAI/comments/1s4413y/bernie_sanders_responds_to_questions_about_china/",
+      "https://reddit.com/r/ChatGPT/comments/1s5bhe7/bernie_sanders_in_the_us_senate_the_godfather_of/",
+      "https://reddit.com/r/ChatGPT/comments/1s55yr0/every_llm_out_there_would_be_screwed_if_they_pass/",
+      "https://reddit.com/r/OpenAI/comments/1s51024/daily_show_host_shocked_by_former_openai_employee/"
+    ],
+    "glossary": {
+      "moratorium": "A temporary legal pause (e.g., on building AI data centers or training) that can slow deployment timelines.",
+      "data provenance": "Keeping track of where training and input data came from so you can answer legal or ethical questions later.",
+      "auditable logs": "Immutable records of what the model called, what data it used, and what it returned — valuable for compliance and debugging.",
+      "weaponization risk": "How model capabilities could be repurposed for harmful autonomous systems; a reason some regulators want stricter controls."
     }
   }
 ]
