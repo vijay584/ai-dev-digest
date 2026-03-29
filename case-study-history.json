@@ -70,5 +70,17 @@
     "date": "2026-03-28T05:10:34.051Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Used H3 to Index Billions of Location Events — Geo-Queries 10x Faster and Dispatch Throughput Up 5x",
+    "date": "2026-03-29T05:23:02.079Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Distributed Locks & Leases: Safely Coordinating Resources Across Machines",
+    "date": "2026-03-29T05:23:28.909Z",
+    "type": "concept",
+    "company": null
   }
 ]
