@@ -94,5 +94,17 @@
     "date": "2026-03-30T05:38:32.472Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitHub Ran Schema Changes on Hundreds of Millions of Rows with Near-Zero Downtime",
+    "date": "2026-04-01T05:35:54.665Z",
+    "type": "case-study",
+    "company": "GitHub"
+  },
+  {
+    "title": "How Load Balancing Algorithms Decide Who Gets the Traffic (and Why That Matters)",
+    "date": "2026-04-01T05:36:37.776Z",
+    "type": "concept",
+    "company": null
   }
 ]
