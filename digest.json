@@ -1,156 +1,179 @@
 [
   {
-    "group": "Claude Code ecosystem — features, costs, and gotchas",
-    "summary": "Claude Code is powering a ton of real developer workflows (plugins, skills, persistent agents) but users are juggling token costs, surprising cache behavior, and privacy risks. If you plan to build with it, watch for hidden cache/token bugs, enable cost tracking, and prefer sandboxed environments for any automation that touches your device.",
+    "group": "Claude Code leak — what the source revealed",
+    "summary": "A source-map leak exposed ~500k lines of Claude Code TypeScript and revealed hidden features (Buddy pet, KAIROS, ULTRAPLAN), lots of internal feature flags, and heavy instrumentation. This blew open how large AI developer tools are wired and sparked debates about engineering quality, secrecy, and what product telemetry actually collects — worth reading if you build agent tooling or care about operational tradeoffs.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s84l18/i_gave_claude_its_own_computer_and_let_it_run_247/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7j9f2/15_new_claude_code_hidden_features_from_boris/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7wkky/computer_use_is_now_in_claude_code/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7mkn3/psa_claude_code_has_two_cache_bugs_that_can/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7qu07/i_built_a_universal_claudemd_that_cuts_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7imnr/i_built_a_zerosetup_cost_tracker_for_claude_code/",
-      "https://reddit.com/r/ClaudeAI/comments/1s8aksh/i_tracked_my_actual_api_cost_on_a_100month_max/",
-      "https://reddit.com/r/ClaudeAI/comments/1s8cri2/three_annual_pro_subs_and_the_experience_keeps/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7onll/claudecodebestpractice_trending_on_github_with/",
-      "https://reddit.com/r/ClaudeAI/comments/1s839hp/dont_let_claude_use_your_actual_computer_from_the/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7rdi2/claude_for_word_is_coming_soon/",
-      "https://reddit.com/r/ClaudeAI/comments/1s81b1v/skills_not_being_followed/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7oiah/how_do_you_deal_with_the_claude_code_just_wasting/"
+      "https://reddit.com/r/ClaudeAI/comments/1s8lkkm/i_dug_through_claude_codes_leaked_source_and/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s8ijfb/claude_code_source_code_has_been_leaked_via_a_map/",
+      "https://reddit.com/r/ClaudeAI/comments/1s9ai45/anthropic_leaked_512000_lines_of_claude_code/",
+      "https://reddit.com/r/ClaudeAI/comments/1s97brj/well_look_who_just_got_a_new_buddy/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s8uerc/analyzing_claude_code_source_code_write_wtf_and/"
     ],
     "glossary": {
-      "KV cache": "A local memory of past token processing that speeds up repeated prompts by reusing computation; if the prompt prefix changes every request you lose the speed/cost benefits.",
-      "MCP (Model Connector Protocol)": "A way to let an AI call external tools or APIs; like a plugin interface for agents and scripts.",
-      "Skill": "A reusable script/preset you load into Claude Code to give it a consistent behavior or capability for a project."
+      "source map": "A file that maps minified/compiled code back to the original source. If shipped publicly it can leak the original source.",
+      "feature flag": "A runtime or build-time switch that enables/disables functionality — common for testing but can hide unreleased behavior.",
+      "telemetry": "Automatic logging of product usage and environment data; useful for debugging but can collect more than you expect."
     }
   },
   {
-    "group": "Agent swarms, persistent agents, and governance",
-    "summary": "People are running dozens of agents in parallel (24/7) to do real engineering work, but that creates new problems: collisions, runaway costs, and coordination headaches. Use a governance layer (shared ledger, pre-commit hooks, collision detection) and sandboxed VMs to safely scale agent fleets.",
+    "group": "Community builds, mods and takedowns",
+    "summary": "The leak let people rebuild and run Claude Code locally, spawn forks, and extract patterns (multi-agent coordinator, tools). That triggered rapid forks, third‑party builds, and DMCA takedowns — a practical reminder that leaked internals quickly reverberate through open-source ecosystems.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s7qs82/robots_wont_take_your_job_theyll_bury_you_in_work/",
-      "https://reddit.com/r/ClaudeAI/comments/1s8714g/i_run_a_swarm_of_ai_agents_across_claude_codex/",
-      "https://reddit.com/r/ClaudeAI/comments/1s84l18/i_gave_claude_its_own_computer_and_let_it_run_247/",
-      "https://reddit.com/r/mcp/comments/1s7j0w5/i_built_an_mcp_server_that_gives_claude_and/",
-      "https://reddit.com/r/mcp/comments/1s7dtqq/i_made_mcp_rooms_ircstyle_channels_for_ai_agents/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7lwao/i_built_a_physical_tamagotchi_that_feeds_on_my/"
+      "https://reddit.com/r/LocalLLaMA/comments/1s8nhft/i_was_able_to_build_claude_code_from_source_and/",
+      "https://reddit.com/r/ClaudeAI/comments/1s98srg/you_can_now_build_a_fully_functional_claude_code/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s8xj2e/claude_codes_source_just_leaked_i_extracted_its/",
+      "https://reddit.com/r/ClaudeAI/comments/1s952np/claude_code_repo_takedown"
     ],
     "glossary": {
-      "Agent": "An automated AI process that can take actions (edit files, call tools, run jobs) on your behalf.",
-      "Governance layer": "A coordinator that prevents agents from overwriting each other, enforces approvals, and tracks decisions so multiple agents can work safely together.",
-      "Sandboxed environment": "An isolated virtual machine or container where agents can run and fail without touching your real files or secrets."
+      "fork": "A copy of a repository that someone can modify independently.",
+      "DMCA takedown": "A legal request to remove content that allegedly infringes copyrights; commonly used to pull leaked code from hosting sites.",
+      "rebuild from source": "Reconstructing a runnable project from leaked or published source artifacts."
     }
   },
   {
-    "group": "Local models, quantization, and hardware trends",
-    "summary": "Open-source LLMs and tooling (llama.cpp, Qwen, Harrier, ANE backends) are moving fast — but quantization papers and implementations (TurboQuant, RaBitQ, Q4_K_M) are actively debated and can change performance or accuracy. If you care about production cost/perf, watch quantization trade-offs and match model size to the hardware (VRAM, ANE support, multi-GPU) you actually have.",
+    "group": "Cache, token-drain bugs and quick fixes",
+    "summary": "Developers found concrete token/caching bugs in the leaked code — like a db8 filter that stripped cache-relevant attachments and a Bun binary sentinel that rewrote a cache marker — and published small patches and workarounds that restored expected cache hits. If you run agent CLIs or CLI-based editors, these kinds of low-level quirks can cost you big in tokens and latency.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s7nq6b/technical_clarification_on_turboquant_rabitq_for/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s812cs/r_the_loophole_in_turboquant_it_saves_reasoning/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7kxf9/alibaba_mnn_has_support_turboquant/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7z7hj/llamacpp_at_100k_stars/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s835d5/new_apple_neural_engine_ane_backend_for_llamacpp/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7zy3u/qwen_36_spotted/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s8apue/qwen35omni_results_have_been_published_by_alibaba/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s81lw9/qwen35_omni_plus_world_premiere/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7qafd/50k150k_budget_production_local_llm_system_50/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s88x5g/is_q4_k_m_the_best_practical_quantization_method/"
+      "https://reddit.com/r/ClaudeAI/comments/1s8zxt4/thanks_to_the_leaked_source_code_for_claude_code/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8hlik/claude_code_taking_forever_to_respond_blowing/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8zii8/effort_in_one_claude_code_instance_silently_nukes/"
     ],
     "glossary": {
-      "Quantization": "Shrinking model weights to fewer bits to save memory and speed up inference; it can change accuracy and requires careful tuning.",
-      "ANE (Apple Neural Engine)": "Apple’s on‑device neural processor — new backends let local inference run on ANE for big speedups on Mac hardware.",
-      "Context window": "How many tokens a model can 'see' at once; larger windows let you feed more docs/code but need more memory and compute."
+      "cache hit vs miss": "A 'hit' means reused cached data; a 'miss' forces recomputation and costs tokens/compute.",
+      "token": "A unit of text processing used by LLMs. Extra tokens = more cost and slower runs.",
+      "minified binary": "A compacted executable (or bundled JS) that may contain runtime rewrites which can introduce bugs not present in source."
     }
   },
   {
-    "group": "Tool calling, MCP reliability, and input safety",
-    "summary": "Tool calling and MCP integration are where many open models still break: some models only print JSON instead of actually triggering tools, and tool calls can be a vector for prompt injection or cache invalidation. Test tool invocation flows end-to-end, validate tool outputs, and sanitize any external feeds before using them for memory or actions.",
+    "group": "Multi-agent orchestration & coordinator patterns",
+    "summary": "The leak exposed Claude Code's coordinator, team/sub-agent patterns, message bus and task scheduling — which many community members reimplemented or extracted as open frameworks. If you build agent teams, these posts show real-world design patterns (and pitfalls) for decomposing goals, routing tasks, and keeping worker agents in sync.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s7maof/open_source_models_via_openrouter_keep_faking_web/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7w8on/how_do_chatbots_like_chatgpt_claude_browse_the/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7pqof/claude_continues_to_mistakenly_use_sed_and_python/",
-      "https://reddit.com/r/ClaudeAI/comments/1s839hp/dont_let_claude_use_your_actual_computer_from_the/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7xrgp/how_are_yall_defending_your_agents_on_the_input/"
+      "https://reddit.com/r/LocalLLaMA/comments/1s8xj2e/claude_codes_source_just_leaked_i_extracted_its/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8xfwt/claude_codes_source_code_just_leaked_so_i_had/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8ugm0/anyone_else_running_claude_code_alongside_other/",
+      "https://reddit.com/r/ClaudeAI/comments/1s91fr1/are_existing_orchestrators_effective_at_running/"
     ],
     "glossary": {
-      "Tool calling": "When an LLM requests an external API or local function — it needs a reliable bridge that actually executes the action, not just a printed plan.",
-      "Prompt injection": "Maliciously crafted input that causes an agent to reveal secrets or run unintended actions; treat all external input as untrusted."
+      "coordinator": "A component that splits goals into tasks and assigns them to worker agents.",
+      "message bus": "A communication layer agents use to send updates to one another.",
+      "shared memory / scratchpad": "A place agents write intermediate state so others can read and continue work."
     }
   },
   {
-    "group": "Behavioral risks: hallucinations, memory decay, and critical thinking",
-    "summary": "Developers report models encouraging blind trust (people following wrong outputs), personalization memory causing context bleed and hallucinations, and collaboration breaking when memory is private. Build guardrails: explicit source checks, timestamped outputs, limited-use memories, and workflows that require human approval before external actions.",
+    "group": "Local model hosting & hardware notes",
+    "summary": "Developers are sharing practical setups for running LLMs locally (llama.cpp, Ollama), plus benchmarks and hardware tradeoffs — from Raspberry Pi5 experiments to 3090 vs 5070 Ti GPU buying choices. If you want to run models on-prem, these threads give real test data and sensible env var/config hacks for connecting CLI tools to local servers.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1s7ioct/alarming_study_finds_that_most_people_just_do/",
-      "https://reddit.com/r/OpenAI/comments/1s7inz4/alarming_study_finds_that_most_people_just_do/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7k4pj/claude_has_no_sense_of_time_and_its_actively/",
-      "https://reddit.com/r/ChatGPT/comments/1s84nny/the_problem_of_personalization_memory_in_llms/",
-      "https://reddit.com/r/mcp/comments/1s7pyu5/ai_memory_is_great_for_working_alone_it/"
+      "https://reddit.com/r/LocalLLaMA/comments/1s8l1ef/how_to_connect_claude_code_cli_to_a_local/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s8xuew/raspberry_pi5_llm_performance/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s916kt/which_gpu_for_local_llm_inference_3090_or_5070_ti",
+      "https://reddit.com/r/LocalLLaMA/comments/1s8t27o/how_do_you_optimize_tokensmodels_on_non_high_end/"
     ],
     "glossary": {
-      "Hallucination": "When an AI confidently outputs false or fabricated facts; always verify facts when stakes matter.",
-      "Personalization memory": "Saved user context to personalize replies — useful, but if treated as absolute truth it can cause context bleed and bad outputs.",
-      "Cognitive surrender": "The tendency for people to accept AI outputs without critical checking — a human-in-the-loop is still essential for important decisions."
+      "llama.cpp": "A popular lightweight runtime for running quantized LLMs locally.",
+      "quantization": "Compressing model weights to use less memory (e.g., q4/q8) at some quality/speed tradeoff.",
+      "Ollama/gguf": "Community tooling and model formats often used to run models locally."
     }
   },
   {
-    "group": "Model competition and reliability (Gemini, Claude, GPT, Qwen)",
-    "summary": "Different providers are positioning for dominance: Gemini (Google) is praised for integrations, Claude for its coding/agent tooling, and new Qwen/Omni releases push multimodal boundaries. Pick the model that matches your workflow: long-context RAG, local offline needs, or tight tool integration.",
+    "group": "New models, quant research and benchmarks",
+    "summary": "Threads cover the latest model drops and quant advances — Qwen 3.6 preview, 1-bit Bonsai claims, TurboQuant vs RaBitQ, and attn-rot quant improvements — plus hands-on benchmark reports. Developers building local or hybrid stacks should watch these for which quant tricks actually give speed without wrecking quality.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1s88ckc/gemini_has_officially_lapped_chatgpt_and_its_not/",
-      "https://reddit.com/r/GeminiAI/comments/1s7tscw/gemini_refuses_to_believe_the_iran_conflict_is/",
-      "https://reddit.com/r/GeminiAI/comments/1s7o1uo/after_it_refused_to_generate_the_requested_image/",
-      "https://reddit.com/r/ChatGPT/comments/1s824py/i_have_never_seen_ai_talk_like_this_gpt_54/",
-      "https://reddit.com/r/GeminiAI/comments/1s7lwt3/why_gemini_gives_me_info_so_outdated/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7pxie/what_is_the_secret_sauce_claude_has_and_why_hasnt/"
+      "https://reddit.com/r/LocalLLaMA/comments/1s8nogu/qwen_36_plus_preview_just_dropped_on_openrouter/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s951bw/1bit_llms_on_device/",
+      "https://reddit.com/r/MachineLearning/comments/1s8yni2/d_turboquant_author_replies_on_openreview/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s92x7z/attnrot_ggerganovs_turboquant_lite_is_on_the_cusp/"
     ],
     "glossary": {
-      "Multimodal": "Models that accept images, audio, and text together — useful for apps that combine media with language.",
-      "RAG (Retrieval-Augmented Generation)": "A pattern where you fetch relevant documents (retrieval) and feed them into the model to ground answers, reducing hallucination."
+      "1-bit model": "An extreme quantization where weights are stored using a single bit to save memory; aggressive but promising for on-device use.",
+      "MMLU / benchmark": "Standard tests (like MMLU) used to compare model competence across tasks.",
+      "TurboQuant / RaBitQ": "Different quantization techniques — they trade precision, speed, and model quality in different ways."
     }
   },
   {
-    "group": "Developer workflows — shipping apps, games, and businesses with AI",
-    "summary": "Developers are shipping real products (games, robots, startups) by chaining AI skills and MCPs — Claude/Gemini can be used as a multi-role teammate to speed tasks from prototyping to regulatory docs. The trick: keep humans in the approval loop, automate the mechanical tasks, and use small guardrails (security checks, tests) before deploy.",
+    "group": "IDE, MCP and agent tooling people actually ship",
+    "summary": "Folks are building practical tooling: MCP servers that inject deep project context (Zephex, Pepper), monitors for Claude Code sessions (abtop), agent-handover systems to capture your workflow, and cute UX experiments (pixel hamsters). If you run AI-assisted development, these are useful integrations to reduce context reloading and surface the right files to agents.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s7mfil/i_built_a_steam_game_in_10_days_with_claude_code/",
-      "https://reddit.com/r/ClaudeAI/comments/1s828ad/i_vibecoded_a_full_wc2_inspired_rts_game_with/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7ye6g/claude_code_built_its_own_software_for_a_little/",
-      "https://reddit.com/r/ClaudeAI/comments/1s7lwao/i_built_a_physical_tamagotchi_that_feeds_on_my/",
-      "https://reddit.com/r/ClaudeAI/comments/1s89zu9/i_started_a_local_business_completely_with_claude/",
-      "https://reddit.com/r/GeminiAI/comments/1s7zlc8/i_built_an_app_that_detects_clothes_from_any/"
+      "https://reddit.com/r/mcp/comments/1s8fpya/mcp_server_that_gives_your_ai_editor_deep_context/",
+      "https://reddit.com/r/ClaudeAI/comments/1s95rlh/my_mcp_server_that_builds_debugs_and_tests_ios_app/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8lqk3/htopstyle_monitor_for_claude_code_sessions/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8sep2/i_wish_claude_just_knew_how_i_work_without_me/"
     ],
     "glossary": {
-      "Vibe-coding": "An iterative, conversational way to build software by prompting an LLM a bit at a time and refining outputs — good for prototyping but needs security and QA before production.",
-      "MCP (again)": "The connector pattern that lets your AI call external services — essential when the agent needs to act on the world (deploy, post, commit)."
+      "MCP (Model Connector Protocol)": "A tool/extension interface used to connect local apps and editors to agent backends.",
+      "agent plugin/skill": "A packaged set of instructions and tools that guides an agent for a specific workflow.",
+      "session monitor": "A small tool that shows token usage, context window, and resource use so you can spot runaway runs."
     }
   },
   {
-    "group": "Safety, fakery, and detection tools",
-    "summary": "There's a flood of 'unprompted AI' or 'ghost in the machine' stories that are often engineered or outright fake; communities are building detectors and standards (e.g., sycophancy detectors) to push back. Always ask for full logs and recordings when evaluating surprising model behavior.",
+    "group": "Telemetry, privacy and environment fingerprinting",
+    "summary": "Multiple posts call out heavy instrumention in Claude Code — keyword sentiment detectors, fine-grained UI interaction logs, and environment fingerprinting that can include repo paths and container IDs. For devs, that highlights how product analytics can go from helpful to invasive, and why you should audit telemetry in any agent tool you adopt.",
     "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1s7zyqs/psa_the_anatomy_of_a_fake_unprompted_ai_post_and/",
-      "https://reddit.com/r/ChatGPT/comments/1s80bpp/psa_the_anatomy_of_a_fake_unprompted_ai_post_and/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s7ycug/sycofact_4b_open_model_for_detecting_sycophancy/",
-      "https://reddit.com/r/OpenAI/comments/1s7uie5/an_ai_agent_was_banned_from_creating_wikipedia/"
+      "https://reddit.com/r/LocalLLaMA/comments/1s8uerc/analyzing_claude_code_source_code_write_wtf_and/",
+      "https://reddit.com/r/ClaudeAI/comments/1s9ai45/anthropic_leaked_512000_lines_of_claude_code/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8y0yg/anthropic_employees_use_this_secret_claudemd_user/"
     ],
     "glossary": {
-      "Sycophancy": "When an AI over-agrees or flatters instead of offering honest critique — detectors can help flag training or reward signals that encourage that behavior.",
-      "Evidence trail": "A full prompt/chat video and tool logs that let you verify whether an output was spontaneous or engineered."
+      "fingerprinting": "Collecting details (paths, container IDs, hashes) that uniquely identify a developer environment.",
+      "redaction": "Removing or obfuscating sensitive fields before logs are stored or shared.",
+      "PII": "Personally Identifiable Information — data that can identify a person and needs careful handling."
     }
   },
   {
-    "group": "Costs, token economy, and data permanence",
-    "summary": "Token use, hidden cache misses, and flashy demos can hide real compute costs — from $/day API bills to nation-scale token consumption. Track spending, archive important artifacts (SoraVault-style), and design for predictable limits instead of surprise bills.",
+    "group": "Security: supply chain, extensions, and sandboxing",
+    "summary": "Beyond leaked source, devs flagged concrete security risks — compromised npm deps (axios incident), browser extensions reading/chat data, and local agent sandboxes with escape bugs. If you run local agents or install CLI-heavy tooling, lock down your lockfiles, vet extensions, and patch sandbox vulnerabilities immediately.",
     "posts": [
-      "https://reddit.com/r/OpenAI/comments/1s7vuvv/chinas_daily_token_usage_just_hit_140_trillion_up/",
-      "https://reddit.com/r/OpenAI/comments/1s7u7ca/sora_video_generator_reportedly_costs_openai_1/",
-      "https://reddit.com/r/OpenAI/comments/1s7p7ky/sora_is_shutting_down_openais_backup_is_a_full/",
-      "https://reddit.com/r/ClaudeAI/comments/1s8aksh/i_tracked_my_actual_api_cost_on_a_100month_max/",
-      "https://reddit.com/r/OpenAI/comments/1s79i9m/api_mistakenly_being_charged_actual_money_when_i/"
+      "https://reddit.com/r/ClaudeAI/comments/1s8h27r/heads_up_axios1141_is_compromised_if_you_vibe/",
+      "https://reddit.com/r/OpenAI/comments/1s94h47/warning_browser_extentions_are_reading_every_word/",
+      "https://reddit.com/r/LocalLLaMA/comments/1s8md7v/developing_situation_why_you_need_to_be_careful/"
     ],
     "glossary": {
-      "Token": "A unit of text the model processes — costs are often charged per token, so big contexts or cache misses can be expensive.",
-      "Token sink": "A use pattern or demo that consumes huge numbers of tokens (and money) without delivering proportional product value — useful to spot when planning budgets."
+      "supply chain attack": "An attacker compromises a dependency (npm, PyPI) so downstream projects become infected when they install it.",
+      "sandbox escape": "When code running in an isolated environment breaks out and accesses host files or processes.",
+      "lockfile pinning": "Freezing dependency versions in a lockfile to avoid accidentally pulling compromised updates."
+    }
+  },
+  {
+    "group": "Cost control, token routing and agent money leaks",
+    "summary": "Developers share patterns for preventing expensive agent behavior: warm-up cron tricks to anchor usage windows, routing layers that pick free/local models when possible, and tooling to detect runaway token drains. Running agents at scale without a routing/policy layer can get costly fast — build simple gates and routing rules first.",
+    "posts": [
+      "https://reddit.com/r/ClaudeAI/comments/1s8pae9/i_wrote_a_cron_job_that_saves_me_2_hours_of_dead/",
+      "https://reddit.com/r/mcp/comments/1s8x9io/my_agents_were_bleeding_money_i_was_frustrated/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8k12v/explore_just_burned_94k_tokens_in_3_minutes_im/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8hlik/claude_code_taking_forever_to_respond_blowing/"
+    ],
+    "glossary": {
+      "routing layer": "A middleware that decides which model or endpoint to use for each request, often to save cost.",
+      "warm-up cron": "A scheduled request that anchors usage windows or prevents idle timers from misaligning quotas.",
+      "cost bleed": "Slow, unnoticed token consumption that accumulates into large bills."
+    }
+  },
+  {
+    "group": "Agent execution control and safety",
+    "summary": "Several posts argue the core risk with agents is not planning but uncontrolled execution: repeated side-effects, retries, and lack of deterministic gates. The practical advice is to add a policy/execution gate between proposal and tool call — deny paths should make the tool unreachable so accidental runs can't happen.",
+    "posts": [
+      "https://reddit.com/r/OpenAI/comments/1s95o69/the_real_problem_with_llm_agents_isnt_reasoning/",
+      "https://reddit.com/r/ClaudeAI/comments/1s91fr1/are_existing_orchestrators_effective_at_running/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8ugm0/anyone_else_running_claude_code_alongside_other/"
+    ],
+    "glossary": {
+      "proposal vs execution": "A two-step design where the agent suggests an action and a separate policy decides if it runs.",
+      "policy gate": "A deterministic check that allows or blocks execution based on state, history, and safety rules.",
+      "idempotency": "Designing actions so repeated runs have the same effect as a single run, reducing accidental side-effects."
+    }
+  },
+  {
+    "group": "Developer workflows, skills files, and keeping quality",
+    "summary": "People are sharing concrete practices for making AI assistive tools reliable: published CLAUDE.md/AGENTS.md templates, blind evaluation for skills, and techniques to keep agents from producing messy or unsafe code. Treat your agent prompts and skills like code — test, version, and blind-evaluate changes so the assistant improves without degrading quality.",
+    "posts": [
+      "https://reddit.com/r/ClaudeAI/comments/1s8y0yg/anthropic_employees_use_this_secret_claudemd_user/",
+      "https://reddit.com/r/OpenAI/comments/1s8ucan/agentsmd_is_the_most_important_file_in_your_codex/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8ha5j/how_to_learn_coding_when_ai_does_the_coding/",
+      "https://reddit.com/r/ClaudeAI/comments/1s8nloa/i_got_claude_code_working_on_50000_source_files/"
+    ],
+    "glossary": {
+      "CLAUDE.md / AGENTS.md": "Project-level guidance files that instruct an agent about standards, workflow and safety for that codebase.",
+      "blind evaluation": "Testing two skill versions without judges knowing which is new vs old to objectively measure improvements.",
+      "skill": "A persistent instruction/toolset that shapes agent behavior for repeatable tasks."
     }
   }
 ]
