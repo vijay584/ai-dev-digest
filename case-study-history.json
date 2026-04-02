@@ -106,5 +106,17 @@
     "date": "2026-04-01T05:36:37.776Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Cloudflare Absorbed a 1.3 Tbps DDoS: Anycast, Edge Scrubbing, and Keeping Customers Online",
+    "date": "2026-04-02T05:18:04.529Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "The API Gateway Pattern: Your Services' Receptionist, Doorman, and Traffic Cop",
+    "date": "2026-04-02T05:18:45.476Z",
+    "type": "concept",
+    "company": null
   }
 ]
