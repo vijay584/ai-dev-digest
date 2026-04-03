@@ -118,5 +118,17 @@
     "date": "2026-04-02T05:18:45.476Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Instagram Delivered Personalized Feeds for 1B MAU: A Hybrid Fanout That Tamed 95M Uploads/Day",
+    "date": "2026-04-03T05:19:32.419Z",
+    "type": "case-study",
+    "company": "Instagram"
+  },
+  {
+    "title": "Backpressure: Keep Your System Sipping, Not Gulping",
+    "date": "2026-04-03T05:20:09.109Z",
+    "type": "concept",
+    "company": null
   }
 ]
