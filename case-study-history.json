@@ -130,5 +130,17 @@
     "date": "2026-04-03T05:20:09.109Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Dropbox Magic Pocket — How Dropbox Moved ~500 PB Off S3, Cut Multi-Million-Dollar Costs, and Took Control of Storage",
+    "date": "2026-04-04T05:07:46.456Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Stop the Cascade: How the Circuit Breaker Pattern Keeps Services Healthy",
+    "date": "2026-04-04T05:08:10.217Z",
+    "type": "concept",
+    "company": null
   }
 ]
