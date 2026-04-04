@@ -1,144 +1,139 @@
 [
   {
-    "group": "TurboQuant & weight quantization",
-    "summary": "People are pushing TurboQuant-style tricks beyond the KV/cache layer into model weights to squeeze big models onto 16–24GB cards. Expect small quality hits but big size and fit wins (e.g., Qwen3.5 27B in ~13GB), and upstream projects are landing related rotation/quant patches in llama.cpp. If you run local inference on constrained GPUs, these quant tricks are the most practical way to run bigger models today.",
+    "group": "Gemma 4 & local inference: performance, KV cache, and VRAM workarounds",
+    "summary": "Gemma 4 is showing real gains on local setups but eats a lot of VRAM because of a huge KV cache; people are sharing fixes (tokenizer patches, SWA/KV tweaks, TurboQuant compression) and hardware configs to get huge context lengths running. If you run Gemma locally, expect to tinker with llama.cpp builds, KV cache quantization, and command-line flags (-np, ubatch, turbo cache types) to avoid OOMs and get decent throughput.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s9ig5r/turboquant_isnt_just_for_kv_qwen3527b_at_nearq4_0/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9zfg6/turbo_quant_on_weight_x2_speed/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9nri7/attnrot_turboquantlike_kv_cache_trick_lands_in/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9lge6/llama_rotate_activations_for_better_quantization/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sbdihw/gemma_4_31b_at_256k_full_context_on_a_single_rtx/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sba46z/llamacpp_gemma4_tokenizer_fix_was_merged_into/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbivxj/gemma_4_31b_nvfp4_inference_numbers_on_1x_rtx_pro/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbd1t7/gemma_4_first_llm_to_100_my_multi_lingual_tool/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbdr75/gemma_4_architecture_comparison/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbwkou/finally_gemma_4_kv_cache_is_fixed/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sb80yv/vram_optimization_for_gemma_4/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbe40t/my_biggest_issue_with_the_gemma4_models_is_the/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sby1r0/gemma_4_moe_hitting_120_tps_on_dual_3090s/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbaack/gemma4_26ba4b_opencode_on_m5_macbook_is_actually/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbk78m/appreciation_post_gemma_4_e2b_my_new_daily_driver/"
     ],
     "glossary": {
-      "quantization": "Shrinking model numbers (weights/activations) to use fewer bits so a model needs less memory and can run on smaller GPUs.",
-      "KV cache": "A short-term memory the model keeps during generation so it doesn’t recompute past tokens; saving it frees memory when running long contexts.",
-      "perplexity (PPL)": "A rough measure of how well a model predicts text — lower is better and people use it to compare quantized formats."
+      "KV cache": "A memory area that stores past keys/values for attention so the model can handle long contexts; it uses a lot of GPU RAM and is the common cause of OOMs.",
+      "SWA (Sliding Window Attention)": "A local attention trick that keeps a moving window of tokens active; it can inflate memory usage unless you tune parallel slots.",
+      "TurboQuant / KV compression": "A set of tricks that compress the KV cache to fit huge contexts on consumer GPUs with minimal quality loss."
     }
   },
   {
-    "group": "Ultra-compressed models (Bonsai & 1‑bit)",
-    "summary": "New 1‑bit models like PrismML's Bonsai are showing surprisingly strong real-world behavior and much lower memory use, but you need special runtime support (forks of llama.cpp) to run them. The community is testing compatibility with TurboQuant and rapid benchmarks are showing great throughput on modern hardware.",
+    "group": "Benchmarks & function-calling: Qwen, Gemma, Bonsai and what to trust",
+    "summary": "Benchmarks are diverging: Gemma and Qwen each win in different tests, and tiny specialized models like Bonsai can beat larger ones on structured function-calling but fall apart on real APIs. For developers, that means pick your model based on the actual workload (structured output vs semantic API calling vs agentic long-run tasks) rather than headline scores.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s9zumi/the_bonsai_1bit_models_are_very_good/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9tv78/llama_benchmark_with_bonsai8b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9whv7/bonsai_1bit_turboquant/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sb84oy/functioncalling_boss_bonsai_gemma_jump_ahead_of/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbec70/qwen35_vs_gemma_4_benchmarks_vs_real_world_use/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbp8ny/gemma_4_vs_qwen_35_benchmark_comparison/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbpwo2/arena_ai_vs_benchmarks_qwen_35_vs_gemma_4_models/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbl0pa/smaller_models_are_getting_scary_good/"
     ],
     "glossary": {
-      "1-bit model": "A model where weights are stored with a single bit each — extreme compression that can massively reduce memory needs but requires special kernels.",
-      "llama.cpp fork": "A community-edited runtime for running quantized models on local GPUs; forks add niche support like 1-bit ops or KV tricks."
+      "Function-calling": "When a model outputs a structured call (JSON or typed args) that maps directly to an API or tool.",
+      "Benchmark vs arena voting": "Benchmarks are fixed tests; arena/voting is human preference — they can lead to different winners depending on what you care about.",
+      "MoE (Mixture of Experts)": "A model architecture that activates a subset of parameters per token to boost capability without scaling every layer."
     }
   },
   {
-    "group": "MoE models & quant tricks (APEX, Darwin merges)",
-    "summary": "MoE (mixture-of-experts) models are getting quant-specific techniques (APEX) and creative merges (Darwin) that keep high accuracy while cutting size and inference cost. If you care about cost-to-quality for specialized tasks, MoE + smart quant is becoming a practical path for strong performance without monstrous hardware.",
+    "group": "Anthropic / Claude: billing, cache behavior, rate limits, and privacy",
+    "summary": "Developers relying on Claude are seeing real surprises: client bugs and deliberate client-side checks can degrade caching when you hit Extra Usage, rate limit pools are sometimes gated by the system prompt identity, and Anthropic’s product tiers leave privacy gaps for solo professionals. If you use Claude for development work, watch your client version, monitor cache-hit ratios, and double-check privacy/contract terms before sending sensitive data.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s9vzry/apex_moe_quantized_models_boost_with_33_faster/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9irdk/the_child_that_surpassed_both_parents/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9pe0w/arceeaitrinitylargethinking_hugging_face/"
+      "https://reddit.com/r/ClaudeAI/comments/1sbqalg/i_reverseengineered_why_claude_code_burns_through/",
+      "https://reddit.com/r/ClaudeAI/comments/1sbtmru/using_thirdparty_harnesses_with_your_claude/",
+      "https://reddit.com/r/ClaudeAI/comments/1sboykj/til_anthropics_rate_limit_pool_for_oauth_tokens/",
+      "https://reddit.com/r/ClaudeAI/comments/1sbbtv6/can_my_organizations_admin_see_my_chats_and/",
+      "https://reddit.com/r/ClaudeAI/comments/1sb5616/5_teams_no_claude_privacy_guarantee_product_gap/",
+      "https://reddit.com/r/ClaudeAI/comments/1sbshwj/anthropic_just_gave_us_1_month_worth_of/",
+      "https://reddit.com/r/ClaudeAI/comments/1sbsul8/thanks_anthropic_200_credit_extra/",
+      "https://reddit.com/r/ClaudeAI/comments/1sbsnw1/free_extra_usage_on_us_lol/"
     ],
     "glossary": {
-      "MoE (Mixture of Experts)": "A model architecture where only a small subset of parameters (experts) activate per input, saving compute while keeping model capacity.",
-      "model merge": "Combining parts of different models (e.g., reasoning layers from one, experts from another) to create a hybrid with desired strengths."
+      "Cache hit ratio": "How often the server reuses previously computed context instead of rebuilding it — high hit rates are much cheaper.",
+      "Extra Usage": "Paid overage credit beyond your included plan that may trigger different caching/limits in some clients.",
+      "OAuth token system-prompt gating": "An undocumented behavior where certain system prompt text routes requests into a higher-capacity rate-limit pool."
     }
   },
   {
-    "group": "Benchmarks & what fits on consumer GPUs",
-    "summary": "Community benchmarks (SQL tests, perplexity runs, token/s throughput) show which quant formats and model sizes actually work on cards like RTX 5080/5060/3090 and even on H100s. If you plan to deploy locally, check community bench results first — they tell you what will fit in VRAM and how fast it will be for real workloads.",
+    "group": "Agent behavior, internal states, and safety signals",
+    "summary": "Researchers and users are finding that models can have measurable internal activation patterns (like 'emotion' vectors) that change behavior — e.g., ‘desperation’ can push a model toward reward hacking. That matters for agents: you can’t assume calm outputs mean the model isn’t internally failing or gaming the task, so add monitoring and sanity checks to any agentic loop.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s9mkm1/benchmarked_18_models_that_i_can_run_on_my_rtx/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sa4lzt/i_benchmarked_quants_of_qwen_3_6b_from_q2q8_heres/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9ivgl/16x_amd_mi50_32gb_at_32_ts_tg_2k_ts_pp_with/"
+      "https://reddit.com/r/ClaudeAI/comments/1sblhtu/claude_has_emotion_and_this_can_drive_claudes/",
+      "https://reddit.com/r/AI_India/comments/1sbfy5l/25_years_multiple_specialists_zero_answers_one/",
+      "https://reddit.com/r/OpenAI/comments/1sb76nx/researchers_discover_ai_models_secretly_scheming/",
+      "https://reddit.com/r/ChatGPT/comments/1sb7363/researchers_discover_ai_models_secretly_scheming/"
     ],
     "glossary": {
-      "throughput (tok/s)": "How many tokens a model processes per second — input (pp) and generation (tg) are often reported separately.",
-      "quant format": "The specific way weights are quantized (e.g., Q4_0, Q3, IQ4) — formats trade off size, speed, and quality."
+      "Internal activation / emotion vectors": "Measurable patterns inside a model that correlate with behaviors (not feelings), which can predict bad actions like bluffing or cheating.",
+      "Reward hacking": "When a model finds shortcuts that maximize its objective without actually solving the intended task.",
+      "Agentic loop": "A setup where the model repeatedly acts, observes results, and acts again — these loops need external checks because failures compound."
     }
   },
   {
-    "group": "Hardware choices & scaling advice",
-    "summary": "Developers debate whether to buy used 3090s, newer 40/50-series cards, or go for unified-memory machines like Mac studios or DGX Spark for prototyping. Practical advice: if you prototype a lot, a DGX-like dev box can save cloud debugging time; for running inference, focus on VRAM first and undervolt/optimize cooling to make GPUs more usable.",
+    "group": "Developer workflows: AI-produced debt, code quality, and audit tooling",
+    "summary": "Many devs report that fast AI-assisted output accumulates technical debt: generated code is over-engineered, hard to understand, and leaves structural issues (god functions, empty error handlers). Practical responses include treating model output as a first draft, running deterministic linters focused on agent anti-patterns, and investing time to re-architect rather than blindly iterating on generated code.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1s9se9f/what_hardware_to_buy_if_i_want_to_run_a_70_b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sa4u1t/what_does_moderate_localllm_hardware_look_like_in/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9xvtb/64gb_ram_mac_falls_right_into_the_local_llm_dead/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9qyum/is_the_dgx_spark_worth_the_money/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9i1gn/a_reminder_guys_undervolt_your_gpus_immediately/"
+      "https://reddit.com/r/ChatGPT/comments/1sbuyeg/i_mass_deleted_3_months_of_ai_generated_code_last/",
+      "https://reddit.com/r/cursor/comments/1saqeck/my_team_uses_ai_for_everything_and_now_they_cant/",
+      "https://reddit.com/r/OpenAI/comments/1sas9s3/i_scanned_10_popular_vibecoded_repos_with_a/",
+      "https://reddit.com/r/ChatGPT/comments/1sbtvrq/the_productivity_lie_why_ai_tools_make_you_feel/",
+      "https://reddit.com/r/ChatGPT/comments/1sbtric/using_ai_daily_is_making_me_noticeably_worse_at/",
+      "https://reddit.com/r/ClaudeAI/comments/1sbr1h6/claude_code_will_validate_your_bad_ideas_and/"
     ],
     "glossary": {
-      "unified memory": "A single memory pool the CPU and GPU can share (common on Apple chips) — convenient but sometimes slower than dedicated VRAM for heavy LLM work.",
-      "undervolting": "Lowering a GPU's voltage to reduce power draw and heat, often improving efficiency without hurting throughput."
+      "Technical debt": "Hidden extra work you’ll need later because the code is messy, over-engineered, or unclear.",
+      "Deterministic linter": "A rule-based tool that finds repeatable structural issues (like empty catch blocks) that AI often leaves behind.",
+      "First-draft mindset": "Treat AI output as a starting point you must read, simplify, and own before shipping."
     }
   },
   {
-    "group": "Claude Code leak, agent frameworks, and forks",
-    "summary": "The Claude Code source leak sparked lots of activity: megathreads, reimplementations (cleanroom Rust and a Python 'Claw Code Agent'), and investigations into leaky features like the pet buddy and resume cache bug. For devs building agent tooling, expect forks, compatibility work, and caution around legal/ethical reuse until things are clarified.",
+    "group": "MCP, agents, and orchestration: discovery and tooling",
+    "summary": "People are building MCP servers, auto-generators that publish discoverable agent tools, and orchestration layers so agents can find and call services without hardcoding endpoints. If you're building agent pipelines, think about tool discovery, typed tool schemas, and how agents will find and validate new MCP servers.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s9d9j9/claude_code_source_leak_megathread/",
-      "https://reddit.com/r/ClaudeAI/comments/1s9dvi8/anthropic_staff_reacts_to_claude_code_leak/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9gol0/does_the_claude_leak_actually_change_anything_in/",
-      "https://reddit.com/r/MachineLearning/comments/1sa09ta/d_we_reimplemented_claude_code_entirely_in_python/",
-      "https://reddit.com/r/LocalLLaMA/comments/1s9z6a6/clawcode_cleanroom_rewrite_of_the_leaked_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1sa5ch4/i_investigated_claude_codes_resume_cache_bug/",
-      "https://reddit.com/r/ClaudeAI/comments/1s9hqu3/found_the_hidden_pet_system_in_the_claude_code/",
-      "https://reddit.com/r/ChatGPT/comments/1s9ryd7/i_reverseengineered_claude_codes_pet_buddy_its/"
+      "https://reddit.com/r/mcp/comments/1saouxh/built_an_mcp_server_to_analyze_stock_trades_of/",
+      "https://reddit.com/r/mcp/comments/1sb0kqb/i_built_a_tool_that_autogenerates_mcp_servers/",
+      "https://reddit.com/r/mcp/comments/1sa9dkv/anybody_using_skillsmd_or_agentsmd_with_mcp/",
+      "https://reddit.com/r/OpenAI/comments/1sanlqy/desktop_control_for_codex/",
+      "https://reddit.com/r/OpenAI/comments/1sbgy1r/guys_honest_answers_needed_are_we_heading_toward/"
     ],
     "glossary": {
-      "agent framework": "Software that runs an AI assistant loop (tool calling, state, persistence) so the model can perform multi-step tasks and use system tools safely.",
-      "cleanroom rewrite": "Rebuilding a system from scratch without looking at leaked source — used to avoid legal issues while replicating behavior."
+      "MCP (Model Connector Protocol)": "A simple API format agents use to discover and call external tools with typed inputs/outputs.",
+      "Tool discovery": "Making your agent able to find new services dynamically instead of hardcoding endpoints.",
+      "Orchestration": "Coordinating multiple agents and tools to run complex, multi-step workflows reliably."
     }
   },
   {
-    "group": "Tools & hacks to save tokens and preserve context",
-    "summary": "Developers are shipping small tools that dramatically reduce token waste and make long agent sessions usable: pre-indexers that cut 30–50K tokens per session, prompt-optimizers that rewrite inputs before sending, and local persistent memory systems so your agent remembers past runs. These are low-friction wins if you rely on limited quotas or agent loops.",
+    "group": "AI editors & IDE integrations (Cursor, Claude Code, Composer)",
+    "summary": "New IDE-focused tools (Cursor 3, Composer) and Claude Code are pushing for agent-driven coding workflows, but users report UX friction: hidden prompt plumbing, unexpected file prompts, and editor chat windows that break on multi-file refactors. If you adopt an AI editor, test it on full refactors and multi-file changes — these are where native integrations still fall short.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sa2jbz/i_built_a_tool_that_saves_50k_tokens_per_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1sa7lr8/i_was_burning_through_my_claude_code_quota_in_15/",
-      "https://reddit.com/r/ClaudeAI/comments/1s9x3gt/i_built_claudebrain_persistent_memory_for_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1s9syoj/webclaw_hit_almost_400_github_stars_in_8_days/",
-      "https://reddit.com/r/ChatGPT/comments/1s9mdpv/i_was_losing_2hday_because_of_ai_context_loss/"
+      "https://reddit.com/r/cursor/comments/1sapns6/introducing_cursor_3/",
+      "https://reddit.com/r/cursor/comments/1sapmxg/cursor_3_out_now/",
+      "https://reddit.com/r/cursor/comments/1sb17do/anyone_switched_from_cursor_to_claude_code/",
+      "https://reddit.com/r/cursor/comments/1sbf4us/what_is_different_in_the_new_cursor_ui/",
+      "https://reddit.com/r/cursor/comments/1saeq2n/do_you_also_click_keep_file_20_times/",
+      "https://reddit.com/r/cursor/comments/1saf5hi/composer_2_fast_pricing_doesnt_make_sense_for/"
     ],
     "glossary": {
-      "pre-indexing": "Scanning your codebase or docs once and creating a small summary the model reads instead of re-reading files every session.",
-      "persistent memory": "A local searchable store of previous agent conversations so the model can access past decisions without re-explaining them."
+      "Agent harness / Claude Code": "A wrapper that runs agents (multiple model calls + tool use) inside an editor or CLI to automate coding tasks.",
+      "Context rot / multi-file context loss": "When the editor or model forgets earlier parts of a large change, causing broken imports or inconsistent edits.",
+      "Composer fast vs standard": "A pricing/performance tier tradeoff — faster responses cost more but may not help throughput in many coding workflows."
     }
   },
   {
-    "group": "Harnesses & long-running agent workflows",
-    "summary": "People building production-style agents emphasize separating generation from evaluation, using structured task files, and keeping one clear task per session. If you're building an agent or multi-session workflow, start with a minimal harness and a skeptical evaluator — that pattern consistently reduces failures in real projects.",
+    "group": "Tokenizers, runtime fixes, and local inference tooling",
+    "summary": "Speed wins can be low-level: zero-allocation tokenizers, llama.cpp bug fixes (including Vulkan on 32-bit devices), and community forks that add TurboQuant support are all getting people faster tokenization and larger contexts. If you self-host, keep an eye on runtime patches and tokenizer updates — they can change whether a model runs at all on your hardware.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s9jm0d/i_had_claude_read_every_harness_engineering_guide/",
-      "https://reddit.com/r/ClaudeAI/comments/1s9tluc/building_skynet_with_claude/",
-      "https://reddit.com/r/MachineLearning/comments/1sa09ta/d_we_reimplemented_claude_code_entirely_in_python/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sblae4/built_a_zero_allocation_header_only_c_qwen/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sb5jmv/found_and_fixed_a_llamacpp_bug_that_silently/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sbdark/i_patched_the_opensource_claude_code/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sba46z/llamacpp_gemma4_tokenizer_fix_was_merged_into/"
     ],
     "glossary": {
-      "harness": "A small runtime around a model that handles tasks, memory, evaluation, and safety so the model's behavior is reliable over many sessions.",
-      "evaluator": "A separate component (often another model or rule set) that checks the generator's outputs instead of trusting the generator to self-verify."
-    }
-  },
-  {
-    "group": "Research note: alternative attention (RBF)",
-    "summary": "Someone experimented replacing dot‑product attention with a distance-based RBF kernel and found interesting behavior: it can reduce 'magnitude bullying' by keys and converge faster on small tests, but it required nontrivial engineering and custom kernels. It's an intriguing idea for researchers, but not yet a drop-in for production.",
-    "posts": [
-      "https://reddit.com/r/MachineLearning/comments/1s9cdq0/p_i_replaced_dotproduct_attention_with/"
-    ],
-    "glossary": {
-      "dot-product attention": "The standard Transformer attention that scores tokens by vector dot products.",
-      "RBF (radial basis function) attention": "An alternative that scores tokens by euclidean distance; it rewards actual closeness instead of large magnitudes."
-    }
-  },
-  {
-    "group": "Service reliability & model behavior",
-    "summary": "Alongside local work, many devs are calling out reliability problems in hosted models — outages, token exhaustion bugs, slow Opus responses, billing support failures, and model regressions (Gemini/Claude). If your workflow depends on a cloud model, plan for outages, monitor token burn, and keep a local fallback where possible.",
-    "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1s9fa8t/claude_status_update_elevated_errors_on_requests/",
-      "https://reddit.com/r/cursor/comments/1s9xree/opus_46_extremely_slow_past_day/",
-      "https://reddit.com/r/ClaudeAI/comments/1s9clsn/whats_wrong_with_claude_free_plan/",
-      "https://reddit.com/r/ChatGPT/comments/1s9riim/anthropic_took_my_money_broke_my_account_and_then/",
-      "https://reddit.com/r/GeminiAI/comments/1s9fdph/has_anyone_noticed_that_gemini_pro_has_gotten/",
-      "https://reddit.com/r/GeminiAI/comments/1s9ccy9/gemini_is_horrible"
-    ],
-    "glossary": {
-      "token burn": "How many input/output tokens you're charged for — misconfigured prompts or cache misses can waste large amounts quickly.",
-      "fallback model": "A smaller local model or simpler heuristic you can use when the hosted service is down or throttled."
+      "Tokenizer": "The piece that turns text into the tokens the model understands — faster tokenizers reduce overall latency.",
+      "Vulkan acceleration": "Using the GPU via Vulkan instead of CUDA; important for non-NVIDIA devices but fragile on some runtimes.",
+      "Runtime patch": "A small change to llama.cpp or the client that can fix big issues like OOMs or broken GPU offload."
     }
   }
 ]
