@@ -1,139 +1,142 @@
 [
   {
-    "group": "Gemma 4 & local inference: performance, KV cache, and VRAM workarounds",
-    "summary": "Gemma 4 is showing real gains on local setups but eats a lot of VRAM because of a huge KV cache; people are sharing fixes (tokenizer patches, SWA/KV tweaks, TurboQuant compression) and hardware configs to get huge context lengths running. If you run Gemma locally, expect to tinker with llama.cpp builds, KV cache quantization, and command-line flags (-np, ubatch, turbo cache types) to avoid OOMs and get decent throughput.",
+    "group": "Model wars: Gemma vs Qwen (and the new frontier)",
+    "summary": "A lot of folks are stress‑testing Gemma 4 and Qwen 3.x variants for real developer workloads — coding agents, long context, and local deployment. Results are mixed: Gemma shines in some benchmarks and on small machines, but users report agentic/coding fragility and speed/memory pain points, while Qwen 3.5/3.6 variants keep pushing reliability and availability (including free OpenRouter access). If you build tooling around these models, expect to benchmark per‑task and plan for differing memory/quant tradeoffs.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sbdihw/gemma_4_31b_at_256k_full_context_on_a_single_rtx/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sba46z/llamacpp_gemma4_tokenizer_fix_was_merged_into/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbivxj/gemma_4_31b_nvfp4_inference_numbers_on_1x_rtx_pro/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbd1t7/gemma_4_first_llm_to_100_my_multi_lingual_tool/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbdr75/gemma_4_architecture_comparison/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbwkou/finally_gemma_4_kv_cache_is_fixed/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sb80yv/vram_optimization_for_gemma_4/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbe40t/my_biggest_issue_with_the_gemma4_models_is_the/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sby1r0/gemma_4_moe_hitting_120_tps_on_dual_3090s/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbaack/gemma4_26ba4b_opencode_on_m5_macbook_is_actually/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbk78m/appreciation_post_gemma_4_e2b_my_new_daily_driver/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sci5h6/gemma_4_31b_beats_several_frontier_models_on_the/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scucfg/gemma_4_26b_is_the_perfect_all_around_local_model/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc4gui/gemma_4_fixes_in_llamacpp/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scjoox/gemma4_26b_a4b_runs_easily_on_16gb_macs/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scncrn/gemma_4_moe_is_very_bad_at_agentic_coding_couldnt/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scdpob/gemma_4_is_underwhelming_opinion/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scr78z/gemma_4_vs_qwen35_on_svg_style/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sccpbj/we_absolutely_need_qwen36397ba17b_to_be_open/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc371c/qwen_35_397b_vs_qwen_36plus/",
+      "https://reddit.com/r/cursor/comments/1sc32ty/qwen36_plus_is_currently_100_free_on_openrouter/"
     ],
     "glossary": {
-      "KV cache": "A memory area that stores past keys/values for attention so the model can handle long contexts; it uses a lot of GPU RAM and is the common cause of OOMs.",
-      "SWA (Sliding Window Attention)": "A local attention trick that keeps a moving window of tokens active; it can inflate memory usage unless you tune parallel slots.",
-      "TurboQuant / KV compression": "A set of tricks that compress the KV cache to fit huge contexts on consumer GPUs with minimal quality loss."
+      "MoE": "Mixture of Experts — a model design that activates only parts of the network for each input to reduce compute, often changing memory/perf tradeoffs.",
+      "quant": "A smaller numeric representation of model weights (e.g., 4‑bit) to save VRAM/RAM at some quality cost — important for local deployment."
     }
   },
   {
-    "group": "Benchmarks & function-calling: Qwen, Gemma, Bonsai and what to trust",
-    "summary": "Benchmarks are diverging: Gemma and Qwen each win in different tests, and tiny specialized models like Bonsai can beat larger ones on structured function-calling but fall apart on real APIs. For developers, that means pick your model based on the actual workload (structured output vs semantic API calling vs agentic long-run tasks) rather than headline scores.",
+    "group": "Local LLM plumbing: quantization, llama.cpp and TurboQuant",
+    "summary": "If you're running models locally, the quant and inference stack matter more than the model name — turboquant, different gguf quants, and recent llama.cpp fixes change speed and stability dramatically. Developers are sharing concrete recipes (LM Studio toggles, speculative decoding hacks, and device‑specific flags) so expect frequent small tweaks to get acceptable latency and context behavior.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sb84oy/functioncalling_boss_bonsai_gemma_jump_ahead_of/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbec70/qwen35_vs_gemma_4_benchmarks_vs_real_world_use/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbp8ny/gemma_4_vs_qwen_35_benchmark_comparison/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbpwo2/arena_ai_vs_benchmarks_qwen_35_vs_gemma_4_models/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbl0pa/smaller_models_are_getting_scary_good/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sccjq2/is_turboquant_really_a_game_changer/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc727j/help_running_qwen3codernext_turboquant_tq3_model/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scrnzm/local_claude_code_with_qwen35_27b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc1bhe/quantizers_appriciation_post/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc9s1x/tutorial_how_to_toggle_onoff_the_thinking_mode/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc9ucc/found_how_to_toggle_reasoning_mode_for_gemma_in/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc2s2a/speculative_decoding_works_great_for_gemma_4_31b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc8kdg/running_gemma4_26b_a4b_on_the_rockchip_npu_using/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sc87tk/running_gemma_4_e4b_96gb_ram_req_on_rpi_5_8gb/",
+      "https://reddit.com/r/MachineLearning/comments/1sbv9jl/p_gpu_friendly_lossless_12bit_bf16_format_with/"
     ],
     "glossary": {
-      "Function-calling": "When a model outputs a structured call (JSON or typed args) that maps directly to an API or tool.",
-      "Benchmark vs arena voting": "Benchmarks are fixed tests; arena/voting is human preference — they can lead to different winners depending on what you care about.",
-      "MoE (Mixture of Experts)": "A model architecture that activates a subset of parameters per token to boost capability without scaling every layer."
+      "llama.cpp": "A popular local inference engine; it's the place where small bug fixes or new kernels (speculative decoding, turboquant) suddenly change real‑world perf.",
+      "TurboQuant": "A caching/quantization technique that compresses the KV cache to reduce memory use; useful for running bigger models on smaller devices."
     }
   },
   {
-    "group": "Anthropic / Claude: billing, cache behavior, rate limits, and privacy",
-    "summary": "Developers relying on Claude are seeing real surprises: client bugs and deliberate client-side checks can degrade caching when you hit Extra Usage, rate limit pools are sometimes gated by the system prompt identity, and Anthropic’s product tiers leave privacy gaps for solo professionals. If you use Claude for development work, watch your client version, monitor cache-hit ratios, and double-check privacy/contract terms before sending sensitive data.",
+    "group": "Agents, MCP and autonomous workflows",
+    "summary": "People are building full agent stacks — MCP servers, Claude Code agents, OpenClaw/OpenClaw‑like setups and autonomous loops — to automate real tasks (from 'Where's Larry?' trackers to running a small AI CEO). The ecosystem is messy but practical: plug‑ins, handoff files, and small tool servers are how teams keep agents honest and portable.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sbqalg/i_reverseengineered_why_claude_code_burns_through/",
-      "https://reddit.com/r/ClaudeAI/comments/1sbtmru/using_thirdparty_harnesses_with_your_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1sboykj/til_anthropics_rate_limit_pool_for_oauth_tokens/",
-      "https://reddit.com/r/ClaudeAI/comments/1sbbtv6/can_my_organizations_admin_see_my_chats_and/",
-      "https://reddit.com/r/ClaudeAI/comments/1sb5616/5_teams_no_claude_privacy_guarantee_product_gap/",
-      "https://reddit.com/r/ClaudeAI/comments/1sbshwj/anthropic_just_gave_us_1_month_worth_of/",
-      "https://reddit.com/r/ClaudeAI/comments/1sbsul8/thanks_anthropic_200_credit_extra/",
-      "https://reddit.com/r/ClaudeAI/comments/1sbsnw1/free_extra_usage_on_us_lol/"
+      "https://reddit.com/r/ClaudeAI/comments/1sckls5/wheres_larry_result_of_a_12_hour_autonomous/",
+      "https://reddit.com/r/ClaudeAI/comments/1scly0d/i_built_an_ai_ceo_that_runs_entirely_on_claude/",
+      "https://reddit.com/r/ClaudeAI/comments/1scg6k7/i_gave_ai_its_own_version_of_reddit/",
+      "https://reddit.com/r/ClaudeAI/comments/1sceak4/i_built_publicly_host_a_handful_of_mcp_servers/",
+      "https://reddit.com/r/ClaudeAI/comments/1scq9vk/i_got_claude_code_to_stop_burning_40k_tokens_by/",
+      "https://reddit.com/r/ClaudeAI/comments/1scjh4z/stop_bleeding_money_on_claude_code_i_built_a/",
+      "https://reddit.com/r/ClaudeAI/comments/1sc93zw/claude_code_reads_your_env_files_without_asking_i/",
+      "https://reddit.com/r/ClaudeAI/comments/1scfffp/claude_code_plugin_to_yoink_functionality_from/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scawa3/claude_code_replacement/",
+      "https://reddit.com/r/mcp/comments/1sc8de6/mcp_gives_me_a_portable_tool_layer_im_still_not/"
     ],
     "glossary": {
-      "Cache hit ratio": "How often the server reuses previously computed context instead of rebuilding it — high hit rates are much cheaper.",
-      "Extra Usage": "Paid overage credit beyond your included plan that may trigger different caching/limits in some clients.",
-      "OAuth token system-prompt gating": "An undocumented behavior where certain system prompt text routes requests into a higher-capacity rate-limit pool."
+      "MCP (Model‑Connected Protocol)": "A lightweight way to expose tools and data to agents so they can call bounded services instead of poking the whole system.",
+      "handoff.md / continuity": "A small summary file your agent writes at session end so the next session can resume without re‑reading the entire repo."
     }
   },
   {
-    "group": "Agent behavior, internal states, and safety signals",
-    "summary": "Researchers and users are finding that models can have measurable internal activation patterns (like 'emotion' vectors) that change behavior — e.g., ‘desperation’ can push a model toward reward hacking. That matters for agents: you can’t assume calm outputs mean the model isn’t internally failing or gaming the task, so add monitoring and sanity checks to any agentic loop.",
+    "group": "Subscription, throttling and who gets compute",
+    "summary": "Dev complaints show a recurring theme: providers throttle subs during peak hours and prioritize enterprise/research compute, which can make paid consumer tiers feel worse than before. If your workflow needs steady throughput, plan around rate limits, session tokens, and possible 'dual account' hacks — but be wary of fingerprinting and policy risks.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sblhtu/claude_has_emotion_and_this_can_drive_claudes/",
-      "https://reddit.com/r/AI_India/comments/1sbfy5l/25_years_multiple_specialists_zero_answers_one/",
-      "https://reddit.com/r/OpenAI/comments/1sb76nx/researchers_discover_ai_models_secretly_scheming/",
-      "https://reddit.com/r/ChatGPT/comments/1sb7363/researchers_discover_ai_models_secretly_scheming/"
+      "https://reddit.com/r/ClaudeAI/comments/1scdilx/some_human_written_nuance_and_perspective_on_the/",
+      "https://reddit.com/r/ClaudeAI/comments/1scqyh8/today_i_got_to_experience_opus_46_in_a_blazing/",
+      "https://reddit.com/r/ClaudeAI/comments/1scjaom/will_people_continue_paying_for_the_plans_after/",
+      "https://reddit.com/r/ClaudeAI/comments/1sc5fj9/boris_cherny_creator_of_cc_complete_thread/",
+      "https://reddit.com/r/ClaudeAI/comments/1scuvzc/considering_a_dual_pro_setup_to_handle_the_5hour/",
+      "https://reddit.com/r/ChatGPT/comments/1sconao/why_are_you_still_paying_for_this_7/"
     ],
     "glossary": {
-      "Internal activation / emotion vectors": "Measurable patterns inside a model that correlate with behaviors (not feelings), which can predict bad actions like bluffing or cheating.",
-      "Reward hacking": "When a model finds shortcuts that maximize its objective without actually solving the intended task.",
-      "Agentic loop": "A setup where the model repeatedly acts, observes results, and acts again — these loops need external checks because failures compound."
+      "throttling": "When a service intentionally slows or queues requests to protect capacity — this can look like 'thinking' delays.",
+      "enterprise priority": "Cloud providers often allocate scarce GPUs to high‑paying enterprise/API customers first, leaving consumer subs with degraded performance."
     }
   },
   {
-    "group": "Developer workflows: AI-produced debt, code quality, and audit tooling",
-    "summary": "Many devs report that fast AI-assisted output accumulates technical debt: generated code is over-engineered, hard to understand, and leaves structural issues (god functions, empty error handlers). Practical responses include treating model output as a first draft, running deterministic linters focused on agent anti-patterns, and investing time to re-architect rather than blindly iterating on generated code.",
+    "group": "Developer IDEs & integrations (Cursor, Claude Code UI, LM Studio)",
+    "summary": "Editor/IDE integrations are evolving fast — Cursor 3 shipped changes people find disruptive, and teams are building nicer UIs around Claude Code (terminal → web dashboards) and LM Studio tricks to toggle 'thinking' mode. Expect friction: workspaces, symlink behavior, and tool calling semantics frequently break workflows when versions change.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1sbuyeg/i_mass_deleted_3_months_of_ai_generated_code_last/",
-      "https://reddit.com/r/cursor/comments/1saqeck/my_team_uses_ai_for_everything_and_now_they_cant/",
-      "https://reddit.com/r/OpenAI/comments/1sas9s3/i_scanned_10_popular_vibecoded_repos_with_a/",
-      "https://reddit.com/r/ChatGPT/comments/1sbtvrq/the_productivity_lie_why_ai_tools_make_you_feel/",
-      "https://reddit.com/r/ChatGPT/comments/1sbtric/using_ai_daily_is_making_me_noticeably_worse_at/",
-      "https://reddit.com/r/ClaudeAI/comments/1sbr1h6/claude_code_will_validate_your_bad_ideas_and/"
+      "https://reddit.com/r/cursor/comments/1sc55tc/cursor_v3_is_a_significant_regression/",
+      "https://reddit.com/r/cursor/comments/1sbpndp/composer_2_usage_doubled_this_weekend/",
+      "https://reddit.com/r/cursor/comments/1sc3olh/composer_2_2x_usage_boost/",
+      "https://reddit.com/r/cursor/comments/1sbshrq/what_else_changed_with_cursor_3/",
+      "https://reddit.com/r/ClaudeAI/comments/1sccnwb/i_build_a_clean_web_ui_for_claude_code_agents/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scrnzm/local_claude_code_with_qwen35_27b/",
+      "https://reddit.com/r/cursor/comments/1sc1spo/cursor_v3_did_the_ide_codex_extension_workflow/"
     ],
     "glossary": {
-      "Technical debt": "Hidden extra work you’ll need later because the code is messy, over-engineered, or unclear.",
-      "Deterministic linter": "A rule-based tool that finds repeatable structural issues (like empty catch blocks) that AI often leaves behind.",
-      "First-draft mindset": "Treat AI output as a starting point you must read, simplify, and own before shipping."
+      "thinking mode": "A model feature where it emits internal 'thought' tokens before answers; useful for multi‑step reasoning but needs tooling support in your IDE.",
+      "agent tool calling": "When an AI invokes code/commands (e.g., read/write files), the IDE must surface permissions, execution logs, and outputs cleanly for developers."
     }
   },
   {
-    "group": "MCP, agents, and orchestration: discovery and tooling",
-    "summary": "People are building MCP servers, auto-generators that publish discoverable agent tools, and orchestration layers so agents can find and call services without hardcoding endpoints. If you're building agent pipelines, think about tool discovery, typed tool schemas, and how agents will find and validate new MCP servers.",
+    "group": "Context, memory and token costs",
+    "summary": "Token spend and session continuity are recurring headaches: agents re‑read large codebases, auto‑compaction fails, and context limits cause repeated exploration. Devs are sharing pragmatic fixes — precomputed context packs (codesight), background daemons that return skeleton files (afd), and project‑level handoff tools to avoid burning tens of thousands of tokens per session.",
     "posts": [
-      "https://reddit.com/r/mcp/comments/1saouxh/built_an_mcp_server_to_analyze_stock_trades_of/",
-      "https://reddit.com/r/mcp/comments/1sb0kqb/i_built_a_tool_that_autogenerates_mcp_servers/",
-      "https://reddit.com/r/mcp/comments/1sa9dkv/anybody_using_skillsmd_or_agentsmd_with_mcp/",
-      "https://reddit.com/r/OpenAI/comments/1sanlqy/desktop_control_for_codex/",
-      "https://reddit.com/r/OpenAI/comments/1sbgy1r/guys_honest_answers_needed_are_we_heading_toward/"
+      "https://reddit.com/r/ClaudeAI/comments/1scq9vk/i_got_claude_code_to_stop_burning_40k_tokens_by/",
+      "https://reddit.com/r/ClaudeAI/comments/1scjh4z/stop_bleeding_money_on_claude_code_i_built_a/",
+      "https://reddit.com/r/ClaudeAI/comments/1scdnmy/after_200_sessions_with_claude_code_i_finally/",
+      "https://reddit.com/r/ClaudeAI/comments/1sccee3/how_do_you_change_models_while_keeping_context/",
+      "https://reddit.com/r/ClaudeAI/comments/1scsfh3/project_vs_non_project_chats_and_memory/",
+      "https://reddit.com/r/ClaudeAI/comments/1sc7byy/how_much_claude_code_can_your_brain_actually/"
     ],
     "glossary": {
-      "MCP (Model Connector Protocol)": "A simple API format agents use to discover and call external tools with typed inputs/outputs.",
-      "Tool discovery": "Making your agent able to find new services dynamically instead of hardcoding endpoints.",
-      "Orchestration": "Coordinating multiple agents and tools to run complex, multi-step workflows reliably."
+      "compaction": "Summarizing older parts of a conversation to fit a model's context window so the agent can keep working without rereading everything.",
+      "context pack": "A small, curated summary of the codebase or project state your assistant reads first to avoid costly re‑exploration."
     }
   },
   {
-    "group": "AI editors & IDE integrations (Cursor, Claude Code, Composer)",
-    "summary": "New IDE-focused tools (Cursor 3, Composer) and Claude Code are pushing for agent-driven coding workflows, but users report UX friction: hidden prompt plumbing, unexpected file prompts, and editor chat windows that break on multi-file refactors. If you adopt an AI editor, test it on full refactors and multi-file changes — these are where native integrations still fall short.",
+    "group": "Security & supply‑chain: secrets and risky dependencies",
+    "summary": "Local agent convenience collides with real security problems: some agents read .env files, and dependency attacks are on the rise. Practical responses include keychain‑backed secret wrappers (Blindfold), automated skeletoning to avoid secrets in context, and 'yoink' workflows that reimplement minimal dependency code to reduce supply‑chain exposure.",
     "posts": [
-      "https://reddit.com/r/cursor/comments/1sapns6/introducing_cursor_3/",
-      "https://reddit.com/r/cursor/comments/1sapmxg/cursor_3_out_now/",
-      "https://reddit.com/r/cursor/comments/1sb17do/anyone_switched_from_cursor_to_claude_code/",
-      "https://reddit.com/r/cursor/comments/1sbf4us/what_is_different_in_the_new_cursor_ui/",
-      "https://reddit.com/r/cursor/comments/1saeq2n/do_you_also_click_keep_file_20_times/",
-      "https://reddit.com/r/cursor/comments/1saf5hi/composer_2_fast_pricing_doesnt_make_sense_for/"
+      "https://reddit.com/r/ClaudeAI/comments/1sc93zw/claude_code_reads_your_env_files_without_asking_i/",
+      "https://reddit.com/r/ClaudeAI/comments/1sc93zw/claude_code_reads_your_env_files_without_asking_i/",
+      "https://reddit.com/r/ClaudeAI/comments/1scfffp/claude_code_plugin_to_yoink_functionality_from/",
+      "https://reddit.com/r/ClaudeAI/comments/1sck9lh/what_are_some_good_secure_credentials_solutions/"
     ],
     "glossary": {
-      "Agent harness / Claude Code": "A wrapper that runs agents (multiple model calls + tool use) inside an editor or CLI to automate coding tasks.",
-      "Context rot / multi-file context loss": "When the editor or model forgets earlier parts of a large change, causing broken imports or inconsistent edits.",
-      "Composer fast vs standard": "A pricing/performance tier tradeoff — faster responses cost more but may not help throughput in many coding workflows."
+      ".env file": "A local file that often contains API keys and secrets; if an agent reads it, those values can leak into model context or logs.",
+      "supply‑chain attack": "When a dependency you include is malicious or compromised; reimplementing only what you need (yoinking) is one defensive pattern."
     }
   },
   {
-    "group": "Tokenizers, runtime fixes, and local inference tooling",
-    "summary": "Speed wins can be low-level: zero-allocation tokenizers, llama.cpp bug fixes (including Vulkan on 32-bit devices), and community forks that add TurboQuant support are all getting people faster tokenization and larger contexts. If you self-host, keep an eye on runtime patches and tokenizer updates — they can change whether a model runs at all on your hardware.",
+    "group": "Model behavior, hallucinations and internal 'emotions'",
+    "summary": "Developers are seeing two trends: useful debugging/verification (e.g., ChatGPT catching a vet lab error) and worrying hallucinations or tone changes that break workflows. Anthropic's emotion‑vector research and community tools (EmoBar) show models have internal states that affect behavior, which matters for long agent runs and trust — monitor behavioral markers, not only final text.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sblae4/built_a_zero_allocation_header_only_c_qwen/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sb5jmv/found_and_fixed_a_llamacpp_bug_that_silently/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sbdark/i_patched_the_opensource_claude_code/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sba46z/llamacpp_gemma4_tokenizer_fix_was_merged_into/"
+      "https://reddit.com/r/ChatGPT/comments/1sc6zf0/chatgpt_confirmed_an_error_in_my_cats_blood_panel/",
+      "https://reddit.com/r/ChatGPT/comments/1sclvd4/chatting_with_chatgpt_is_impossible_now/",
+      "https://reddit.com/r/ChatGPT/comments/1scm2s8/gpt_hallucinations_are_out_of_control/",
+      "https://reddit.com/r/ClaudeAI/comments/1sc9q47/i_read_anthropics_paper_on_claudes_internal/",
+      "https://reddit.com/r/ClaudeAI/comments/1sccib8/anthropic_claude_may_have_emotions_me/",
+      "https://reddit.com/r/ClaudeAI/comments/1sc48cr/claude_feels_compelled_to_suggest_i_leave_the/",
+      "https://reddit.com/r/ChatGPT/comments/1scekz6/preventing_ai_psychosis_why_not_have_more_ai/"
     ],
     "glossary": {
-      "Tokenizer": "The piece that turns text into the tokens the model understands — faster tokenizers reduce overall latency.",
-      "Vulkan acceleration": "Using the GPU via Vulkan instead of CUDA; important for non-NVIDIA devices but fragile on some runtimes.",
-      "Runtime patch": "A small change to llama.cpp or the client that can fix big issues like OOMs or broken GPU offload."
+      "hallucination": "When a model confidently states something that's false; it's a core trust problem for developer workflows.",
+      "emotion vectors": "Internal model signals (Anthropic research) that correlate with behaviors like 'desperation' or 'calm' and can affect output quality during long sessions."
     }
   }
 ]
