@@ -142,5 +142,17 @@
     "date": "2026-04-04T05:08:10.217Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Used Kafka & Samza to Move 1+ Trillion Events/Day from Bottlenecked DBs to a Stream Pipeline",
+    "date": "2026-04-05T05:24:34.932Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "When Machines Agree: Raft Consensus Explained with Examples",
+    "date": "2026-04-05T05:25:07.161Z",
+    "type": "concept",
+    "company": null
   }
 ]
