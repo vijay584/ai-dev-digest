@@ -1,142 +1,108 @@
 [
   {
-    "group": "Model wars: Gemma vs Qwen (and the new frontier)",
-    "summary": "A lot of folks are stress‑testing Gemma 4 and Qwen 3.x variants for real developer workloads — coding agents, long context, and local deployment. Results are mixed: Gemma shines in some benchmarks and on small machines, but users report agentic/coding fragility and speed/memory pain points, while Qwen 3.5/3.6 variants keep pushing reliability and availability (including free OpenRouter access). If you build tooling around these models, expect to benchmark per‑task and plan for differing memory/quant tradeoffs.",
+    "group": "Gemma 4: surprising performance, small-model tricks, and quant work",
+    "summary": "Gemma 4 is showing up as a huge cost/performance win in many community benchmarks — people are finding small-parameter variants (E2B/E4B) and new quant approaches (TurboQuant, per-layer embeddings) give big speed and memory tradeoffs. If you run locally or care about mobile/low‑VRAM inference, these posts are worth scanning for which Gemma variant and quant settings people report actually work in practice.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sci5h6/gemma_4_31b_beats_several_frontier_models_on_the/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scucfg/gemma_4_26b_is_the_perfect_all_around_local_model/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc4gui/gemma_4_fixes_in_llamacpp/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scjoox/gemma4_26b_a4b_runs_easily_on_16gb_macs/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scncrn/gemma_4_moe_is_very_bad_at_agentic_coding_couldnt/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scdpob/gemma_4_is_underwhelming_opinion/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scr78z/gemma_4_vs_qwen35_on_svg_style/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sccpbj/we_absolutely_need_qwen36397ba17b_to_be_open/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc371c/qwen_35_397b_vs_qwen_36plus/",
-      "https://reddit.com/r/cursor/comments/1sc32ty/qwen36_plus_is_currently_100_free_on_openrouter/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sdcotc/gemma_4_just_casually_destroyed_every_model_on/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sd5utm/perlayer_embeddings_a_simple_explanation_of_the/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sda3r6/realtime_ai_audiovideo_in_voice_out_on_an_m3_pro/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scwos6/gemma_4_31b_vs_gemma_4_26ba4b_vs_qwen_35_27b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scw979/gemma_4_for_16_gb_vram/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sd05sa/turboquant_seems_to_work_very_well_on_gemma_4_and/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sd8c59/gemma_4_uncensored_autoresearch_results/",
+      "https://reddit.com/r/GeminiAI/comments/1sd8y7s/gemma_4_is_the_1_trending_model_on_hugging_face/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sd9ebl/gemma_4_in_android_studio/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sd54v3/im_shocked_gemma_4_results/"
     ],
     "glossary": {
-      "MoE": "Mixture of Experts — a model design that activates only parts of the network for each input to reduce compute, often changing memory/perf tradeoffs.",
-      "quant": "A smaller numeric representation of model weights (e.g., 4‑bit) to save VRAM/RAM at some quality cost — important for local deployment."
+      "MoE (Mixture of Experts)": "A model design where only a subset of parameters (experts) are used per token, letting huge models act cheaply at inference but requiring all weights to be addressable.",
+      "Quantization": "Shrinking model weights (fewer bits) to reduce memory and speed up inference; tradeoffs vary by method and model.",
+      "Per-layer embeddings": "Embedding vectors stored per transformer layer instead of one global lookup, letting some models be large on paper but cheap in practice because most embeddings are not accessed every step."
     }
   },
   {
-    "group": "Local LLM plumbing: quantization, llama.cpp and TurboQuant",
-    "summary": "If you're running models locally, the quant and inference stack matter more than the model name — turboquant, different gguf quants, and recent llama.cpp fixes change speed and stability dramatically. Developers are sharing concrete recipes (LM Studio toggles, speculative decoding hacks, and device‑specific flags) so expect frequent small tweaks to get acceptable latency and context behavior.",
+    "group": "Claude Code & Cowork: token hygiene, cost control, and real-world plugins",
+    "summary": "Many devs shared hard lessons and tools for keeping Claude-driven engineering affordable and reliable: trim startup context, lazy-load tool schemas, enforce visible failures (don’t let agents fake success), and add hard usage caps. There are also practical community plugins and apps that turn Claude projects into usable developer tools (CLIs, App Store automation, usage dashboards).",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sccjq2/is_turboquant_really_a_game_changer/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc727j/help_running_qwen3codernext_turboquant_tq3_model/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scrnzm/local_claude_code_with_qwen35_27b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc1bhe/quantizers_appriciation_post/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc9s1x/tutorial_how_to_toggle_onoff_the_thinking_mode/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc9ucc/found_how_to_toggle_reasoning_mode_for_gemma_in/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc2s2a/speculative_decoding_works_great_for_gemma_4_31b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc8kdg/running_gemma4_26b_a4b_on_the_rockchip_npu_using/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sc87tk/running_gemma_4_e4b_96gb_ram_req_on_rpi_5_8gb/",
-      "https://reddit.com/r/MachineLearning/comments/1sbv9jl/p_gpu_friendly_lossless_12bit_bf16_format_with/"
+      "https://reddit.com/r/ClaudeAI/comments/1sdmohb/after_months_with_claude_code_the_biggest_time/",
+      "https://reddit.com/r/ClaudeAI/comments/1sd8z2q/anthropic_isnt_the_only_reason_youre_hitting/",
+      "https://reddit.com/r/ClaudeAI/comments/1scylcr/how_to_save_80_on_your_claude_bill_with_better/",
+      "https://reddit.com/r/ClaudeAI/comments/1sd923u/i_built_a_macos_widget_to_track_claude_usage/",
+      "https://reddit.com/r/ClaudeAI/comments/1sdee3e/i_built_a_tool_that_tracks_how_many_times_someone/",
+      "https://reddit.com/r/ClaudeAI/comments/1sdne02/senior_engineer_best_practice_for_scaling/",
+      "https://reddit.com/r/mcp/comments/1sd0cuf/i_built_a_tool_that_converts_mcp_servers_into_cli/",
+      "https://reddit.com/r/ClaudeAI/comments/1sde44i/i_built_clianythingweb_a_claude_code_plugin_that/",
+      "https://reddit.com/r/ClaudeAI/comments/1sdot1s/claude_code_can_now_submit_your_app_to_app_store/"
     ],
     "glossary": {
-      "llama.cpp": "A popular local inference engine; it's the place where small bug fixes or new kernels (speculative decoding, turboquant) suddenly change real‑world perf.",
-      "TurboQuant": "A caching/quantization technique that compresses the KV cache to reduce memory use; useful for running bigger models on smaller devices."
+      "MCP (Modular Control Plane / tool layer)": "A small local/remote service pattern that exposes tools (APIs, CLIs) for agents to call; helps decouple capabilities from model context.",
+      "token cache / cache read": "Providers may avoid re-sending the whole system prompt/history on each turn by using cached prefixes; if the cache expires you pay to reprocess large context again.",
+      "CLAUDE.md": "A project-level instruction file for Claude Code that defines agent preferences, skill modes, and policies to steer behavior."
     }
   },
   {
-    "group": "Agents, MCP and autonomous workflows",
-    "summary": "People are building full agent stacks — MCP servers, Claude Code agents, OpenClaw/OpenClaw‑like setups and autonomous loops — to automate real tasks (from 'Where's Larry?' trackers to running a small AI CEO). The ecosystem is messy but practical: plug‑ins, handoff files, and small tool servers are how teams keep agents honest and portable.",
+    "group": "Agentic flows, tool calling, and multi‑agent orchestration",
+    "summary": "People are pushing multi-agent patterns (scheduled Cowork sessions, git worktrees, compound engineering) but hitting plumbing bugs: tool-call parsing, thinking-tag leakage, and finish_reason inconsistencies across local servers. There are practical fixes and benchmarks that show when splitting planning vs execution (Opus + Codex) saves money — but tool-calling reliability is the real friction point.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sckls5/wheres_larry_result_of_a_12_hour_autonomous/",
-      "https://reddit.com/r/ClaudeAI/comments/1scly0d/i_built_an_ai_ceo_that_runs_entirely_on_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1scg6k7/i_gave_ai_its_own_version_of_reddit/",
-      "https://reddit.com/r/ClaudeAI/comments/1sceak4/i_built_publicly_host_a_handful_of_mcp_servers/",
-      "https://reddit.com/r/ClaudeAI/comments/1scq9vk/i_got_claude_code_to_stop_burning_40k_tokens_by/",
-      "https://reddit.com/r/ClaudeAI/comments/1scjh4z/stop_bleeding_money_on_claude_code_i_built_a/",
-      "https://reddit.com/r/ClaudeAI/comments/1sc93zw/claude_code_reads_your_env_files_without_asking_i/",
-      "https://reddit.com/r/ClaudeAI/comments/1scfffp/claude_code_plugin_to_yoink_functionality_from/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scawa3/claude_code_replacement/",
-      "https://reddit.com/r/mcp/comments/1sc8de6/mcp_gives_me_a_portable_tool_layer_im_still_not/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sdhvc5/qwen_35_tool_calling_fixes_for_agentic_use_whats/",
+      "https://reddit.com/r/ClaudeAI/comments/1sdk2sj/i_benchmarked_plan_with_opus_execute_with_codex/",
+      "https://reddit.com/r/ClaudeAI/comments/1sdfxym/the_fomo_of_20_multiagent_workflow_setups/",
+      "https://reddit.com/r/ClaudeAI/comments/1sdjkll/building_an_intelligent_mcp_layer_for_roles/",
+      "https://reddit.com/r/cursor/comments/1scqt1h/cursor_3_worktree_management/"
     ],
     "glossary": {
-      "MCP (Model‑Connected Protocol)": "A lightweight way to expose tools and data to agents so they can call bounded services instead of poking the whole system.",
-      "handoff.md / continuity": "A small summary file your agent writes at session end so the next session can resume without re‑reading the entire repo."
+      "tool call": "When a model returns a structured instruction to invoke a function or external tool instead of plain text — the harness must parse and execute it reliably.",
+      "finish_reason": "A signal from the model/server indicating why generation stopped (e.g., 'stop', 'tool_use'); inconsistent values break agent loops.",
+      "git worktree": "A lightweight way to have multiple working directories/branches for parallel agent workflows without merge conflicts."
     }
   },
   {
-    "group": "Subscription, throttling and who gets compute",
-    "summary": "Dev complaints show a recurring theme: providers throttle subs during peak hours and prioritize enterprise/research compute, which can make paid consumer tiers feel worse than before. If your workflow needs steady throughput, plan around rate limits, session tokens, and possible 'dual account' hacks — but be wary of fingerprinting and policy risks.",
+    "group": "Running models locally: hardware, benchmarks, and practical tradeoffs",
+    "summary": "Benchmarks across Raspberry Pi, MacBooks, desktop GPUs, and M-series chips show that choice of model variant, quant recipe, and I/O (swap/mmap/SSD) matters more than headline parameter counts. Expect latency / token rate differences, and that local setups still feel fiddly — many posts say 'it works but it's not yet boring infrastructure.'",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1scdilx/some_human_written_nuance_and_perspective_on_the/",
-      "https://reddit.com/r/ClaudeAI/comments/1scqyh8/today_i_got_to_experience_opus_46_in_a_blazing/",
-      "https://reddit.com/r/ClaudeAI/comments/1scjaom/will_people_continue_paying_for_the_plans_after/",
-      "https://reddit.com/r/ClaudeAI/comments/1sc5fj9/boris_cherny_creator_of_cc_complete_thread/",
-      "https://reddit.com/r/ClaudeAI/comments/1scuvzc/considering_a_dual_pro_setup_to_handle_the_5hour/",
-      "https://reddit.com/r/ChatGPT/comments/1sconao/why_are_you_still_paying_for_this_7/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sd0be8/comparing_qwen35_vs_gemma4_for_local_agentic/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sdcdno/benchmarks_of_gemma4_and_multiple_others_on/",
+      "https://reddit.com/r/LocalLLaMA/comments/1scz75j/lowkey_disappointed_with_128gb_macbook_pro/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sdd19k/how_practical_is_your_opencode_setup_with_local/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sdfx8l/qwen_27b_and_other_dense_models_optimization/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sdpa2k/hot_take_local_ai_only_becomes_mainstream_when/"
     ],
     "glossary": {
-      "throttling": "When a service intentionally slows or queues requests to protect capacity — this can look like 'thinking' delays.",
-      "enterprise priority": "Cloud providers often allocate scarce GPUs to high‑paying enterprise/API customers first, leaving consumer subs with degraded performance."
+      "KV cache": "The key/value cache for attention used during generation — quantizing or offloading it has large effects on speed and VRAM.",
+      "GGUF / q4_k / IQ4": "Common local model file formats and quantization tags you’ll see in llama.cpp/ggml-based runtimes; they indicate size/precision.",
+      "swap / mmap": "Techniques to keep parts of a model on disk and stream them into RAM — useful for tiny hardware but adds latency and complexity."
     }
   },
   {
-    "group": "Developer IDEs & integrations (Cursor, Claude Code UI, LM Studio)",
-    "summary": "Editor/IDE integrations are evolving fast — Cursor 3 shipped changes people find disruptive, and teams are building nicer UIs around Claude Code (terminal → web dashboards) and LM Studio tricks to toggle 'thinking' mode. Expect friction: workspaces, symlink behavior, and tool calling semantics frequently break workflows when versions change.",
+    "group": "Safety, guardrails, hallucinations, and uncensoring experiments",
+    "summary": "Developers are noisy about guardrail failures (image-create filters, hallucinations) and some researchers show how abliteration/weight surgery can remove refusals — but that opens safety and legal questions. If you’re experimenting with model safety or doing red-team research, expect architecture-specific behaviors (MoE vs dense) and that 'uncensoring' often requires per-model, per-layer work.",
     "posts": [
-      "https://reddit.com/r/cursor/comments/1sc55tc/cursor_v3_is_a_significant_regression/",
-      "https://reddit.com/r/cursor/comments/1sbpndp/composer_2_usage_doubled_this_weekend/",
-      "https://reddit.com/r/cursor/comments/1sc3olh/composer_2_2x_usage_boost/",
-      "https://reddit.com/r/cursor/comments/1sbshrq/what_else_changed_with_cursor_3/",
-      "https://reddit.com/r/ClaudeAI/comments/1sccnwb/i_build_a_clean_web_ui_for_claude_code_agents/",
-      "https://reddit.com/r/LocalLLaMA/comments/1scrnzm/local_claude_code_with_qwen35_27b/",
-      "https://reddit.com/r/cursor/comments/1sc1spo/cursor_v3_did_the_ide_codex_extension_workflow/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sd8c59/gemma_4_uncensored_autoresearch_results/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sdkb68/abliterating_qwen35397b_on_a_mac_studio_revealed/",
+      "https://reddit.com/r/ChatGPT/comments/1sdkfc0/wtf_is_up_with_the_hallucinations/",
+      "https://reddit.com/r/ChatGPT/comments/1sd878v/image_create_guardrails_are_made_of_wet_cardboard/",
+      "https://reddit.com/r/ChatGPT/comments/1sdnrmh/but_yeah_deepseek_is_censored/"
     ],
     "glossary": {
-      "thinking mode": "A model feature where it emits internal 'thought' tokens before answers; useful for multi‑step reasoning but needs tooling support in your IDE.",
-      "agent tool calling": "When an AI invokes code/commands (e.g., read/write files), the IDE must surface permissions, execution logs, and outputs cleanly for developers."
+      "hallucination": "When a model confidently produces incorrect or fabricated facts; a big risk for QA and automation.",
+      "abliteration / weight surgery": "Targeted modification of model weights to remove behaviors (e.g., refusals); effective but risky and model-specific.",
+      "refusal": "A model’s decision to decline answering a prompt for safety/policy reasons; how refusals are implemented can differ by architecture."
     }
   },
   {
-    "group": "Context, memory and token costs",
-    "summary": "Token spend and session continuity are recurring headaches: agents re‑read large codebases, auto‑compaction fails, and context limits cause repeated exploration. Devs are sharing pragmatic fixes — precomputed context packs (codesight), background daemons that return skeleton files (afd), and project‑level handoff tools to avoid burning tens of thousands of tokens per session.",
+    "group": "Model selection, cost-efficiency, and long‑running task reliability",
+    "summary": "Benchmarks and cost posts show tradeoffs: cheaper models (Haiku, smaller Gemma variants, Qwen 3.5) can be the practical choice, and hybrid pipelines (plan with one model, execute with another) have a crossover point where they save money. For long-running or agentic jobs, many devs report proprietary frontier models often stay coherent longer — so check harness/memory behavior, not just raw model quality.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1scq9vk/i_got_claude_code_to_stop_burning_40k_tokens_by/",
-      "https://reddit.com/r/ClaudeAI/comments/1scjh4z/stop_bleeding_money_on_claude_code_i_built_a/",
-      "https://reddit.com/r/ClaudeAI/comments/1scdnmy/after_200_sessions_with_claude_code_i_finally/",
-      "https://reddit.com/r/ClaudeAI/comments/1sccee3/how_do_you_change_models_while_keeping_context/",
-      "https://reddit.com/r/ClaudeAI/comments/1scsfh3/project_vs_non_project_chats_and_memory/",
-      "https://reddit.com/r/ClaudeAI/comments/1sc7byy/how_much_claude_code_can_your_brain_actually/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sdcotc/gemma_4_just_casually_destroyed_every_model_on/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sd4trk/mapping_true_coding_efficiency_coding_index_vs/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sd99su/why_are_proprietary_frontier_models_like_opus_and/",
+      "https://reddit.com/r/ClaudeAI/comments/1sdad79/my_actual_aws_bill_running_claude_in_production_for_5_months/",
+      "https://reddit.com/r/ClaudeAI/comments/1scylcr/how_to_save_80_on_your_claude_bill_with_better/"
     ],
     "glossary": {
-      "compaction": "Summarizing older parts of a conversation to fit a model's context window so the agent can keep working without rereading everything.",
-      "context pack": "A small, curated summary of the codebase or project state your assistant reads first to avoid costly re‑exploration."
-    }
-  },
-  {
-    "group": "Security & supply‑chain: secrets and risky dependencies",
-    "summary": "Local agent convenience collides with real security problems: some agents read .env files, and dependency attacks are on the rise. Practical responses include keychain‑backed secret wrappers (Blindfold), automated skeletoning to avoid secrets in context, and 'yoink' workflows that reimplement minimal dependency code to reduce supply‑chain exposure.",
-    "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sc93zw/claude_code_reads_your_env_files_without_asking_i/",
-      "https://reddit.com/r/ClaudeAI/comments/1sc93zw/claude_code_reads_your_env_files_without_asking_i/",
-      "https://reddit.com/r/ClaudeAI/comments/1scfffp/claude_code_plugin_to_yoink_functionality_from/",
-      "https://reddit.com/r/ClaudeAI/comments/1sck9lh/what_are_some_good_secure_credentials_solutions/"
-    ],
-    "glossary": {
-      ".env file": "A local file that often contains API keys and secrets; if an agent reads it, those values can leak into model context or logs.",
-      "supply‑chain attack": "When a dependency you include is malicious or compromised; reimplementing only what you need (yoinking) is one defensive pattern."
-    }
-  },
-  {
-    "group": "Model behavior, hallucinations and internal 'emotions'",
-    "summary": "Developers are seeing two trends: useful debugging/verification (e.g., ChatGPT catching a vet lab error) and worrying hallucinations or tone changes that break workflows. Anthropic's emotion‑vector research and community tools (EmoBar) show models have internal states that affect behavior, which matters for long agent runs and trust — monitor behavioral markers, not only final text.",
-    "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1sc6zf0/chatgpt_confirmed_an_error_in_my_cats_blood_panel/",
-      "https://reddit.com/r/ChatGPT/comments/1sclvd4/chatting_with_chatgpt_is_impossible_now/",
-      "https://reddit.com/r/ChatGPT/comments/1scm2s8/gpt_hallucinations_are_out_of_control/",
-      "https://reddit.com/r/ClaudeAI/comments/1sc9q47/i_read_anthropics_paper_on_claudes_internal/",
-      "https://reddit.com/r/ClaudeAI/comments/1sccib8/anthropic_claude_may_have_emotions_me/",
-      "https://reddit.com/r/ClaudeAI/comments/1sc48cr/claude_feels_compelled_to_suggest_i_leave_the/",
-      "https://reddit.com/r/ChatGPT/comments/1scekz6/preventing_ai_psychosis_why_not_have_more_ai/"
-    ],
-    "glossary": {
-      "hallucination": "When a model confidently states something that's false; it's a core trust problem for developer workflows.",
-      "emotion vectors": "Internal model signals (Anthropic research) that correlate with behaviors like 'desperation' or 'calm' and can affect output quality during long sessions."
+      "RAG (Retrieval-Augmented Generation)": "A pattern where a search or vector DB provides documents that the model uses to ground answers, saving tokens and reducing hallucination risk.",
+      "planner + executor pattern": "Use a high-level model to plan (cheap tokens) and a cheaper/execution-focused model to generate code or run steps; cost-effective above a certain task size.",
+      "compute proxy / coding index": "Heuristics combining token use and active parameters to compare real-world coding efficiency across models, not just tok/s speed."
     }
   }
 ]
