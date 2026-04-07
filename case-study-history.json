@@ -166,5 +166,17 @@
     "date": "2026-04-06T05:38:30.221Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Scaled Git Operations: Gitaly, Praefect, and shaving 4x off RPC latency",
+    "date": "2026-04-07T05:24:07.178Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Sagas: How to Do Distributed 'Transactions' Without Holding the World Hostage",
+    "date": "2026-04-07T05:24:46.603Z",
+    "type": "concept",
+    "company": null
   }
 ]
