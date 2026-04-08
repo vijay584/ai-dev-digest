@@ -178,5 +178,17 @@
     "date": "2026-04-07T05:24:46.603Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Cut Video Bitrate ~20% (and Saved Terabits) with Per‑Title Encoding + Open Connect",
+    "date": "2026-04-08T05:25:18.044Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Cache Patterns Unlocked: When to Use Cache-Aside, Write-Through, and Write-Back",
+    "date": "2026-04-08T05:25:58.150Z",
+    "type": "concept",
+    "company": null
   }
 ]
