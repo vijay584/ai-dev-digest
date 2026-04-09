@@ -190,5 +190,17 @@
     "date": "2026-04-08T05:25:58.150Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Stopped Duplicate Charges at Scale: Idempotency, Durable Webhooks, and a 90%+ Drop in Duplicate Payments",
+    "date": "2026-04-09T05:25:45.221Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Event Sourcing + CQRS: Turn Every Change into a Truthful, Replayable Log",
+    "date": "2026-04-09T05:26:25.944Z",
+    "type": "concept",
+    "company": null
   }
 ]
