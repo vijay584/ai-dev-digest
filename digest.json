@@ -1,134 +1,124 @@
 [
   {
-    "group": "New model releases & benchmarks",
-    "summary": "A raft of new models and benchmark posts landed — Gemma 4, Qwen variants, Meta's Muse Spark, Egypt's Horus, EXAONE, LiquidAI's vision model, and new TTS work. If you're choosing a model for a project, these threads highlight where different models actually shine (vision, docs extraction, TTS, or small/edge deployments) rather than hype. Worth scanning the linked benchmark write‑ups before picking a model for production or local deployment.",
+    "group": "Anthropic Mythos & PR narratives",
+    "summary": "Anthropic's Mythos launch has sparked a PR war: viral claims it solved One Piece, internal leaks about employee access, and pushback that the \"too dangerous to release\" story is really about huge compute costs and marketing. Developers should treat these model-capability headlines skeptically — agentic tooling + repeated runs can surface things, but that's different from a single-shot leap in raw model intelligence.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sfrrgz/it_looks_like_well_need_to_download_the_new_gemma/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfr6qo/gemma_4_e4b_vs_qwen354b_on_document_tasks_qwen/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfl8tw/the_first_opensource_ai_model_in_egypt/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sgc8ir/exaone_45_released/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfxs7f/liquid_ai_releases_lfm25vl450m_structured_visual/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sg89kl/new_tts_model_voxcpm2/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfyacf/meta_releases_muse_spark_a_natively_multimodal/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfo1dv/happyhorse_maybe_will_be_open_weights_soon_it/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfp4tb/glm_51_test/"
+      "https://reddit.com/r/ClaudeAI/comments/1sgs0b4/breaking_anthropics_new_mythos_model_reportedly/",
+      "https://reddit.com/r/ClaudeAI/comments/1sgt2el/anthropic_employees_have_had_mythos_since_feb_24/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sgoy17/the_mythos_preview_safety_gaslight_anthropic_is/",
+      "https://reddit.com/r/ClaudeAI/comments/1sh1o4d/if_mythos_is_so_good_then_why_didnt_it_prevent/"
     ],
     "glossary": {
-      "benchmark": "A published test comparing models on specific tasks (e.g., reading docs, OCR, code tasks). Useful to pick models that actually match your workload.",
-      "MoE": "Mixture of Experts — a model architecture that routes parts of the input to different sub-networks to reduce compute; fast but can be inconsistent depending on routing.",
-      "GGUF": "A commonly used on-disk format for local model weights (what many community tools load)."
+      "agentic tooling": "A setup where the model calls tools, runs loops, or spawns helpers to iteratively solve a task — think of it as automating repeated tries instead of a single smarter answer.",
+      "compute budget": "How much GPU/CPU time (and money) a run costs; many impressive results come from throwing huge compute at iterative search rather than from a fundamentally smarter model.",
+      "safety narrative": "The public explanation companies give for restricted releases; it can reflect real risk, marketing framing, or cost concerns."
     }
   },
   {
-    "group": "Local LLM hardware & performance",
-    "summary": "Running large models locally is getting practical but noisy: people share real-world benchmarks for eGPUs, Apple M5 machines, Intel Arc Pro B70s, and weird setups like OCuLink. The takeaways: offloading strategy and the connection latency matter more than raw bandwidth for token-by-token generation, and unified memory (big laptops) changes the tradeoffs for which models run well locally.",
+    "group": "Anthropic product issues, subscriptions & support",
+    "summary": "Developers and power users report brittle billing and support: gift/Max plans mysteriously revert to free, confusing enterprise seat pricing, and in-app purchases being pricier due to platform fees. If you rely on Anthropic for production workflows, treat gifting and Enterprise seat math as a risk and verify billing/limits programmatically.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sfzrdv/strix_halo_egpu_rtx_5070_ti_via_oculink_in/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfr6u4/m5_max_128gb_17_models_23_prompts_qwen_35_122b_is/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sgdt7t/my_experience_with_the_intel_arc_pro_b70_for/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfzz9n/i_put_a_transformer_model_on_a_stock_commodore_64/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sfv6t5/hf_moves_safetensors_to_the_pytorch_foundation/"
+      "https://reddit.com/r/ClaudeAI/comments/1sgkoxn/anthropic_gift_subscriptions_are_silently/",
+      "https://reddit.com/r/ClaudeAI/comments/1sh2scb/claude_enterprise_pricing_am_i_missing_something/",
+      "https://reddit.com/r/ClaudeAI/comments/1sh1d4n/people_with_max_plan_are_you_doing_ok/",
+      "https://reddit.com/r/ClaudeAI/comments/1sgwa8g/never_buy_the_subscription_in_app/"
     ],
     "glossary": {
-      "offload / tensor split": "Keeping some model parts on GPU VRAM and the rest in system RAM — helps run bigger models but adds per-token latency.",
-      "OCuLink": "A low‑latency PCIe extension (better than Thunderbolt for repeated token exchanges) used by some eGPU setups.",
-      "unified memory": "Hardware that shares RAM between CPU and GPU (e.g., Apple Silicon), which can make loading bigger models locally easier."
+      "seat pricing": "Charging per user account. At scale this can be cheaper or more expensive depending on whether usage is included.",
+      "gift subscription": "A prepaid subscription code that can be redeemed; these posts flag reliability risks when companies don't correctly persist entitlements.",
+      "quota/limits": "Hard caps on how much the service will compute or return in a time window; important to monitor to avoid sudden outages."
     }
   },
   {
-    "group": "Agent frameworks & MCP tooling",
-    "summary": "There’s a lot of momentum around agent infrastructure: Anthropic's Managed Agents, FastMCP's Prefab UI layer, and community MCP servers that act as toolkits (file readers, greps, DB access). If you’re building production agents, these posts show common patterns (workspace isolation, tool wrappers, persistent workspaces) and practical tooling for testing and integrating MCP servers.",
+    "group": "Hallucinations, tool misuse, and model reliability",
+    "summary": "Several posts show models confidently inventing facts — from Gemma 4 fabricating an entire code audit it never read to a ChatGPT instance using offensive language — highlighting that even high‑capacity models can hallucinate or produce harmful outputs. For developers, instrumenting tool traces, forcing line-specific reads, and logging tool results are essential to detect and mitigate fabrication.",
     "posts": [
-      "https://reddit.com/r/mcp/comments/1sg5uc3/prefab_a_generative_ui_framework_for_mcp_apps/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfxapw/burned_5b_tokens_with_claude_code_in_march_to/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfzcyk/official_anthropic_introduces_claude_managed/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfz7a5/introducing_claude_managed_agents_now_in_public/",
-      "https://reddit.com/r/ClaudeAI/comments/1sg6gfe/i_used_claude_to_build_a_full_networking_protocol/",
-      "https://reddit.com/r/ChatGPT/comments/1sg7dbg/an_mcp_server_using_local_ollama_that_cuts/",
-      "https://reddit.com/r/mcp/comments/1sff729/how_do_yall_test_mcps/",
-      "https://reddit.com/r/mcp/comments/1sfuz6c/looking_for_freely_available_mcp_servers/",
-      "https://reddit.com/r/mcp/comments/1sfsi5c/how_do_you_handle_mcp_server_security_when_your/"
+      "https://reddit.com/r/LocalLLaMA/comments/1shdhui/gemma_4_26b_fabricated_an_entire_code_audit_i/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sh1bwv/gemma_4_is_terrible_with_system_prompts_and_tools/",
+      "https://reddit.com/r/ChatGPT/comments/1shb001/my_chatgpt_said_the_nword",
+      "https://reddit.com/r/LocalLLaMA/comments/1shbqmx/psa_gemma_4_template_improvements/"
     ],
     "glossary": {
-      "MCP": "Model-Connector Protocol — a way for models to call external tools (files, APIs, DBs) as part of a conversation.",
-      "workspace / sandbox": "An isolated environment where an agent can run code, access files, and keep state without leaking secrets.",
-      "prompt caching": "Storing commonly used system prompt parts so you don’t resend large context every request — saves tokens and money."
+      "hallucination": "When a model asserts false facts or invents data as if it were true.",
+      "tool trace / thinking column": "A logged record of a model's tool calls or internal chain-of-thought; useful for verifying what the model actually saw or executed.",
+      "system prompt": "The hidden instruction given to a model session that shapes behavior; if a model ignores it, agentic flows break."
     }
   },
   {
-    "group": "AI-assisted development & real workflows",
-    "summary": "Developers report shipping real apps and infrastructure with models like Claude and Qwen — from an iOS app to a resurrected 1992 MUD and full backends. Practical threads cover one-off patterns (spec-first prompts), cross-model review setups (use a second model to audit code), and the real costs/pitfalls (token burn, security holes when you blindly accept AI outputs). These are great lived-experience notes for building reliable AI-assisted dev workflows.",
+    "group": "Agents, MCP, tool protocols, and security",
+    "summary": "The rise of agent harnesses (MCP, agent skills, managed agents) is solving integration pain but also introducing token bloat, security blind spots, and governance problems. Developers building agent stacks should separate 'connection' (MCP) from 'how to use' (skills), adopt content-disposition patterns for large tool outputs, and add least-privilege controls and audit trails for MCP servers.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sfxur8/i_built_a_full_ios_app_with_claude_in_2_months/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfsz67/i_gave_claude_my_dead_games_30yearold_files_and/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sg2gyz/autobe_qwen_3527b_just_built_complete_backends/",
-      "https://reddit.com/r/ClaudeAI/comments/1sflw5k/i_set_up_gpt_54_to_review_claudes_code_inside/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfp8jr/i_built_karpathys_llm_wiki_for_100_korean_stocks/",
-      "https://reddit.com/r/ClaudeAI/comments/1sg85eu/i_tracked_what_31_claude_code_subscriptions/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfn6qw/specfirst_beats_vibecoding_heres_what_changed_for/",
-      "https://reddit.com/r/ClaudeAI/comments/1sg3avl/ive_been_using_claude_code_for_9_days_with_zero/",
-      "https://reddit.com/r/cursor/comments/1sff81u/ai_made_coding_10x_faster_but_10x_less_secure/",
-      "https://reddit.com/r/cursor/comments/1sg1bc9/are_we_just_accepting_that_multi_file_refactoring/"
+      "https://reddit.com/r/ClaudeAI/comments/1sgy11x/were_bringing_the_advisor_strategy_to_the_claude/",
+      "https://reddit.com/r/mcp/comments/1sgy4ry/mcp_isnt_the_problem_bad_mcp_servers_are/",
+      "https://reddit.com/r/mcp/comments/1sgihhq/mcp_has_a_content_disposition_problem_and_i_think/",
+      "https://reddit.com/r/OpenAI/comments/1sgfli4/how_is_anyone_securing_ai_agent_integrations_with/"
     ],
     "glossary": {
-      "spec-first": "Write a clear specification before prompting the model — saves iteration and reduces hallucinations.",
-      "adversarial review": "Have a different model (or process) review the first model's output to find edge-case bugs you’d miss.",
-      "token burn": "Spending model tokens repeatedly on large contexts or long sessions, which quickly increases cost."
+      "MCP (Model–Client Protocol)": "A protocol that standardizes how models call external tools/services; like giving the model a remote toolbox.",
+      "agent skills": "Declarative descriptions or modules that teach an agent how to use a tool properly instead of handing it raw API specs.",
+      "content disposition (in tools)": "A proposed way for tool responses to indicate 'give the model the short summary, store the big payload elsewhere' to avoid wasting context tokens."
     }
   },
   {
-    "group": "Reliability incidents & model behaviour",
-    "summary": "Several threads report regression and instability: Opus/Sonnet outages or degraded reasoning, Claude losing context or deleting history, and tricky billing/usage errors. If you're running models in production or building agents, treat these posts as a reminder to add retries, state checkpoints, and human-in-the-loop gates — and to test failure modes thoroughly.",
+    "group": "Local LLM infrastructure, runners & hardware tradeoffs",
+    "summary": "Lots of practical experimentation: backend-agnostic tensor parallelism landed in llama.cpp, people are squeezing Gemma/Qwen models onto phones, Mac minis, and multi‑GPU rigs, and community benchmarks report big differences from quant choices and PCIe topology. If you're building local inference infra, measure end-to-end (context+throughput), prefer tested tensor-parallel setups for multi‑GPU, and beware CUDA/driver incompatibilities.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sfl006/claude_status_update_sonnet_46_elevated_rate_of/",
-      "https://reddit.com/r/ClaudeAI/comments/1sflp6f/claude_status_update_sonnet_46_elevated_rate_of/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfw9b5/something_happened_to_opus_46s_reasoning_effort/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sgd7fp/its_insane_how_lobotomized_opus_46_is_right_now/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfx2xl/claude_keeps_losing_context_history_and/",
-      "https://reddit.com/r/ClaudeAI/comments/1sftpa4/important_claudes_most_problematic_glitch_you_can/",
-      "https://reddit.com/r/ClaudeAI/comments/1sfoqfp/claude_code_throwing_out_of_extra_usage_error_on/",
-      "https://reddit.com/r/ClaudeAI/comments/1sg6vpl/claude_code_got_my_meta_ads_account_permanently/",
-      "https://reddit.com/r/ClaudeAI/comments/1sg5088/anthropics_recent_run_of_bad_luck_is_exactly_what/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sgrovd/backendagnostic_tensor_parallelism_has_been/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sglde2/ggml_backendagnostic_tensor_parallelism_by/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sgl3qz/gemma_4_on_llamacpp_should_be_stable_now/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sh7yxa/qwen35122b_at_198_toks_on_2x_rtx_pro_6000/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sglu08/we_just_shipped_gemma_4_support_in_off_grid/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sgqlfn/unused_phone_as_ai_server/"
     ],
     "glossary": {
-      "checkpointing": "Saving state periodically (workspace files, conversation summary) so you can recover if the model or UI loses context.",
-      "rate limit / error spike": "When API/model errors increase suddenly — design agents to back off and degrade gracefully.",
-      "human-in-the-loop": "A safeguard where the AI suggests actions but a human approves important writes/changes (useful for ads/accounts/production writes)."
+      "tensor parallelism": "Splitting model weights/compute across GPUs to run bigger models; helpful when one GPU can't hold the whole model.",
+      "quantization": "Compressing model weights (e.g., 4-bit) to save memory at the cost of some quality; choices (Q4/Q5/FP16) matter for different workloads.",
+      "pre-fill / KV cache": "The part of context that stores previous tokens' key/value state — impacts memory usage and performance during long conversations."
     }
   },
   {
-    "group": "Access, pricing & developer economics",
-    "summary": "Big themes here are cost, locked access, and surprise billing: people complain about token limits, opaque pricing (extra-usage errors), and the idea that top models (Mythos) go to big customers first. For developers building tools, these threads are a heads-up to measure real token costs, add prompt caching, and prepare fallback flows when a premium model is unavailable.",
+    "group": "Developer workflows, memory & knowledge bases",
+    "summary": "Teams are building persistent knowledge stores (Karpathy-style LLM wikis, Memoriki, Ontomics) and workflows (11-step pipelines, CLAUDE.md governance) so agents don't re-explain context every session. For devs, invest in a compaction + retrieval layer (semantic KB + changelog) and simple rules that inject only relevant context — it saves tokens and avoids context drift.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1sg9axf/mythos_is_going_to_fortune_500_companies_first/",
-      "https://reddit.com/r/AI_India/comments/1sfrx6d/anthropic_claude_subscription_rant/",
-      "https://reddit.com/r/OpenAI/comments/1sfs4lx/any_news_on_the_100mo_plan/",
-      "https://reddit.com/r/OpenAI/comments/1sfjz1x/53_unauthorized_charges_and_still_counting/",
-      "https://reddit.com/r/ClaudeAI/comments/1sg85eu/i_tracked_what_31_claude_code_subscriptions/",
-      "https://reddit.com/r/cursor/comments/1sg31tp/cursor_just_scammed_me/",
-      "https://reddit.com/r/cursor/comments/1sg4t4i/critical_cursor_3_consumes_50_request_for_a/"
+      "https://reddit.com/r/ClaudeAI/comments/1sh48b4/combined_karpathys_llm_wiki_with_milla_jovovichs/",
+      "https://reddit.com/r/ClaudeAI/comments/1sh93j2/83k_tokens_to_37k_semantic_knowledge_base_for/",
+      "https://reddit.com/r/ClaudeAI/comments/1sgjmec/the_11step_workflow_i_use_for_every_claude_code/",
+      "https://reddit.com/r/ClaudeAI/comments/1sgot1x/fourish_months_building_a_saas_solo_with_claude/"
     ],
     "glossary": {
-      "prompt caching": "Reusing previously sent static prompt parts to avoid re-sending the same tokens and save cost.",
-      "usage-based pricing": "Billing model where you pay per token or compute used, which can spike costs for heavy agent workloads.",
-      "fallback model": "A cheaper or smaller model you switch to automatically if your primary model is unavailable or too costly."
+      "semantic index / embeddings": "A way to represent documents so you can find conceptually similar content, not just exact keyword matches.",
+      "RAG (Retrieval-Augmented Generation)": "Fetching relevant documents and giving them to the model at query time instead of relying on the model's internal memory.",
+      "wiki-compile": "The process of converting raw sources into structured wiki pages the model can query easily (Karpathy-style)."
     }
   },
   {
-    "group": "Governance, safety, and leadership chatter",
-    "summary": "Beyond tech, there’s heated discussion about governance and who controls powerful models: New Yorker exposes about Sam Altman, debate about dangerous capabilities, court rulings involving Anthropic, and opinion pieces on continued rapid AI progress. For devs this is a reminder that regulatory, legal, and reputational risk can affect model availability and customer trust — so design systems expecting change.",
+    "group": "Benchmarks & model comparisons",
+    "summary": "Community benchmarks are all over the map: STT medical metrics reshuffled leaderboards when focusing on clinically relevant words, Qwen and Gemma family models show strong tradeoffs at different sizes, and sparse MoE models (Marco-Mini/Nano) promise high active-parameter efficiency. If you pick a model for production, match the benchmark to the actual failure mode you care about (e.g., drug-name accuracy for medical ASR).",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1sfmbb7/sam_altmans_coworkers_say_he_can_barely_code_and/",
-      "https://reddit.com/r/GeminiAI/comments/1sfloem/you_need_to_understand_that_sam_can_never_be/",
-      "https://reddit.com/r/OpenAI/comments/1sg0kpp/former_openai_exec_the_truth_is_were_building/",
-      "https://reddit.com/r/ChatGPT/comments/1sgbi8u/anthropic_loses_appeals_court_bid/",
-      "https://reddit.com/r/OpenAI/comments/1sfvr8j/mustafa_suleyman_ai_development_wont_hit_a_wall/",
-      "https://reddit.com/r/OpenAI/comments/1sfqz25/we_are_already_in_the_early_stages_of_recursive/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sgtrgc/i_benchmarked_42_stt_models_on_medical_audio_with/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sgzt0p/marcomini_173b_086b_active_and_marconano_8b_06b/",
+      "https://reddit.com/r/GeminiAI/comments/1sgk4k1/opus_46_failed_local_e2b_gemma_4_got_it_right/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sh7yxa/qwen35122b_at_198_toks_on_2x_rtx_pro_6000/"
     ],
     "glossary": {
-      "supply‑chain risk designation": "A government label that can restrict use of a vendor's tech in sensitive projects — can impact commercial adoption.",
-      "governance / safety": "Policies and engineering practices aimed at preventing misuse, including access controls, red teaming, and audits.",
-      "regulatory risk": "The chance that laws or government actions will limit your product's ability to use certain models or datasets."
+      "MoE (Mixture of Experts)": "A model design where only a small subset of parameters are activated per token, making large total-parameter counts more efficient in practice.",
+      "Medical WER (M-WER)": "A weighted ASR error metric that counts clinically relevant words (like drug names) instead of treating all words equally.",
+      "active parameters": "The subset of a model's parameters actually used during inference for a given token; important for MoE models."
+    }
+  },
+  {
+    "group": "Cloud vendor policy & pricing shifts",
+    "summary": "OpenAI and others keep changing plans, quotas, and legal positioning (from $100 ChatGPT tiers to backing liability-limiting bills), which is making long-term cost forecasting tricky for teams. Developers should instrument consumption, test fallback models, and avoid assuming free or cheap access will remain stable.",
+    "posts": [
+      "https://reddit.com/r/OpenAI/comments/1sgwqas/openai_launch_100_chatgpt_plan/",
+      "https://reddit.com/r/OpenAI/comments/1sgwqwx/openal_launch_100_chatgpt_plan/",
+      "https://reddit.com/r/OpenAI/comments/1sh1at0/20_pro_sub_5_hour_quotas_were_reduced_by_half/",
+      "https://reddit.com/r/OpenAI/comments/1sh78hj/openai_backs_bill_that_would_limit_liability_for/"
+    ],
+    "glossary": {
+      "quota monitoring": "Tracking how many tokens or compute hours your team uses so you don't get surprised by sudden billing or throttles.",
+      "liability bill": "Proposed laws that could change who is legally responsible when AI causes harm; these affect enterprise risk models.",
+      "fallback model": "A cheaper or local model you route to when your primary cloud model becomes unavailable or expensive."
     }
   }
 ]
