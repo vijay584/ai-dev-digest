@@ -202,5 +202,17 @@
     "date": "2026-04-09T05:26:25.944Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Cut Real‑Time Dispatch Latency ~10x with H3, Sharding & Streaming",
+    "date": "2026-04-10T05:37:18.634Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Keep a Bad Neighbor from Burning Down the Building: The Bulkhead Pattern for Resilient Services",
+    "date": "2026-04-10T05:37:58.324Z",
+    "type": "concept",
+    "company": null
   }
 ]
