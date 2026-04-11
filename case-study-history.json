@@ -214,5 +214,17 @@
     "date": "2026-04-10T05:37:58.324Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Kept 300M Daily Meeting Participants From Falling Over: Scaling Signaling, Media, and Edge Capacity",
+    "date": "2026-04-11T05:11:52.758Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Make Your Queries Fly: Practical Database Indexing & Query Optimization",
+    "date": "2026-04-11T05:12:40.747Z",
+    "type": "concept",
+    "company": null
   }
 ]
