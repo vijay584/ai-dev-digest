@@ -1,124 +1,115 @@
 [
   {
-    "group": "Anthropic Mythos & PR narratives",
-    "summary": "Anthropic's Mythos launch has sparked a PR war: viral claims it solved One Piece, internal leaks about employee access, and pushback that the \"too dangerous to release\" story is really about huge compute costs and marketing. Developers should treat these model-capability headlines skeptically — agentic tooling + repeated runs can surface things, but that's different from a single-shot leap in raw model intelligence.",
+    "group": "Local LLMs: performance, stability, and practicality",
+    "summary": "Local models (Gemma 4, Qwen, etc.) are getting impressively capable — people report huge contexts (200k+), usable speeds on modest hardware, and better privacy/control. But expect fiddly setup: different runtimes (Ollama, llama.cpp), quantization choices, occasional language/behavior quirks, and tool‑call instability — so they’re great for private/low‑latency workflows but still require hardware and tuning. If you’re a developer considering moving off hosted APIs, expect wins on control and costs but plan time for tuning and debugging.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sgs0b4/breaking_anthropics_new_mythos_model_reportedly/",
-      "https://reddit.com/r/ClaudeAI/comments/1sgt2el/anthropic_employees_have_had_mythos_since_feb_24/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sgoy17/the_mythos_preview_safety_gaslight_anthropic_is/",
-      "https://reddit.com/r/ClaudeAI/comments/1sh1o4d/if_mythos_is_so_good_then_why_didnt_it_prevent/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sihwo8/gemma_4_26b_a4b_is_still_fully_capable_at/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sigb2v/why_is_my_ollama_gemma4_replying_in_japanese/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sipxjc/experience_of_using_openclaude_and_gemma4_26b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sizxj9/is_gemma_4_26ba4b_worse_than_qwen_35_35ba3b_with/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sj0fsg/is_it_normal_for_gemma_4_26b31b_to_run_this_fast/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sj4br3/weekend_project_with_intel_b70s/",
+      "https://reddit.com/r/LocalLLaMA/comments/1siwv8o/a_mac_studio_for_local_ai_6_months_later/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sixspf/are_local_models_actually_practical_for_daily_use/",
+      "https://reddit.com/r/LocalLLaMA/comments/1siw62t/qwen_35_35b_27b_or_gemma_4_31b_for_everyday_use/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sif8g9/currently_which_model_will_run_smooth_on_rtx_3060/"
     ],
     "glossary": {
-      "agentic tooling": "A setup where the model calls tools, runs loops, or spawns helpers to iteratively solve a task — think of it as automating repeated tries instead of a single smarter answer.",
-      "compute budget": "How much GPU/CPU time (and money) a run costs; many impressive results come from throwing huge compute at iterative search rather than from a fundamentally smarter model.",
-      "safety narrative": "The public explanation companies give for restricted releases; it can reflect real risk, marketing framing, or cost concerns."
+      "quantization": "Shrinking model weights to use fewer bits so models fit on less memory; faster and smaller but can reduce quality if done poorly.",
+      "GGUF": "A file format many local runtimes use for models and quantized variants — like a packaged model file you drop into tools.",
+      "tool call": "When a model is instructed to run an external helper (like a search or code runner); these need precise templates so the model doesn’t hallucinate calls."
     }
   },
   {
-    "group": "Anthropic product issues, subscriptions & support",
-    "summary": "Developers and power users report brittle billing and support: gift/Max plans mysteriously revert to free, confusing enterprise seat pricing, and in-app purchases being pricier due to platform fees. If you rely on Anthropic for production workflows, treat gifting and Enterprise seat math as a risk and verify billing/limits programmatically.",
+    "group": "Speculative decoding & speedups",
+    "summary": "Speculative decoding (draft+verify) is delivering big real‑world speedups on Apple Silicon and smaller models, with reports of 2–3x or more gains depending on quantization and hardware. It can make local inference much faster, but you’ll hit tradeoffs: draft/verify balance, KV cache growth with long contexts, and special patches (head_dim fixes) to runtimes. If latency matters in your app, this is an optimization worth experimenting with.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sgkoxn/anthropic_gift_subscriptions_are_silently/",
-      "https://reddit.com/r/ClaudeAI/comments/1sh2scb/claude_enterprise_pricing_am_i_missing_something/",
-      "https://reddit.com/r/ClaudeAI/comments/1sh1d4n/people_with_max_plan_are_you_doing_ok/",
-      "https://reddit.com/r/ClaudeAI/comments/1sgwa8g/never_buy_the_subscription_in_app/"
+      "https://reddit.com/r/LocalLLaMA/comments/1simszl/dflash_speculative_decoding_on_apple_silicon_85/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sitlcj/speculative_decoding_in_llamacpp_for_gemma_4_31b/"
     ],
     "glossary": {
-      "seat pricing": "Charging per user account. At scale this can be cheaper or more expensive depending on whether usage is included.",
-      "gift subscription": "A prepaid subscription code that can be redeemed; these posts flag reliability risks when companies don't correctly persist entitlements.",
-      "quota/limits": "Hard caps on how much the service will compute or return in a time window; important to monitor to avoid sudden outages."
+      "speculative decoding": "Generate multiple tokens quickly with a fast 'draft' model and check them with a smaller 'verify' model to speed up overall generation.",
+      "draft/verify": "The two parts of speculative decoding — the fast generator (draft) and the slower checker (verify). Balance matters for speed.",
+      "KV cache": "The saved keys/values from past tokens used by attention; it grows with context length and can slow things down."
     }
   },
   {
-    "group": "Hallucinations, tool misuse, and model reliability",
-    "summary": "Several posts show models confidently inventing facts — from Gemma 4 fabricating an entire code audit it never read to a ChatGPT instance using offensive language — highlighting that even high‑capacity models can hallucinate or produce harmful outputs. For developers, instrumenting tool traces, forcing line-specific reads, and logging tool results are essential to detect and mitigate fabrication.",
+    "group": "MiniMax M2.7 — release, license, and quants",
+    "summary": "MiniMax M2.7 is rolling out and the community is excited, but the license is a gotcha: the model's license blocks many commercial uses despite open weights, which can kill product plans. On the bright side, people are already producing GGUF quant sets (Q2–Q8, BF16) and Apple Silicon‑friendly quants, so technically deployment options are appearing fast — just watch the license before you build a product.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1shdhui/gemma_4_26b_fabricated_an_entire_code_audit_i/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sh1bwv/gemma_4_is_terrible_with_system_prompts_and_tools/",
-      "https://reddit.com/r/ChatGPT/comments/1shb001/my_chatgpt_said_the_nword",
-      "https://reddit.com/r/LocalLLaMA/comments/1shbqmx/psa_gemma_4_template_improvements/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sj0dm3/minimax_m27_released/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sixhwq/minimax_m27_release_confirmed/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sj0b7p/minimaxaiminimaxm27_is_here/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sj2oqz/minimax_m27_is_not_open_source_doa_license/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sj42gp/minimaxm27_gguf_quants_full_set_q2_k_to_q8_0_bf16/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sj3jui/minimaxm27_q3_k_l_q8_0_first_gguf_quants_apple/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sidnz6/where_is_minimax_m27/",
+      "https://reddit.com/r/LocalLLaMA/comments/1siupnx/really_wish_minimax_m27_would_get_open_weighted/"
     ],
     "glossary": {
-      "hallucination": "When a model asserts false facts or invents data as if it were true.",
-      "tool trace / thinking column": "A logged record of a model's tool calls or internal chain-of-thought; useful for verifying what the model actually saw or executed.",
-      "system prompt": "The hidden instruction given to a model session that shapes behavior; if a model ignores it, agentic flows break."
+      "open weights": "The raw trained model files you can download and run locally.",
+      "license": "The legal terms that dictate what you can do with a model — it can restrict commercial use even when weights are public.",
+      "quant (Q4/Q8/etc.)": "A version of the model converted to smaller numeric formats for speed and memory savings; lower numbers usually mean smaller models."
     }
   },
   {
-    "group": "Agents, MCP, tool protocols, and security",
-    "summary": "The rise of agent harnesses (MCP, agent skills, managed agents) is solving integration pain but also introducing token bloat, security blind spots, and governance problems. Developers building agent stacks should separate 'connection' (MCP) from 'how to use' (skills), adopt content-disposition patterns for large tool outputs, and add least-privilege controls and audit trails for MCP servers.",
+    "group": "Developer tooling, templates, and guides",
+    "summary": "There’s practical infrastructure popping up: a curated list of 550+ free LLM tools, a battle‑tested Qwen Jinja template to fix tool‑call hallucinations, and vLLM/Docker guides for running huge models locally. These are the kinds of building blocks (templates, runtimes, orchestration guides) that save days of debugging when you move from toy demos to a real app.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sgy11x/were_bringing_the_advisor_strategy_to_the_claude/",
-      "https://reddit.com/r/mcp/comments/1sgy4ry/mcp_isnt_the_problem_bad_mcp_servers_are/",
-      "https://reddit.com/r/mcp/comments/1sgihhq/mcp_has_a_content_disposition_problem_and_i_think/",
-      "https://reddit.com/r/OpenAI/comments/1sgfli4/how_is_anyone_securing_ai_agent_integrations_with/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sigg35/curated_550_free_llm_tools_for_builders_apis/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sis1vn/the_definitive_qwen_35_jinja_template/",
+      "https://reddit.com/r/LocalLLaMA/comments/1simsqp/run_qwen35397ba13b_with_vllm_and_8xr9700/",
+      "https://reddit.com/r/LocalLLaMA/comments/1siqv25/dual_a100x_local_workflow/"
     ],
     "glossary": {
-      "MCP (Model–Client Protocol)": "A protocol that standardizes how models call external tools/services; like giving the model a remote toolbox.",
-      "agent skills": "Declarative descriptions or modules that teach an agent how to use a tool properly instead of handing it raw API specs.",
-      "content disposition (in tools)": "A proposed way for tool responses to indicate 'give the model the short summary, store the big payload elsewhere' to avoid wasting context tokens."
+      "Jinja template": "A text template system often used to create consistent prompts or API payloads for models.",
+      "vLLM": "A high‑performance model serving runtime for running large models efficiently on GPUs.",
+      "RAG": "Retrieval-Augmented Generation — combine a retriever (search) with a model to answer based on external documents."
     }
   },
   {
-    "group": "Local LLM infrastructure, runners & hardware tradeoffs",
-    "summary": "Lots of practical experimentation: backend-agnostic tensor parallelism landed in llama.cpp, people are squeezing Gemma/Qwen models onto phones, Mac minis, and multi‑GPU rigs, and community benchmarks report big differences from quant choices and PCIe topology. If you're building local inference infra, measure end-to-end (context+throughput), prefer tested tensor-parallel setups for multi‑GPU, and beware CUDA/driver incompatibilities.",
+    "group": "Embeddings, retrieval, and compression",
+    "summary": "Embedding choice and compression matter: zembed‑1 leads recall metrics for retrieval, while harrier is strong for multilingual tasks. A simple PCA rotation + 3‑bit quant pipeline can compress embeddings ~27x and still get near‑perfect recall after standard reranking — useful if storage and latency are concerns in a RAG system.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sgrovd/backendagnostic_tensor_parallelism_has_been/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sglde2/ggml_backendagnostic_tensor_parallelism_by/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sgl3qz/gemma_4_on_llamacpp_should_be_stable_now/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sh7yxa/qwen35122b_at_198_toks_on_2x_rtx_pro_6000/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sglu08/we_just_shipped_gemma_4_support_in_off_grid/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sgqlfn/unused_phone_as_ai_server/"
+      "https://reddit.com/r/LocalLLaMA/comments/1siisn2/i_compared_harrier27b_vs_voyage4_vs_zembed1/",
+      "https://reddit.com/r/LocalLLaMA/comments/1sicp1h/r_pca_rotation_makes_nonmatryoshka_embeddings/"
     ],
     "glossary": {
-      "tensor parallelism": "Splitting model weights/compute across GPUs to run bigger models; helpful when one GPU can't hold the whole model.",
-      "quantization": "Compressing model weights (e.g., 4-bit) to save memory at the cost of some quality; choices (Q4/Q5/FP16) matter for different workloads.",
-      "pre-fill / KV cache": "The part of context that stores previous tokens' key/value state — impacts memory usage and performance during long conversations."
+      "Recall@100": "How often a relevant document appears in the top 100 results — critical because a reranker can't bring back docs the retriever dropped.",
+      "NDCG@10": "A ranking metric that scores quality and order of the top 10 results, useful for measuring user‑facing relevance.",
+      "reranker": "A second model that re‑scores a small candidate set from the retriever to improve final ranking quality."
     }
   },
   {
-    "group": "Developer workflows, memory & knowledge bases",
-    "summary": "Teams are building persistent knowledge stores (Karpathy-style LLM wikis, Memoriki, Ontomics) and workflows (11-step pipelines, CLAUDE.md governance) so agents don't re-explain context every session. For devs, invest in a compaction + retrieval layer (semantic KB + changelog) and simple rules that inject only relevant context — it saves tokens and avoids context drift.",
+    "group": "Low‑level performance & kernel work",
+    "summary": "There are important infrastructure findings: a reported cuBLAS batched matmul bug on RTX 5090 can cut FP32 performance dramatically, and educational FlashAttention PyTorch implementations help you understand different attention optimizations (FA1–FA4). If you care about squeezing performance from GPUs or building faster kernels/runtimes, these diagnostics and learning resources are worth a look.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sh48b4/combined_karpathys_llm_wiki_with_milla_jovovichs/",
-      "https://reddit.com/r/ClaudeAI/comments/1sh93j2/83k_tokens_to_37k_semantic_knowledge_base_for/",
-      "https://reddit.com/r/ClaudeAI/comments/1sgjmec/the_11step_workflow_i_use_for_every_claude_code/",
-      "https://reddit.com/r/ClaudeAI/comments/1sgot1x/fourish_months_building_a_saas_solo_with_claude/"
+      "https://reddit.com/r/MachineLearning/comments/1shtv0r/d_60_matmul_performance_bug_in_cublas_on_rtx_5090/",
+      "https://reddit.com/r/MachineLearning/comments/1sim6y1/flashattention_fa1fa4_in_pytorch_educational/"
     ],
     "glossary": {
-      "semantic index / embeddings": "A way to represent documents so you can find conceptually similar content, not just exact keyword matches.",
-      "RAG (Retrieval-Augmented Generation)": "Fetching relevant documents and giving them to the model at query time instead of relying on the model's internal memory.",
-      "wiki-compile": "The process of converting raw sources into structured wiki pages the model can query easily (Karpathy-style)."
+      "GEMM / matmul": "Core matrix multiply operation used everywhere in ML; its speed heavily affects model throughput.",
+      "cuBLAS": "NVIDIA’s GPU math library — often used under the hood by ML frameworks for fast matrix ops.",
+      "FlashAttention": "A family of attention algorithm improvements that reduce memory and compute overhead for transformers."
     }
   },
   {
-    "group": "Benchmarks & model comparisons",
-    "summary": "Community benchmarks are all over the map: STT medical metrics reshuffled leaderboards when focusing on clinically relevant words, Qwen and Gemma family models show strong tradeoffs at different sizes, and sparse MoE models (Marco-Mini/Nano) promise high active-parameter efficiency. If you pick a model for production, match the benchmark to the actual failure mode you care about (e.g., drug-name accuracy for medical ASR).",
+    "group": "Hosted LLMs, product changes, and trust",
+    "summary": "Developers are unsettled by recent hosted model moves: complaints about ChatGPT getting slower or less reliable, sudden limit/pricing changes, removal of model selection, and broader legal/political moves (OpenAI lobbying) that could affect product decisions. That matters for teams: changes in API behavior, pricing, or legal risk influence whether you build on a hosted provider or invest in local deployments.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sgtrgc/i_benchmarked_42_stt_models_on_medical_audio_with/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sgzt0p/marcomini_173b_086b_active_and_marconano_8b_06b/",
-      "https://reddit.com/r/GeminiAI/comments/1sgk4k1/opus_46_failed_local_e2b_gemma_4_got_it_right/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sh7yxa/qwen35122b_at_198_toks_on_2x_rtx_pro_6000/"
+      "https://reddit.com/r/OpenAI/comments/1si5bwb/altmans_post_about_the_molotov_attack_blames_the/",
+      "https://reddit.com/r/OpenAI/comments/1shppaa/openai_backs_bill_that_would_limit_liability_for/",
+      "https://reddit.com/r/OpenAI/comments/1sj4vnm/so_openai_has_removed_the_model_select_feature_on/",
+      "https://reddit.com/r/OpenAI/comments/1shgf4q/thoughts_on_the_new_100month_chatgpt_plan_feels/",
+      "https://reddit.com/r/OpenAI/comments/1sifka6/chatgpt_is_getting_worse_and_worse/",
+      "https://reddit.com/r/OpenAI/comments/1six7vd/is_it_just_me_or_is_chatgpt_breaking_a_bit/",
+      "https://reddit.com/r/OpenAI/comments/1shm8zm/what_happened_to_chatgpt/",
+      "https://reddit.com/r/OpenAI/comments/1shxrwx/limits_changed_overnight_plus/"
     ],
     "glossary": {
-      "MoE (Mixture of Experts)": "A model design where only a small subset of parameters are activated per token, making large total-parameter counts more efficient in practice.",
-      "Medical WER (M-WER)": "A weighted ASR error metric that counts clinically relevant words (like drug names) instead of treating all words equally.",
-      "active parameters": "The subset of a model's parameters actually used during inference for a given token; important for MoE models."
-    }
-  },
-  {
-    "group": "Cloud vendor policy & pricing shifts",
-    "summary": "OpenAI and others keep changing plans, quotas, and legal positioning (from $100 ChatGPT tiers to backing liability-limiting bills), which is making long-term cost forecasting tricky for teams. Developers should instrument consumption, test fallback models, and avoid assuming free or cheap access will remain stable.",
-    "posts": [
-      "https://reddit.com/r/OpenAI/comments/1sgwqas/openai_launch_100_chatgpt_plan/",
-      "https://reddit.com/r/OpenAI/comments/1sgwqwx/openal_launch_100_chatgpt_plan/",
-      "https://reddit.com/r/OpenAI/comments/1sh1at0/20_pro_sub_5_hour_quotas_were_reduced_by_half/",
-      "https://reddit.com/r/OpenAI/comments/1sh78hj/openai_backs_bill_that_would_limit_liability_for/"
-    ],
-    "glossary": {
-      "quota monitoring": "Tracking how many tokens or compute hours your team uses so you don't get surprised by sudden billing or throttles.",
-      "liability bill": "Proposed laws that could change who is legally responsible when AI causes harm; these affect enterprise risk models.",
-      "fallback model": "A cheaper or local model you route to when your primary cloud model becomes unavailable or expensive."
+      "model selection": "The ability to pick which underlying model/version you want to use in an API; losing it can change behavior and costs.",
+      "rate limits / quotas": "API usage caps that, when changed, can break pipelines or increase costs.",
+      "liability bill": "A proposed law or policy that changes legal risk for building products with AI — can affect commercial decisions."
     }
   }
 ]
