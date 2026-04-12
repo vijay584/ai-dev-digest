@@ -226,5 +226,17 @@
     "date": "2026-04-11T05:12:40.747Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitch Rebuilt Chat to Survive Millions of Viewers and 1M+ Messages/sec",
+    "date": "2026-04-12T05:34:57.090Z",
+    "type": "case-study",
+    "company": "Twitch"
+  },
+  {
+    "title": "When to Retry (and When Not To): Exponential Backoff, Jitter, and Safe Retry Patterns",
+    "date": "2026-04-12T05:35:40.254Z",
+    "type": "concept",
+    "company": null
   }
 ]
