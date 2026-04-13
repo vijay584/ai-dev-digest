@@ -238,5 +238,17 @@
     "date": "2026-04-12T05:35:40.254Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Cloudflare Durable Objects: From Eventually-Consistent KV to Low-Latency, Globally-Scoped State (200+ POPs)",
+    "date": "2026-04-13T06:00:25.370Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "API Gateway: Your Services' Traffic Cop — Simplify, Secure, and Scale Microservices",
+    "date": "2026-04-13T06:01:03.470Z",
+    "type": "concept",
+    "company": null
   }
 ]
