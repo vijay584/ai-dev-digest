@@ -250,5 +250,17 @@
     "date": "2026-04-13T06:01:03.470Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Scaled Checkout & Orders for BFCM — shaving latency from ~900ms to ~120ms and surviving 10x peak traffic",
+    "date": "2026-04-14T05:36:24.580Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "Right-Sized Traffic: How to Pick the Best Load‑Balancing Algorithm (so your servers stop playing hot‑potato)",
+    "date": "2026-04-14T05:37:02.704Z",
+    "type": "concept",
+    "company": null
   }
 ]
