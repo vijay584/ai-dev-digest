@@ -262,5 +262,17 @@
     "date": "2026-04-14T05:37:02.704Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Dropbox's Magic Pocket: Migrating 100s of PB Off S3 to Cut Costs, Boost Control, and Improve Durability",
+    "date": "2026-04-15T05:35:53.210Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Stop the Cascade: The Circuit Breaker Pattern Explained with Examples",
+    "date": "2026-04-15T05:36:42.871Z",
+    "type": "concept",
+    "company": null
   }
 ]
