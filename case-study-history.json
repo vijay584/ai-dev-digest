@@ -274,5 +274,17 @@
     "date": "2026-04-15T05:36:42.871Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Scaled Real‑Time Events to Trillions/Day with Kafka (sub‑second feeds & millions/sec throughput)",
+    "date": "2026-04-16T05:41:20.528Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Who Holds the Key? Practical Distributed Locks, Leader Election, and How to Avoid Deadlocks in the Wild",
+    "date": "2026-04-16T05:42:14.556Z",
+    "type": "concept",
+    "company": null
   }
 ]
