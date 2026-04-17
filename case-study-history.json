@@ -286,5 +286,17 @@
     "date": "2026-04-16T05:42:14.556Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitter Replaced Storm with Heron to Tame Real‑Time Streams (3–10x throughput wins)",
+    "date": "2026-04-17T05:39:24.558Z",
+    "type": "case-study",
+    "company": "Twitter"
+  },
+  {
+    "title": "How Consistent Hashing Keeps Your Cluster Balanced When Nodes Come and Go",
+    "date": "2026-04-17T05:40:07.858Z",
+    "type": "concept",
+    "company": null
   }
 ]
