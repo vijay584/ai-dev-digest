@@ -298,5 +298,17 @@
     "date": "2026-04-17T05:40:07.858Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Rebuilt Real‑Time Messaging: From Broker Bottlenecks to a Kafka‑Driven Event Fabric (350ms → ~50ms)",
+    "date": "2026-04-18T05:21:07.696Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Sagas: How to Do Distributed Transactions Without Two‑Phase Commit",
+    "date": "2026-04-18T05:21:33.755Z",
+    "type": "concept",
+    "company": null
   }
 ]
