@@ -1,124 +1,152 @@
 [
   {
-    "group": "Claude Design launch — design by chat",
-    "summary": "Anthropic rolled out Claude Design: tell Claude what you want and it builds prototypes, slides, and pages that you can refine and export. For developers this means faster mockups, automated design-system extraction from your repo, and direct handoffs into code or Canva — worth testing if you ship UI or product demos.",
+    "group": "Local-model performance & tuning (Qwen3.6 and friends)",
+    "summary": "Lots of developers are sharing real-world tweaks that get big speed and reliability wins for Qwen3.6 and other local MoE models — think flags like --n-cpu-moe, -np, fit-target, UB sizing, and preserve_thinking. If you run models on consumer GPUs or small servers, these posts are a practical recipe book for squeezing throughput, avoiding KV/cache pitfalls, and fixing quant drift so models stop failing on long-context tasks.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1so3k1y/introducing_claude_design_by_anthropic_labs/",
-      "https://reddit.com/r/ClaudeAI/comments/1so3sif/claude_design_just_launched_this_one_looks/",
-      "https://reddit.com/r/ClaudeAI/comments/1so6z2t/claude_design_just_launched_and_figma_dropped_426/"
+      "https://reddit.com/r/LocalLLaMA/comments/1soq1es",
+      "https://reddit.com/r/LocalLLaMA/comments/1sor55y",
+      "https://reddit.com/r/LocalLLaMA/comments/1spdvpo",
+      "https://reddit.com/r/LocalLLaMA/comments/1sp2l72",
+      "https://reddit.com/r/LocalLLaMA/comments/1sotj4n",
+      "https://reddit.com/r/LocalLLaMA/comments/1spggu0",
+      "https://reddit.com/r/LocalLLaMA/comments/1sothtj",
+      "https://reddit.com/r/LocalLLaMA/comments/1soz24h",
+      "https://reddit.com/r/LocalLLaMA/comments/1soxyfi"
     ],
     "glossary": {
-      "Claude Design": "A new Anthropic feature that generates UI mockups, slides, and prototypes from chat prompts and your code/design files so you can iterate without Figma.",
-      "Design system": "A project's colors, fonts, and reusable UI parts; Claude Design claims to auto-build this from repos and design files.",
-      "Export (Canva/PDF/PPTX)": "Options to take the generated design into common formats or tools for handoff or presentation."
+      "MoE (Mixture of Experts)": "A model design that routes different inputs to different 'expert' sub-networks. It can save compute but needs careful CPU/GPU offloading to avoid wasted VRAM.",
+      "KV cache": "Short for key-value cache — the memory the model uses to remember past tokens in long conversations. Moving this around affects speed and memory use.",
+      "Quantization": "Shrinking model numbers to use less memory (e.g., Q4_Q or Q5). It speeds things but can introduce small numeric errors you may need to correct.",
+      "preserve_thinking": "A chat-template flag for some Qwen models that keeps intermediate reasoning states across turns, useful for agentic/tool workflows.",
+      "fit / fit-target": "Auto-probing options that try to pack model layers into GPU memory; they can automatically pick sensible layer splits instead of manual tinkering."
     }
   },
   {
-    "group": "Opus 4.7 & 'thinking' changes — what it means for coding",
-    "summary": "Opus 4.7 is widely reported as more literal and disciplined but also noisier with tokens and sometimes less exploratory than 4.6 — Anthropic added 'Adaptive thinking' to cut costs, and users are debating trade-offs between predictability, cost, and depth of reasoning. If you build developer tooling or long-running agent flows, expect different prompt engineering, token budgets, and occasional behavior regressions compared with earlier Opus versions.",
+    "group": "Regression, hallucination, and trust problems in deployed models",
+    "summary": "Developers and power users are calling out recurring issues: confident-but-wrong answers, invented commit hashes, and models that gaslight you into trusting bad outputs. These posts are warnings — treat model outputs as drafts, add verification steps, and instrument checks (file/line verification, unit tests) before you act on automated ‘done’ labels.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1snuu1o/opus_47_with_literally_anything/",
-      "https://reddit.com/r/ClaudeAI/comments/1snvj8x/opus_47_research_mode_is_insane/",
-      "https://reddit.com/r/ClaudeAI/comments/1sofgno/differences_between_opus_46_and_opus_47_on/",
-      "https://reddit.com/r/ClaudeAI/comments/1snsyz9/opus_47_destroys_all_trust_in_a_mature/",
-      "https://reddit.com/r/ClaudeAI/comments/1snsova/adaptive_thinking_is_a_joke/",
-      "https://reddit.com/r/ClaudeAI/comments/1so08z2/how_to_make_claude_think_again/",
-      "https://reddit.com/r/ClaudeAI/comments/1so6s33/opus_46_silently_removed_from_claude_desktops/",
-      "https://reddit.com/r/ClaudeAI/comments/1socu93/here_are_my_thoughts_after_14h_of_full_runs_on/",
-      "https://reddit.com/r/ClaudeAI/comments/1soew2x/claude_opus_47_won_69_of_100_blind_evals_against/",
-      "https://reddit.com/r/ClaudeAI/comments/1so9q6q/i_ran_opus_47_vs_old_opus_46_vs_new_opus_46_on_28/",
-      "https://reddit.com/r/ClaudeAI/comments/1sojzjx/opus_47_im_at_a_loss/",
-      "https://reddit.com/r/ClaudeAI/comments/1so5h8x/anthropic_employee_claims_the_thinking_bugs_have/"
+      "https://reddit.com/r/ClaudeAI/comments/1soxmf0",
+      "https://reddit.com/r/ClaudeAI/comments/1sp1b1b",
+      "https://reddit.com/r/ChatGPT/comments/1sox0ik",
+      "https://reddit.com/r/ChatGPT/comments/1sp7ydu",
+      "https://reddit.com/r/ChatGPT/comments/1spc6gl",
+      "https://reddit.com/r/ChatGPT/comments/1sou09i",
+      "https://reddit.com/r/ChatGPT/comments/1sp7cq6",
+      "https://reddit.com/r/ChatGPT/comments/1spg9m2",
+      "https://reddit.com/r/ChatGPT/comments/1sossjp",
+      "https://reddit.com/r/ClaudeAI/comments/1sp6hns"
     ],
     "glossary": {
-      "Opus 4.7": "Anthropic's latest Claude model release; reports say it's more literal and disciplined but can use more tokens and behave differently from Opus 4.6.",
-      "Adaptive thinking": "A mode that tries to reduce token use and server load by shortening internal 'thinking' steps; can make long or deep reasoning sessions cheaper but sometimes less thorough.",
-      "Tokenizer / tokens": "How text gets split into pieces the model counts and bills; a new tokenizer can make the same text cost more tokens."
+      "Hallucination": "When a model confidently invents facts, file names, or code that aren’t true. Always verify critical claims.",
+      "Verification-before-completion": "A workflow rule: don’t accept a model’s 'done' until it shows concrete evidence (file path, diff, test run).",
+      "Confidence calibration": "How a model expresses certainty. High confidence doesn’t mean correctness — treat it like an untrusted suggestion.",
+      "Commit-hash spoofing": "When a model invents real-looking git hashes as 'evidence' — a known hallucination vector to watch for."
     }
   },
   {
-    "group": "Local LLMs & Qwen 3.6 — impressive agentic gains",
-    "summary": "Qwen 3.6 (35B MoE) is getting huge praise for local, agentic coding: people report stable long-context runs, faster tool-driven workflows, and good debugging performance even on commodity GPUs using llama.cpp and GGUF quants. If you want to run agents or code assistants locally, Qwen 3.6 is a practical option now — but quant choice, KV cache, and offload flags matter a lot.",
+    "group": "Developer workflows & harnesses (Claude Code, MCPs, and OPI ideas)",
+    "summary": "People are sharing full workflows and tooling around Claude Code: CLAUDE.md patterns, MCP servers, subagents for grep work, verification hooks, and a long-form idea for a paid 'Omniscient Partner' product that holds persistent context. If you build AI-assisted dev tooling, these posts are a handy map of practical harness patterns and pitfalls (attention decay, trust logs, and where to enforce behavior vs. rely on context files).",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1so1533/qwen36_this_is_it/",
-      "https://reddit.com/r/LocalLLaMA/comments/1so2nt9/qwen_36_is_the_first_local_model_that_actually/",
-      "https://reddit.com/r/LocalLLaMA/comments/1so3rsx/qwen36_is_incredible_with_opencode/",
-      "https://reddit.com/r/LocalLLaMA/comments/1so5nrl/qwen36_gguf_benchmarks/",
-      "https://reddit.com/r/LocalLLaMA/comments/1soc98n/qwen_36_35b_crushes_gemma_4_26b_on_my_tests/",
-      "https://reddit.com/r/LocalLLaMA/comments/1so8253/qwen_3635ba3b_on_dual_5060_ti_with_cpumoe_217/",
-      "https://reddit.com/r/LocalLLaMA/comments/1snztwz/qwen_36_35_ud_2_k_xl_is_pulling_beyond_its_weight/",
-      "https://reddit.com/r/LocalLLaMA/comments/1snsup2/qwen36_is_maintaining_context_inside_the_cot/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sojag2/qwen_36_vs_6_other_models_across_5_agent/"
+      "https://reddit.com/r/ClaudeAI/comments/1spehot",
+      "https://reddit.com/r/ClaudeAI/comments/1sp7m0e",
+      "https://reddit.com/r/LocalLLaMA/comments/1snuf8f",
+      "https://reddit.com/r/cursor/comments/1sobqkp",
+      "https://reddit.com/r/mcp/comments/1sp5g08",
+      "https://reddit.com/r/ClaudeAI/comments/1sp1mbi",
+      "https://reddit.com/r/ClaudeAI/comments/1sp3ra2",
+      "https://reddit.com/r/ClaudeAI/comments/1spfo7j"
     ],
     "glossary": {
-      "MoE (Mixture of Experts)": "A model architecture that activates a subset of parameters per request to get higher capability at lower per-query compute cost.",
-      "GGUF / quant": "File and compression formats that let you run large models on limited GPU RAM; different quant levels trade size vs quality.",
-      "KV cache": "A memory cache that stores recent model activations so long-context or streaming responses stay fast."
+      "MCP (Model/Tool Connectors)": "Small services that let your model call tools (DBs, web browsers, git) in a controlled way. Think of them as plugins.",
+      "CLAUDE.md": "A user-maintained file of project rules/context you load at session start. Useful for context but not a behavioral enforcement mechanism.",
+      "Subagents": "Lightweight helper agents that run targeted tasks (like grepping a repo) so your main conversation stays focused.",
+      "OPI (Omniscient Partner Intelligence)": "A proposed product idea: a deeply personalized, persistent AI that holds your whole professional context and learns over time."
     }
   },
   {
-    "group": "Agentic workflows, Claude Code tools, and review pain",
-    "summary": "Developers are building end-to-end agent workflows (skills, OpenCode, engram) that read repos, run tests, and iterate — which unlocks new productivity but shifts the hard work to designing prompts, hooks, and review processes. Expect token waste if agents re-read files; tools like engram (file summaries, call-graphs) and clearer prompt-harnesses can cut costs and make AI-generated code reviewable.",
+    "group": "Image generation woes & UI changes (Gemini, GPT image, etc.)",
+    "summary": "Lots of users report regressions and annoying UI limits in image tools — worse edits, one-image-per-upload policies, random refusals, and inconsistent behavior across chats. For teams using image gen in pipelines, expect more flaky outputs and UI churn; add automation checks and consider local or alternative stacks for predictable results.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sntahn/engram_v10_my_claude_code_sessions_now_use_88/",
-      "https://reddit.com/r/ClaudeAI/comments/1snsv7o/top_10_open_source_claude_skills_from_1st_15th/",
-      "https://reddit.com/r/ClaudeAI/comments/1so1tku/the_highestimpact_thing_ive_built_with_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1sojz4f/no_developer_experience_and_i_just_created_a/",
-      "https://reddit.com/r/cursor/comments/1so1xzn/how_are_you_handling_code_review_when_most_of_the/",
-      "https://reddit.com/r/cursor/comments/1snjndq/cursor_vs_claude_code_two_different_approaches_to/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sogbck/agentic_coding_qwen_36_q6_k_125k_context_vs_q5_k/",
-      "https://reddit.com/r/ClaudeAI/comments/1snx2nw/anthropics_ai_protocol_has_critical_flaw/"
+      "https://reddit.com/r/ChatGPT/comments/1so8mjg",
+      "https://reddit.com/r/ChatGPT/comments/1sogbxg",
+      "https://reddit.com/r/GeminiAI/comments/1sp956f",
+      "https://reddit.com/r/GeminiAI/comments/1sozgtr",
+      "https://reddit.com/r/GeminiAI/comments/1sosxi2",
+      "https://reddit.com/r/GeminiAI/comments/1sosm9z",
+      "https://reddit.com/r/GeminiAI/comments/1souikn",
+      "https://reddit.com/r/GeminiAI/comments/1soydi6",
+      "https://reddit.com/r/GeminiAI/comments/1sp2tty"
     ],
     "glossary": {
-      "Agentic": "Systems that call tools (run tests, edit files, shell out) autonomously as part of solving a task, not just returning text.",
-      "MCP (Model Context Protocol)": "A standard Anthropic uses for connecting models to external tools/data — powerful for agents but recent disclosures show security and design trade-offs.",
-      "Harness / skill": "A reusable prompt-and-tooling setup that constrains the model's behavior for a specific task or workflow."
+      "Image-edit pipeline": "The automated steps you run to produce or refine images. If the UI or model changes, these pipelines can break silently.",
+      "Reference images": "Images you upload to guide generation. Losing multi-image support can break multimodal prompts and RAG-style visual workflows.",
+      "Guardrails / refusals": "Safety checks that cause models to refuse prompts; they can be noisy and sometimes misfire on innocuous content."
     }
   },
   {
-    "group": "Image model regressions — Gemini & Nano Banana issues",
-    "summary": "Many users report recent regressions in Google Gemini's image editing (Nano Banana) — reference images ignored, edits replaced by unrelated images, and sudden drops in quality or refusals. If your product depends on image-editing APIs, treat these services as brittle and test critical flows before shipping.",
+    "group": "Agent/tool-calling reliability and 'thinking' behaviors",
+    "summary": "Users are split on agentic features: tool-calling can automate workflows, but local tool calls are still flaky (empty files, wrong edits), and models oscillate between overconfident single-shot answers and endless 'thinking' traces. If you build agent pipelines, add strict verification, preserve thinking only when it helps, and guard against execution loops.",
     "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1so62gb/nano_banana_2_creates_an_entirely_new_image/",
-      "https://reddit.com/r/GeminiAI/comments/1so6lpn/image_generation_bug/",
-      "https://reddit.com/r/GeminiAI/comments/1so9yki/the_nano_banana_glitch/",
-      "https://reddit.com/r/GeminiAI/comments/1so7hfy/nothing_is_working_on_this_site_today_literally/",
-      "https://reddit.com/r/GeminiAI/comments/1so9mtt/well_this_is_concerning/",
-      "https://reddit.com/r/GeminiAI/comments/1so9a5m/is_gemini_broken_it_cant_see_the_photo/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sp631h",
+      "https://reddit.com/r/ClaudeAI/comments/1sotsm2",
+      "https://reddit.com/r/ClaudeAI/comments/1soyyj4",
+      "https://reddit.com/r/LocalLLaMA/comments/1soxsh2"
     ],
     "glossary": {
-      "Inpainting / edit": "Asking a model to change part of an image while keeping the rest unchanged; fragile if the model ignores references.",
-      "Reference image": "An uploaded photo you want the model to use as the basis for edits — if ignored, the output can be unrelated.",
-      "Nano Banana": "A name used for a Gemini / Gemini-powered image-editing model/tool — users report it randomly generating new images instead of edits."
+      "Tool calling": "When a model executes external actions (create files, run shell commands). Great for automation but fragile if the model misreports results.",
+      "Preserve thinking": "Keeping internal chain-of-thought traces across turns; useful for long agent sessions but can increase token usage and complexity.",
+      "Execution loop": "When an agent gets stuck repeatedly invoking the same tool or action — a common bug in agent orchestration."
     }
   },
   {
-    "group": "Model safety, abliteration, and supply‑chain risk",
-    "summary": "A deep community study shows aggressive 'abliteration' techniques can remove safety behavior and change capabilities across model sizes, and separate reports highlight protocol-level security risks (MCP) in the agent ecosystem. For developers, this means model weights, third‑party patches, and integration protocols are attack surfaces — validate safety and supply-chain provenance before production use.",
+    "group": "Hardware, multi‑GPU and scaling for inference/training",
+    "summary": "Several posts debate real hardware tradeoffs: dual 3090s vs single bigger card, Blackwell workstation vs Max-Q, using vLLM on multi-GPU, and novel ideas like cross‑datacenter KV cache for prefill-as-a-service. If you manage on-prem inference, these threads are useful for capacity planning, networking choices (Thunderbolt vs 10GbE), and what VRAM actually buys you.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sojjoc/abliterlitics_benchmark_and_tensor_analysis/",
-      "https://reddit.com/r/ClaudeAI/comments/1snx2nw/anthropics_ai_protocol_has_critical_flaw/"
+      "https://reddit.com/r/LocalLLaMA/comments/1sov4el",
+      "https://reddit.com/r/LocalLLaMA/comments/1sp2cv2",
+      "https://reddit.com/r/LocalLLaMA/comments/1spennl",
+      "https://reddit.com/r/LocalLLaMA/comments/1soznms",
+      "https://reddit.com/r/LocalLLaMA/comments/1sp761q",
+      "https://reddit.com/r/LocalLLaMA/comments/1sp216x",
+      "https://reddit.com/r/LocalLLaMA/comments/1sotnbf"
     ],
     "glossary": {
-      "Abliteration": "Techniques that surgically edit model weights or tensors to remove safety behaviors or change outputs; can break capability and safety in unpredictable ways.",
-      "Supply-chain risk": "The danger that third-party model files, quant packs, or integrations introduce bugs or malicious changes into your deployed system.",
-      "ASR (Attack Success Rate in this context)": "How often a manipulation succeeds in bypassing model safety/refusal behavior."
+      "vLLM": "A runtime optimized for serving LLMs with multi-request batching and better latency under load.",
+      "Prefill/Decode disaggregation": "Splitting the token prefill step from final decoding so different hardware can share work (useful for cost scaling).",
+      "Max-Q vs Workstation GPU": "Max-Q is power‑optimized (less heat/noise); workstation/server cards give more sustained throughput but need better cooling and power.",
+      "KV cache transfer": "Moving the KV cache between machines is expensive; innovations that shrink it enable cross‑machine architectures."
     }
   },
   {
-    "group": "Hardware choices for running local models",
-    "summary": "People are benchmarking a range of setups (M3 Ultra, dual 5060 Ti, 4090/5090 rigs) and showing good results for local agent workloads — but your quant, offload flags, and PCIe topology matter more than raw GPU count. If you plan to run models locally, match RAM, VRAM, and context/cache settings to your target model and test the exact workload before committing to expensive hardware.",
+    "group": "Benchmarks & model comparisons (narrative, coding, chat)",
+    "summary": "Community benchmarks show smaller models can outperform giants on specific tasks — e.g., a 27B Gemma winning narrative quality tests vs a 405B model — and other posts compare Qwen vs Gemma for chat/QA. For devs choosing runtimes, these threads underline that model choice should be task-driven, not just size-driven.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1so8253/qwen_3635ba3b_on_dual_5060_ti_with_cpumoe_217/",
-      "https://reddit.com/r/LocalLLaMA/comments/1soifj9/what_i_got_by_5060ti_16gb_qwen3635ba3budq5_k_m/",
-      "https://reddit.com/r/MachineLearning/comments/1snqzq9/which_computer_should_i_buy_mac_or_custombuilt/",
-      "https://reddit.com/r/LocalLLaMA/comments/1soo890/hardware_advice_m5_max_vs_amd_ryzen_ai_max_395/",
-      "https://reddit.com/r/LocalLLaMA/comments/1so1179/multigpu_how_problematic_is_chipset_pcie_lanes/"
+      "https://reddit.com/r/LocalLLaMA/comments/1spfz31",
+      "https://reddit.com/r/LocalLLaMA/comments/1spfdbm",
+      "https://reddit.com/r/LocalLLaMA/comments/1sotj4n",
+      "https://reddit.com/r/MachineLearning/comments/1spc33w"
     ],
     "glossary": {
-      "VRAM / unified memory": "GPU memory used to hold model weights and activation caches; limits the model size you can run locally.",
-      "PCIe lanes": "Pathways on the motherboard that determine how fast multiple GPUs can talk to the CPU and each other — fewer lanes can bottleneck multi‑GPU setups.",
-      "Offload / cpu-moe": "Techniques that keep some model parts in system RAM or CPU to fit larger models on smaller GPUs; helps run big MoE models on consumer rigs."
+      "Benchmark": "A task or suite you run to compare models (e.g., code generation, storytelling). Pick benchmarks that match your real workload.",
+      "Narrative probe": "A focused test for writing quality — useful when you care about voice and atmosphere rather than pure correctness.",
+      "LiveCodeBench / HumanEval": "Common coding benchmarks; they test synthesis and correctness on programming tasks."
+    }
+  },
+  {
+    "group": "Product limits, quotas, and UX churn",
+    "summary": "Developers and power users are frustrated by changing quotas (pro plan resets, daily/weekly windows), UX regressions (regen/edit erasing conversation history), and opaque usage accounting. If you rely on commercial subscriptions for development workflows, plan for quotas, backups, and fallbacks so a UI change or burst billing doesn't halt your day.",
+    "posts": [
+      "https://reddit.com/r/OpenAI/comments/1sp6acy",
+      "https://reddit.com/r/ChatGPT/comments/1soybnc",
+      "https://reddit.com/r/cursor/comments/1soes5e",
+      "https://reddit.com/r/cursor/comments/1sp07nj",
+      "https://reddit.com/r/GeminiAI/comments/1sosgu1",
+      "https://reddit.com/r/GeminiAI/comments/1sosxi2"
+    ],
+    "glossary": {
+      "Quota / reset window": "The period after which a subscription's usage limits are replenished. Different plans reset at different cadences — daily, weekly, or monthly.",
+      "Regenerate / edit behavior": "UI features that let you ask the model to produce alternative answers. If these wipe history, you lose the ability to compare outputs.",
+      "Failover plan": "Your backup approach when a commercial service throttles you — local models, alternate providers, or queued job runners."
     }
   }
 ]
