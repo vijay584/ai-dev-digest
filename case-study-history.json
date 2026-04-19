@@ -310,5 +310,17 @@
     "date": "2026-04-18T05:21:33.755Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Built Chaos Into Production: Simian Army, Chaos Kong, and a Fewer-Sev1 Future",
+    "date": "2026-04-19T05:39:31.920Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Cache Like a Pro: Choosing Between Cache‑Aside, Write‑Through, and Write‑Back",
+    "date": "2026-04-19T05:40:01.144Z",
+    "type": "concept",
+    "company": null
   }
 ]
