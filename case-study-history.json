@@ -322,5 +322,17 @@
     "date": "2026-04-19T05:40:01.144Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Cut Duplicate Charges ~95% and Survived 10x Retry Storms with Idempotency, Outbox, and Sharded Stores",
+    "date": "2026-04-20T06:00:34.901Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Don't Drown the Service: Backpressure & Flow Control to Keep Systems Healthy",
+    "date": "2026-04-20T06:01:16.165Z",
+    "type": "concept",
+    "company": null
   }
 ]
