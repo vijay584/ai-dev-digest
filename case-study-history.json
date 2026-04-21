@@ -334,5 +334,17 @@
     "date": "2026-04-20T06:01:16.165Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Used H3 to Turn Millions of Moving Points into Sub-100ms Geospatial Queries",
+    "date": "2026-04-21T05:38:49.132Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Write Once, Replay Forever: Practical CQRS + Event Sourcing for Real-World Systems",
+    "date": "2026-04-21T05:39:24.289Z",
+    "type": "concept",
+    "company": null
   }
 ]
