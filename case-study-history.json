@@ -346,5 +346,17 @@
     "date": "2026-04-21T05:39:24.289Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled to 300M Daily Meeting Participants: Building a Global Real‑Time Media Fabric",
+    "date": "2026-04-22T05:37:53.514Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Don't Sink the Ship: The Bulkhead Pattern for Resilient Systems",
+    "date": "2026-04-22T05:38:23.904Z",
+    "type": "concept",
+    "company": null
   }
 ]
