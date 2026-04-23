@@ -358,5 +358,17 @@
     "date": "2026-04-22T05:38:23.904Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Spotify Served Music Recommendations in Milliseconds with Annoy — millions/day at single‑digit ms",
+    "date": "2026-04-23T05:42:00.628Z",
+    "type": "case-study",
+    "company": "Spotify"
+  },
+  {
+    "title": "Heal the Data: Anti‑Entropy, Read Repair & Gossip for Eventual Consistency",
+    "date": "2026-04-23T05:42:36.092Z",
+    "type": "concept",
+    "company": null
   }
 ]
