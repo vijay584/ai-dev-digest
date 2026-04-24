@@ -1,151 +1,144 @@
 [
   {
-    "group": "Qwen 3.6 launch & local performance",
-    "summary": "Qwen 3.6 (especially the 27B dense release) just landed and people are testing it everywhere — from one-shot games to real-world coding. The takeaways: it punches well above its size for many developer tasks, has recommended new sampling params, and there’s lots of practical advice on quant, context sizes, and configs for llama.cpp/llama-server. If you run models locally this is the release to try; expect tuning (quant choice, ctx-size, sampling) to matter a lot.",
+    "group": "OpenAI GPT‑5.5 release buzz",
+    "summary": "OpenAI just rolled out GPT‑5.5 (multiple community threads reporting early access, benchmarks, and pricing). For devs this means a new option for agentic workflows and frontend/UI tasks, but expect higher per‑token costs and some early-day guardrail/behavior questions while people test it.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1ssl1xh/qwen_36_27b_is_out/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ssl6ki/qwen3627b_released/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sstq1w/qwen3627b_uncensored_aggressive_is_out_with_k_p/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st11lp/forgive_my_ignorance_but_how_is_a_27b_model/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ssw45q/dense_vs_moe_gap_is_shrinking_fast_with_the_3627b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sss5og/what_speed_is_everyone_getting_on_qwen36_27b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ssp9kq/best_config_for_qwen36_27b_llamacpp_opencode/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st5627/note_the_new_recommended_sampling_parameters_for/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st2yar/qwen_36_27b_bf16_on_rtx6000_blackwell_one_shot/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ssplvq/qwen36_one_shot_tetris_game/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st3m8y/qwen_36_is_actually_useful_for_vibecoding_and_way/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sszac8/tried_qwen3627budq6_k_xlgguf_with_cloudecode_well/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sstxhk/coding_with_qwen3627budq2_k_xlgguf/"
+      "https://reddit.com/r/OpenAI/comments/1stqlnh/introducing_gpt55_openai",
+      "https://reddit.com/r/OpenAI/comments/1str2pj/gpt55_is_out/",
+      "https://reddit.com/r/ChatGPT/comments/1stql3u/chatgpt_55_is_here/",
+      "https://reddit.com/r/OpenAI/comments/1sts36l/gpt55_api_pricing_twice_as_expensive_as_gpt54/"
     ],
     "glossary": {
-      "dense model": "A model where every parameter participates on each step. Think of it as one big, consistent brain — usually simpler to run and often sharper per parameter at some tasks.",
-      "quant (quantization)": "A way to shrink model files so they fit on fewer GPU GB — like zipping a program. Smaller quants are faster but can reduce correctness, so pick one that balances speed and accuracy for your use case."
+      "GPT‑5.5": "The latest OpenAI model family at time of these posts. Newer models often improve capabilities but can cost more per token.",
+      "thinking vs instant": "Providers sometimes ship a slower 'thinking' mode (more internal computation) before an 'instant' low‑latency release; thinking mode usually boosts reasoning at cost of latency and tokens."
     }
   },
   {
-    "group": "Local coding agents, scaffolds, and routing",
-    "summary": "People aren’t just swapping models — they’re building scaffolds (like little-coder) that route tasks, run repair loops, and combine models to hit near-cloud-level coding performance. The pattern: use a fast local model as front-line, route tricky or failing cases to a heavier model or repair agent, and keep deterministic tooling (formatters, test wrappers) outside the model to avoid flaky results.",
+    "group": "Claude / Opus 4.7 and Claude Code turbulence",
+    "summary": "Anthropic's Opus 4.7 and Claude Code have triggered lots of developer pain: quality regressions, tooling/system‑prompt complexity, and a published post‑mortem with fixes. If you build production agents or run long multi‑session projects, treat outputs conservatively, add external checks, and watch for harness changes that can waste context or tokens.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1ssilc3/qwen3635b_becomes_competitive_with_cloud_models/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st4cqq/qwen36_35b_the_right_coding_scaffold_got_my_local/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st4vds/is_there_a_way_to_have_a_faster_moe_model_call/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ssdim1/tested_how_opencode_works_with_selfhosted_llms/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st654b/every_new_large_model_release_for_cheapos/",
-      "https://reddit.com/r/mcp/comments/1srzupf/built_an_mcp_server_that_gives_coding_agents/",
-      "https://reddit.com/r/mcp/comments/1srre4b/plugandplay_mcp_server_for_codebase_search_11/"
+      "https://reddit.com/r/ClaudeAI/comments/1stq98j/postmortem_on_recent_claude_code_quality_issues/",
+      "https://reddit.com/r/ClaudeAI/comments/1strcoa/claude_code_has_big_problems_and_the_postmortem/",
+      "https://reddit.com/r/ClaudeAI/comments/1stfc4t/opus_47_made_me_resubscribe_to_codex_after_two/",
+      "https://reddit.com/r/ClaudeAI/comments/1su5air/opus_47_is_weird/",
+      "https://reddit.com/r/ClaudeAI/comments/1sttkc6/whats_wrong_with_47_and_how_to_fix_it",
+      "https://reddit.com/r/ClaudeAI/comments/1ststm4m7/claude_status_update_elevated_errors_on_claude/"
     ],
     "glossary": {
-      "scaffold": "Extra code and rules you run around a model (prompt templates, tests, fix loops) so the model’s outputs are more reliable — like giving a chef a recipe and a quality checklist.",
-      "routing": "Automatically sending a task to a different model or tool when the first one stalls or fails — think: fall back to a specialist when the generalist gets stuck."
+      "harness/system prompt": "The code and instructions that sit around a model to make it act like an agent/editor; small changes here can drastically change behavior.",
+      "plan/gate": "A lightweight procedural checkpoint you add to make the model verify critical things (tests, file diffs, DB snapshot) before continuing."
     }
   },
   {
-    "group": "llama.cpp, quant choices & KV cache (hardware tradeoffs)",
-    "summary": "A lot of developer discussion is about how to tune llama.cpp inference: which quant to use, how to set cache types, and whether newer things like TurboQuant can shrink KV cache memory. The practical push: try slightly larger quants if your small one loops, and watch that KV cache / context handling is often the real VRAM killer.",
+    "group": "Agent stacks & MCP automation (what people are shipping)",
+    "summary": "Teams are building real automation pipelines: everything from fully automated product tutorial video pipelines to MCPs that vet packages or teach agents how to compose workflows. For devs, MCPs are the practical glue that turns a model into a usable, safer automation actor — design them as executable contracts, not just docs.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1sshpmh/can_we_already_use_googles_turboquant_tq_for_kv/",
-      "https://reddit.com/r/LocalLLaMA/comments/1st6lp6/nvidia_rtx_3090_vs_intel_arc_pro_b70_llamacpp/",
-      "https://reddit.com/r/LocalLLaMA/comments/1sslesy/llamacpp_parameters_for_qwen_36_with_rtx_3090/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ssgwcz/consider_running_a_bigger_quant_if_possible/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ssyukx/qwen3627b_klds_ints_and_nvfps/"
+      "https://reddit.com/r/ClaudeAI/comments/1stutgf/holy_shit_i_just_automated_something_i_thought/",
+      "https://reddit.com/r/mcp/comments/1ssjr3b/mcp_server_that_checks_packages_for_malware/",
+      "https://reddit.com/r/mcp/comments/1sspao6/built_a_docs_mcp_for_my_agent_runtime_today_an/",
+      "https://reddit.com/r/mcp/comments/1stm1o2/everyone_is_talking_about_mcp_whats_next/"
     ],
     "glossary": {
-      "KV cache": "Short for key-value cache — the memory that stores previous conversation tokens so the model can keep context. It grows with context length and is often what fills up your GPU.",
-      "TurboQuant (TQ)": "A new extreme-compression technique aimed at shrinking model weights or caches. If supported for KV caches, it could let you run longer contexts on less VRAM."
+      "MCP (Model Connector/Plugin)": "A small API layer that exposes your systems (docs, package checks, runtime) to agents in a controlled, verifiable way.",
+      "docs-as-contract": "Designing documentation so agents can programmatically reason about valid actions; this reduces errors and drift."
     }
   },
   {
-    "group": "MCP servers, repo memory & context engineering",
-    "summary": "Developers are moving beyond simple tool connectors to MCP servers that provide persistent, structured context (call graphs, brand brains, AST graphs) so agents don't waste tokens re-deriving the same facts. The result: big token cost savings and more deterministic edits when agents have a live, queryable representation of your code or business context.",
+    "group": "Local model momentum — Qwen 3.6, speculative decoding, DeepSeek",
+    "summary": "Local models like Qwen 3.6 (27B/35B) and community toolchains (llama.cpp, llama‑server, speculative decoding) are getting impressive speed and capability gains — people report usable coding workflows on consumer GPUs and new open weights (DeepSeek v4) with massive context windows. If you want to reduce cloud spend, investigate these stacks but expect engineering work around quantization, multi‑GPU setups, and stability.",
     "posts": [
-      "https://github.com/syncable-dev/memtrace-public",
-      "https://reddit.com/r/mcp/comments/1srzupf/built_an_mcp_server_that_gives_coding_agents/",
-      "https://reddit.com/r/mcp/comments/1srre4b/plugandplay_mcp_server_for_codebase_search_11/",
-      "https://reddit.com/r/mcp/comments/1srv1li/most_mcp_implementations_are_just_api_wrappers/"
+      "https://reddit.com/r/LocalLLaMA/comments/1steip4/qwen_36_27b_is_a_beast/",
+      "https://reddit.com/r/LocalLLaMA/comments/1stcer1/qwen3627b_llamacpp_speculative_decoding/",
+      "https://reddit.com/r/LocalLLaMA/comments/1stjx29/an_overnight_stack_for_qwen3627b_85_tps_125k/",
+      "https://reddit.com/r/LocalLLaMA/comments/1su6qpk/deepseek_v4_just_dropped_16t_pro_and_284b_flash/",
+      "https://reddit.com/r/LocalLLaMA/comments/1stjwg5/been_using_pi_coding_agent_with_local_qwen36_35b/"
     ],
     "glossary": {
-      "MCP (Model Connector Protocol)": "A lightweight way for editors/agents to call tools and get structured replies. Think of it as the plumbing that lets the AI call helper functions without stomping the chat context.",
-      "structural memory": "A persistent, structured index of your code (AST, call graph) that the agent queries instead of re-reading files every turn — like giving the model a fast map of your repo."
+      "speculative decoding": "A technique that runs a cheap fast model in parallel with a stronger one to speed up generation.",
+      "quantization": "Compressing model numbers to smaller types to save VRAM, with tradeoffs in speed and sometimes quality."
     }
   },
   {
-    "group": "Anthropic / Claude: tokens, tooling, and ops pain",
-    "summary": "Lots of practical pain points for teams using Claude: surprise org-wide bans, opaque token limits, confusing pricing tiers, and tooling bugs (e.g., Opus 4.7 context misreporting). Developers are shipping fixes and extensions (Claude Pulse, cheat sheets, cowork workflows) to make the product observable and usable for real work.",
+    "group": "Image generation leap (Image 2.0 / GPT Image)",
+    "summary": "Image generation (ChatGPT/OpenAI Image 2.0 and related releases) is being called a step change — better character consistency, motion/physics in frames, and strong text handling. Developers using images for UI, reference sheets, or assets should test the new models: they can dramatically reduce manual art effort but still require verification on logos, sensitive content, and text fidelity.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sspwz2/psa_anthropic_bans_organizations_without_warning/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssmra2/the_missing_middle_why_is_there_no_50mo_claude/",
-      "https://reddit.com/r/AI_India/comments/1st879l/ran_out_of_claude_tokens_midconvo_heres_my_jugaad/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssow9k/built_a_pulse_for_claude_code_so_i_stop_guessing/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssgnfb/claude_code_was_wasting_80_of_opus_47s_context/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssgrro/claude_can_end_a_conversation/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssg065/claude_thinking_noise_fatigue/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssslm3/the_most_complete_claude_code_cheat_sheet/",
-      "https://reddit.com/r/ClaudeAI/comments/1sswg4x/ive_been_using_claude_cowork_since_launch_heres/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssqsnc/tool_result_error/",
-      "https://reddit.com/r/ClaudeAI/comments/1sskd0f/been_getting_this_error_today_all_day_anyone_else/"
+      "https://reddit.com/r/ChatGPT/comments/1statrb/image_20_is_actually_insane_this_is_not_a_small/",
+      "https://reddit.com/r/ChatGPT/comments/1ste5a3/image_gen_2s_content_filter_seems_to_be_more/",
+      "https://reddit.com/r/OpenAI/comments/1ste8n5/gpt_image_2_is_on_another_level_nano_banana_pro/",
+      "https://reddit.com/r/OpenAI/comments/1stsln6/new_image_model_is_great_excellent_at_text/"
     ],
     "glossary": {
-      "token limit": "A cap on how many words/tokens a subscription or session can use. Hitting it mid-conversation can stop your agent, so people snapshot and rehydrate context to continue.",
-      "Opus / Sonnet": "Names for higher-tier Claude models — think of them as different engines with different cost and context tradeoffs."
+      "character consistency": "The model's ability to generate the same character/subject in multiple views/frames.",
+      "reference sheet": "A multi‑angle asset (front/side/back) used by designers to make garments or 3D models — now feasible to produce via image models."
     }
   },
   {
-    "group": "Image model artifacting & session carryover",
-    "summary": "People are seeing structured artifacting (ghost lines, carryover geometry) when generating images in the same session — the model doesn’t fully reset between images and reuses latent structure. The practical fix for developers and content pipelines is to run big changes in fresh sessions, use negative prompts for unwanted patterns, or use dedicated edit/variation tools instead of repeated regenerate.",
+    "group": "Cursor, acquisitions and IDE/assistant debates",
+    "summary": "The community is split about editor tools (Cursor, Claude Code and similar): some love an integrated, end‑to‑end IDE agent; others worry about vendor lock‑in and ownership after acquisition news (SpaceX/Elon). For teams, weigh the integration and productivity benefits versus data governance and long‑term choice of model/tooling.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1ssvd9v/the_artifacting_present_in_the_new_gpt_image/",
-      "https://reddit.com/r/OpenAI/comments/1sswbun/psa_why_gpt_image_ghostingpittingdotting/",
-      "https://reddit.com/r/ChatGPT/comments/1st5bbi/the_new_image_model_makes_all_images_suspect/",
-      "https://reddit.com/r/OpenAI/comments/1ssrvbs/gpt_image_2_is_amazing_for_a_lot_of_things_but/",
-      "https://reddit.com/r/OpenAI/comments/1st73fd/gptimage2_vs_nano_banana_2_nb2_tried_its_best/",
-      "https://reddit.com/r/OpenAI/comments/1st5kcd/gpt2_cooked_this_photo_of_a_screen_prompt_macbook/"
+      "https://reddit.com/r/cursor/comments/1sshtml/did_elon_just_kill_the_appeal_of_cursor/",
+      "https://reddit.com/r/cursor/comments/1ssqegt/aaaaand_i_cancelled_my_cursor_subscription/",
+      "https://reddit.com/r/cursor/comments/1ssisuy/spacex_is_working_with_cursor_and_has_an_option/",
+      "https://reddit.com/r/cursor/comments/1ssr010/the_eloncursor_deal_and_the_rise_of_manbaby/"
     ],
     "glossary": {
-      "session carryover": "When the image model keeps some internal hints from the previous generation, causing repeated shapes or lines to appear in later images.",
-      "negative prompt": "A short instruction telling the model what not to produce (e.g., “no grid patterns”), useful to reduce unwanted artifacts."
+      "editoric agent": "An editor that can read, write, run tests, and make commits automatically — high productivity but needs safety controls.",
+      "vendor lock‑in": "Risk of losing options if a single company controls the tooling and data flows you rely on."
     }
   },
   {
-    "group": "Model behavior, UX & product shifts",
-    "summary": "Developers report models behaving differently after updates — more contrarian, shorter answers, or changes in helpfulness — and debate whether that’s tuning, safety, or unintended policy drift. For teams relying on consistent assistant behavior, this means adding guardrails: skill files, unit tests for generated code, and automated audits when models change.",
+    "group": "Practical costs, token efficiency and 'caveman' prompting",
+    "summary": "People are optimizing prompts and tool choices to save tokens and money — one popular trick is terse, 'caveman' prompts (short phrases) for routine tasks to reduce token burn. As a dev: prefer precise, minimal prompts for routine calls, and save verbose context for creative or high‑variance tasks.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1ssjunn/good_god_did_chatgpt_turn_obnoxious_overnight/",
-      "https://reddit.com/r/ChatGPT/comments/1st18du/chatgpts_oppositional_defiance/",
-      "https://reddit.com/r/OpenAI/comments/1ssyy7f/ever_since_54_pro_dropped_its_become_extremely/",
-      "https://reddit.com/r/GeminiAI/comments/1st4sa5/google_definitely_updated_gemini_31_pro_on_the_web/",
-      "https://reddit.com/r/GeminiAI/comments/1sta0lt/is_gemini_winning_the_ai_race/",
-      "https://reddit.com/r/GeminiAI/comments/1st42zg/can_someone_tell_me_what_gemini_good_at_i_read/"
+      "https://reddit.com/r/ChatGPT/comments/1stdot6/i_started_talking_to_claude_like_a_caveman_my/",
+      "https://reddit.com/r/cursor/comments/1st8bif/burn_tokens_not_time/",
+      "https://reddit.com/r/MachineLearning/comments/1st9v81/we_benchmarked_18_llms_on_ocr_7k_calls_cheaperold/",
+      "https://reddit.com/r/OpenAI/comments/1sts36l/gpt55_api_pricing_twice_as_expensive_as_gpt54/"
     ],
     "glossary": {
-      "skill file": "A small, reusable instruction set you give a model so it behaves in a consistent way — like a personal style guide the model always follows.",
-      "policy drift": "When model updates change behavior in ways that break your expected workflows — think: a library update that silently changes a function’s return type."
+      "token": "A piece of text the model processes; API usage and cost are often tied to tokens consumed.",
+      "token efficiency": "Getting the behavior you want while minimizing unnecessary words in prompts or context."
     }
   },
   {
-    "group": "Audio / TTS and text normalization",
-    "summary": "Audio folks are excited by new local TTS options (Qwen3-TTS and community finetunes) and warning that streaming TTS often trips on basic things like dates, URLs, and promo codes. If you’re shipping voice features, add deterministic text normalization and alignment (word-level timings) so downstream UI (captions, lipsync) stays correct.",
+    "group": "Long‑context, session limits and privacy concerns",
+    "summary": "Long context models and services (1M context announcements, session caching) are changing workflows, but they bring new limits and privacy tradeoffs — e.g., shorter caches, human reviewers of chats, and per‑feature quotas. If you rely on long lived sessions, add persistent checkpoints and assume some data may be reviewed unless explicitly protected.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1ssugid/qwen3_tts_is_seriously_underrated_i_got_it/",
-      "https://reddit.com/r/MachineLearning/comments/1ssk7rk/i_cant_believe_text_normalization_is_so/"
+      "https://reddit.com/r/LocalLLaMA/comments/1su6qpk/deepseek_v4_just_dropped_16t_pro_and_284b_flash/",
+      "https://reddit.com/r/GeminiAI/comments/1stlec6/apparently_humans_are_reading_our_conversations/",
+      "https://reddit.com/r/ClaudeAI/comments/1stga8n/i_just_read_that_the_default_cache_on_claude_code/",
+      "https://reddit.com/r/ClaudeAI/comments/1stdqqc/claude_pro_session_limits_during_intensive_daily/"
     ],
     "glossary": {
-      "text normalization": "Turning raw text (URLs, dates, phone numbers) into a spoken form so the TTS says things correctly — e.g., converting ‘2026-04-22’ to ‘April twenty‑second, twenty‑twenty‑six’.",
-      "CTC alignment": "A tool that finds timings for each spoken word/phoneme so subtitles and lip-sync stay in time with the audio."
+      "session cache": "Server‑side memory of recent chat state; changing cache policies can make long chats forget earlier context.",
+      "human review": "Some providers allow humans to inspect conversations for quality/safety; opt‑outs may limit features but reduce exposure."
     }
   },
   {
-    "group": "Developer tooling & collaboration with AI",
-    "summary": "People ask whether to use native AI editors (Claude Code) or stick with IDE extensions and normal backends. The common advice: use the tool that fits your workflow, but add observability (token/cost trackers), MCP connectors for persistent context, and standard backend patterns (Supabase/Firebase or simple APIs) — and always keep deterministic checks (formatters/tests) outside the AI.",
+    "group": "Developer workflows, harnesses and handoffs",
+    "summary": "People are iterating on workflows: plan‑first agents, separate chat vs code handoffs, open dashboards to visualize agents, and local harnesses to avoid heavy system prompts. If you're building production flows, standardize handoff artifacts (TODO.md / CLAUDE.md), use plan gates, and prefer tool‑enforced checks over ever‑longer system prompts.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1sso6f7/why_use_claude_code_over_vscode_claude_extension/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssusk9/what_are_people_using_as_a_backend_for_aibuilt/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssoir5/besteasiest_way_to_collaborate_with_claude_on_a/",
-      "https://reddit.com/r/ClaudeAI/comments/1ssow9k/built_a_pulse_for_claude_code_so_i_stop_guessing/",
-      "https://reddit.com/r/ClaudeAI/comments/1st449z/nobody_is_building_consumer_apps_for_the_people/"
+      "https://reddit.com/r/LocalLLaMA/comments/1stjwg5/been_using_pi_coding_agent_with_local_qwen36_35b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1stda86/opensource_dashboard_to_visualize_ai_coding/",
+      "https://reddit.com/r/ClaudeAI/comments/1sthldc/how_do_you_hand_off_from_claude_chat_to_claude/",
+      "https://reddit.com/r/LocalLLaMA/comments/1strbwt/what_open_source_harnessagentic_coding_framework/"
     ],
     "glossary": {
-      "observability": "The basic telemetry you add so you can see token usage, costs, and failures — like logs and metrics for AI sessions.",
-      "backend for AI apps": "What stores your data and handles auth/consistency (e.g., Supabase, Firebase, or a custom API). It’s the non-AI glue that keeps your app reliable."
+      "plan‑first": "A workflow where the agent creates a small, verifiable plan and gets approval before making code changes.",
+      "handoff artifact": "A simple file (TODO.md, CLAUDE.md) used to move work between high‑level chat and coding agents."
+    }
+  },
+  {
+    "group": "Hardware choices & running models locally",
+    "summary": "People are debating whether to buy Mac Studios, Blackwell cards, or multi‑3090 rigs for local inference; choices depend on target models and whether you need CUDA. If you plan to self‑host, match RAM/VRAM and toolchain (llama.cpp, vLLM, llama‑server) to the model's expected quantization and context size.",
+    "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1su0mvt/hard_freakin_decisionblackwell_96g_or_mac_studio/",
+      "https://reddit.com/r/LocalLLaMA/comments/1stf620/best_home_hardware_for_an_ai_rig/",
+      "https://reddit.com/r/LocalLLaMA/comments/1stjggt/purchasing_a_mac_studio_m2_max_with_64gb_of_ram/"
+    ],
+    "glossary": {
+      "VRAM": "GPU memory used to hold model weights and KV caches; larger context windows need more VRAM.",
+      "CUDA vs Apple Silicon": "Some toolchains rely on NVIDIA CUDA; Apple Silicon uses different runtimes — pick hardware compatible with your chosen stack."
     }
   }
 ]
