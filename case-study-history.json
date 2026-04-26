@@ -394,5 +394,17 @@
     "date": "2026-04-25T05:26:50.835Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Built Magic Pocket and Moved 90% of User Files Off S3 (Hundreds of PB, Tens of Millions Saved)",
+    "date": "2026-04-26T05:55:13.288Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Stop the Dominoes: The Circuit Breaker Pattern for Resilient Services",
+    "date": "2026-04-26T05:55:51.557Z",
+    "type": "concept",
+    "company": null
   }
 ]
