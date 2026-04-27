@@ -406,5 +406,17 @@
     "date": "2026-04-26T05:55:51.557Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Scaled Kafka to Trillions of Events a Day — From Log Pileups to Millions/sec Pipelines",
+    "date": "2026-04-27T06:14:33.392Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Raft Explained: How Distributed Systems Agree Without Losing Their Minds",
+    "date": "2026-04-27T06:15:15.633Z",
+    "type": "concept",
+    "company": null
   }
 ]
