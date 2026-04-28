@@ -418,5 +418,17 @@
     "date": "2026-04-27T06:15:15.633Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Manhattan at Scale: How Twitter Rebuilt Storage to Serve Millions of Timelines/sec",
+    "date": "2026-04-28T06:17:30.426Z",
+    "type": "case-study",
+    "company": "Twitter (X)"
+  },
+  {
+    "title": "How Consistent Hashing Keeps Your Cache (and Sanity) from Exploding",
+    "date": "2026-04-28T06:18:00.248Z",
+    "type": "concept",
+    "company": null
   }
 ]
