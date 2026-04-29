@@ -430,5 +430,17 @@
     "date": "2026-04-28T06:18:00.248Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Earlybird at Pinterest — Indexing 2B+ Pins for Sub‑100ms Search",
+    "date": "2026-04-29T06:11:41.893Z",
+    "type": "case-study",
+    "company": "Pinterest"
+  },
+  {
+    "title": "Who Gets the Key? Practical Distributed Locks (Patterns, Pitfalls & Safe Code)",
+    "date": "2026-04-29T06:12:54.092Z",
+    "type": "concept",
+    "company": null
   }
 ]
