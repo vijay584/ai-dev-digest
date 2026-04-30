@@ -30202,5 +30202,781 @@
   "https://reddit.com/r/OpenAI/comments/1syo82p/our_parents_stayed_in_jobs_for_decades_we_stay/": {
     "firstSeen": 1777445007511,
     "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syu3qr/ai_is_getting_too_realistic/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syxq98/i_asked_chatgpt_to_imagine_rchatgpt_the_day_agi/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szkkro/cant_believe_that_chatgpt_has_such_indepth/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz0lyk/16x_dgx_sparks_what_should_i_run/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz67w4/thanks_for_the_advice_claude/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syw1ol/ais_are_weird_lil_alien_minds/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz5md9/claude_picked_the_moral_high_ground_in_the_red/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1syuij0/when_youve_got_money_to_burn/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz1qer/mistralaimistralmedium35128b_hugging_face/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz2y76/ama_with_nous_research_ask_us_anything/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1syt37w/claude_is_my_seo_strategist_content_engine_and/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syt38w/what_it_feels_like_to_have_to_have_qwen_36_or/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1syu949/the_final_nail_in_the_coffin_for_entry_level/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szfnvw/bernie_sanders_is_geoffrey_hinton_exaggerating/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szgxli/chatgpt_is_now_constantly_arguing_and_picking/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syqa2v/copilot_just_9xd_sonnet_and_27xd_opus_and_teams/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szajgm/devs_using_qwen_27b_seriously_whats_your_take/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz8565/jeremy_clarkson_ruins_all_your_favourite_band/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syr9t2/i_tried_to_talk_with_chatgpt_about_the_new_us/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz06sr/issues_with_image_generating/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syxoo3/chatgpt_gave_me_someone_elses_image/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syx4sg/qwen_introduced_flashqla/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz38u6/launched_my_first_app_using_claude/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz0se4/chatgpt_really_wants_to_be_right_recently/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz2mgw/mistral_medium_35_launched/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syu1cw/rude/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1szc8h1/openai_really_really_really_wants_gpt_55_to_stop/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syu2ov/almost_insanely_accurate/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz23wn/introducing_the_ibm_granite_41_family_of_models/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz4jea/rumor_deepseek_and_kimi_are_merging_while_the_us/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sywibw/id_pay_200_if_ai_were_this_honest/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1szd66g/is_it_just_me_who_feels_that_gemini_has_been/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz6i89/im_not_sure_im_doing_this_right/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szmj53/if_you_tell_chatgpt_you_got_it_wrong_occasionally/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1syuu0g/whats_the_best_uncensored_ai_generator/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz2nf3/ai_is_making_me_less_productive_and_more/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szb2bi/am_i_the_only_one_that_still_likes_chatgpt_and_i/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sysj7u/deepseek_has_began_grayscale_testing_for_deepseek/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sysjrd/achieved_escape_velocity_sounds_like_a_nice_way/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz1y8d/ps5s_can_now_be_hacked_to_run_linux_perhaps_some/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz1y64/mistral_médium_35_is_here/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szd0ak/kiera_knightly_as_a_knight_in_a_knights_tale/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szdv5s/what_do_you_guys_even_use_local_llms_for_me_a_lot/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz18s0/the_motherinlaw_method_how_to_get_the_best_code/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sysyz2/qwen36_27b_on_dual_rtx_5060_ti_16gb_with_vllm_60/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/MachineLearning/comments/1sz14mi/an_interactive_semantic_map_of_the_latest_10/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szbrd1/what_is_claude_mythos_doing_in_my_azure_model/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz3i73/what_tools_are_you_using_to_give_your_llm_a/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1syvo7w/my_claude_prompts_are_embarrassingly_short_now/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1szj0s8/openais_fate_to_be_decided_within_three_weeks/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz48rg/did_we_get_a_massive_increase_of_tokens_in_opus_47/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syxckc/llamacpp_benchmark_native_vs_non_native_nvfp4_on/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szjqj4/my_future_husband_is_probably_on_claude/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz748q/fully_3dmodeled_raspberry_pi_5_enclosure_made_100/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz93kf/ais_are_weird_lil_alien_minds/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szhurv/claude_status_update_claudeai_and_api_unavailable/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz3jfw/chatgpt_went_rogue_mode_too_realistic/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz08ea/ai_safety_researcher_i_wrote_about_neuralese_as_a/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz9ib0/converting_claude_code_into_the_most_intelligent/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz5alu/i_opensourced_59_claude_skills_covering_the_full/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1szlsfp/openai_explains_where_the_goblins_came_from/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/MachineLearning/comments/1szc05y/icml_2026_decision_d/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syuegw/love_the_new_image_generation/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1szfo28/bernie_sanders_is_geoffrey_hinton_exaggerating/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/AI_India/comments/1sytt5u/definitely_there_will_be_50_job_cuts_in_bengaluru/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz0aaj/ik_llama_now_supports_qwen35_mtp_support_o/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz8auq/building_a_fully_local_pdftoaudiobook_workflow/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1systb1/llamacpp_nvfp4_native_support_on_blackwell_from/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szgjd7/you_should_probably_disable_algif_kernel_module/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1szc24d/you_can_now_easily_generate_files_in_gemini/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syphr9/mimov25gguf_preview_available/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1szku0y/this_looks_so_cool_and_realistic_prompt_below/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz8f5v/parameter_estimate/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syuz2l/if_anyone_is_running_qwen_9b_or_27b_or_35b_and/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syx7oh/chatgpt_image_censorship/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/MachineLearning/comments/1syl769/ijcaiecai_2026_decision_notification_and/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syps6i/i_stumbled_on_a_gemma_4_chat_template_bug_for/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/cursor/comments/1syuj2x/fyi_composer_2_have_extremely_unhealthy_habits/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sytx45/thinking_of_buying_a_mac_to_get_into_local_llms/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sytl0c/i_benchmarked_caveman_against_the_prompt_be_brief/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sywzhe/every_time_i_start_a_new_chatgpt_conversation_i/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/cursor/comments/1szb417/nontechnical_founder_is_cursor_pro_worth_20mo_for/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz8yk4/show_off_for_me_with_an_image/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz59l4/inclusionailing261t_hugging_face/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1sz7kkj/is_gemini_right_about_originality/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syqt17/ran_my_own_benchmark_qwen_36_35b_vs_gemma_4_26b/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syv3j8/i_wonder_how_much_videogame_developers_are/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1syxt40/i_tested_claude_blender_mcp_for_real_3d_workflows/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szi1mh/larger_gemma4qwen36/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szg1d9/i_got_a_qwen_sticker_lol/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sywps5/chatgpt_just_went_crazy_with_this_update/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sznao3/deepseek_v4_isnt_beating_opus_but_it_doesnt_need/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szirnh/name_a_more_iconic_couple/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szk0lb/qwen3627b_4256bpw_in_full_vram_on_a_5070_ti_with/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syqgdh/no_nothing_special_just_a_tiny_local_language/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syqrej/how_my_day_is_spent/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syy7lg/ask_chatgpt_for_a_number_from_1_to_100_ill_bet/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szfeg3/almanac_turn_claude_code_into_a_deep_research/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szbx94/strip_qwen36_dense_of_its_multimodal_capabilities/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1sz98xr/how_to_keep_gemini_chats_totally_secure_when/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz4vy0/granite_speech_41/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szkdpt/chatgpt_reframing_and_pushing_back_on_meaningful/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1sypcuj/just_a_rant_gemini_has_so_much_potential_but_its/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1szirei/i_want_to_be_able_to_afford_chatgpt_20_dollar/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/mcp/comments/1syyxl9/i_finally_get_mcp_after_a_year/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz9v9z/qwen_3635ba3b_kv_cache_part_2_ppl_kl_divergence/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syxzsk/best_ai_to_teach_me_from_a_pdf_textbook/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szc1u6/qwen_models_are_such_good_models/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syuvrl/new_study_finds_bigger_ais_more_miserable_smaller/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/MachineLearning/comments/1syc6ee/what_is_the_scientific_value_of_administering_the/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz44qk/it_takes_creativity_to_use_ai_for_improving_your/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz4o8u/are_you_still_using_superpower_plugin_with_opus_47/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/AI_India/comments/1szl7p6/in_world_of_llms_this_was_where_it_started/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szghvq/what_happened_to_the_images_tab/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1syo7pn/ok_im_done_with_gemini_ai_should_at_least_know/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szbjnc/post_em_if_you_got_em_because_its_fun/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz1x7m/how_to_make_claude_output_stop_over_emphasising/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz7y6z/mistral_medium_looping/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz11rp/not_too_bad/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syvqyd/what_if/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1sz9lcs/new_gemini_ios_update_brings_the_ios_26_keyboard/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1syu2jv/nano_banana_on_fast_mode_censorship_is_out_of/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz532i/heres_45_seconds_of_facebook_telling_me_the_white/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szjx4v/how_anthropic_teams_use_claude_code/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/MachineLearning/comments/1sz0yy8/stanford_paper_review_d/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szitea/which_color_did_chat_pick_for_you/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz091q/watch_your_transformation/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz8o53/chatgpt_became_my_personal_chef/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1syw4t0/chatgpt_lovers_in_korea_made_this_mascot_the/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sznfue/where_the_goblins_came_from/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szhjv8/seriously_like_wtf/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/AI_India/comments/1sylnpn/any_one_here_tried_or_using_openclaw/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syvdmz/how_do_you_objectively_tell_if_your_custom_agent/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szl464/no_fluff/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szamcy/whats_up_with_mobile_llms/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szir8o/messing_up/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz0ndu/my_top_10_codex_skills_after_3_weeks_of/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syzd44/sorry_if_its_not_the_best_place_to_ask_this_of/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sze5xe/do_i_speak_to_chatgpt_like_a_friend_or_i_have_to/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1syxewe/my_three_claude_subagents_actually_work/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz4oqt/5060ti_quadchads_vllm_the_reluctant_arc_pp_and_tg/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syv78p/best_practices_to_start_with_vibe_coding_best/": {
+    "firstSeen": 1777532980931,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szh8qk/ai_is_getting_too_realistic/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sza66h/my_thoughts_on_personal_use_of_ai_discussion/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szl0ts/why_claude_is_not_consistent/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szftml/claude_opus_thinks_in_chinese/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/mcp/comments/1sz5x4b/showcase_built_an_mcp_server_that_lets_agents_get/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szja35/has_anyone_figured_out_why_claude_code_running/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz9e8r/turboquant_enabled_runtime_valkyr/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sy9rzk/qwen3627b_created_this_open_webui_tool/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz7xsn/a_place_to_discuss_ai_for_people_who_arent/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1szmpfv/today_i_learnt_gemini_cannot_maintain_a_document/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz9fhx/how_to_get_chatgpt_to_stop_using_everything_it/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz8dqm/telling_gpt_youre_wrong_seems_to_get_it_to_back/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1szbfec/chatgpt_is_being_weird_gaslighting_recently/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szlpic/claude_has_told_me_a_few_times_to_apply_to/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szcqo2/what_a_simple_i_dont_know_would_suffice/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz6pz9/hidden_thinking_phase/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz9f6f/qwen3627budq6_k_xlgguf_sometimes_gets_stuck_in_a/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1sz5ppb/do_you_think_opensourcing_plannergrade_models/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szm32s/claude_and_my_shitty_business_idea/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/MachineLearning/comments/1syx7n6/am_i_crazy_to_think_that_the_uai_authors_are/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szb2m2/has_the_eu_ai_act_made_claude_worse_for_everyone/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz633l/does_anyone_tried_the_caveman_output_prompts_is/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syw7i4/intel_mac_pro_with_vega_ii_useable/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1syu9ho/sensenovau1_unifying_multimodal_understanding_and/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szl8pq/ever_facilitate_the_chat_between_two_ais/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1szl9y0/ever_facilitate_the_chat_between_two_ais/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1syrf20/serious_downgrade_gemini_thinking_and_pro/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szap3w/all_my_chats_suddenly_disappeared/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/cursor/comments/1sz9h72/will_cursor_increase_the_usage_of_the_ultra_plan/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/mcp/comments/1sywssj/how_do_you_rotate_creds_across_10_mcp_servers/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz7z4e/try_to_break_my_prompt_injection_detector_ill/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syy2h3/should_there_be_an_international_law_that_ai_can/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szho1s/a_house_and_its_owners/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz9kdk/if_you_could_only_get_one_subscription_for_school/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1szj326/how_to_make_gemini_produce_a_quiz_with_review/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/GeminiAI/comments/1szcc06/notebook_projects_disappeared_in_gemini/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szk89g/vibe_coding_for_real_work_apps/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sz9vht/i_got_it_to_say_goblin_unprompted/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1sz7o8a/musk_v_altman_a_charm_offensive_gone_astray/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz4n3d/i_built_a_full_web_app_using_qwen_3635b_running/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1szl2gm/what_name_is_your_gpt_giving_itself/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sz9ngz/ubuntu_just_made_every_other_local_engine_obsolete/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syzx7m/well_well_well_look_whos_back_at_1_great_work/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1szaw8n/kld_comparison_of_oq_q_mxfp_and_ud_mlx/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/MachineLearning/comments/1sz6uuj/how_strongly_do_you_believe_llm_judges_on_the_for/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/OpenAI/comments/1syfdl0/amazon_touts_a_major_expansion_with_openai_as/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1szhybl/any_tips_for_claude_for_graphic_design_no_uiux/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz4jx9/where_do_skills_live_im_so_confused/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sze9i9/how_far_are_we_from_a_model_that_can_take_a/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/LocalLLaMA/comments/1sy8ht5/convert_add_support_for_nemotron_nano_3_omni_by/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ChatGPT/comments/1sza9hk/i_have_to_argue_with_it_now/": {
+    "firstSeen": 1777532980932,
+    "reported": true
+  },
+  "https://reddit.com/r/ClaudeAI/comments/1sz56dj/should_i_fire_my_seo_vendor_and_just_use_claude/": {
+    "firstSeen": 1777532980932,
+    "reported": true
   }
 }
