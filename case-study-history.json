@@ -442,5 +442,17 @@
     "date": "2026-04-29T06:12:54.092Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Built Open Connect: Serving Tens of Tbps from the Edge",
+    "date": "2026-04-30T06:15:52.853Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Cache Smarter: When to Use Cache‑Aside, Write‑Through, and Write‑Back",
+    "date": "2026-04-30T06:16:53.561Z",
+    "type": "concept",
+    "company": null
   }
 ]
