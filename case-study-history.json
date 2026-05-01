@@ -454,5 +454,17 @@
     "date": "2026-04-30T06:16:53.561Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Stopped Duplicate Charges: Building Idempotent, Retries-First Payments at Tens of Thousands QPS",
+    "date": "2026-05-01T06:25:27.733Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Seeing the System: Practical Observability — Traces, Metrics & Logs (and how to use them together)",
+    "date": "2026-05-01T06:25:53.284Z",
+    "type": "concept",
+    "company": null
   }
 ]
