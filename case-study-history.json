@@ -466,5 +466,17 @@
     "date": "2026-05-01T06:25:53.284Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Lyft Built Envoy: Solving Service-to-Service Reliability at Millions of RPS",
+    "date": "2026-05-02T05:53:06.407Z",
+    "type": "case-study",
+    "company": "Lyft"
+  },
+  {
+    "title": "Keep the Booking Whole: Sagas for Distributed Transactions",
+    "date": "2026-05-02T05:53:34.705Z",
+    "type": "concept",
+    "company": null
   }
 ]
