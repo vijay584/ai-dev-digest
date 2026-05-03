@@ -478,5 +478,17 @@
     "date": "2026-05-02T05:53:34.705Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Built H3: Turning GPS Streams into Sub‑10ms Spatial Queries for Real‑Time Dispatch",
+    "date": "2026-05-03T06:15:53.253Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Don’t Let One Crash Sink the Ship: The Bulkhead Pattern for Resilient Systems",
+    "date": "2026-05-03T06:17:10.433Z",
+    "type": "concept",
+    "company": null
   }
 ]
