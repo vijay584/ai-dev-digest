@@ -490,5 +490,17 @@
     "date": "2026-05-03T06:17:10.433Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled Real‑Time Video from ~10M to 200M Daily Participants — Keeping Latency Low While Traffic Exploded",
+    "date": "2026-05-04T06:25:34.893Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Write Time Travel: Event Sourcing + CQRS for Auditability, Scale, and Faster Reads",
+    "date": "2026-05-04T06:26:02.867Z",
+    "type": "concept",
+    "company": null
   }
 ]
