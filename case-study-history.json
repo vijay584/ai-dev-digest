@@ -502,5 +502,17 @@
     "date": "2026-05-04T06:26:02.867Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Cloudflare vs. a 17M rps HTTP DDoS: How edge-first caching, Anycast, and smart routing kept origins alive",
+    "date": "2026-05-05T06:02:23.435Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Don't Retry Like It's 1999: Practical Retry Strategies with Backoff & Jitter",
+    "date": "2026-05-05T06:03:14.753Z",
+    "type": "concept",
+    "company": null
   }
 ]
