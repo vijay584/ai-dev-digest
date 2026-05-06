@@ -514,5 +514,17 @@
     "date": "2026-05-05T06:03:14.753Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Survived BFCM: Scaling Checkout for $5.1B in Sales",
+    "date": "2026-05-06T06:16:59.746Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "Why Your Queries Crawl: Practical Database Indexing & Query Optimization",
+    "date": "2026-05-06T06:17:45.977Z",
+    "type": "concept",
+    "company": null
   }
 ]
