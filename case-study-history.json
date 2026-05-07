@@ -526,5 +526,17 @@
     "date": "2026-05-06T06:17:45.977Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Moved Hundreds of PB to Magic Pocket — Cutting Storage Cost by ~$75M/yr and Reclaiming Control",
+    "date": "2026-05-07T06:21:40.056Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Circuit Breakers: Fail Fast, Recover Faster",
+    "date": "2026-05-07T06:22:10.785Z",
+    "type": "concept",
+    "company": null
   }
 ]
