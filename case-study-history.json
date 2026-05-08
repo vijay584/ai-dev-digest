@@ -538,5 +538,17 @@
     "date": "2026-05-07T06:22:10.785Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "LinkedIn: Scaling Kafka to Serve Trillions of Messages a Day (millions/sec) and Keep Real‑Time Features Fast",
+    "date": "2026-05-08T05:39:13.188Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "When the Cluster Needs a Conductor: Understanding Raft Consensus for Reliable Replicated State",
+    "date": "2026-05-08T05:40:08.877Z",
+    "type": "concept",
+    "company": null
   }
 ]
