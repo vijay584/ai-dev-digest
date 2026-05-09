@@ -550,5 +550,17 @@
     "date": "2026-05-08T05:40:08.877Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "GitHub: Zero‑Downtime MySQL Schema Migrations at 1,000+ Databases (gh-ost in Action)",
+    "date": "2026-05-09T06:04:06.816Z",
+    "type": "case-study",
+    "company": "GitHub"
+  },
+  {
+    "title": "How Consistent Hashing Keeps Your Cache & Shards From Exploding When Nodes Come and Go",
+    "date": "2026-05-09T06:04:48.919Z",
+    "type": "concept",
+    "company": null
   }
 ]
