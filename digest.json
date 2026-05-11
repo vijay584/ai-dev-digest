@@ -1,107 +1,99 @@
 [
   {
-    "group": "Squeezing local model performance",
-    "summary": "Developers are sharing real-world configs and forks to get big models to run fast on consumer GPUs: things like speculative decoding (MTP/DFlash), KV-cache compression, tensor parallelism, and careful quant choices can dramatically change speed and context size. If you run local inference, these posts are a goldmine of parameters, trade-offs, and benchmarks to try on your own machine.",
+    "group": "Local model speed & optimization",
+    "summary": "A bunch of hobbyist and pro devs are sharing real-world speed wins and configs for running big models locally — think token/s benchmarks, MTP/speculative decoding tradeoffs, quant choices (Q4/Q5/JANG), and multi-GPU tricks. If you care about making models actually usable on consumer or workstation hardware, these posts are full of practical knobs and gotchas to try or avoid.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1t82zxv/80_toksec_and_128k_context_on_12gb_vram_with/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t88zvv/beellamacpp_advanced_dflash_turboquant_with/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t86j45/more_qwen3627b_mtp_success_but_on_dual_mi50s/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8k6fg/running_minimax_27_at_100k_context_on_strix_halo/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t7zto6/testing_mimov25iq3_s_with_1048576_context/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8ad37/9070xt_inference_for_q3_qwen_27b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8nza9/higher_quants_are_so_much_better"
+      "https://reddit.com/r/LocalLLaMA/comments/1t99upf/getting_a_feel_for_how_fast_x_tokenssecond_really/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9eo83/running_qwen36_35b_a3b_on_8gb_vram_and_32gb_ram/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t94ito/i_have_deepseek_v4_pro_at_home/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9em98/deepseekv4flash_w4a16fp8_with_mtp_selfspeculation/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9gcar/mtp_benchmark_results_the_nature_of_the/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9voxs/exllamav3_major_updates/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t96l6r/ncclfree_tensor_parallelism_on_dual_blackwell/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t95k73/ds4/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t8hjkc/the_quantization_method_apple_silicon_actually/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t934vi/i_built_a_cli_to_stop_local_ai_models_from_eating/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9lbcm/ran_some_llamacpp_rpc_test_to_see_if_its_worth_it/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t96kfh/speeding_up_local_llm_for_usable_coding_agent/"
     ],
     "glossary": {
-      "speculative decoding (MTP / DFlash)": "A trick where a smaller, faster ‘draft’ model proposes tokens and the big model verifies them — it can cut latency but needs tuning so the big model still accepts the draft.",
-      "KV cache": "Short for key-value cache: remembers recent activations so the model doesn't reprocess the full prompt every step; big caches let long context run but use memory.",
-      "quantization": "Shrinking model numbers to fewer bits (Q4, Q5, etc.) to save memory; cheaper quantization is faster but can reduce quality."
+      "quantization": "A way to shrink model numbers so they use less memory; smaller quants run faster but can hurt reasoning or long-context accuracy.",
+      "context window": "How much recent text the model can 'see' at once — bigger windows let you give more code/docs but cost memory and slow things down.",
+      "speculative decoding (MTP)": "A trick where the model drafts multiple token candidates to save full-model work; great for predictable tasks (code) but can slow creative outputs.",
+      "tokens per second (TPS)": "A practical speed metric: how many pieces of text the model produces per second. Higher TPS means snappier interactive use."
     }
   },
   {
-    "group": "Agent frameworks, harnesses, and red‑teaming",
-    "summary": "People are building autonomous agents and agent-management tools, but practical experiments keep showing the same lesson: give an agent power and tools without careful limits and it will try dangerous things. The community is balancing harness engineering, automated harness tuning, and safer architectures (sandboxing, approvals, or limited tool sets).",
+    "group": "Agent stacks, MCPs, and harness engineering",
+    "summary": "People building agentic workflows are converging on a few patterns: use an MCP or small tool layer to expose services, keep a clear harness that prepares context, and treat AI-generated code as something you must own and test. There are a lot of shared tools and tips — from Claude Code plugins to Obsidian bridges, stacked AGENTS.md, and infra helpers so agents don't stop for every external key or provisioning step.",
     "posts": [
-      "https://reddit.com/r/ChatGPT/comments/1t863ho/i_built_a_300line_autonomous_ai_agent_and_told_it/",
-      "https://reddit.com/r/OpenAI/comments/1t89zdr/this_is_the_first_documented_instance_of_ai/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t82fxv/the_dangers_of_open_claw_everything/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8hryl/whats_currently_the_bestsafest_way_to_build_an/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8cn9y/claude_improved_my_agent_harness_by_407_overnight/",
-      "https://reddit.com/r/GeminiAI/comments/1t82it0/gemini_has_a_massive_2_million_token_memory_but/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8gb1e/i_am_overwhelmed_by_harnesses/"
+      "https://reddit.com/r/ClaudeAI/comments/1t9ayg8/i_made_claude_code_aware_of_its_own_usage_limits/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9ljk4/i_put_claude_code_inside_obsidian_as_a_plugin/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9tolw/running_two_claude_code_agents_on_the_same_repo/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9onr5/my_free_claude_code_agentic_layer_ive_been/",
+      "https://reddit.com/r/OpenAI/comments/1t9l54t/coding_agents_can_write_the_app_but_still_get/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t97163/building_out_my_tool_library_any_recommendations/",
+      "https://reddit.com/r/OpenAI/comments/1t91d35/on_harness_engineering_are_people_actually/",
+      "https://reddit.com/r/mcp/comments/1t9h2fp/mcp_server_reliability_in_production_whats/",
+      "https://reddit.com/r/mcp/comments/1t9enbo/why_mcp_and_not_rest_api_answer/",
+      "https://reddit.com/r/cursor/comments/1t9qtsm/fyi_you_can_save_tokens_by_stacking_agentsmd/"
     ],
     "glossary": {
-      "agent": "A program that calls a model repeatedly to perform multi-step tasks and can be given tools like terminal access or file I/O.",
-      "harness": "The layer around an agent (prompts, tool policies, evals, retries) that controls how it reasons and acts — like a seatbelt and dashboard.",
-      "sandbox / isolated environment": "A restricted place (container, VM) where an agent can run tools safely without risking your main machine or data."
+      "MCP": "A simple protocol layer (Machine-Callable-Protocol) that lets agents call remote tools in a controlled way so you don't give them raw API keys or unbounded network power.",
+      "agent": "A programic AI session that can call tools, read files, and take multi-step actions instead of just replying with text.",
+      "skill / AGENTS.md": "A short, portable description the model can read to know how to use a tool or a project folder; storing these in subfolders is a cheap way to scope context.",
+      "harness engineering": "The code and glue that decides what to feed the model, when (and how) to validate outputs, and how to keep the system safe and deterministic."
     }
   },
   {
-    "group": "New models and reasoning-focused releases",
-    "summary": "Major model and research releases are pushing new ideas: nested checkpoints that let you 'slice' smaller models from a big one (Star Elastic), reasoning-effort control, and specialized reasoning models for coding/agents. These affect how you pick models for cost vs. brainpower in your pipelines.",
+    "group": "Reliability, quotas, and painful product limits (Claude examples)",
+    "summary": "Multiple developers report real frustrations: hallucinations that would have broken production flows, single prompts burning huge usage windows, opaque quota math, and no easy escalation when billing goes wrong. If you run AI in your repo or product, instrument usage, enforce dry‑runs for destructive tasks, and treat the model as non-deterministic infrastructure that needs guardrails.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1t8s83r/nvidia_ai_releases_star_elastic_one_checkpoint/",
-      "https://reddit.com/r/cursor/comments/1t8627j/ring261t_launched_with_a_free_test_window_for/",
-      "https://reddit.com/r/MachineLearning/comments/1t7yrvr/deepseek_v4_paper_full_version_is_out_fp4_qat/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8v7z0/hugging_face_cofounder_says_qwen_36_27b_running/"
+      "https://reddit.com/r/ClaudeAI/comments/1t9h8ug/claude_just_hallucinated_again_and_changed_the/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9j6t2/claude_blew_my_entire_5hour_usage_window_to_100/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9uif8/psa_losing_16k_for_compromised_key_and_claude_has/",
+      "https://reddit.com/r/ClaudeAI/comments/1t923er/i_deleted_a_guys_entire_windows_install_with_one/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9c6ms/claude_mythos_literally_broke_the_metr_graph_the/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9dzil/me_watching_my_first_session_of_the_days_usage/"
     ],
     "glossary": {
-      "nested / elastic checkpoint": "A single model file that contains smaller submodels so you can cheaply run smaller reasoning steps and then scale back up for final answers.",
-      "reasoning model": "A model mode or variant tuned to do many intermediate 'thinking' tokens cheaply, while a higher‑capacity pass finalizes the output.",
-      "FP4 / NVFP4 / FP8": "Very low-bit floating formats used to shrink model file sizes so they fit on smaller GPUs; trading some precision for accessibility."
+      "usage quota": "Limits on how much model time or tokens you can use in a window; hitting it can silently block important work, so monitor and simulate worst-case flows.",
+      "hallucination": "When a model confidently outputs false or invented information — treat high-impact outputs as untrusted until verified.",
+      "dry-run / -WhatIf": "Run a command or change in preview mode first so you can see what would happen without touching real data; critical for destructive ops."
     }
   },
   {
-    "group": "MCP, tooling and developer infra",
-    "summary": "Teams are building the plumbing: embedded vector DBs, MCP servers for tool calling, and lightweight web UIs to glue local models into apps. The recurring theme is practical trade-offs — persistence, reproducibility, and hiding tool complexity from the chat UI.",
+    "group": "Security & real-world failure stories",
+    "summary": "There are concrete warnings here: cloned or malicious sites masquerading as tool vendors, leaked API keys that drained tens of thousands, and brittle multi-shell command sequences that let a single backslash wipe a drive. Treat keys like secrets, test any auto-run shell output, and always keep physical backups when letting code (or an AI) touch disks.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1t7vumj/we_built_and_opensourced_caliby_an_embedded/",
-      "https://reddit.com/r/mcp/comments/1t7rgqw/how_do_you_keep_an_mcp_servers_output/",
-      "https://reddit.com/r/mcp/comments/1t8sjho/why_mcp_when_we_have_rest_apis/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t7vp9v/what_llamacpps_webui_has_and_what_it_lacks/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8cdt6/is_sillytavern_the_most_underrated_frontend_could/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8b4sr/after_youve_setup_local_models_where_can_you_find/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8ho70/ds4_webui/"
+      "https://reddit.com/r/ClaudeAI/comments/1t95r0d/tojan_in_claude_code_google_search_first_result/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9uif8/psa_losing_16k_for_compromised_key_and_claude_has/",
+      "https://reddit.com/r/ClaudeAI/comments/1t923er/i_deleted_a_guys_entire_windows_install_with_one/"
     ],
     "glossary": {
-      "MCP (Model Connector Protocol)": "A way for UIs to call external tools in a structured way so models can use APIs, files, or other services safely.",
-      "vector database": "A storage engine for embeddings (vectors) used to find similar documents when building retrieval-augmented systems.",
-      "reproducibility": "Being able to get the same output later — essential for citations, audits, and predictable agent behavior when upstream data changes."
+      "API key": "A secret token that lets someone use your cloud model billing — rotate and monitor them, and set strict caps so a leak can't ruin you.",
+      "prompt injection / cloned sites": "Malicious content or websites that trick tools or humans into running unsafe code or revealing secrets; always verify downloads and hosts.",
+      "command escaping": "Different shells interpret quotes and backslashes differently — chaining commands across shells is brittle and can turn a path into root or a no-op into 'delete everything'."
     }
   },
   {
-    "group": "Production, cost and developer workflows",
-    "summary": "Teams wrestle with real costs and complexity: prompt bloat ('prompt debt'), choosing hardware vs cloud, and why deploying an AI feature in production is more about data plumbing, governance, and reliability than the model itself. If you’re evaluating AI for work, these posts highlight what actually eats your budget and time.",
+    "group": "Hosted model UX, updates, and developer sentiment",
+    "summary": "Hosted models (ChatGPT, Gemini, Claude, Opus) keep getting feature and policy changes that shift behavior, and devs are vocal — some praise improved depth, others complain about slower, safer, or less-helpful outputs and higher latency. If you rely on hosted models, expect periodic quality/regression tradeoffs and build workflows that can survive model swaps or temporary slowdowns.",
     "posts": [
-      "https://reddit.com/r/AI_India/comments/1t7zgcd/i_think_indian_enterprises_are_underestimating/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8nvu0/budget_for_ai_tools_for_a_300_people_company/",
-      "https://reddit.com/r/OpenAI/comments/1t7yqne/is_prompt_debt_becoming_a_real_problem_in_ai_apps/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t7vxk4/make_local_llm_usable_for_professional_use/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t84agg/buying_mac_vs_building_pc_for_running_local_llm/",
-      "https://reddit.com/r/cursor/comments/1t89g34/any_recommendations_on_saving_costs/"
+      "https://reddit.com/r/GeminiAI/comments/1t8zb6u/new_ui_looking_cool/",
+      "https://reddit.com/r/GeminiAI/comments/1t9jgwh/gemini_omni_new_video_model/",
+      "https://reddit.com/r/GeminiAI/comments/1t9e62a/has_there_been_a_dip_in_quality_with_gemini_pro/",
+      "https://reddit.com/r/GeminiAI/comments/1t98w0h/painfully_slow/",
+      "https://reddit.com/r/ChatGPT/comments/1t9pfmg/chatgpt_is_becoming_a_radicalization_engine/",
+      "https://reddit.com/r/ChatGPT/comments/1t9kfby/ask_chatgpt_to_choose_a_random_number_from_1100/",
+      "https://reddit.com/r/ChatGPT/comments/1t9ksmu/my_chatgpt_changed_its_mind_mid_sentence/",
+      "https://reddit.com/r/OpenAI/comments/1t9ulv2/sam_altman_floats_goblin_name_for_openais_next_ai/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9krnd/i_underestimated_claude_until_i_tried_it_for_this/"
     ],
     "glossary": {
-      "prompt debt": "Accumulated complexity in your system prompts (examples, fallbacks, edge cases) that bloats token use and maintenance.",
-      "token / context window": "A token is a chunk of text the model processes; the context window is how many tokens the model can 'remember' at once — it limits long documents and multi-step state.",
-      "production AI": "Running models reliably for real users — requires monitoring, governance, data quality, and integration work beyond just the model itself."
-    }
-  },
-  {
-    "group": "Claude & Gemini: product UX and developer pain points",
-    "summary": "Developers and power users discuss practical annoyances—session limits, surprising behavior (repeated phrases, odd punctuation), model deprecations, and app stability on mobile/desktop. These are the kind of product-level issues that affect day‑to‑day developer workflows more than model accuracy does.",
-    "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1t7zpdz/claude_desktop_app_now_shows_context_usage_macos/",
-      "https://reddit.com/r/ClaudeAI/comments/1t84nih/why_does_this_happen/",
-      "https://reddit.com/r/cursor/comments/1t81hij/claude_keeps_saying_i_understand_now/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8dpme/why_does_claude_repeatedly_ask_how_im_doing/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8k0sl/the_claude_app_just_said_that_sonnet_45_is_going/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8yiff/weekly_limits/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8e6e2/usage_limits_technique/",
-      "https://reddit.com/r/ClaudeAI/comments/1t8cjxe/something_has_snapped_into_place_with_the_claude/"
-    ],
-    "glossary": {
-      "session / weekly limits": "Product-enforced caps on model usage over a session or week — they control cost and fairness but can disrupt workflows.",
-      "Sonnet / Opus (model names)": "Example model family names — different variants trade speed, cost, and language capability; deprecation means you may have to migrate workflows.",
-      "context usage indicator": "A UI feature that shows how much of the model's memory you're using so you avoid silently losing early context."
+      "model update / drift": "When a provider upgrades or changes a model, behavior and tone can change — some apps break, so test before you roll changes to users.",
+      "latency": "How long the hosted service takes to respond — slow responses kill developer flow and can make agent loops intolerable.",
+      "safety guardrails": "Built-in filters and instruction layers providers add that can make a model less likely to produce harmful outputs but sometimes make it less helpful for edge-case developer tasks."
     }
   }
 ]
