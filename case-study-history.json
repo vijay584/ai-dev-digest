@@ -574,5 +574,17 @@
     "date": "2026-05-10T06:23:19.012Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Built Open Connect: Serving Tens of Tbps from the Edge and Cutting Origin Traffic by ~90%",
+    "date": "2026-05-11T06:54:02.710Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Don't Make the DB Do All the Work: Practical Caching Strategies (cache-aside, write-through, write-back)",
+    "date": "2026-05-11T06:55:04.657Z",
+    "type": "concept",
+    "company": null
   }
 ]
