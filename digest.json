@@ -1,99 +1,92 @@
 [
   {
-    "group": "Local model speed & optimization",
-    "summary": "A bunch of hobbyist and pro devs are sharing real-world speed wins and configs for running big models locally — think token/s benchmarks, MTP/speculative decoding tradeoffs, quant choices (Q4/Q5/JANG), and multi-GPU tricks. If you care about making models actually usable on consumer or workstation hardware, these posts are full of practical knobs and gotchas to try or avoid.",
+    "group": "Local inference hardware & real‑world performance tweaks",
+    "summary": "Developers are sharing practical builds and tradeoffs for running big models locally: unusual memory tiers (Optane PMem), DIY cooling for DGX, multi‑GPU choices (5060 Ti vs used 3090), and whether to buy Strix Halo vs DGX Spark for a home LLM server. The thread collection highlights that real throughput depends on GPU VRAM, system RAM, offload strategy, and software support — so pick hardware with the memory and offload options your target models need.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1t99upf/getting_a_feel_for_how_fast_x_tokenssecond_really/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t9eo83/running_qwen36_35b_a3b_on_8gb_vram_and_32gb_ram/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t94ito/i_have_deepseek_v4_pro_at_home/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t9em98/deepseekv4flash_w4a16fp8_with_mtp_selfspeculation/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t9gcar/mtp_benchmark_results_the_nature_of_the/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t9voxs/exllamav3_major_updates/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t96l6r/ncclfree_tensor_parallelism_on_dual_blackwell/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t95k73/ds4/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t8hjkc/the_quantization_method_apple_silicon_actually/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t934vi/i_built_a_cli_to_stop_local_ai_models_from_eating/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t9lbcm/ran_some_llamacpp_rpc_test_to_see_if_its_worth_it/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t96kfh/speeding_up_local_llm_for_usable_coding_agent/"
+      "https://reddit.com/r/LocalLLaMA/comments/1taeg8h/computer_build_using_intel_optane_persistent/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tansuo/found_a_way_to_cool_the_dgx/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta7p6e/anyone_with_4x_5060ti_based_setups/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta7ce9/strix_halo_or_dgx_spark_for_a_home_llm_server/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta2lzn/which_inference_engines_are_5090_owners_using/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tad1va/best_conceivable_setup/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tap20l/efficient_use_of_large_system_ram/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta5y3p/terrible_vulkan_pptg_on_arrow_lake_igpus/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tap8on/is_this_a_crazy_idea/"
     ],
     "glossary": {
-      "quantization": "A way to shrink model numbers so they use less memory; smaller quants run faster but can hurt reasoning or long-context accuracy.",
-      "context window": "How much recent text the model can 'see' at once — bigger windows let you give more code/docs but cost memory and slow things down.",
-      "speculative decoding (MTP)": "A trick where the model drafts multiple token candidates to save full-model work; great for predictable tasks (code) but can slow creative outputs.",
-      "tokens per second (TPS)": "A practical speed metric: how many pieces of text the model produces per second. Higher TPS means snappier interactive use."
+      "VRAM": "Graphics card memory used to hold model weights and activations — if it’s too small you must offload, which slows things.",
+      "Offload": "Moving parts of the model (weights, activations, experts) from GPU to system RAM or SSD to fit larger models, trading latency for capacity.",
+      "Quantization": "Shrinking model weights (e.g., Q4/Q6) to reduce memory and speed up inference at some quality cost."
     }
   },
   {
-    "group": "Agent stacks, MCPs, and harness engineering",
-    "summary": "People building agentic workflows are converging on a few patterns: use an MCP or small tool layer to expose services, keep a clear harness that prepares context, and treat AI-generated code as something you must own and test. There are a lot of shared tools and tips — from Claude Code plugins to Obsidian bridges, stacked AGENTS.md, and infra helpers so agents don't stop for every external key or provisioning step.",
+    "group": "Model behavior, releases, and model‑selection debates",
+    "summary": "Developers discuss which newer open and closed models actually improve local workflows: lots of hype around Qwen 3.6 (27B/35B A3B) and finetunes, comparisons to Gemma 4 and Nemotron, and concerns about regressions (Qwen 3.6 feeling worse than 3.5 for some tasks). The takeaway: test the specific model+quant on your use case — long‑context handling, tool/agent stability, and finetunes matter more than headline sizes.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1t9ayg8/i_made_claude_code_aware_of_its_own_usage_limits/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9ljk4/i_put_claude_code_inside_obsidian_as_a_plugin/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9tolw/running_two_claude_code_agents_on_the_same_repo/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9onr5/my_free_claude_code_agentic_layer_ive_been/",
-      "https://reddit.com/r/OpenAI/comments/1t9l54t/coding_agents_can_write_the_app_but_still_get/",
-      "https://reddit.com/r/LocalLLaMA/comments/1t97163/building_out_my_tool_library_any_recommendations/",
-      "https://reddit.com/r/OpenAI/comments/1t91d35/on_harness_engineering_are_people_actually/",
-      "https://reddit.com/r/mcp/comments/1t9h2fp/mcp_server_reliability_in_production_whats/",
-      "https://reddit.com/r/mcp/comments/1t9enbo/why_mcp_and_not_rest_api_answer/",
-      "https://reddit.com/r/cursor/comments/1t9qtsm/fyi_you_can_save_tokens_by_stacking_agentsmd/"
+      "https://reddit.com/r/LocalLLaMA/comments/1t9whrt/the_qwen_36_35b_a3b_hype_is_real/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta53a2/qwen36_35ba3b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta4rvs/mtp_on_unsloth/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9xzdv/any_news_or_hope_of_qwen36_14b_and_9b_distills/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tajgmb/why_is_my_qwen3635ba3b_so_much_dumber_than/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tat17g/new_qwen36_35b_finetune_0gm1035ba3b0427/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tag1ks/500k_context_on_48gb_vram_21toks_coding/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta9mmd/gemma_4_running_fully_offline_on_webgpu_with/"
     ],
     "glossary": {
-      "MCP": "A simple protocol layer (Machine-Callable-Protocol) that lets agents call remote tools in a controlled way so you don't give them raw API keys or unbounded network power.",
-      "agent": "A programic AI session that can call tools, read files, and take multi-step actions instead of just replying with text.",
-      "skill / AGENTS.md": "A short, portable description the model can read to know how to use a tool or a project folder; storing these in subfolders is a cheap way to scope context.",
-      "harness engineering": "The code and glue that decides what to feed the model, when (and how) to validate outputs, and how to keep the system safe and deterministic."
+      "Finetune": "Further training a base model on specialized data to change behavior or fix weaknesses for a target task.",
+      "Draft/Checkpoint models": "Auxiliary models used for speculative reasoning or fast drafts that a main model can consult to improve outputs.",
+      "A3B / E4B labels": "Community naming for particular tuning/adapter variants — always check model card/README for what changed."
     }
   },
   {
-    "group": "Reliability, quotas, and painful product limits (Claude examples)",
-    "summary": "Multiple developers report real frustrations: hallucinations that would have broken production flows, single prompts burning huge usage windows, opaque quota math, and no easy escalation when billing goes wrong. If you run AI in your repo or product, instrument usage, enforce dry‑runs for destructive tasks, and treat the model as non-deterministic infrastructure that needs guardrails.",
+    "group": "Inference software, prompt handling, and caching gotchas",
+    "summary": "Many posts describe gotchas in inference stacks: slow prompt processing in certain UIs (OpenCode/opencode), the dramatic speed gains from increasing ubatch for MoE models, and brittle config parsing (extra spaces in chat‑template‑kwargs breaking preserve_thinking). Prompt caching and provider compatibility (OpenClaw ↔ oMLX, Open WebUI provider types) also cause mysterious behavior — so verify the whole chain (UI → server → model) when things misbehave.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1t9h8ug/claude_just_hallucinated_again_and_changed_the/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9j6t2/claude_blew_my_entire_5hour_usage_window_to_100/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9uif8/psa_losing_16k_for_compromised_key_and_claude_has/",
-      "https://reddit.com/r/ClaudeAI/comments/1t923er/i_deleted_a_guys_entire_windows_install_with_one/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9c6ms/claude_mythos_literally_broke_the_metr_graph_the/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9dzil/me_watching_my_first_session_of_the_days_usage/"
+      "https://reddit.com/r/LocalLLaMA/comments/1ta0pws/why_is_opencode_so_slow_in_processing_the_prompt/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tany5t/drastically_improve_prompt_processing_speed_for/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta1og5/psa_watch_out_for_extra_spaces_in/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta562n/does_preserve_thinking_work_with_openwebui/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9rlkc/openclaw_omlx_shows_0_cached_tokens_but_hermes/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta3ben/dont_you_have_issues_in_w11_with_amd_gpu_where/"
     ],
     "glossary": {
-      "usage quota": "Limits on how much model time or tokens you can use in a window; hitting it can silently block important work, so monitor and simulate worst-case flows.",
-      "hallucination": "When a model confidently outputs false or invented information — treat high-impact outputs as untrusted until verified.",
-      "dry-run / -WhatIf": "Run a command or change in preview mode first so you can see what would happen without touching real data; critical for destructive ops."
+      "ubatch (micro‑batch)": "How many tokens or samples are processed together during prefill — bigger ubatch can speed up prefill at the cost of more workspace memory.",
+      "preserve_thinking": "A model/server feature that returns hidden 'thinking' tokens for deterministic internal reasoning (useful for toolchains and agents).",
+      "Prompt cache / prompt_cache_key": "A hint or key used by servers to reuse prefill computations across repeated prompts to save time."
     }
   },
   {
-    "group": "Security & real-world failure stories",
-    "summary": "There are concrete warnings here: cloned or malicious sites masquerading as tool vendors, leaked API keys that drained tens of thousands, and brittle multi-shell command sequences that let a single backslash wipe a drive. Treat keys like secrets, test any auto-run shell output, and always keep physical backups when letting code (or an AI) touch disks.",
+    "group": "Agents, MCPs, orchestration and developer workflows",
+    "summary": "People are building orchestration layers and MCP workflows to manage agents: ORC/Orc for declarative orchestrations, Claude Code features (agent view, tips), and debate about how agentic workflows affect engineers' skills. The community is converging on patterns: small guarded LLM calls, filesystem or MCP memory for persistent context, skill bundles for safe tool access, and auditable, declarative workflows so runs can be reviewed and validated.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1t95r0d/tojan_in_claude_code_google_search_first_result/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9uif8/psa_losing_16k_for_compromised_key_and_claude_has/",
-      "https://reddit.com/r/ClaudeAI/comments/1t923er/i_deleted_a_guys_entire_windows_install_with_one/"
+      "https://reddit.com/r/LocalLLaMA/comments/1ta8v5e/orc_working_name_auditable_and_declarative_ai/",
+      "https://reddit.com/r/cursor/comments/1ta2ei2/specdriven_agentic_coding_is_quietly_making_us/",
+      "https://reddit.com/r/ClaudeAI/comments/1t9w9w2/8_advanced_claude_code_tips_ive_discovered_after/",
+      "https://reddit.com/r/ClaudeAI/comments/1tag1i9/new_in_claude_code_agent_view/",
+      "https://reddit.com/r/ClaudeAI/comments/1ta3a9x/my_precoding_routine_with_claude_code_5_mcp/",
+      "https://reddit.com/r/mcp/comments/1tacsse/can_mcp_servers_bundle_agent_skills_so_any_mcp/",
+      "https://reddit.com/r/mcp/comments/1taf3jj/does_anybody_need_multillmmultiuser_shared/"
     ],
     "glossary": {
-      "API key": "A secret token that lets someone use your cloud model billing — rotate and monitor them, and set strict caps so a leak can't ruin you.",
-      "prompt injection / cloned sites": "Malicious content or websites that trick tools or humans into running unsafe code or revealing secrets; always verify downloads and hosts.",
-      "command escaping": "Different shells interpret quotes and backslashes differently — chaining commands across shells is brittle and can turn a path into root or a no-op into 'delete everything'."
+      "MCP (Model Connector Protocol)": "A way for an LLM client to call out to external tools/servers (memory, docs, connectors) while keeping credentials and audit in the server.",
+      "Agent Skill bundle": "A packaged set of instructions and reference docs that tell an agent how to use a backend tool through a single, safe interface.",
+      "Orchestration as Code": "Describing multi‑step LLM workflows declaratively so runs are repeatable, versioned, and auditable (like Terraform for agents)."
     }
   },
   {
-    "group": "Hosted model UX, updates, and developer sentiment",
-    "summary": "Hosted models (ChatGPT, Gemini, Claude, Opus) keep getting feature and policy changes that shift behavior, and devs are vocal — some praise improved depth, others complain about slower, safer, or less-helpful outputs and higher latency. If you rely on hosted models, expect periodic quality/regression tradeoffs and build workflows that can survive model swaps or temporary slowdowns.",
+    "group": "Developer utilities: validation, dataset tooling, and web helpers",
+    "summary": "Dev‑focused tooling conversations cover pragmatic helpers: a JSON repair library (outputguard) to robustly parse and fix broken model JSON, 'Cull' for dataset scraping/curation, and a Markdown web renderer so LLMs can reason about web pages without costly screenshots. These tools aim to reduce friction when integrating LLMs into pipelines — validate model output, curate training data, and present web context cleanly.",
     "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1t8zb6u/new_ui_looking_cool/",
-      "https://reddit.com/r/GeminiAI/comments/1t9jgwh/gemini_omni_new_video_model/",
-      "https://reddit.com/r/GeminiAI/comments/1t9e62a/has_there_been_a_dip_in_quality_with_gemini_pro/",
-      "https://reddit.com/r/GeminiAI/comments/1t98w0h/painfully_slow/",
-      "https://reddit.com/r/ChatGPT/comments/1t9pfmg/chatgpt_is_becoming_a_radicalization_engine/",
-      "https://reddit.com/r/ChatGPT/comments/1t9kfby/ask_chatgpt_to_choose_a_random_number_from_1100/",
-      "https://reddit.com/r/ChatGPT/comments/1t9ksmu/my_chatgpt_changed_its_mind_mid_sentence/",
-      "https://reddit.com/r/OpenAI/comments/1t9ulv2/sam_altman_floats_goblin_name_for_openais_next_ai/",
-      "https://reddit.com/r/ClaudeAI/comments/1t9krnd/i_underestimated_claude_until_i_tried_it_for_this/"
+      "https://reddit.com/r/LocalLLaMA/comments/1tagtpv/i_catalogued_every_way_local_models_break_json/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9jub0/sharing_cull_my_opensource_dataset_tool_for_image/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9tsro/markdown_browser_for_llms/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ta8nw0/llm_as_logic_processor_filesystem_as_memory_q2/",
+      "https://reddit.com/r/LocalLLaMA/comments/1t9xyku/claude_code_orchestrator_subagent_local_llm/"
     ],
     "glossary": {
-      "model update / drift": "When a provider upgrades or changes a model, behavior and tone can change — some apps break, so test before you roll changes to users.",
-      "latency": "How long the hosted service takes to respond — slow responses kill developer flow and can make agent loops intolerable.",
-      "safety guardrails": "Built-in filters and instruction layers providers add that can make a model less likely to produce harmful outputs but sometimes make it less helpful for edge-case developer tasks."
+      "JSON Schema": "A way to declare the expected structure of JSON so you can validate and auto‑fix model outputs against a known contract.",
+      "Curation pipeline": "Automated steps to scrape, classify, filter, and export images/text for training data so you don't hand‑label everything.",
+      "Renderer for LLMs": "Converting webpages into structured text (markdown) so models can reason about pages without treating them as images."
     }
   }
 ]
