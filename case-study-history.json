@@ -586,5 +586,17 @@
     "date": "2026-05-11T06:55:04.657Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real-Time Chat & Voice to 6.7M Concurrent Users (Gateway, Shards, and BEAM magic)",
+    "date": "2026-05-12T06:24:38.742Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Split the Traffic Smartly: Practical Load Balancing Algorithms Every Developer Should Know",
+    "date": "2026-05-12T06:25:17.609Z",
+    "type": "concept",
+    "company": null
   }
 ]
