@@ -598,5 +598,17 @@
     "date": "2026-05-12T06:25:17.609Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Prevented Duplicate Charges: 24‑Hour Idempotency & Robust Webhook Delivery",
+    "date": "2026-05-13T06:37:35.628Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "One Door, Many Services: The API Gateway Pattern Explained",
+    "date": "2026-05-13T06:38:10.910Z",
+    "type": "concept",
+    "company": null
   }
 ]
