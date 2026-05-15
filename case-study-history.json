@@ -622,5 +622,17 @@
     "date": "2026-05-14T06:35:51.842Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Used H3 to Turn Costly Geometry Into Lightning‑Fast Matchmaking (10x speedup, sub‑ms neighbor lookups)",
+    "date": "2026-05-15T06:45:01.633Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Sagas: How to Coordinate Distributed Transactions Without a Global Lock",
+    "date": "2026-05-15T06:45:33.059Z",
+    "type": "concept",
+    "company": null
   }
 ]
