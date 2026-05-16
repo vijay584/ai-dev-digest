@@ -634,5 +634,17 @@
     "date": "2026-05-15T06:45:33.059Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Cloudflare Built Workers KV: Global Reads from 200+ Edge Locations in <20ms",
+    "date": "2026-05-16T06:10:38.152Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "When Every Change Is a Story: Event Sourcing + CQRS for Auditable, Scalable Systems",
+    "date": "2026-05-16T06:11:13.692Z",
+    "type": "concept",
+    "company": null
   }
 ]
