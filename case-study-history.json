@@ -658,5 +658,17 @@
     "date": "2026-05-17T06:34:00.671Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Built 'Magic Pocket' and Migrated 500+ PB Off S3 to Cut Costs and Control Latency",
+    "date": "2026-05-18T07:09:37.382Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Flip the Switch Before It Breaks: A Practical Guide to the Circuit Breaker Pattern",
+    "date": "2026-05-18T07:10:34.068Z",
+    "type": "concept",
+    "company": null
   }
 ]
