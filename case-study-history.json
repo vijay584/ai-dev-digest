@@ -670,5 +670,17 @@
     "date": "2026-05-18T07:10:34.068Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Scaled Real-Time Data with Apache Kafka — Handling Trillions of Events a Day",
+    "date": "2026-05-20T07:00:19.515Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Make Your DB Stop Sweeping the Floor: Practical Database Indexing & Query Optimization",
+    "date": "2026-05-20T07:00:55.561Z",
+    "type": "concept",
+    "company": null
   }
 ]
