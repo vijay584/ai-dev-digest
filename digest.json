@@ -1,204 +1,111 @@
 [
   {
-    "group": "MTP / speculative decoding and llama.cpp performance",
-    "summary": "Speculative decoding (MTP/DFlash) landed in mainline llama.cpp and people are actively tuning flags, quant choices, and draft models to get big speedups — but results vary by hardware and workload. If you run local inference, treat MTP as a performance knob you must benchmark: it can double token generation in some rigs but hurt prompt-processing or agentic pipelines if drafts reject often.",
+    "group": "Gemini: usage limits, downgrades and angry users",
+    "summary": "Google's Gemini rollout triggered a wave of developer complaints: paid Pro users report dramatic new compute-based quotas, sudden silent downgrades to lower-quality 'Flash' models, and a UI redesign many find worse. If you build on or rely on Gemini, expect unpredictable throttling, harder debugging of long sessions, and frustrated users — factor that into product choices and fallback plans.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1tgxau6/llamacpp_mtp_support_landed_qwen36_27b_at_244_on/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tft1il/llama_avoid_copying_logits_during_prompt_decode/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tgobhj/psa_if_you_havent_updated_llamacpp_for_a_couple/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfpx05/how_do_i_get_the_superfast_dflash_mtp_tokens_per/",
-      "https://reddit.com/r/LocalLLaMA/comments/1th28d4/no_tg_speedup_with_mtp_on_rx_6800_xt/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tgk9y6/quantizing_mtp_kv_cache_free_lunch/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfq683/mtp_for_qwen3635ba3b_on_6gb_vram_laptop_not_worth/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tgepbd/luce_dflash_pflash_on_7900xtx_qwen3627b_at_224x/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tg6j9u/benchmarking_the_new_b9200_update_optimizing_qwen/"
+      "https://reddit.com/r/GeminiAI/comments/1thmta0/i_understand_that_compute_is_limited_but_these/",
+      "https://reddit.com/r/GeminiAI/comments/1thplt8/8_minutes_of_chatting_with_pro_and_im_at_100/",
+      "https://reddit.com/r/GeminiAI/comments/1thkj1v/the_new_limits_are_an_absolute_scam/",
+      "https://reddit.com/r/GeminiAI/comments/1ti0coz/canceled_my_pro_sub_today_the_new_5hour_compute/",
+      "https://reddit.com/r/GeminiAI/comments/1ti0rjc/gemini_new_limit_is_a_joke/",
+      "https://reddit.com/r/GeminiAI/comments/1thjrgo/it_really_was_too_good_to_be_true/",
+      "https://reddit.com/r/GeminiAI/comments/1thg5n9/google_just_downgraded_me_to_flash/",
+      "https://reddit.com/r/GeminiAI/comments/1tho8wf/gemini_is_turning_into_absolute_garbagecompletely/",
+      "https://reddit.com/r/GeminiAI/comments/1ti5lai/boycott_gemini_for_the_new_usage_limit/",
+      "https://reddit.com/r/GeminiAI/comments/1thhs1b/geminis_new_usage_limit_policy/",
+      "https://reddit.com/r/GeminiAI/comments/1thh2v8/the_new_ui_is_downright_fugly/",
+      "https://reddit.com/r/GeminiAI/comments/1thwd08/the_new_limits_are_garbage/"
     ],
     "glossary": {
-      "MTP (Multi-Token Prediction)": "A speculative decoding trick where a cheap draft model proposes multiple tokens ahead so the main model can skip some work, often improving generation speed if drafts are accepted.",
-      "DFlash / DFlash draft": "A specific speculative/draft approach where a smaller draft model proposes continuations; acceptance rates determine net gain.",
-      "Prefill vs token generation": "Prefill is ingesting context (prompt-processing); token generation is producing the continuation. MTP can affect both differently.",
-      "KV cache quantization (q4/q8)": "Compressing the attention key/value cache to save VRAM; lower-quants use less memory but may reduce fidelity.",
-      "Draft acceptance rate": "How often the main model accepts the draft's multi-token prediction; low acceptance erodes MTP wins."
+      "usage limits": "A cap that counts how much model compute you can use (time/tokens/requests) before being blocked or downgraded.",
+      "Flash model": "A lower-cost, faster model variant used when higher-tier models are throttled; usually less capable for complex tasks.",
+      "compute-based quota": "Billing or access rules that measure actual compute work (like thinking time or long context) instead of a simple message count."
     }
   },
   {
-    "group": "Local model hardware & multi-GPU setups",
-    "summary": "People are iterating on real-world setups (3090s, Strix Halo, 7900XTX, RTX A4000 arrays) and inference engines (llama.cpp, vLLM, ik_llama.cpp) to squeeze context and throughput out of consumer hardware. Expect a lot of tradeoffs: memory bandwidth, power caps, and backend choice often matter more than raw parameter counts.",
+    "group": "Karpathy & Anthropic: talent moves and infrastructure bets",
+    "summary": "High-profile hirings and acquisitions are reshaping the field: Andrej Karpathy joining Anthropic plus buys like Stainless and big cloud / hardware partnerships signal Anthropic is investing heavily in pretraining, tooling, and the integration layer rather than just raw model size. For devs that means stronger Claude tooling, more MCP / SDK standardization, and a competitor upping the stakes on model quality and ecosystem lock-in.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1tgis7s/qwen_36_27b_on_24gb_vram_setup_backend/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfzsd6/m5_vs_dgx_spark_vs_strix_halo_vs_rtx_6000/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tg4mw0/benchmarking_vllm_vs_sglang_vs_llamacpp_on_a/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tftg09/rocm_713_nightly_adds_strix_halo_optimizations/",
-      "https://reddit.com/r/LocalLLaMA/comments/1th2f5w/21_gpus_benchmarked_running_a_small_tts_model/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tg6sgn/may_2026_updated_chart_of_strix_halo_mini_pc_size/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tg0y2h/apple_silicon_costs_more_than_openrouter_an/"
+      "https://reddit.com/r/ClaudeAI/comments/1thpuf1/karpathy_joins_anthropic/",
+      "https://reddit.com/r/ClaudeAI/comments/1thw3bu/openai_cofounder_andrej_karpathy_just_joined/",
+      "https://reddit.com/r/OpenAI/comments/1thq8ag/karpathy_is_a_founding_member_of_openai_and_now/",
+      "https://reddit.com/r/OpenAI/comments/1thqlzn/the_ronaldo_signing_for_barca_moment_just/",
+      "https://reddit.com/r/ClaudeAI/comments/1thkkrb/anthropic_just_bought_the_company_that_generates/",
+      "https://reddit.com/r/ClaudeAI/comments/1thzy0a/anthropic_announced_vs_current_compute_capacity/",
+      "https://reddit.com/r/ClaudeAI/comments/1thnnut/would_anthropic_allow_you_to_earn_tokens_by/"
     ],
     "glossary": {
-      "vLLM": "An inference engine optimized for high-throughput, multi-GPU and long-context workloads; often beats llama.cpp on mixed clusters.",
-      "ROCm / ROCm nightly": "AMD's GPU driver and runtime; specific ROCm versions include optimizations for cards like Strix Halo.",
-      "Pipeline parallelism": "Splitting model layers across multiple GPUs to run huge models; works better with engines that manage GPU-to-GPU graphing.",
-      "Memory bandwidth": "How fast GPU memory can be read/written; often the bottleneck for large-model throughput."
+      "pre-training": "The phase where a model learns language patterns from huge corpora before you fine-tune or use it for tasks.",
+      "MCP": "A tool-calling standard (like an API contract) so models and tools speak the same language — important for reliable integrations.",
+      "recursive self-improvement": "When a model (or system) helps speed up research that improves the model itself — a debated way to scale capability."
     }
   },
   {
-    "group": "Agentic coding harnesses, PR reviews and safety incidents",
-    "summary": "Developers are building harnesses and small-model-first coding agents (eg. SmallCode, local agent loops) to make local inference practical — but real incidents (Cursor running rmdir, Railway DB deletion) highlight that tooling, guardrails and review evidence are critical. If you're using agents, invest in deterministic harness checks (lint/compile/test), scoped tools, and a concise review brief for AI-generated PRs.",
+    "group": "Agent frameworks, MCP and tool-context bloat",
+    "summary": "As agentic workflows scale, developers are bumping into a new problem: tool catalogs and repeated schemas flood the model's context, wasting tokens and reducing quality. The community is converging on gateway/orchestration layers (expose a tiny meta-interface vs. hundreds of raw tools), better routing, and explicit agent handoffs to keep multi-agent setups practical in production.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1tgecrq/i_built_a_coding_agent_that_gets_87_on_benchmarks/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tftaaa/the_power_of_structured_workflows_and_small_local/",
-      "https://reddit.com/r/LocalLLaMA/comments/1th5t1b/favorite_agentic_coding_harness/",
-      "https://reddit.com/r/cursor/comments/1tga513/cursor_agent_ran_rmdir_s_q_on_windows_and_deleted/",
-      "https://reddit.com/r/mcp/comments/1tgv91p/the_cursor_agent_didnt_go_rogue_on_railway_it/",
-      "https://reddit.com/r/cursor/comments/1tg4yvj/if_an_ai_agent_opened_a_pr_for_you_what_would_you/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tgex9o/is_anyone_prioritizing_code_quality_checks_via_a/",
-      "https://reddit.com/r/cursor/comments/1tfn3c4/solution_to_cursor_repeating_past_mistakes_and/",
-      "https://reddit.com/r/cursor/comments/1th743i/cursor_has_to_choose_between_being_another_not_so/"
+      "https://reddit.com/r/mcp/comments/1thf36z/mcp_just_crossed_97m_installs/",
+      "https://reddit.com/r/mcp/comments/1thfkq2/used_to_think_mcp_was_just_tool_calling_now_i_get/",
+      "https://reddit.com/r/mcp/comments/1tgqbpw/we_are_experimenting_with_automatically/",
+      "https://reddit.com/r/ClaudeAI/comments/1thi16y/how_i_built_a_9agent_team_where_my_agents/",
+      "https://reddit.com/r/ClaudeAI/comments/1thi6nh/100_tips_tricks_for_building_your_own_personal_ai/",
+      "https://reddit.com/r/ClaudeAI/comments/1thv0p8/building_an_ai_agentic_team_with_claude/"
     ],
     "glossary": {
-      "Harness": "The infrastructure around a model (tests, linters, tool wrappers) that does the heavy lifting so a smaller model can be reliable.",
-      "Agentic workflow": "A loop where a model plans, calls tools, and iterates — useful for automation but brittle without strict guardrails.",
-      "MCP tool scoping": "Limiting what external tools an agent can call (and with which parameters) to prevent destructive actions.",
-      "Review brief": "A short, evidence-focused summary attached to AI-generated PRs so a human can quickly decide trust and risk."
+      "agent": "A software actor that performs tasks (research, write, review) and can call tools or hand off to other agents.",
+      "tool catalog": "The list of functions/endpoints an agent can call; if loaded naively every turn it can bloat context and waste tokens.",
+      "gateway layer": "A thin service that hides many tools behind a small, consistent interface so the model doesn't need to ingest huge schemas each turn."
     }
   },
   {
-    "group": "MCP, Power Automate and agent integrations",
-    "summary": "Developers are using MCPs and creative bridges (Power Automate webhooks, Slashy, Skybridge) to give agents practical access to inboxes, calendars, and enterprise apps without pasting API keys. These integrations are powerful but require careful OAuth, narrow webhooks, and auditing to avoid accidental destructive calls.",
+    "group": "Local models, MTP and inference tricks",
+    "summary": "Local-inference work keeps advancing: multi-token speculative decoding (MTP), new efficient open models (Lance, Carbon, HRM-Text), and careful quant choices are giving surprising quality and speed on modest hardware. If you run local models, watch quantization/precision trade-offs and MTP configs — they can change accuracy and tokens/sec dramatically.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1thabze/i_gave_claude_access_to_my_m365_account_using/",
-      "https://reddit.com/r/mcp/comments/1tfyu95/claude_can_fully_run_my_inbox_calendar_and/",
-      "https://reddit.com/r/mcp/comments/1tgrjmy/mcp_apps_framework_we_just_released_skybridge_v1/",
-      "https://reddit.com/r/mcp/comments/1tgee0c/is_anyone_actually_using_mcp/",
-      "https://reddit.com/r/mcp/comments/1tgv91p/the_cursor_agent_didnt_go_rogue_on_railway_it/"
+      "https://reddit.com/r/LocalLLaMA/comments/1thkwgk/bytedance_released_an_open_source_model_that/",
+      "https://reddit.com/r/LocalLLaMA/comments/1thnnjs/the_pacman_benchmark_finally_a_viable_local/",
+      "https://reddit.com/r/LocalLLaMA/comments/1thlmsx/time_to_update_llamacpp_to_get_som_mtp/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ti99an/lm_studio_finally_added_support_for_mtp/",
+      "https://reddit.com/r/LocalLLaMA/comments/1thv6du/nemotronlabsdiffusion_from_nvidia/",
+      "https://reddit.com/r/LocalLLaMA/comments/1thjgwr/sapient_intelligence_releases_hrmtext_1b_40b/",
+      "https://reddit.com/r/LocalLLaMA/comments/1thsw7b/carbon_decoding_the_language_of_life/",
+      "https://reddit.com/r/LocalLLaMA/comments/1ti4qpn/do_smaller_quants_silently_break_tool_calls_json/",
+      "https://reddit.com/r/LocalLLaMA/comments/1theqjm/mtp_and_apple_silicon_any_benefits/"
     ],
     "glossary": {
-      "MCP (Model-Callable Platform)": "A small API/adapter layer that exposes vetted tools to a model (eg. send email, create calendar event) while abstracting credentials.",
-      "Power Automate webhook": "A way to run Microsoft 365 actions via an HTTP trigger; useful as a non-admin bridge for personal automation.",
-      "OAuth + webhooks": "Use OAuth for account-scoped access and keep webhook URLs secret — treat them like passwords.",
-      "Audit / tunnel": "Add logging and an approval path for any write-capable tool to prevent silent destructive operations."
+      "quantization": "A way to compress model weights (e.g., 16→8 bits) to reduce VRAM but it can change model behavior.",
+      "MTP (speculative decoding)": "A trick that drafts multiple token candidates in parallel to speed generation — helpful for deterministic tasks like coding.",
+      "tokens/sec": "A throughput metric showing how many model tokens are generated per second — a practical speed measure for local setups."
     }
   },
   {
-    "group": "Claude workflows, features and context management",
-    "summary": "Claude users share practical tips: use Projects, CLAUDE.md, Custom Styles, and Skills to preserve project context and reduce repeated prompt overhead. Memory, subagents and artifacts are being used to keep workflows persistent, but long-term meeting memory and session handoff remain active UX problems.",
+    "group": "Developer tooling & IDE/agent integrations",
+    "summary": "People are iterating fast on tooling: code-focused UIs (Antigravity/Antigravity IDE), Claude Code vs OpenCode debates, chat-highlighting tools like ChatVault, and automatic WebMCP generation for sites. If you're shipping AI-enabled features, expect to invest in UX for long chats, developer harnesses, and reproducible local workflows — the right toolchain matters as much as the model.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1tgqnsl/11_claude_things_i_wish_someone_had_told_me_12/",
-      "https://reddit.com/r/ClaudeAI/comments/1tgpip8/claude_code_helped_me_bring_my_dead_passion/",
-      "https://reddit.com/r/ClaudeAI/comments/1tgnuhe/just_finished_the_claude_code_certification_and/",
-      "https://reddit.com/r/ClaudeAI/comments/1tghybb/claude_in_an_enterprise_environment/",
-      "https://reddit.com/r/ClaudeAI/comments/1tgs0fn/what_if_your_claude_could_just_sit_in_on_your/",
-      "https://reddit.com/r/ClaudeAI/comments/1tgnn1m/making_47_less_preachy/",
-      "https://reddit.com/r/ClaudeAI/comments/1th63rg/tired_of_keeping_your_laptop_halfopen_to_keep/"
+      "https://reddit.com/r/GeminiAI/comments/1thw3hr/here_comes_the_new_antigravity_update_and_it_cant/",
+      "https://reddit.com/r/GeminiAI/comments/1ti01zq/updated_antigravity_now_its_version_20_and_all_my/",
+      "https://reddit.com/r/GeminiAI/comments/1thxko9/bring_back_the_antigravity_ide/",
+      "https://reddit.com/r/GeminiAI/comments/1thnzi9/keep_losing_great_answers_in_long_gemini_chats/",
+      "https://reddit.com/r/ClaudeAI/comments/1thgo5j/i_built_a_browser_game_where_you_argue_against_ai/",
+      "https://reddit.com/r/ClaudeAI/comments/1ths7pu/i_tried_to_switch_from_claude_code_to_opencode/"
     ],
     "glossary": {
-      "Projects (Claude)": "A place to stash persistent project context (codebase, style guides) so you don't paste it into every chat.",
-      "CLAUDE.md": "A file/pattern people use to record canonical project context that Claude can ingest repeatedly.",
-      "Skills": "Reusable automations or templates inside Claude to run repeatable workflows.",
-      "Memory": "Claude's cross-chat memory; convenient but something to manage if you want predictable behavior."
+      "IDE": "Integrated Development Environment — the editor + tools where you write and test code; AI integrations live here too.",
+      "harness": "The wrapper/integration layer that runs an agent (logging, tool calls, retries) — what makes agents usable in real projects.",
+      "WebMCP": "A way to expose website actions so agents can call them reliably, instead of scraping and guessing UI flows."
     }
   },
   {
-    "group": "Gemini limits, quality regressions and user pain",
-    "summary": "Google shifted Gemini to compute-based usage limits and many users report sudden low quotas, worse responses, or missing features like 'thinking mode.' That friction has developers comparing alternatives or changing workflows to avoid surprise lockouts during high-context work.",
+    "group": "Monetization & business models for skills and apps",
+    "summary": "Developers building reusable 'skills' or small apps with Claude/agents complain there's no clear way to get paid — the runtime exists but a creator economy layer is missing. If you plan to ship a skill or companion app, think early about sustainability (donations, paid tiers, support contracts) because traction doesn't yet equal revenue in most skill ecosystems.",
     "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1tgk1n6/new_usage_limits_rolling_out_to_gemini_apps/",
-      "https://reddit.com/r/GeminiAI/comments/1tgndzn/gemini_pro_new_limit_is_messed_up/",
-      "https://reddit.com/r/GeminiAI/comments/1tgk94y/gemini_is_getting_worse_and_worse/",
-      "https://reddit.com/r/GeminiAI/comments/1tggeq4/gemini_is_terrible_today/",
-      "https://reddit.com/r/GeminiAI/comments/1th2e6d/so_the_thinking_mode_has_been_removed/",
-      "https://reddit.com/r/GeminiAI/comments/1tgpw4n/the_new_limits/",
-      "https://reddit.com/r/GeminiAI/comments/1thevg5/crazy_limits_pro/",
-      "https://reddit.com/r/GeminiAI/comments/1th5oz7/usage_example/",
-      "https://reddit.com/r/GeminiAI/comments/1tgrgfs/gemini_new_version/"
+      "https://reddit.com/r/ClaudeAI/comments/1ti48u7/no_business_model_for_claude_skill_creators_right/",
+      "https://reddit.com/r/ClaudeAI/comments/1thomdg/one_week_after_launching_my_wispr_flow/",
+      "https://reddit.com/r/ClaudeAI/comments/1thu9ov/i_built_and_shipped_my_android_app_with_claude_as/"
     ],
     "glossary": {
-      "Compute-based usage limits": "A billing/limit model that charges against a compute budget (based on prompt complexity and features) instead of simple message counts.",
-      "Extended Thinking / Pro model": "Higher-capability modes that consume more compute budget per request.",
-      "Usage dashboard": "The in-app meter showing your compute consumption and reset windows you should watch to avoid lockouts."
-    }
-  },
-  {
-    "group": "New models, MoE and release chatter (Qwen / Gemma / MiroThinker)",
-    "summary": "Community discussions are buzzing about Qwen releases, Gemma finetunes, MoE behavior, and new open-weight research agents like MiroThinker. Developers are swapping quant tips and real-world comparisons (27B vs 35B MoE) because MoE models behave differently in practice than dense models.",
-    "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1tgrpqc/qwen_cant_wait_to_release_37_models/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tgpabe/qwen_37_droped_on_qwen_chat/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfv8li/i_hope_that_someday_we_will_have_a_124b_gemma/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tgm0k9/i_tested_42_llms_on_their_willingness_to_build/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tg7s7j/gemma4gembrain31bituncensoredheretic_is_out_now_a/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfzmpq/any_good_moe_60b_models_i_have_64gb_vram/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfsmov/mirothinker17_an_openweight_deep_research_agent/"
-    ],
-    "glossary": {
-      "MoE (Mixture-of-Experts)": "A model family where different parameter subsets (experts) activate per token, giving high capacity with lower per-token compute.",
-      "GGUF / safetensors": "Common model packaging formats used for local inference.",
-      "Finetune / merge": "Small extra training steps or blending models to change behavior (eg. ‘uncensored’ finetunes)."
-    }
-  },
-  {
-    "group": "Benchmarks, reproducibility and research tooling",
-    "summary": "People are rebuilding community resources (PapersWithCode clone) and running open benchmarks (DystopiaBench, architecture fixes like Sub-JEPA). If you care about model safety, red-team behaviour, or state-of-the-art claims, follow these repos and leaderboards — they’re where reproducible comparisons happen.",
-    "posts": [
-      "https://reddit.com/r/MachineLearning/comments/1tgmwqr/reviving_paperswithcode_by_hugging_face_p/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tgm0k9/i_tested_42_llms_on_their_willingness_to_build/",
-      "https://reddit.com/r/MachineLearning/comments/1tgn3bz/subjepa_a_simple_fix_to_lecun_groups_leworldmodel/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfpwc6/recent_developments_in_llm_architectures_kv/",
-      "https://reddit.com/r/MachineLearning/comments/1tfv0vh/slop_is_making_me_feel_disconnected_from_ai/"
-    ],
-    "glossary": {
-      "PapersWithCode": "A community site tying papers to code and leaderboards; a helpful source for reproducible SOTA results.",
-      "DystopiaBench": "A safety-style benchmark that tests models' willingness to comply with escalating dystopian requests.",
-      "Reproducibility": "The practice of publishing code, data, and configs so others can validate results — crucial for trustworthy ML claims."
-    }
-  },
-  {
-    "group": "Developer tooling, UI wrappers and productivity apps",
-    "summary": "There’s a wave of small productivity tools around local model ops: GUI launchers, template managers, menu-bar trackers, and laptop sleep hacks to keep agents alive. These make everyday local development less fiddly — useful if you switch models a lot or juggle context-heavy sessions.",
-    "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1tfqrbt/made_a_simple_template_manager_and_gui_for/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tfmoy4/lm_studio_alternative/",
-      "https://reddit.com/r/cursor/comments/1tfoucm/i_built_a_mac_menu_bar_app_because_cursor_claude/",
-      "https://reddit.com/r/ClaudeAI/comments/1th63rg/tired_of_keeping_your_laptop_halfopen_to_keep/",
-      "https://reddit.com/r/LocalLLaMA/comments/1th0z6k/lemonade_v1051_an_mtp_rocm_713_quick_start_for/"
-    ],
-    "glossary": {
-      "Template manager": "A UI that stores commonly used launch flags/commands so you don't memorize long CLI lines for different models.",
-      "llama-server": "A common local server wrapper around llama.cpp that serves models over HTTP for UIs and tools.",
-      "Menu-bar tracker": "Small desktop utilities that aggregate usage and quota info from multiple AI services."
-    }
-  },
-  {
-    "group": "Costs, quotas and subscription friction",
-    "summary": "Multiple posts show developers hitting unexpected token/compute limits, burning through API credits, and debating which paid tier actually makes sense for heavy coding work. If you rely on cloud models for long sessions, track compute-based usage carefully and benchmark cost-per-task vs a subscription or local hosting.",
-    "posts": [
-      "https://reddit.com/r/OpenAI/comments/1tg22iv/my_free_account_has_cost_openai_about_33770/",
-      "https://reddit.com/r/cursor/comments/1tfm4xh/how_much_are_you_spending_on_ai_coding/",
-      "https://reddit.com/r/OpenAI/comments/1th429l/pro_x20_weekly_quota_is_draining_insanely_fast/",
-      "https://reddit.com/r/ClaudeAI/comments/1thalnk/anyone_else_feel_like_the_100_max_plan_is_worth/",
-      "https://reddit.com/r/cursor/comments/1tgn10y/on_ultra_plan_burned_through_6_of_api_tokens_in/",
-      "https://reddit.com/r/GeminiAI/comments/1tgk1n6/new_usage_limits_rolling_out_to_gemini_apps/"
-    ],
-    "glossary": {
-      "Token accounting": "How providers measure and bill work (tokens, compute, or a hybrid); this drives unexpected spend if you don't watch it.",
-      "Subscription tier": "A paid plan with caps/benefits; heavy users should map their workflows to the plan that minimizes surprises.",
-      "API credit vs subscription": "API credits are spend-on-demand; subscriptions can be more predictable for sustained heavy usage depending on price/performance."
-    }
-  },
-  {
-    "group": "Ethics, research quality and job impact",
-    "summary": "Several threads debate low-quality 'slop' in AI research, job shifts toward senior hires, and personal disconnection from creative coding when tools do the heavy lifting. These are developer-focused concerns: value is migrating to tool & harness design, reproducibility, and ethical guardrails more than raw model size.",
-    "posts": [
-      "https://reddit.com/r/MachineLearning/comments/1tfv0vh/slop_is_making_me_feel_disconnected_from_ai/",
-      "https://reddit.com/r/AI_India/comments/1tgg2lj/the_young_are_being_battered_by_ai_as_hiring/",
-      "https://reddit.com/r/MachineLearning/comments/1tgqybv/aiml_ethicists_d/",
-      "https://reddit.com/r/OpenAI/comments/1tfvd79/ai_cults_are_here/",
-      "https://reddit.com/r/ClaudeAI/comments/1th0htq/is_ai_making_us_dumber/",
-      "https://reddit.com/r/ClaudeAI/comments/1tghcyc/backend_dev_for_11_years_honest_question_about_my/"
-    ],
-    "glossary": {
-      "Slop": "Low-quality, rushed research or demos that erode trust in the field and make true contributions harder to find.",
-      "Harness engineering": "Building the surrounding systems (tests, retrieval, guardrails) that make models useful for real work.",
-      "Ethics / policy": "Considerations around job impact, misuse, and responsible deployment that should guide how you build agentic tools."
+      "skill": "A packaged capability (like an automated workflow) you can plug into an agent runtime for reuse.",
+      "creator economy": "The set of ways builders monetize their tools (subscriptions, donations, one-time purchases, enterprise deals).",
+      "runtime": "The environment that executes skills/agents — it handles memory, tool calls, and permissions."
     }
   }
 ]
