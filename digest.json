@@ -1,111 +1,59 @@
 [
   {
-    "group": "Gemini: usage limits, downgrades and angry users",
-    "summary": "Google's Gemini rollout triggered a wave of developer complaints: paid Pro users report dramatic new compute-based quotas, sudden silent downgrades to lower-quality 'Flash' models, and a UI redesign many find worse. If you build on or rely on Gemini, expect unpredictable throttling, harder debugging of long sessions, and frustrated users — factor that into product choices and fallback plans.",
+    "group": "MCP & agent boundaries",
+    "summary": "A cluster of posts debating how MCP (Model Context Protocol) and agent setups handle credentials and tool calls. Anthropic’s tunnel idea keeps secrets at your network edge so the running agent can’t steal them, Endara offers a local relay to save tokens and keep traffic off the cloud, and several threads ask whether MCP tooling is mature or getting traction. If you build agent integrations, these discussions matter because they affect your attack surface, token costs, and how locked-in you are to a vendor.",
     "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1thmta0/i_understand_that_compute_is_limited_but_these/",
-      "https://reddit.com/r/GeminiAI/comments/1thplt8/8_minutes_of_chatting_with_pro_and_im_at_100/",
-      "https://reddit.com/r/GeminiAI/comments/1thkj1v/the_new_limits_are_an_absolute_scam/",
-      "https://reddit.com/r/GeminiAI/comments/1ti0coz/canceled_my_pro_sub_today_the_new_5hour_compute/",
-      "https://reddit.com/r/GeminiAI/comments/1ti0rjc/gemini_new_limit_is_a_joke/",
-      "https://reddit.com/r/GeminiAI/comments/1thjrgo/it_really_was_too_good_to_be_true/",
-      "https://reddit.com/r/GeminiAI/comments/1thg5n9/google_just_downgraded_me_to_flash/",
-      "https://reddit.com/r/GeminiAI/comments/1tho8wf/gemini_is_turning_into_absolute_garbagecompletely/",
-      "https://reddit.com/r/GeminiAI/comments/1ti5lai/boycott_gemini_for_the_new_usage_limit/",
-      "https://reddit.com/r/GeminiAI/comments/1thhs1b/geminis_new_usage_limit_policy/",
-      "https://reddit.com/r/GeminiAI/comments/1thh2v8/the_new_ui_is_downright_fugly/",
-      "https://reddit.com/r/GeminiAI/comments/1thwd08/the_new_limits_are_garbage/"
+      "https://reddit.com/r/mcp/comments/1tij7nt/anthropics_new_mcp_tunnel_architecture_the_agent/",
+      "https://reddit.com/r/mcp/comments/1tisb5l/is_tavily_mcp_still_worth_it_or_are_there_better/",
+      "https://reddit.com/r/mcp/comments/1tiadzg/understanding_how_mcp_works_internally_with_llms/",
+      "https://reddit.com/r/mcp/comments/1tir6gz/is_mcp_really_this_deserted/",
+      "https://reddit.com/r/mcp/comments/1tjajqk/endara_v017_local_mcp_relay_now_autoconverts_tool/"
     ],
     "glossary": {
-      "usage limits": "A cap that counts how much model compute you can use (time/tokens/requests) before being blocked or downgraded.",
-      "Flash model": "A lower-cost, faster model variant used when higher-tier models are throttled; usually less capable for complex tasks.",
-      "compute-based quota": "Billing or access rules that measure actual compute work (like thinking time or long context) instead of a simple message count."
+      "MCP (Model Context Protocol)": "A way for an LLM to call external tools or data providers during a chat — think of it like plugins for the model.",
+      "agent": "A loop that lets a model decide to call tools, run code, or take actions on your behalf — like a helper that can use external services.",
+      "mTLS": "A secure, two-way encrypted connection where both sides prove their identity — used to tunnel tool calls out without opening inbound ports.",
+      "relay": "A local program that forwards tool calls to multiple MCP servers — keeps traffic on your machine instead of going through the cloud.",
+      "TOON": "A compact, token-efficient format Endara converts tool responses into so the model spends less of its memory (context) reading repeated field names.",
+      "credential": "Secrets like API tokens or keys that let tools access services; where you store them changes the risk if something is compromised."
     }
   },
   {
-    "group": "Karpathy & Anthropic: talent moves and infrastructure bets",
-    "summary": "High-profile hirings and acquisitions are reshaping the field: Andrej Karpathy joining Anthropic plus buys like Stainless and big cloud / hardware partnerships signal Anthropic is investing heavily in pretraining, tooling, and the integration layer rather than just raw model size. For devs that means stronger Claude tooling, more MCP / SDK standardization, and a competitor upping the stakes on model quality and ecosystem lock-in.",
+    "group": "Developer setups & getting started",
+    "summary": "Two community threads ask what skills and tool combos actually work in day-to-day dev work: people want reliable model+agent setups that handle big repos, long sessions, and reasonable cost. The takeaways are pragmatic — focus on workflows (context management, tool reliability, cost), not only which model scores best on a benchmark. For newcomers, that means learning Git, prompt design, and how to integrate agents safely.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1thpuf1/karpathy_joins_anthropic/",
-      "https://reddit.com/r/ClaudeAI/comments/1thw3bu/openai_cofounder_andrej_karpathy_just_joined/",
-      "https://reddit.com/r/OpenAI/comments/1thq8ag/karpathy_is_a_founding_member_of_openai_and_now/",
-      "https://reddit.com/r/OpenAI/comments/1thqlzn/the_ronaldo_signing_for_barca_moment_just/",
-      "https://reddit.com/r/ClaudeAI/comments/1thkkrb/anthropic_just_bought_the_company_that_generates/",
-      "https://reddit.com/r/ClaudeAI/comments/1thzy0a/anthropic_announced_vs_current_compute_capacity/",
-      "https://reddit.com/r/ClaudeAI/comments/1thnnut/would_anthropic_allow_you_to_earn_tokens_by/"
+      "https://reddit.com/r/AI_India/comments/1tihtjn/what_skills_are_needed_to_get_into_this/",
+      "https://reddit.com/r/AI_India/comments/1tio5hk/what_ai_coding_setup_has_genuinely_worked_best/"
     ],
     "glossary": {
-      "pre-training": "The phase where a model learns language patterns from huge corpora before you fine-tune or use it for tasks.",
-      "MCP": "A tool-calling standard (like an API contract) so models and tools speak the same language — important for reliable integrations.",
-      "recursive self-improvement": "When a model (or system) helps speed up research that improves the model itself — a debated way to scale capability."
+      "agent workflow": "How the model uses tools, runs commands, and edits code in a loop — important for automation but can break if not managed.",
+      "context (model memory)": "What the model can ‘see’ at once; longer or noisy context makes it slower and more error-prone, so you manage it carefully.",
+      "reliability": "How often a tool or model does the right thing during long sessions; for dev work this usually matters more than raw accuracy.",
+      "prompt design": "Writing the instructions and examples you give the model so it behaves predictably — a core skill for working with LLMs."
     }
   },
   {
-    "group": "Agent frameworks, MCP and tool-context bloat",
-    "summary": "As agentic workflows scale, developers are bumping into a new problem: tool catalogs and repeated schemas flood the model's context, wasting tokens and reducing quality. The community is converging on gateway/orchestration layers (expose a tiny meta-interface vs. hundreds of raw tools), better routing, and explicit agent handoffs to keep multi-agent setups practical in production.",
+    "group": "Model & product news",
+    "summary": "A couple of posts cover big-picture product changes: one thread reacts to Gemini’s redesigned UI (people are split on clean vs. childish), and another discusses an OpenAI reasoning model reportedly helping disprove a long-standing math conjecture — people are debating whether this is a real step toward AGI or hype. Developers should watch both UX changes (they affect adoption) and concrete leaps in model reasoning (they change what tasks we can automate).",
     "posts": [
-      "https://reddit.com/r/mcp/comments/1thf36z/mcp_just_crossed_97m_installs/",
-      "https://reddit.com/r/mcp/comments/1thfkq2/used_to_think_mcp_was_just_tool_calling_now_i_get/",
-      "https://reddit.com/r/mcp/comments/1tgqbpw/we_are_experimenting_with_automatically/",
-      "https://reddit.com/r/ClaudeAI/comments/1thi16y/how_i_built_a_9agent_team_where_my_agents/",
-      "https://reddit.com/r/ClaudeAI/comments/1thi6nh/100_tips_tricks_for_building_your_own_personal_ai/",
-      "https://reddit.com/r/ClaudeAI/comments/1thv0p8/building_an_ai_agentic_team_with_claude/"
+      "https://reddit.com/r/AI_India/comments/1tii4pl/google_just_changed_gemini_ui_whats_your_thought/",
+      "https://reddit.com/r/AI_India/comments/1tjantg/glimpse_of_level_4_agi/"
     ],
     "glossary": {
-      "agent": "A software actor that performs tasks (research, write, review) and can call tools or hand off to other agents.",
-      "tool catalog": "The list of functions/endpoints an agent can call; if loaded naively every turn it can bloat context and waste tokens.",
-      "gateway layer": "A thin service that hides many tools behind a small, consistent interface so the model doesn't need to ingest huge schemas each turn."
+      "UI (user interface)": "The visual and interaction design of an app — small changes can change who likes or adopts a product.",
+      "reasoning model": "A model tuned to think through problems step-by-step rather than just generate text — useful for complex tasks like proofs.",
+      "AGI (artificial general intelligence)": "A hypothetical future AI that can handle any intellectual task a human can; most experts treat early claims skeptically."
     }
   },
   {
-    "group": "Local models, MTP and inference tricks",
-    "summary": "Local-inference work keeps advancing: multi-token speculative decoding (MTP), new efficient open models (Lance, Carbon, HRM-Text), and careful quant choices are giving surprising quality and speed on modest hardware. If you run local models, watch quantization/precision trade-offs and MTP configs — they can change accuracy and tokens/sec dramatically.",
+    "group": "Land, infrastructure, and ethics",
+    "summary": "A short, serious post reports Dalit farmers in Andhra Pradesh losing land to a Google data center project. This is a reminder that building infrastructure has real human and ethical consequences, and dev teams should pay attention to where and how tech is deployed. Practically, it matters for responsible sourcing, vendor choices, and the public reputation of projects you help build.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1thkwgk/bytedance_released_an_open_source_model_that/",
-      "https://reddit.com/r/LocalLLaMA/comments/1thnnjs/the_pacman_benchmark_finally_a_viable_local/",
-      "https://reddit.com/r/LocalLLaMA/comments/1thlmsx/time_to_update_llamacpp_to_get_som_mtp/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ti99an/lm_studio_finally_added_support_for_mtp/",
-      "https://reddit.com/r/LocalLLaMA/comments/1thv6du/nemotronlabsdiffusion_from_nvidia/",
-      "https://reddit.com/r/LocalLLaMA/comments/1thjgwr/sapient_intelligence_releases_hrmtext_1b_40b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1thsw7b/carbon_decoding_the_language_of_life/",
-      "https://reddit.com/r/LocalLLaMA/comments/1ti4qpn/do_smaller_quants_silently_break_tool_calls_json/",
-      "https://reddit.com/r/LocalLLaMA/comments/1theqjm/mtp_and_apple_silicon_any_benefits/"
+      "https://reddit.com/r/AI_India/comments/1tj7pwz/dalit_farmers_in_andhra_pradesh_india_built_their/"
     ],
     "glossary": {
-      "quantization": "A way to compress model weights (e.g., 16→8 bits) to reduce VRAM but it can change model behavior.",
-      "MTP (speculative decoding)": "A trick that drafts multiple token candidates in parallel to speed generation — helpful for deterministic tasks like coding.",
-      "tokens/sec": "A throughput metric showing how many model tokens are generated per second — a practical speed measure for local setups."
-    }
-  },
-  {
-    "group": "Developer tooling & IDE/agent integrations",
-    "summary": "People are iterating fast on tooling: code-focused UIs (Antigravity/Antigravity IDE), Claude Code vs OpenCode debates, chat-highlighting tools like ChatVault, and automatic WebMCP generation for sites. If you're shipping AI-enabled features, expect to invest in UX for long chats, developer harnesses, and reproducible local workflows — the right toolchain matters as much as the model.",
-    "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1thw3hr/here_comes_the_new_antigravity_update_and_it_cant/",
-      "https://reddit.com/r/GeminiAI/comments/1ti01zq/updated_antigravity_now_its_version_20_and_all_my/",
-      "https://reddit.com/r/GeminiAI/comments/1thxko9/bring_back_the_antigravity_ide/",
-      "https://reddit.com/r/GeminiAI/comments/1thnzi9/keep_losing_great_answers_in_long_gemini_chats/",
-      "https://reddit.com/r/ClaudeAI/comments/1thgo5j/i_built_a_browser_game_where_you_argue_against_ai/",
-      "https://reddit.com/r/ClaudeAI/comments/1ths7pu/i_tried_to_switch_from_claude_code_to_opencode/"
-    ],
-    "glossary": {
-      "IDE": "Integrated Development Environment — the editor + tools where you write and test code; AI integrations live here too.",
-      "harness": "The wrapper/integration layer that runs an agent (logging, tool calls, retries) — what makes agents usable in real projects.",
-      "WebMCP": "A way to expose website actions so agents can call them reliably, instead of scraping and guessing UI flows."
-    }
-  },
-  {
-    "group": "Monetization & business models for skills and apps",
-    "summary": "Developers building reusable 'skills' or small apps with Claude/agents complain there's no clear way to get paid — the runtime exists but a creator economy layer is missing. If you plan to ship a skill or companion app, think early about sustainability (donations, paid tiers, support contracts) because traction doesn't yet equal revenue in most skill ecosystems.",
-    "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1ti48u7/no_business_model_for_claude_skill_creators_right/",
-      "https://reddit.com/r/ClaudeAI/comments/1thomdg/one_week_after_launching_my_wispr_flow/",
-      "https://reddit.com/r/ClaudeAI/comments/1thu9ov/i_built_and_shipped_my_android_app_with_claude_as/"
-    ],
-    "glossary": {
-      "skill": "A packaged capability (like an automated workflow) you can plug into an agent runtime for reuse.",
-      "creator economy": "The set of ways builders monetize their tools (subscriptions, donations, one-time purchases, enterprise deals).",
-      "runtime": "The environment that executes skills/agents — it handles memory, tool calls, and permissions."
+      "data center": "A facility full of servers that stores and runs cloud services; they require land, power, and local infrastructure.",
+      "infrastructure ethics": "The practice of considering social, environmental, and human impacts when building and locating tech systems."
     }
   }
 ]
