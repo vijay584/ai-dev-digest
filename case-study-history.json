@@ -682,5 +682,17 @@
     "date": "2026-05-20T07:00:55.561Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Scaled Git RPCs with Gitaly & Praefect — cutting git-op latency ~6x and surviving millions of repos",
+    "date": "2026-05-21T07:05:07.703Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Backpressure: How to Stop Your Pipeline from Drowning in Data",
+    "date": "2026-05-21T07:05:56.845Z",
+    "type": "concept",
+    "company": null
   }
 ]
