@@ -706,5 +706,17 @@
     "date": "2026-05-22T07:01:54.019Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Stopped Domino Failures: Chaos, Caching, and Circuit Breakers at 100M+ Users",
+    "date": "2026-05-23T06:22:25.067Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "How Distributed Consensus (Raft) Keeps Your Cluster Agreeing — Without Losing Its Mind",
+    "date": "2026-05-23T06:23:04.068Z",
+    "type": "concept",
+    "company": null
   }
 ]
