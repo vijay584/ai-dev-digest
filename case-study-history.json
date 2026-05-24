@@ -718,5 +718,17 @@
     "date": "2026-05-23T06:23:04.068Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real-Time Chat & Voice to Millions: gateways, Kafka, and sharded storage",
+    "date": "2026-05-24T06:50:01.524Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Cache-Aside: Speed Up Reads Without Turning Your Database Into a Bottleneck",
+    "date": "2026-05-24T06:50:38.290Z",
+    "type": "concept",
+    "company": null
   }
 ]
