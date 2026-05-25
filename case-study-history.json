@@ -730,5 +730,17 @@
     "date": "2026-05-24T06:50:38.290Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Stopped Double Charges and Scaled Payments Reliability (idempotency, Redis, Postgres, and retries)",
+    "date": "2026-05-25T08:02:24.534Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Seeing the Invisible: Practical Observability with Traces, Metrics & Logs",
+    "date": "2026-05-25T08:03:18.277Z",
+    "type": "concept",
+    "company": null
   }
 ]
