@@ -1,108 +1,123 @@
 [
   {
-    "group": "Local models, hardware & performance",
-    "summary": "Lots of folks are benchmarking and tuning local LLM setups — from hobby rigs to 12×V100 clusters — trying to squeeze real-world throughput and long-context behavior out of MoE models, quant tricks, and engine patches. If you run models locally this matters: pick the right GPU/quant combo, watch KV cache memory, and follow llama.cpp / ROCm kernel work to avoid nasty slowdowns or crashes.",
+    "group": "Qwen & large-model user reports",
+    "summary": "A bunch of posts about Qwen variants (27B/35B/122B) show real-world wins and quirks: some smaller Qwen models can produce surprisingly complete outputs, but people also report context-length deterioration, quantization tradeoffs (Q4_K vs Q6), and weird MTP/context interactions. If you run Qwen for agents or coding, these threads matter because they highlight what to expect in speed, accuracy, and stability when choosing model size, quant, and MTP settings.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1tnn29i/update_on_12x32gb_sxm_v100_cluster_local_ai_for/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tmq4s6/hipengine_fast_native_qwen_36_inference_for_rdna3/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tmyln6/1000_tps_generation_on_qwen36_27b_with_v100s/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tn0t7u/qwen_36_benchmarks_on_2x_rtx_pro_6000/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tml97m/qwen3635ba3bmtp_running_on_gtx_1060_6gb/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tnfqng/cuda_add_fast_walshhadamard_transform_by_am17an/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tn6v0r/oscar_rotationzoo_offline_spectral/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tnvo7r/shard_getting_to_10_kv_cache_compression/"
+      "https://reddit.com/r/LocalLLaMA/comments/1to73op/okay_27b_made_me_a_believer/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toi50p/a_rare_look_inside_qwen_37s_open_source_model/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tovx7i/folks_running_qwen_36_27b_for_agentic_work_do_you/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to0aet/qwen35_27b_uncensored_heretic_native_mtp/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to0qpb/qwen_36_27b_ar_diffusion_local_training_on_5090/",
+      "https://reddit.com/r/LocalLLaMA/comments/1topfr2/single_3090_with_q4_qwen_27b_context_dropped_from/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toeplg/looking_for_suggestions_single_5090_64gb_ddr5/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toct9l/longcontext_performance_at_lower_quants/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tore88/advice_on_local_coding_setup/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toxlog/stop_qwenllama_every_other_4th_post_in_this_sub/"
     ],
     "glossary": {
-      "MoE (Mixture of Experts)": "A model design that activates only a subset of parameters per token to get big-model quality without paying the full compute cost every token.",
-      "KV cache": "Short for key/value cache — the memory the model keeps to remember long context; it grows with context length and can be a major memory/slowdown factor.",
-      "quant / Q4/Q8": "Ways of compressing weights to smaller numeric formats (e.g., 4-bit) to reduce VRAM and speed up inference, at the cost of some quality."
+      "quantization": "A way to shrink model files by storing numbers with fewer bits; cheaper but can reduce accuracy or cause rare errors.",
+      "MTP (Mixture of Tokens/Preserve Thinking)": "A Qwen-specific feature that preserves multiple candidate drafts; it can boost quality but interacts oddly with context limits.",
+      "context window": "How much recent text the model can 'remember' in a single chat; bigger windows help long tasks but cost memory and speed."
     }
   },
   {
-    "group": "Agent frameworks, MCP & orchestration",
-    "summary": "Developers are building tooling around agents — MCP servers, Kanban-style agent memory, harnesses and small-model orchestration — to make multi-step, tool-using agents reliable. The pattern: give agents a writable workspace (files/boards/databases), route tasks across small specialist models, and add verifiers so cheap agents don't confidently hallucinate.",
+    "group": "Hardware, perf tuning, and benchmarks",
+    "summary": "Developers share real-world GPU setups and tricks: cheap dual-3060 rigs can be surprisingly stable, 5090 vs 6000-class cards trade raw speed for power, and rejected llama.cpp PRs or kernel flags can produce big speedups for MOE models. These threads help you pick hardware and flags that actually move the needle for serving local models.",
     "posts": [
-      "https://reddit.com/r/mcp/comments/1tmoyl7/i_gave_my_terminal_ai_agent_a_kanban_board_not/",
-      "https://reddit.com/r/mcp/comments/1tn1hu4/i_published_mcp_from_scratch_a_beginnerfriendly/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tmlmmo/can_someone_help_me_understand_mcp/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tmjyce/need_help_choosing_a_harness_for_qwen_36_27b/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tn6xn3/want_built_a_reactstyle_looping_agent_with_small/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tn9sup/the_reason_smallmodel_agent_stacks_arent_the/",
-      "https://reddit.com/r/mcp/comments/1tmanfh/why_is_there_only_one_bank_with_mcp_support_in/"
+      "https://reddit.com/r/LocalLLaMA/comments/1tokpoc/400_qwen_3627b_setup_dual_rtx_3060_3050_ts/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tolp1m/small_comparison_on_full_compute_performance/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to00xl/strix_halo_users_a_rejected_pr_can_give_you_up_to/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to5665/poor_performance_on_rx_9070_xt/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toum2e/ahhhhhi_can_breathe_againso_long_4090join_my_5080/",
+      "https://reddit.com/r/LocalLLaMA/comments/1topklf/dgx_spark_strix_halo_prices_increased_doubled/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tokpoc/400_qwen_3627b_setup_dual_rtx_3060_3050_ts/"
     ],
     "glossary": {
-      "MCP (Model Context Protocol)": "A simple local protocol for agents to call tools and servers — think of it as the plumbing that lets an AI talk to files, browsers, and services safely.",
-      "harness": "The glue that runs a model, exposes tool hooks, and shapes prompts — similar to a light-weight agent runtime.",
-      "RAG (Retrieval-Augmented Generation)": "Feeding documents or database results into the model so it grounds answers in real sources rather than inventing them."
+      "prefill / prefill speed": "How fast the model processes the prompt before generating; important for latency on long prompts.",
+      "tokens per second (t/s)": "A simple measure of how many tokens the model can process or produce each second; higher is faster.",
+      "MOE (Mixture of Experts)": "A model design that routes parts of the work to different sub-networks; can be faster but needs special runtime support."
     }
   },
   {
-    "group": "Quotas, compute-based limits & UX complaints",
-    "summary": "Many posts are frustrated with new compute/usage metering (Gemini, Claude, etc.): large-context uploads can eat huge chunks of your quota, throttles vary by time-of-day, and dashboards hide useful live meters. If you rely on these hosted tools for dev work, plan for unexpected lockouts and prefer explicit cost/usage visibility.",
+    "group": "Local tooling, deployment & orchestration",
+    "summary": "Several projects aim to make local model management less painful: a Windows GUI for running llama.cpp in WSL, Harbor to connect model backends to agent tooling, LM Studio/autoswarm for server + self-optimization, and general calls for easier installers. If you want to run models locally without wrestling the command line, these tools are the ones to watch or try.",
     "posts": [
-      "https://reddit.com/r/GeminiAI/comments/1tn4spi/40_usage_consumed_1_largecontext_prompt_benchmark/",
-      "https://reddit.com/r/GeminiAI/comments/1tnteqm/gemini_pro_went_from_100_prompts_a_day_to_20_and/",
-      "https://reddit.com/r/GeminiAI/comments/1tn64hp/gemini_is_making_me_budget_my_prompts_like/",
-      "https://reddit.com/r/GeminiAI/comments/1tnf38j/dont_make_me_go_to_settings_to_see_how_much_i_used/",
-      "https://reddit.com/r/GeminiAI/comments/1tn8qkl/the_weekly/",
-      "https://reddit.com/r/GeminiAI/comments/1tndsd5/all_you_people_claiming_quota_is_fine_on_your_test/",
-      "https://reddit.com/r/GeminiAI/comments/1tnnho3/note_ai_mode_is_35_flash_and_does_not_affect_your/"
+      "https://reddit.com/r/LocalLLaMA/comments/1tofv8o/i_made_a_windows_app_for_managing_llamacpp_in/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toejzp/turning_local_agents_into_selfoptimizing_agents/",
+      "https://github.com/arteemg/autoswarm",
+      "https://reddit.com/r/LocalLLaMA/comments/1to8t53/harbor_v0419_vllmsglangllamacpp_launch/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toa14h/feedback_wanted_building_for_easier_local_ai/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to1bf5/llamacpp_server_how_do_the_np_and_c_flags_interact/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toafm4/if_you_were_to_build_a_new_llm_api_gateway_today/"
     ],
     "glossary": {
-      "compute-based billing": "Charging based on how much model compute you used (not just number of prompts), so big uploads or heavy 'thinking' use lots of quota.",
-      "context window": "How much past text (tokens) the model can 'see' at once; very large windows let you upload long docs but cost more compute."
+      "llama.cpp": "A popular lightweight runtime for running many open models locally, often used as the engine behind apps and GUIs.",
+      "agentic tooling": "Software that wraps a model with actions like web search or file reads so it can do tasks for you.",
+      "orchestration": "Coordinating models, GPUs and services so multiple tools and users can share resources cleanly."
     }
   },
   {
-    "group": "AI coding workflows & editors (Claude Code, Cursor, Composer)",
-    "summary": "People are split between chat-based coding and dedicated tools like Claude Code, Cursor/Composer, and Copilot. The trade-offs: special IDE integrations can speed up full-feature projects but add complexity and cache bugs; the chat is simpler and more transparent for step-by-step steering. Try small prototypes to see which workflow matches your debugging and audit needs.",
+    "group": "Agents, memory, and safety practices",
+    "summary": "People are building proactive local agents with long-term memory, scheduled tasks, and tool access — but are also worried about prompt injections, overconfident hallucinations, and harmful loops. Posts show practical agent features (email digests, expense reports, screen memory) and early experiments that 'be nice' prompts reduce looping; developers should test malicious inputs and isolate tool access before giving agents real power.",
     "posts": [
-      "https://reddit.com/r/cursor/comments/1tmue7y/composer_25_is_still_nowhere_near_sota_models/",
-      "https://reddit.com/r/ClaudeAI/comments/1tn9tyy/ive_been_using_claude_code_as_a_motion_graphics/",
-      "https://reddit.com/r/ClaudeAI/comments/1tnbwqm/i_stopped_using_claude_code_and_went_back_to_the/",
-      "https://reddit.com/r/cursor/comments/1tm8m9m/am_i_the_only_one_annoyed_by_switching_between/",
-      "https://reddit.com/r/cursor/comments/1tm9kwb/help_needed_is_cursor_pro_worth_it_compared_to/",
-      "https://reddit.com/r/cursor/comments/1tmk619/composer_usage_with_annual_pro_plan/",
-      "https://reddit.com/r/ClaudeAI/comments/1tnpfi8/why_does_my_claude_code_go_crazy_like_this_sometimes/"
+      "https://github.com/OttoRenner/Gentle-Coding",
+      "https://reddit.com/r/LocalLLaMA/comments/1to25y5/are_local_llm_users_testing_prompt_injection/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to4eww/i_asked_it_once_and_now_it_does_it_every_morning/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to4qpe/built_a_localfirst_ai_memory_system_that_indexes/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toiopg/fast_little_local_memory_retriever_for_hermes/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to6pqp/slopocalypse_is_what_we_should_be_really_worried/"
     ],
     "glossary": {
-      "Claude Code / Cursor / Composer": "Examples of higher-level coding UIs that pipeline models, run tests, and manage files — they aim to be an IDE with LLM help, not just a chat.",
-      "vibe coding": "Describing code in natural language to the model and iterating — fast and productive, but needs guards for drift and correctness.",
-      "preserve thinking": "A setting that keeps the model's internal 'reasoning' in the context so it doesn't discard useful planning tokens, avoiding reprocessing costs."
+      "prompt injection": "When an input tries to trick the model into doing something unsafe, like revealing secrets or running bad commands — test for this before giving tool access.",
+      "long-term memory": "Storing past interactions so an agent can remember facts across sessions, which helps personalization but raises privacy risks.",
+      "hallucination": "When the model confidently invents facts; dangerous if you rely on the model for real decisions."
     }
   },
   {
-    "group": "Safety, guardrails & data concerns",
-    "summary": "Conversations here mix excitement about uncensored research (Heretic / uncensored Qwen builds) and worry about privacy, moderation mistakes, and support failures. Developers should treat hosted AI as a product with evolving guardrails: keep backups, audit model outputs, and assume provider moderation/automation can misclassify or ban accounts.",
+    "group": "New & small models, multimodal releases",
+    "summary": "Notable model releases and experiments include PrismML’s tiny 1-bit/ternary Bonsai Image models that run in-browser, OpenMOSS MOSS-TTS v1.5 improving multilingual TTS, and router ideas like Cactus that cheaply decide whether to run locally or in the cloud. These are useful if you need tiny, fast local models for vision, audio, or routing logic to save cloud costs.",
     "posts": [
-      "https://reddit.com/r/LocalLLaMA/comments/1tna22m/the_financial_times_has_published_an_article/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tnzalm/qwen35_35b_a3b_uncensored_heretic_native_mtp/",
-      "https://reddit.com/r/OpenAI/comments/1tmdjvh/banned_by_openai_after_reporting_a_live/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tmpqrv/could_open_models_be_trained_to_secretly_go_rogue/",
-      "https://reddit.com/r/ChatGPT/comments/1tnlw4e/why_is_chatgpt_saving_every_imagefile_i_upload_is/",
-      "https://reddit.com/r/ChatGPT/comments/1tnikrc/chatgpt_mocked_my_moms_health_condition_out_of/",
-      "https://reddit.com/r/OpenAI/comments/1tmeja1/chatgpt_referenced_deleted_memories/"
+      "https://reddit.com/r/LocalLLaMA/comments/1togflk/prismml_just_released_binary_and_ternary_bonsai/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toah65/openmossteammossttsv15_hugging_face/",
+      "https://github.com/cactus-com/cactus",
+      "https://reddit.com/r/LocalLLaMA/comments/1tom98y/cactus_hybrid_router_gemma42b_can_match/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to0041/selfhosted_stt_better_than_whisper_large_v3_turbo/"
     ],
     "glossary": {
-      "uncensored weights / Heretic": "Community tools that remove safety filters from large open models — useful for research but risky for misuse and often controversial.",
-      "guardrails": "Built-in safety filters and moderation policies that limit certain outputs; they’re essential for hosted services but can sometimes be overzealous.",
-      "credential hijack / token drain": "When an attacker uses your API or account tokens to run requests — treat any unexplained usage as a security incident and rotate keys immediately."
+      "1-bit / ternary models": "Extremely small models that use very low-precision numbers to shrink size so they can run in browsers or tiny devices.",
+      "router model": "A tiny model that decides whether to answer locally or forward the request to a bigger cloud model to save resources.",
+      "TTS (text-to-speech)": "Models that turn text into spoken audio; useful for apps that need voice output without cloud calls."
     }
   },
   {
-    "group": "Context, memory & retrieval (RAG, .md memory, transcript problems)",
-    "summary": "Developers building long-running projects hit the same problem: model context fills up and the AI ‘forgets’ important decisions. Common solutions are document-based memory (.md files), external RAG stores, or an agent-owned workspace (Kanban/git) so you can clear the chat without losing state. The hard part is deciding what to auto-resolve and what to escalate to a human.",
+    "group": "Research, evaluation & optimization methods",
+    "summary": "Threads touch on where to discuss serious ML research, surprising conference submission counts, SkillOpt (automated skill file editing with validation), and long-context failure modes at lower quants. These are the places to learn evaluation best practices and to find reproducible approaches for improving agent skills or prompts.",
     "posts": [
-      "https://reddit.com/r/ClaudeAI/comments/1tnb86m/6_months_of_md_memory_conflicting_facts_are/",
-      "https://reddit.com/r/LocalLLaMA/comments/1tn4poe/rag_for_developer_docs_so_local_llm_can_code/",
-      "https://reddit.com/r/ClaudeAI/comments/1tnaev0/how_do_you_preserve_context_when_claude_chats_get/",
-      "https://reddit.com/r/ClaudeAI/comments/1tnjo2d/the_biggest_problem_with_vibe_coding_isnt_the_code/",
-      "https://reddit.com/r/ClaudeAI/comments/1tnm033/4mb_conversation_transcript_68k_lines_how_do_i/"
+      "https://reddit.com/r/MachineLearning/comments/1to2l4c/d_where_do_you_go_for_serious_ai_research/",
+      "https://reddit.com/r/MachineLearning/comments/1tnwdss/already_11_000_submissions_for_emnlp_d/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to1mey/skillopt_treats_markdown_skill_files_as_trainable/",
+      "https://reddit.com/r/LocalLLaMA/comments/1toct9l/longcontext_performance_at_lower_quants/"
     ],
     "glossary": {
-      "RAG": "Retrieval-Augmented Generation — fetch documents and pass them into the model so replies are grounded in specific sources.",
-      ".md memory": "A file-system, markdown-based memory the agent can read/write so you avoid stuffing everything into the chat.",
-      "context rot": "When a long chat accumulates noise and the model’s useful context degrades, causing worse outputs over time."
+      "validation gate": "A rule that only accepts model changes if they demonstrably improve performance on held-out tests.",
+      "benchmark": "A standardized test or dataset you use to measure and compare model performance.",
+      "few-shot / fine-tuning": "Techniques to adapt a model with a small number of examples (few-shot) or more extensive weight updates (fine-tuning)."
+    }
+  },
+  {
+    "group": "Industry moves & policy that affect developers",
+    "summary": "News about China restricting AI talent travel, Tencent relicensing Hy-MT2 under Apache 2.0, new Chinese RAM supplier CXMT selling to Corsair, and hardware price shifts all affect hiring, licensing options, and hardware supply for builders. Developers should watch these because they influence whether you can hire globally, which stacks are permissively licensed, and how affordable GPUs and memory will be.",
+    "posts": [
+      "https://reddit.com/r/LocalLLaMA/comments/1to5fj5/china_clamps_down_on_overseas_travel_for_ai/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to2n4r/china_expands_travel_curbs_to_top_ai_talent_at/",
+      "https://reddit.com/r/LocalLLaMA/comments/1to6g1d/tencent_hymt2_is_now_under_apache_license_20/",
+      "https://reddit.com/r/LocalLLaMA/comments/1tnz6xz/cxmt_started_selling_ram_to_corsair/",
+      "https://reddit.com/r/LocalLLaMA/comments/1topklf/dgx_spark_strix_halo_prices_increased_doubled/"
+    ],
+    "glossary": {
+      "Apache-2.0": "A permissive open-source license that lets you use, modify, and redistribute software with minimal restrictions.",
+      "talent mobility": "How easily researchers and engineers can move between countries or companies; restrictions can slow open collaboration.",
+      "supply shock": "When hardware or components suddenly become scarce or expensive, affecting what builders can afford or deploy."
     }
   }
 ]
