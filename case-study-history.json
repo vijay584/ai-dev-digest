@@ -754,5 +754,17 @@
     "date": "2026-05-26T06:59:56.355Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Cut Rider‑Driver Matching Latency ~90% (2s → ~150ms) Using Ringpop, TChannel & Geo‑Sharding",
+    "date": "2026-05-27T07:46:34.178Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "When ACID Isn't Enough: The Saga Pattern for Distributed Transactions",
+    "date": "2026-05-27T07:47:01.624Z",
+    "type": "concept",
+    "company": null
   }
 ]
