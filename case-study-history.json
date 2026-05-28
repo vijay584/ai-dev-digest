@@ -766,5 +766,17 @@
     "date": "2026-05-27T07:47:01.624Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Cloudflare at the Edge: Solving Global KV Consistency & Low‑Latency Coordination (200+ POPs, billions of requests)",
+    "date": "2026-05-28T07:06:08.315Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Don't Make the Problem Worse: Practical Retries, Backoff & Jitter",
+    "date": "2026-05-28T07:06:50.040Z",
+    "type": "concept",
+    "company": null
   }
 ]
