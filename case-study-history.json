@@ -778,5 +778,17 @@
     "date": "2026-05-28T07:06:50.040Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Instagram Tamed Feed Fan‑Out at 500M Users — Cutting Write Amplification by ~99% with a Hybrid Timeline",
+    "date": "2026-05-29T07:07:07.040Z",
+    "type": "case-study",
+    "company": "Instagram"
+  },
+  {
+    "title": "Write Every Change, Read the World: Practical Event Sourcing + CQRS",
+    "date": "2026-05-29T07:07:42.145Z",
+    "type": "concept",
+    "company": null
   }
 ]
