@@ -790,5 +790,17 @@
     "date": "2026-05-29T07:07:42.145Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Built 'Magic Pocket' to Own 500+PB of User Data (and Cut Cloud Bills by Tens of Millions)",
+    "date": "2026-05-30T06:33:53.932Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "API Gateway: The Control Tower for Your Microservices",
+    "date": "2026-05-30T06:34:29.807Z",
+    "type": "concept",
+    "company": null
   }
 ]
