@@ -802,5 +802,17 @@
     "date": "2026-05-30T06:34:29.807Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Built Kafka and Pushed 1+ Trillion Events/Day Through a Partitioned Log",
+    "date": "2026-05-31T07:09:18.197Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Stop the Stampede: Practical Rate Limiting with Token Bucket vs Leaky Bucket",
+    "date": "2026-05-31T07:10:01.629Z",
+    "type": "concept",
+    "company": null
   }
 ]
