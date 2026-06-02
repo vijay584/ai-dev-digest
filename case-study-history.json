@@ -826,5 +826,17 @@
     "date": "2026-06-01T08:59:53.196Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Split Git Out of Rails: Gitaly, Praefect and a 4x Faster Repo Platform",
+    "date": "2026-06-02T08:11:27.306Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Flip the Switch: Using the Circuit Breaker Pattern to Stop Cascading Failures",
+    "date": "2026-06-02T08:12:10.948Z",
+    "type": "concept",
+    "company": null
   }
 ]
