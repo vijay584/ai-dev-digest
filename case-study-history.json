@@ -862,5 +862,17 @@
     "date": "2026-06-04T08:05:08.414Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Stopped Double-Charges and Delivered Tens of Millions of Webhooks Reliably (idempotency + queues + per-customer retry)",
+    "date": "2026-06-05T07:50:15.205Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Make a Cluster Agree: Raft (Practical Consensus for Engineers)",
+    "date": "2026-06-05T07:50:55.067Z",
+    "type": "concept",
+    "company": null
   }
 ]
