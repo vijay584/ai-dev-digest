@@ -874,5 +874,17 @@
     "date": "2026-06-05T07:50:55.067Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Lyft Built Envoy to Tame Hundreds of Microservices — millions of requests, sub-100ms tails",
+    "date": "2026-06-06T06:41:41.788Z",
+    "type": "case-study",
+    "company": "Lyft"
+  },
+  {
+    "title": "Keep Failures in Their Lane: The Bulkhead Pattern for Resilient Systems",
+    "date": "2026-06-06T06:42:14.175Z",
+    "type": "concept",
+    "company": null
   }
 ]
