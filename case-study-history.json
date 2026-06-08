@@ -898,5 +898,17 @@
     "date": "2026-06-07T07:40:03.007Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Cloudflare Absorbed a 26M RPS DDoS: Building an Anycast Edge that Keeps the Internet Online",
+    "date": "2026-06-08T08:26:04.560Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Stop the Race: Practical Distributed Locks — Patterns, Pitfalls, and Safe Recipes",
+    "date": "2026-06-08T08:26:38.950Z",
+    "type": "concept",
+    "company": null
   }
 ]
