@@ -910,5 +910,17 @@
     "date": "2026-06-08T08:26:38.950Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real-Time Voice & Chat for 140M Users: Elixir, WebRTC, and Millions of Connections",
+    "date": "2026-06-09T07:01:24.706Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "From Ledgers to Lightning Reads: Event Sourcing + CQRS Explained",
+    "date": "2026-06-09T07:02:13.033Z",
+    "type": "concept",
+    "company": null
   }
 ]
