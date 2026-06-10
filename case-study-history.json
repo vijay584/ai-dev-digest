@@ -922,5 +922,17 @@
     "date": "2026-06-09T07:02:13.033Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Magic Pocket: How Dropbox Migrated Hundreds of PB Off S3 and Saved ~$75M/Year",
+    "date": "2026-06-10T07:51:14.485Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "The CAP Dilemma: Choosing Consistency, Availability, or Partition-Tolerance (and PACELC to the Rescue)",
+    "date": "2026-06-10T07:52:08.297Z",
+    "type": "concept",
+    "company": null
   }
 ]
