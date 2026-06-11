@@ -934,5 +934,17 @@
     "date": "2026-06-10T07:52:08.297Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "LinkedIn and Kafka: Building a Messaging Backbone for Trillions of Events per Day",
+    "date": "2026-06-11T08:19:05.213Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Follow the Trace: Distributed Tracing to Find the Needle in a Microservice Haystack",
+    "date": "2026-06-11T08:19:44.916Z",
+    "type": "concept",
+    "company": null
   }
 ]
