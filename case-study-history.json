@@ -946,5 +946,17 @@
     "date": "2026-06-11T08:19:44.916Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Instagram Tackled the Feed Fan‑out Problem — millions of followers, Redis at scale, and <50ms timeline reads",
+    "date": "2026-06-12T08:06:51.054Z",
+    "type": "case-study",
+    "company": "Instagram"
+  },
+  {
+    "title": "Find the Needle Fast: Practical Database Indexing & Query Optimization",
+    "date": "2026-06-12T08:07:21.535Z",
+    "type": "concept",
+    "company": null
   }
 ]
