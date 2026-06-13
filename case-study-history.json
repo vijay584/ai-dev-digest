@@ -958,5 +958,17 @@
     "date": "2026-06-12T08:07:21.535Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitHub Migrated Huge MySQL Tables Without Downtime (hundreds of millions of rows → <200ms locks)",
+    "date": "2026-06-13T07:08:41.141Z",
+    "type": "case-study",
+    "company": "GitHub"
+  },
+  {
+    "title": "Stop the Cascade: How the Circuit Breaker Pattern Keeps Services Healthy",
+    "date": "2026-06-13T07:09:02.049Z",
+    "type": "concept",
+    "company": null
   }
 ]
