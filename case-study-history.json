@@ -970,5 +970,17 @@
     "date": "2026-06-13T07:09:02.049Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Intentionally Broke Production to Keep 200M+ Viewers Streaming — Chaos Engineering at Scale",
+    "date": "2026-06-14T08:00:24.445Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Keep Keys from Moving: How Consistent Hashing Lets Shards Grow Without a Meltdown",
+    "date": "2026-06-14T08:01:13.734Z",
+    "type": "concept",
+    "company": null
   }
 ]
