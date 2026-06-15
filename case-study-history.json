@@ -982,5 +982,17 @@
     "date": "2026-06-14T08:01:13.734Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Scaled Git RPCs for 30M+ Users: Gitaly, Praefect, and a Move from Ruby to Go",
+    "date": "2026-06-15T09:41:18.808Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Cache Like a Pro: When to Use Cache-Aside, Write-Through, and Write-Back",
+    "date": "2026-06-15T09:41:52.859Z",
+    "type": "concept",
+    "company": null
   }
 ]
