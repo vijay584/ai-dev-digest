@@ -994,5 +994,17 @@
     "date": "2026-06-15T09:41:52.859Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled to 300M Daily Meeting Participants: building a realtime video backbone under 30x growth",
+    "date": "2026-06-16T09:07:34.429Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Agreeing in the Wild: Raft (Consensus Made Practical)",
+    "date": "2026-06-16T09:08:08.044Z",
+    "type": "concept",
+    "company": null
   }
 ]
