@@ -1006,5 +1006,17 @@
     "date": "2026-06-16T09:08:08.044Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Survived Black Friday: Scaling Checkout to $5.1B in Sales and Sub-200ms Latency",
+    "date": "2026-06-17T08:39:48.218Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "Bulkheads: Stop One Service Failure from Sinking the Ship",
+    "date": "2026-06-17T08:40:26.431Z",
+    "type": "concept",
+    "company": null
   }
 ]
