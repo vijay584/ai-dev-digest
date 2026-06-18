@@ -1018,5 +1018,17 @@
     "date": "2026-06-17T08:40:26.431Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Scaled MySQL with 'Schemaless': Thousands of Shards, Millions of Rides, and Taming MySQL at Scale",
+    "date": "2026-06-18T08:23:55.376Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Sagas: How to Do Distributed Transactions Without Two‑Phase Commit",
+    "date": "2026-06-18T08:24:40.664Z",
+    "type": "concept",
+    "company": null
   }
 ]
