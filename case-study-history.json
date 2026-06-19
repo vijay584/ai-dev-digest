@@ -1030,5 +1030,17 @@
     "date": "2026-06-18T08:24:40.664Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Cloudflare Absorbed a 17.2M rps HTTP Flood: Anycast, Edge Caching, and Fighting a DDoS at Planet-Scale",
+    "date": "2026-06-19T08:43:42.736Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Stop the Race: Practical Distributed Locks, Leases, and When Not to Use Them",
+    "date": "2026-06-19T08:44:14.599Z",
+    "type": "concept",
+    "company": null
   }
 ]
