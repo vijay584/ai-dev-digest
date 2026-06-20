@@ -1042,5 +1042,17 @@
     "date": "2026-06-19T08:44:14.599Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Prevents Duplicate Charges at Scale — Idempotency, 24‑hour TTL, and a Dedup Workflow",
+    "date": "2026-06-20T07:11:26.271Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "API Gateway: The Front Door for Microservices (When to use it, how it works, and pitfalls to avoid)",
+    "date": "2026-06-20T07:11:59.661Z",
+    "type": "concept",
+    "company": null
   }
 ]
