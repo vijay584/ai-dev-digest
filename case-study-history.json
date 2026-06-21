@@ -1054,5 +1054,17 @@
     "date": "2026-06-20T07:11:59.661Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Dropbox Magic Pocket — moving hundreds of PB off S3 to save ~$75M/year and own the stack",
+    "date": "2026-06-21T08:13:55.159Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Write Once, Replay Forever: Event Sourcing Demystified",
+    "date": "2026-06-21T08:14:49.531Z",
+    "type": "concept",
+    "company": null
   }
 ]
