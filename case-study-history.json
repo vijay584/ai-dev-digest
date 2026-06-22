@@ -1066,5 +1066,17 @@
     "date": "2026-06-21T08:14:49.531Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Built Kafka to Move Over 1 Trillion Events/Day — a Real-Time Pipeline That Scaled Horizontally",
+    "date": "2026-06-22T09:25:55.085Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Don't Let Your Service Drown: Backpressure, Flow Control, and How to Apply Them",
+    "date": "2026-06-22T09:26:27.811Z",
+    "type": "concept",
+    "company": null
   }
 ]
