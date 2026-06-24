@@ -1090,5 +1090,17 @@
     "date": "2026-06-23T07:03:27.418Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real‑Time Chat & Voice to Hundreds of Millions of Users",
+    "date": "2026-06-24T07:00:09.057Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Bloom Filters: Fast 'Probably In' Checks That Save IO and Money",
+    "date": "2026-06-24T07:00:50.251Z",
+    "type": "concept",
+    "company": null
   }
 ]
