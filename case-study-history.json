@@ -1102,5 +1102,17 @@
     "date": "2026-06-24T07:00:50.251Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Broke Production on Purpose — Chaos Engineering to Harden 200M+ Users and 1000+ Microservices",
+    "date": "2026-06-25T06:59:17.934Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Index Like a Pro: Practical Database Indexing and Query Optimization",
+    "date": "2026-06-25T06:59:53.301Z",
+    "type": "concept",
+    "company": null
   }
 ]
