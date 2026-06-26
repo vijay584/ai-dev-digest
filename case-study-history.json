@@ -1114,5 +1114,17 @@
     "date": "2026-06-25T06:59:53.301Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Offloaded Git I/O with Gitaly & Praefect — 4x faster Git RPCs and major Rails CPU savings",
+    "date": "2026-06-26T07:06:41.516Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Flip the Circuit, Not the System: Practical Circuit Breaker Pattern",
+    "date": "2026-06-26T07:07:34.339Z",
+    "type": "concept",
+    "company": null
   }
 ]
