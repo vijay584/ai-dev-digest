@@ -1126,5 +1126,17 @@
     "date": "2026-06-26T07:07:34.339Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitter Scaled the Timeline: Solving Fan‑out for ~6,000 Tweets/sec with a Hybrid Architecture",
+    "date": "2026-06-27T06:41:46.044Z",
+    "type": "case-study",
+    "company": "Twitter (X)"
+  },
+  {
+    "title": "Consistent Hashing: Keep Your Cache, Shards, and Nodes from Exploding",
+    "date": "2026-06-27T06:42:25.769Z",
+    "type": "concept",
+    "company": null
   }
 ]
