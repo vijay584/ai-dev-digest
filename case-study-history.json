@@ -1138,5 +1138,17 @@
     "date": "2026-06-27T06:42:25.769Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "GitHub's gh-ost: Zero‑downtime MySQL Schema Changes on Hundreds of Millions of Rows",
+    "date": "2026-06-28T07:12:57.812Z",
+    "type": "case-study",
+    "company": "GitHub"
+  },
+  {
+    "title": "Bulkheads: Keep One Failure from Sinking the Whole Ship",
+    "date": "2026-06-28T07:13:31.667Z",
+    "type": "concept",
+    "company": null
   }
 ]
