@@ -1150,5 +1150,17 @@
     "date": "2026-06-28T07:13:31.667Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Used H3 & Sharded Services to Make Millions of Geo Matches Fast (sub‑100ms at city scale)",
+    "date": "2026-06-29T08:30:25.561Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Cache Patterns Decoded: Cache‑Aside, Write‑Through, and Write‑Back (When to Use Each)",
+    "date": "2026-06-29T08:30:55.473Z",
+    "type": "concept",
+    "company": null
   }
 ]
