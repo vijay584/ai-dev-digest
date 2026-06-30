@@ -1162,5 +1162,17 @@
     "date": "2026-06-29T08:30:55.473Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Cloudflare at the Edge: How Workers KV & Durable Objects Delivered Global Low‑Latency State across 200+ Cities",
+    "date": "2026-06-30T07:06:43.568Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Sagas: Distributed Transactions for Microservices (without 2PC headaches)",
+    "date": "2026-06-30T07:07:33.514Z",
+    "type": "concept",
+    "company": null
   }
 ]
