@@ -1174,5 +1174,17 @@
     "date": "2026-06-30T07:07:33.514Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Stops Duplicate Charges at Scale — Idempotency Keys, 24h Storage, and Retry Safety",
+    "date": "2026-07-01T07:53:09.878Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Taming Traffic: Token Bucket & Leaky Bucket Rate Limiting (Practical Guide)",
+    "date": "2026-07-01T07:53:59.108Z",
+    "type": "concept",
+    "company": null
   }
 ]
