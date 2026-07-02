@@ -1186,5 +1186,17 @@
     "date": "2026-07-01T07:53:59.108Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Moved ~500PB Off S3 with 'Magic Pocket' — Saving Millions and Gaining Control",
+    "date": "2026-07-02T06:53:39.433Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Write History, Not Just State: Event Sourcing + CQRS for Traceable, Scalable Systems",
+    "date": "2026-07-02T06:54:20.525Z",
+    "type": "concept",
+    "company": null
   }
 ]
