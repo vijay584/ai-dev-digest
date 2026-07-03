@@ -1198,5 +1198,17 @@
     "date": "2026-07-02T06:54:20.525Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Built Kafka to Move 1+ Trillion Messages/Day — Real-time Pipelines at Planet-scale",
+    "date": "2026-07-03T06:45:38.477Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Stop the Race: Practical Distributed Locks, Leases, and Common Pitfalls",
+    "date": "2026-07-03T06:46:08.340Z",
+    "type": "concept",
+    "company": null
   }
 ]
