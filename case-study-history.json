@@ -1210,5 +1210,17 @@
     "date": "2026-07-03T06:46:08.340Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled Real‑Time Meetings from 10M to 300M Daily Participants: decoupling signaling, media, and global PoPs",
+    "date": "2026-07-04T06:32:56.375Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "API Gateway: The Traffic Cop that Keeps Microservices Playable",
+    "date": "2026-07-04T06:33:28.864Z",
+    "type": "concept",
+    "company": null
   }
 ]
