@@ -1222,5 +1222,17 @@
     "date": "2026-07-04T06:33:28.864Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real‑Time Chat & Voice for ~150M MAU — from WebSocket shards to Elixir + Go at 4M concurrent",
+    "date": "2026-07-05T06:53:20.508Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Observability Patterns: Logs, Metrics & Traces — See What Your System Is Really Doing",
+    "date": "2026-07-05T06:53:42.810Z",
+    "type": "concept",
+    "company": null
   }
 ]
