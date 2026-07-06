@@ -1234,5 +1234,17 @@
     "date": "2026-07-05T06:53:42.810Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Delivered Sub-50ms Metadata at Millions RPS: EVCache + Cassandra to the Rescue",
+    "date": "2026-07-06T07:59:38.539Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Make Your Queries Fly: Practical Database Indexing & Query Optimization",
+    "date": "2026-07-06T08:00:20.234Z",
+    "type": "concept",
+    "company": null
   }
 ]
