@@ -1246,5 +1246,17 @@
     "date": "2026-07-06T08:00:20.234Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "GitLab's Gitaly: Cutting Git RPC Latency ~3x and Offloading Rails to Scale Millions of Repos",
+    "date": "2026-07-07T07:00:06.138Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Circuit Breaker: Keep One Bad Service from Tripping Your Whole System",
+    "date": "2026-07-07T07:00:50.512Z",
+    "type": "concept",
+    "company": null
   }
 ]
