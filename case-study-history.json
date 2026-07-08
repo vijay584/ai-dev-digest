@@ -1258,5 +1258,17 @@
     "date": "2026-07-07T07:00:50.512Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Instagram Scaled Postgres, Memcached & Feed Fanout to 100M+ Users (From 2k to 40k+ writes/s)",
+    "date": "2026-07-08T06:11:06.742Z",
+    "type": "case-study",
+    "company": "Instagram"
+  },
+  {
+    "title": "How Consistent Hashing Keeps Your Shards from Exploding When Nodes Come & Go",
+    "date": "2026-07-08T06:11:40.306Z",
+    "type": "concept",
+    "company": null
   }
 ]
