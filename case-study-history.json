@@ -1270,5 +1270,17 @@
     "date": "2026-07-08T06:11:40.306Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitter Scaled the Home Timeline: Handling 500M Tweets/day and Accounts with 100M+ Followers",
+    "date": "2026-07-09T06:59:22.680Z",
+    "type": "case-study",
+    "company": "Twitter/X"
+  },
+  {
+    "title": "Raft in Practice: Leader, Logs, and Lost Votes (Consensus Without Headaches)",
+    "date": "2026-07-09T07:00:14.456Z",
+    "type": "concept",
+    "company": null
   }
 ]
