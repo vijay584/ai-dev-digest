@@ -1282,5 +1282,17 @@
     "date": "2026-07-09T07:00:14.456Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Scaled Service Discovery & MySQL Sharding with Ringpop + Schemaless — cutting tail latency and outages at hundreds of thousands of RPS",
+    "date": "2026-07-10T06:59:13.562Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Cache Like a Pro: Write-Through, Write-Back, and Cache-Aside Explained",
+    "date": "2026-07-10T06:59:47.361Z",
+    "type": "concept",
+    "company": null
   }
 ]
