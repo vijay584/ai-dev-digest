@@ -1294,5 +1294,17 @@
     "date": "2026-07-10T06:59:47.361Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Cloudflare Built Workers KV: Serving Global Configs from 200+ PoPs with Millisecond Reads and Eventual Consistency",
+    "date": "2026-07-11T05:56:32.939Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Bulkheads: Stop One Service From Sinking the Whole Ship",
+    "date": "2026-07-11T05:56:55.104Z",
+    "type": "concept",
+    "company": null
   }
 ]
