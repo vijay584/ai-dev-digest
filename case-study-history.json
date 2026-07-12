@@ -1306,5 +1306,17 @@
     "date": "2026-07-11T05:56:55.104Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Tamed Duplicate Charges & Cut Authorization Latency by ~3-4x at Hundreds of Thousands RPS",
+    "date": "2026-07-12T06:16:44.587Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Sagas: Long-Running Distributed Transactions Without the Locking Nightmare",
+    "date": "2026-07-12T06:17:25.020Z",
+    "type": "concept",
+    "company": null
   }
 ]
