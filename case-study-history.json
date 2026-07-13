@@ -1318,5 +1318,17 @@
     "date": "2026-07-12T06:17:25.020Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Moved 500+ PB Off Public Cloud — The Magic Pocket Story",
+    "date": "2026-07-13T06:35:44.583Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "When Systems Beg for a Break: Practical Backpressure & Flow Control",
+    "date": "2026-07-13T06:36:10.775Z",
+    "type": "concept",
+    "company": null
   }
 ]
