@@ -1330,5 +1330,17 @@
     "date": "2026-07-13T06:36:10.775Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "LinkedIn’s Kafka: Scaling to Trillions of Events/Day with Millisecond Latency",
+    "date": "2026-07-14T05:43:58.134Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Write History, Not State: Practical Event Sourcing + CQRS for Everyday Systems",
+    "date": "2026-07-14T05:44:33.322Z",
+    "type": "concept",
+    "company": null
   }
 ]
