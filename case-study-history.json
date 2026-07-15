@@ -1342,5 +1342,17 @@
     "date": "2026-07-14T05:44:33.322Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Surged from ~10M to 300M Daily Meeting Participants: real‑time video at 30x scale",
+    "date": "2026-07-15T05:44:48.312Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Distributed Locks: How to Coordinate Access Without Bringing Your System Down",
+    "date": "2026-07-15T05:45:15.734Z",
+    "type": "concept",
+    "company": null
   }
 ]
