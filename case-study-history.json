@@ -1354,5 +1354,17 @@
     "date": "2026-07-15T05:45:15.734Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real‑Time Messaging & Voice to Serve 140M MAU (stateless gateways, sharding, and custom SFU)",
+    "date": "2026-07-16T05:58:28.607Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Seeing the System: Practical Observability with Traces, Metrics & Logs",
+    "date": "2026-07-16T05:59:07.003Z",
+    "type": "concept",
+    "company": null
   }
 ]
