@@ -1366,5 +1366,17 @@
     "date": "2026-07-16T05:59:07.003Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Cut Recommendation & Playback Tail Latency by Offloading Hot Reads to EVCache (2M+ RPS) and Cassandra",
+    "date": "2026-07-17T05:58:30.327Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Taming the Traffic Flood: Practical Rate Limiting (Token Bucket, Leaky Bucket & Friends)",
+    "date": "2026-07-17T05:59:02.924Z",
+    "type": "concept",
+    "company": null
   }
 ]
