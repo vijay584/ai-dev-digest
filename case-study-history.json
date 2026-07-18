@@ -1378,5 +1378,17 @@
     "date": "2026-07-17T05:59:02.924Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Survived a $5.1B BFCM Surge: Per‑shop DBs, caching, and graceful spikes",
+    "date": "2026-07-18T05:40:06.638Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "When Your Downstream Service Starts Smoking: The Circuit Breaker Pattern Explained",
+    "date": "2026-07-18T05:40:32.114Z",
+    "type": "concept",
+    "company": null
   }
 ]
