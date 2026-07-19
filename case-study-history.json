@@ -1390,5 +1390,17 @@
     "date": "2026-07-18T05:40:32.114Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Pinterest Earlybird: Real‑Time Search for 2+ Billion Pins and 100M+ Searches/Day",
+    "date": "2026-07-19T06:11:20.595Z",
+    "type": "case-study",
+    "company": "Pinterest"
+  },
+  {
+    "title": "Make Your Queries Fly: Practical Database Indexing & Query Optimization",
+    "date": "2026-07-19T06:11:42.512Z",
+    "type": "concept",
+    "company": null
   }
 ]
