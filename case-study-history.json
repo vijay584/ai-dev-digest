@@ -1414,5 +1414,17 @@
     "date": "2026-07-20T06:31:06.873Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Used H3 & Localized Shards to Cut Dispatch Latency ~4x and Scale Real‑Time Matching",
+    "date": "2026-07-21T06:09:53.110Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "When Updates Collide: Vector Clocks & CRDTs for Conflict‑Free Replication",
+    "date": "2026-07-21T06:10:22.405Z",
+    "type": "concept",
+    "company": null
   }
 ]
