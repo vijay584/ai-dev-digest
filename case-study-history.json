@@ -1426,5 +1426,17 @@
     "date": "2026-07-21T06:10:22.405Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Cloudflare Cut Origin Egress ~60% and Slashed Latency by Tiered Cache Across a 200+ City Anycast Network",
+    "date": "2026-07-22T06:08:01.606Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Stop One Sinking Boat from Sinking the Fleet: The Bulkhead Pattern for Resilient Services",
+    "date": "2026-07-22T06:08:26.389Z",
+    "type": "concept",
+    "company": null
   }
 ]
