@@ -1450,5 +1450,17 @@
     "date": "2026-07-23T06:14:52.573Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Built 'Magic Pocket' — moving hundreds of PB off S3 and saving ~$75M/year",
+    "date": "2026-07-24T06:07:17.262Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Sagas: Coordinating Distributed Transactions Without Two-Phase Commit",
+    "date": "2026-07-24T06:07:49.928Z",
+    "type": "concept",
+    "company": null
   }
 ]
