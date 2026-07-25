@@ -1462,5 +1462,17 @@
     "date": "2026-07-24T06:07:49.928Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Built Kafka to Move Billions of Events a Day — from Point-to-Point Chaos to a Trillion-Event Backbone",
+    "date": "2026-07-25T05:59:43.800Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Event Sourcing: Keep the Truth (the Events), Not Just a Snapshot",
+    "date": "2026-07-25T06:00:08.807Z",
+    "type": "concept",
+    "company": null
   }
 ]
