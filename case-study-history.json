@@ -1474,5 +1474,17 @@
     "date": "2026-07-25T06:00:08.807Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Scaled Git RPCs: Gitaly & Praefect Cut Clone Latency, Failures and Operational Overhead",
+    "date": "2026-07-26T06:19:04.290Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Stop the Double-Workers: Practical Distributed Locks, Safely",
+    "date": "2026-07-26T06:19:36.981Z",
+    "type": "concept",
+    "company": null
   }
 ]
