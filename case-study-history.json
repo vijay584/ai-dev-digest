@@ -1486,5 +1486,17 @@
     "date": "2026-07-26T06:19:36.981Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled ~30x (10M → 300M daily participants) During the Pandemic — engineering tradeoffs, regional SFUs, and autoscaling the media plane",
+    "date": "2026-07-27T06:47:19.315Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "How Raft Keeps Distributed Systems in Agreement — a Practical Guide to Consensus",
+    "date": "2026-07-27T06:47:49.953Z",
+    "type": "concept",
+    "company": null
   }
 ]
