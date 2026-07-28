@@ -1498,5 +1498,17 @@
     "date": "2026-07-27T06:47:49.953Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real‑Time Chat to 140M+ Users: Sharding, BEAM, and a 10x Cost/Latency Win",
+    "date": "2026-07-28T06:07:14.631Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Seeing the Invisible: Distributed Tracing & Observability Patterns",
+    "date": "2026-07-28T06:07:54.109Z",
+    "type": "concept",
+    "company": null
   }
 ]
