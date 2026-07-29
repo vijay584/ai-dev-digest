@@ -1510,5 +1510,17 @@
     "date": "2026-07-28T06:07:54.109Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitter Scaled Timeline Fanout to Serve ~500M Tweets/Day and Get Reads Under 150ms",
+    "date": "2026-07-29T06:12:04.194Z",
+    "type": "case-study",
+    "company": "Twitter"
+  },
+  {
+    "title": "Stop the Cascade: The Circuit Breaker Pattern for Resilient Services",
+    "date": "2026-07-29T06:12:36.069Z",
+    "type": "concept",
+    "company": null
   }
 ]
