@@ -1522,5 +1522,17 @@
     "date": "2026-07-29T06:12:36.069Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Cut Metadata Read Latency ~10x with EVCache + Cassandra at 200M+ Users",
+    "date": "2026-07-30T06:04:00.521Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "The API Gateway: Your Microservices Traffic Cop (Without Becoming a Bottleneck)",
+    "date": "2026-07-30T06:04:27.062Z",
+    "type": "concept",
+    "company": null
   }
 ]
