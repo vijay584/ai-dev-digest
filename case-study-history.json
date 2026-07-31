@@ -1534,5 +1534,17 @@
     "date": "2026-07-30T06:04:27.062Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitch Kept Millions Talking — Scaling Chat to Handle Millions of Concurrent Viewers",
+    "date": "2026-07-31T06:28:19.495Z",
+    "type": "case-study",
+    "company": "Twitch"
+  },
+  {
+    "title": "How Consistent Hashing Keeps Shards Stable When Nodes Come and Go",
+    "date": "2026-07-31T06:29:07.116Z",
+    "type": "concept",
+    "company": null
   }
 ]
