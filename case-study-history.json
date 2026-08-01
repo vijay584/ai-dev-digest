@@ -1546,5 +1546,17 @@
     "date": "2026-07-31T06:29:07.116Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Cut Matching Latency from Seconds to ~120ms — Real-time Dispatch at 15M Requests/Day",
+    "date": "2026-08-01T06:13:05.655Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Make Queries Fly: Practical Database Indexing & Query Optimization",
+    "date": "2026-08-01T06:13:39.217Z",
+    "type": "concept",
+    "company": null
   }
 ]
