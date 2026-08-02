@@ -1558,5 +1558,17 @@
     "date": "2026-08-01T06:13:39.217Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Sharded MySQL with Ghostferry — multi‑TB migrations with near‑zero downtime",
+    "date": "2026-08-02T06:16:11.904Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "Protect Your Service Like a Ship's Bulkheads: The Bulkhead Pattern for Resilient Systems",
+    "date": "2026-08-02T06:16:41.686Z",
+    "type": "concept",
+    "company": null
   }
 ]
