@@ -1582,5 +1582,17 @@
     "date": "2026-08-03T06:43:43.632Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Built 'Magic Pocket' and Repatriated ~500 PB to Cut Cost & Control the Stack",
+    "date": "2026-08-04T06:08:01.114Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Sagas: Reliable Distributed Transactions Without Two‑Phase Commit",
+    "date": "2026-08-04T06:08:35.601Z",
+    "type": "concept",
+    "company": null
   }
 ]
