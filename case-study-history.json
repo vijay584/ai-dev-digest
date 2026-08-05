@@ -1594,5 +1594,17 @@
     "date": "2026-08-04T06:08:35.601Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Scaled Kafka to Handle 4+ Trillion Events/Day and Millions of Messages/sec",
+    "date": "2026-08-05T06:05:11.602Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Store What Happened, Not What Is: Practical Event Sourcing for Reliable Systems",
+    "date": "2026-08-05T06:05:34.528Z",
+    "type": "concept",
+    "company": null
   }
 ]
