@@ -1606,5 +1606,17 @@
     "date": "2026-08-05T06:05:34.528Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Prevented Double Charges at Scale — Idempotency, Retries, and a 10x Drop in Charge Duplicates",
+    "date": "2026-08-06T06:08:42.318Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "How Load Balancing Algorithms Decide Who Gets the Work (and Why It Matters)",
+    "date": "2026-08-06T06:09:14.498Z",
+    "type": "concept",
+    "company": null
   }
 ]
