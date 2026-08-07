@@ -1618,5 +1618,17 @@
     "date": "2026-08-06T06:09:14.498Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitHub Cut Large-Repo Clone Times from Minutes to Seconds with Git LFS + CDN (200M repos and counting)",
+    "date": "2026-08-07T05:10:11.655Z",
+    "type": "case-study",
+    "company": "GitHub"
+  },
+  {
+    "title": "How a Bloom Filter Lets You Say “Probably Not” — Fast and Cheap",
+    "date": "2026-08-07T05:10:45.668Z",
+    "type": "concept",
+    "company": null
   }
 ]
