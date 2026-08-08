@@ -1630,5 +1630,17 @@
     "date": "2026-08-07T05:10:45.668Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real-Time Chat & Voice to Serve 140M Users — Elixir, Shards, and Microsecond Gains",
+    "date": "2026-08-08T04:33:35.567Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Stop the Stampede: Practical Rate Limiting Patterns (Token Bucket, Leaky Bucket, Windows)",
+    "date": "2026-08-08T04:34:30.825Z",
+    "type": "concept",
+    "company": null
   }
 ]
