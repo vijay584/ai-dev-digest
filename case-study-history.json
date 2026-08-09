@@ -1642,5 +1642,17 @@
     "date": "2026-08-08T04:34:30.825Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Instagram Scaled the Home Feed: From Seconds to Sub-200ms for 400M+ Users",
+    "date": "2026-08-09T04:43:06.039Z",
+    "type": "case-study",
+    "company": "Instagram"
+  },
+  {
+    "title": "When Services Catch Fire: The Circuit Breaker Pattern for Resilient Distributed Systems",
+    "date": "2026-08-09T04:43:51.173Z",
+    "type": "concept",
+    "company": null
   }
 ]
