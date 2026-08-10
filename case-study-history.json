@@ -1654,5 +1654,17 @@
     "date": "2026-08-09T04:43:51.173Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Used Chaos Engineering to Keep 200M+ Members Streaming — Simian Army, Spinnaker, and Multi‑Region Resilience",
+    "date": "2026-08-10T05:01:52.305Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "How Distributed Consensus (Raft) Keeps Your Cluster Correct — without the Headaches",
+    "date": "2026-08-10T05:02:35.957Z",
+    "type": "concept",
+    "company": null
   }
 ]
