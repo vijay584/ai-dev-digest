@@ -1666,5 +1666,17 @@
     "date": "2026-08-10T05:02:35.957Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled from Tens of Millions to 300M Daily Meeting Participants — keeping video flowing under extreme load",
+    "date": "2026-08-11T04:46:19.910Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Ring Around the Nodes: Practical Consistent Hashing for Stable Sharding",
+    "date": "2026-08-11T04:47:02.982Z",
+    "type": "concept",
+    "company": null
   }
 ]
