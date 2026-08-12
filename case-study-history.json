@@ -1678,5 +1678,17 @@
     "date": "2026-08-11T04:47:02.982Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Used H3 and a Streaming Dispatch Pipeline to Cut Matching Latency from 350ms to ~80ms at 20k req/s",
+    "date": "2026-08-12T05:10:56.938Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Don't Drown the Pipeline: Backpressure & Flow Control for Robust Systems",
+    "date": "2026-08-12T05:11:26.894Z",
+    "type": "concept",
+    "company": null
   }
 ]
