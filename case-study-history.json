@@ -1690,5 +1690,17 @@
     "date": "2026-08-12T05:11:26.894Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Scaled GitLab.com CI: cutting median job wait from minutes to seconds with autoscaling runners",
+    "date": "2026-08-13T05:15:01.461Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Bulkheads: Stop One Failure from Sinking the Whole Ship",
+    "date": "2026-08-13T05:15:32.870Z",
+    "type": "concept",
+    "company": null
   }
 ]
