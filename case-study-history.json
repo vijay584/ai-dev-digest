@@ -1714,5 +1714,17 @@
     "date": "2026-08-14T05:12:57.429Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Dropbox’s Magic Pocket: Moving Hundreds of PB Off S3 to Cut Costs and Gain Control",
+    "date": "2026-08-15T04:00:07.086Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Sagas: Distributed Transactions Without Two‑Phase Commit",
+    "date": "2026-08-15T04:00:45.726Z",
+    "type": "concept",
+    "company": null
   }
 ]
