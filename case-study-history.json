@@ -1726,5 +1726,17 @@
     "date": "2026-08-15T04:00:45.726Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "LinkedIn’s Kafka: Scaling to Trillions of Events a Day (7+T/day) to Power Real‑Time Feeds",
+    "date": "2026-08-16T04:06:01.768Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Retry Strategies That Don't Break Your System: Backoff, Jitter, and Idempotency",
+    "date": "2026-08-16T04:06:44.653Z",
+    "type": "concept",
+    "company": null
   }
 ]
