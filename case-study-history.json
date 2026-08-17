@@ -1738,5 +1738,17 @@
     "date": "2026-08-16T04:06:44.653Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Used Idempotency Keys to Stop Double Charges — 24h TTL, millions of safe retries",
+    "date": "2026-08-17T04:09:14.175Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "From CRUD to Immutable Ledgers: Demystifying Event Sourcing + CQRS",
+    "date": "2026-08-17T04:09:56.059Z",
+    "type": "concept",
+    "company": null
   }
 ]
