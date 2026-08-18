@@ -1750,5 +1750,17 @@
     "date": "2026-08-17T04:09:56.059Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Survived Black Friday: Scaling Checkout to $5.1B in Sales and 1.5M Checkouts/Min",
+    "date": "2026-08-18T04:03:40.116Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "How to Spread the Load: Practical Load Balancing Algorithms Every Developer Should Know",
+    "date": "2026-08-18T04:04:28.926Z",
+    "type": "concept",
+    "company": null
   }
 ]
