@@ -1774,5 +1774,17 @@
     "date": "2026-08-19T04:05:49.950Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Instagram Scaled Its Database to 100M Users: from Single-DB to Shards, Memcache, and Fast Reads",
+    "date": "2026-08-20T04:05:10.462Z",
+    "type": "case-study",
+    "company": "Instagram"
+  },
+  {
+    "title": "When a Service Sneezes, Don’t Catch a Cold: The Circuit Breaker Pattern",
+    "date": "2026-08-20T04:05:57.398Z",
+    "type": "concept",
+    "company": null
   }
 ]
