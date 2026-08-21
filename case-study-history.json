@@ -1786,5 +1786,17 @@
     "date": "2026-08-20T04:05:57.398Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Twitter/X: Taming the Fan‑out Beast — Cutting Timeline Load by ~10x with a Hybrid Fanout Strategy",
+    "date": "2026-08-21T04:07:49.140Z",
+    "type": "case-study",
+    "company": "Twitter / X"
+  },
+  {
+    "title": "Making Distributed Systems Agree: A Practical Guide to Consensus (Raft) with Examples",
+    "date": "2026-08-21T04:08:22.796Z",
+    "type": "concept",
+    "company": null
   }
 ]
