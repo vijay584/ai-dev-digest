@@ -1798,5 +1798,17 @@
     "date": "2026-08-21T04:08:22.796Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled from ~10M to 300M Daily Meeting Participants: cutting join latency, autoscaling media, and surviving the COVID surge",
+    "date": "2026-08-22T04:02:28.246Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Find It Fast: Practical Guide to Database Indexing & Query Optimization",
+    "date": "2026-08-22T04:03:09.277Z",
+    "type": "concept",
+    "company": null
   }
 ]
