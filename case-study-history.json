@@ -1810,5 +1810,17 @@
     "date": "2026-08-22T04:03:09.277Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Cut Match Latency from Seconds to Sub-Second: Dispatch, Ringpop, and Real-Time Matching at Scale",
+    "date": "2026-08-23T04:07:18.844Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Consistent Hashing: Keep Your Cache and Shards Stable When Servers Come and Go",
+    "date": "2026-08-23T04:08:16.682Z",
+    "type": "concept",
+    "company": null
   }
 ]
