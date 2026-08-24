@@ -1822,5 +1822,17 @@
     "date": "2026-08-23T04:08:16.682Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Netflix: How Chaos Engineering Turned 200M+ Subscribers and 1,000+ Microservices into a Resilient Streaming Machine",
+    "date": "2026-08-24T04:12:31.000Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Stop One Failure from Sinking the Ship: The Bulkhead Pattern Explained",
+    "date": "2026-08-24T04:13:08.820Z",
+    "type": "concept",
+    "company": null
   }
 ]
