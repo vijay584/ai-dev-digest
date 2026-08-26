@@ -1846,5 +1846,17 @@
     "date": "2026-08-25T04:06:37.548Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "Dropbox’s Magic Pocket: Owning Hundreds of Petabytes to Save Tens of Millions and Gain Control",
+    "date": "2026-08-26T04:08:46.589Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Sagas: How to Do Reliable Distributed Transactions Without Two-Phase Commit",
+    "date": "2026-08-26T04:09:33.072Z",
+    "type": "concept",
+    "company": null
   }
 ]
