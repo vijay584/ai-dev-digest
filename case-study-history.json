@@ -1858,5 +1858,17 @@
     "date": "2026-08-26T04:09:33.072Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "LinkedIn's Kafka Backbone: How 4.5 Trillion Messages/Day Became Real-Time Infrastructure",
+    "date": "2026-08-27T14:23:14.158Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Seeing the Invisible: Practical Observability with Metrics, Logs, and Distributed Traces",
+    "date": "2026-08-27T14:23:48.346Z",
+    "type": "concept",
+    "company": null
   }
 ]
