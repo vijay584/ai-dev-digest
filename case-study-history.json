@@ -1870,5 +1870,17 @@
     "date": "2026-08-27T14:23:48.346Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Prevented Duplicate Charges at Scale: Idempotency Keys, 24‑hour Storage, and Atomic Writes",
+    "date": "2026-08-28T15:32:11.205Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Make Every Change an Event: Practical Guide to Event Sourcing",
+    "date": "2026-08-28T15:32:49.029Z",
+    "type": "concept",
+    "company": null
   }
 ]
