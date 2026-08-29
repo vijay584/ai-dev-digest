@@ -1882,5 +1882,17 @@
     "date": "2026-08-28T15:32:49.029Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real‑Time Chat & Voice for ~150M MAU: gateway sharding, presence at scale, and regional voice clusters",
+    "date": "2026-08-29T10:16:56.476Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "Don't Let One Server Be the Bottleneck: Practical Guide to Load Balancing Algorithms",
+    "date": "2026-08-29T10:17:33.984Z",
+    "type": "concept",
+    "company": null
   }
 ]
