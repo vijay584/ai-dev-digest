@@ -1894,5 +1894,17 @@
     "date": "2026-08-29T10:17:33.984Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Migrated Multi‑TB MySQL Data with Near‑Zero Downtime (Ghostferry)",
+    "date": "2026-08-30T09:22:01.791Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "The API Gateway Pattern: Your Microservices Concierge",
+    "date": "2026-08-30T09:22:45.927Z",
+    "type": "concept",
+    "company": null
   }
 ]
