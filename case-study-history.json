@@ -1906,5 +1906,17 @@
     "date": "2026-08-30T09:22:45.927Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitHub Stopped Schema-Change Outages: gh-ost, Binlog Streaming, and Cutting Cutovers to <1s",
+    "date": "2026-08-31T09:57:21.218Z",
+    "type": "case-study",
+    "company": "GitHub"
+  },
+  {
+    "title": "When Your API Starts Hiccuping: The Circuit Breaker Pattern for Resilient Services",
+    "date": "2026-08-31T09:58:01.341Z",
+    "type": "concept",
+    "company": null
   }
 ]
