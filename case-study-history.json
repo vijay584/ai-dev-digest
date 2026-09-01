@@ -1918,5 +1918,17 @@
     "date": "2026-08-31T09:58:01.341Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitter Scaled the Home Timeline: Fan‑out at Hundreds of Millions of Users",
+    "date": "2026-09-01T08:47:47.292Z",
+    "type": "case-study",
+    "company": "Twitter / X"
+  },
+  {
+    "title": "Raft Made Practical: How Distributed Consensus Keeps Your Cluster in Sync",
+    "date": "2026-09-01T08:48:13.310Z",
+    "type": "concept",
+    "company": null
   }
 ]
