@@ -1930,5 +1930,17 @@
     "date": "2026-09-01T08:48:13.310Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled Video from ~10M to 300M Daily Participants: edge fabrics, SFUs, and pre‑warmed clouds",
+    "date": "2026-09-02T08:01:45.981Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Speed Up Your Queries: Practical Guide to Database Indexing & Query Optimization",
+    "date": "2026-09-02T08:02:22.937Z",
+    "type": "concept",
+    "company": null
   }
 ]
