@@ -1942,5 +1942,17 @@
     "date": "2026-09-02T08:02:22.937Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Turned Billions of GPS Points into Fast, Accurate Geo Queries with H3 (122 base cells, 0–15 resolutions)",
+    "date": "2026-09-03T08:11:13.162Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "How to Add (or Remove) Servers Without Redistributing the Internet: Consistent Hashing Explained",
+    "date": "2026-09-03T08:11:39.025Z",
+    "type": "concept",
+    "company": null
   }
 ]
