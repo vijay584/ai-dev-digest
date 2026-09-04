@@ -1954,5 +1954,17 @@
     "date": "2026-09-03T08:11:39.025Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How GitLab Scaled Git RPCs & Postgres — Gitaly, Shards, and PgBouncer (10x throughput, latency ↓ 1.5s → 120ms)",
+    "date": "2026-09-04T08:11:53.117Z",
+    "type": "case-study",
+    "company": "GitLab"
+  },
+  {
+    "title": "Bulkhead Pattern: Stop One Failure from Sinking the Whole Ship",
+    "date": "2026-09-04T08:12:24.247Z",
+    "type": "concept",
+    "company": null
   }
 ]
