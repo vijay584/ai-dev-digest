@@ -1966,5 +1966,17 @@
     "date": "2026-09-04T08:12:24.247Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Built Open Connect to Serve ~15% of Peak Internet Traffic and Cut Backbone Costs",
+    "date": "2026-09-05T07:46:46.422Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Cache Strategies Unlocked: Cache-Aside, Write-Through, and Write-Back — When to Use Each",
+    "date": "2026-09-05T07:47:18.396Z",
+    "type": "concept",
+    "company": null
   }
 ]
