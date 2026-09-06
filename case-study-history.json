@@ -1978,5 +1978,17 @@
     "date": "2026-09-05T07:47:18.396Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Cloudflare Absorbed a 17.2M RPS DDoS: Anycast, Edge Scrubbing, and Per-POP Load Sharing",
+    "date": "2026-09-06T08:01:22.402Z",
+    "type": "case-study",
+    "company": "Cloudflare"
+  },
+  {
+    "title": "Who Holds the Key? A Practical Guide to Distributed Locks",
+    "date": "2026-09-06T08:02:01.970Z",
+    "type": "concept",
+    "company": null
   }
 ]
