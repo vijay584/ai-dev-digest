@@ -1990,5 +1990,17 @@
     "date": "2026-09-06T08:02:01.970Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How LinkedIn Scaled Kafka to 1+ Trillion Events/Day (~11.6M msg/s) — from Batch Lag to Real‑Time Streams",
+    "date": "2026-09-07T08:30:32.383Z",
+    "type": "case-study",
+    "company": "LinkedIn"
+  },
+  {
+    "title": "Sagas: How to Do Reliable Distributed Transactions Without 2PC",
+    "date": "2026-09-07T08:31:03.237Z",
+    "type": "concept",
+    "company": null
   }
 ]
