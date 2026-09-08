@@ -2002,5 +2002,17 @@
     "date": "2026-09-07T08:31:03.237Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Dropbox Migrated ~500 PB to 'Magic Pocket' and Cut Storage Costs by ~$75M/yr",
+    "date": "2026-09-08T08:13:56.585Z",
+    "type": "case-study",
+    "company": "Dropbox"
+  },
+  {
+    "title": "Event Sourcing: Keep Every Change So You Can Rebuild the Truth",
+    "date": "2026-09-08T08:14:32.990Z",
+    "type": "concept",
+    "company": null
   }
 ]
