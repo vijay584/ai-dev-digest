@@ -2014,5 +2014,17 @@
     "date": "2026-09-08T08:14:32.990Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Discord Scaled Real-Time Text & Voice to 140M Users — Cutting Latency, Servers, and Chaos with Elixir & Sharded Gateways",
+    "date": "2026-09-09T08:17:03.896Z",
+    "type": "case-study",
+    "company": "Discord"
+  },
+  {
+    "title": "When the API Line Gets Too Long: Rate Limiting Patterns & When to Use Them",
+    "date": "2026-09-09T08:17:37.760Z",
+    "type": "concept",
+    "company": null
   }
 ]
