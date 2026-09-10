@@ -2026,5 +2026,17 @@
     "date": "2026-09-09T08:17:37.760Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Shopify Survived a $5.1B Black Friday Surge: CDN + Edge Caching + Sharded Databases",
+    "date": "2026-09-10T08:16:32.247Z",
+    "type": "case-study",
+    "company": "Shopify"
+  },
+  {
+    "title": "Who Happened First? Lamport & Vector Clocks for Reasoning About Time in Distributed Systems",
+    "date": "2026-09-10T08:17:11.964Z",
+    "type": "concept",
+    "company": null
   }
 ]
