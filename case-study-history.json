@@ -2038,5 +2038,17 @@
     "date": "2026-09-10T08:17:11.964Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Stripe Prevented Double-Charges: Idempotency, Durable Ledger, and Retries at Scale",
+    "date": "2026-09-11T08:11:56.804Z",
+    "type": "case-study",
+    "company": "Stripe"
+  },
+  {
+    "title": "Stop the Domino Effect: Practical Guide to the Circuit Breaker Pattern",
+    "date": "2026-09-11T08:13:10.502Z",
+    "type": "concept",
+    "company": null
   }
 ]
