@@ -2050,5 +2050,17 @@
     "date": "2026-09-11T08:13:10.502Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Instagram Tamed the Feed: Hybrid Fanout that Cut Writes ~80% and Latency by 4x",
+    "date": "2026-09-12T08:02:33.105Z",
+    "type": "case-study",
+    "company": "Instagram"
+  },
+  {
+    "title": "The API Gateway Pattern: Your Service Concierge (Routing, Auth, Aggregation — without the chaos)",
+    "date": "2026-09-12T08:03:28.374Z",
+    "type": "concept",
+    "company": null
   }
 ]
