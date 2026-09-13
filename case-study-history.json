@@ -2062,5 +2062,17 @@
     "date": "2026-09-12T08:03:28.374Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Zoom Scaled from 10M → 300M Daily Participants: Real-Time Video at Planetary Scale",
+    "date": "2026-09-13T08:26:55.003Z",
+    "type": "case-study",
+    "company": "Zoom"
+  },
+  {
+    "title": "Why Your Queries Crawl: Practical Guide to Database Indexing & Query Optimization",
+    "date": "2026-09-13T08:27:40.441Z",
+    "type": "concept",
+    "company": null
   }
 ]
