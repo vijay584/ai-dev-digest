@@ -2074,5 +2074,17 @@
     "date": "2026-09-13T08:27:40.441Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Twitter Reined In a Tsunami of Tweets: Manhattan, Hybrid Fanout, and Cutting Write Amplification by Orders of Magnitude",
+    "date": "2026-09-14T09:08:38.684Z",
+    "type": "case-study",
+    "company": "Twitter (X)"
+  },
+  {
+    "title": "How Consistent Hashing Keeps Your Cluster Balanced (Even When Machines Come and Go)",
+    "date": "2026-09-14T09:09:27.015Z",
+    "type": "concept",
+    "company": null
   }
 ]
