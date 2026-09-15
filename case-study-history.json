@@ -2086,5 +2086,17 @@
     "date": "2026-09-14T09:09:27.015Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Uber Solved City-Scale Geospatial Matching with H3 (Hexagons, 64-bit, 16 Resolutions)",
+    "date": "2026-09-15T08:51:06.931Z",
+    "type": "case-study",
+    "company": "Uber"
+  },
+  {
+    "title": "Don't Let One Failure Sink the Ship: The Bulkhead Pattern for Resilient Systems",
+    "date": "2026-09-15T08:52:18.956Z",
+    "type": "concept",
+    "company": null
   }
 ]
