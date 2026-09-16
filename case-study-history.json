@@ -2098,5 +2098,17 @@
     "date": "2026-09-15T08:52:18.956Z",
     "type": "concept",
     "company": null
+  },
+  {
+    "title": "How Netflix Cut Bandwidth by ~30% and Kept 200M+ Viewers Happy: Open Connect + Per‑Title Encoding at Planetary Scale",
+    "date": "2026-09-16T08:44:26.372Z",
+    "type": "case-study",
+    "company": "Netflix"
+  },
+  {
+    "title": "Cache Smarter, Not Harder: Write‑Through, Write‑Back, and Cache‑Aside Explained",
+    "date": "2026-09-16T08:45:02.222Z",
+    "type": "concept",
+    "company": null
   }
 ]
